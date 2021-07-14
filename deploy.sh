@@ -8,7 +8,7 @@ echo "build successful"
 
 cd docs/.vuepress/dist # 进入生成的文件夹
 
-echo 'note.qdzhou.cn' > CNAME
+# echo 'note.qdzhou.cn' > CNAME
 # deploy to github
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
@@ -27,7 +27,7 @@ git push -f $githubUrl master:gh-pages # 推送到github
 echo "push github successful"
 
 # deploy to coding
-echo 'code.qdzhou.cn' > CNAME  # 自定义域名
+# echo 'code.qdzhou.cn' > CNAME  # 自定义域名
 if [ -z "$CODING_TOKEN" ]; then  # -z 字符串 长度为0则为true；$CODING_TOKEN来自于github仓库`Settings/Secrets`设置的私密环境变量
   codingUrl=git@e.coding.net:serverless-100008396491/note/note.git
 else
