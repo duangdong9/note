@@ -9,12 +9,12 @@ echo "build successful"
 cd docs/.vuepress/dist # 进入生成的文件夹
 
 # deploy to github
-if [ -z "$ACCESS_TOKEN" ]; then
+if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:ZQD1224/blog.git
 else
   msg='来自github action的自动部署'
-  githubUrl=https://ZQD1224:${ACCESS_TOKEN}@github.com/ZQD1224/blog.git
+  githubUrl=https://ZQD1224:${GITHUB_TOKEN}@github.com/ZQD1224/blog.git
   git config --global user.name "zhouqd"
   git config --global user.email "zhouqd1997@163.com"
 fi
