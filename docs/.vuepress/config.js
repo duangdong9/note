@@ -53,7 +53,7 @@ const sidebar = getSiderList();
 module.exports = {
   title: 'qd blog',
   description: '前端相关知识',
-  base: '/blog/',
+  base: '/note/',
   port: 9199,
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   plugins: [
