@@ -26,7 +26,7 @@ var twoSum = function (nums, target) {
 
 ##### 方法二
 
-```
+```js
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -54,7 +54,7 @@ https://leetcode-cn.com/problems/longest-common-prefix
 2. 再遍历数组的第一个字符串，用字符串中的每一个字符和数组中的每一项的对应的该字符串下标相比，不同则跳出循环，两两找出公共前缀，最终结果即为最长公共前缀的长度 j。
 3. 截取字符串长度 j 的字符即为最长公共前缀
 
-```
+```js
 const strs = ['flower', 'flow', 'flight']
 const longestCommonPrefix = function (strs) {
   if (strs === null || strs.length === 0) return ''
@@ -76,7 +76,7 @@ longestCommonPrefix(strs)
 
 https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof
 
-```
+```js
 var deleteNode = function (head, val) {
   if (head.val === val) return head.next
   let prev = head,
@@ -106,7 +106,7 @@ https://leetcode-cn.com/problems/valid-parentheses
 2. 右括号前面，必须是相对应的左括号，才能抵消！
 3. 右括号前面，不是对应的左括号，那么该字符串，一定不是有效的括号！
 
-```
+```js
 var isValid = function (s) {
   let stack = []
   if (!s || s.length % 2) return false
@@ -136,7 +136,7 @@ var isValid = function (s) {
 
 https://leetcode-cn.com/problems/merge-two-sorted-lists
 
-```
+```js
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -168,7 +168,7 @@ var mergeTwoLists = function (l1, l2) {
 
 https://leetcode-cn.com/problems/maximum-subarray
 
-```
+```js
 /**
  * @param {number[]} nums
  * @return {number}
@@ -192,7 +192,7 @@ var maxSubArray = function (nums) {
 
 https://leetcode-cn.com/problems/climbing-stairs
 
-```
+```js
 var climbStairs = function (n) {
   let dp = []
   dp[0] = 1
@@ -208,7 +208,7 @@ var climbStairs = function (n) {
 
 https://leetcode-cn.com/problems/symmetric-tree
 
-```
+```js
 /**递归 代码
  * @param {TreeNode} root
  * @return {boolean}
@@ -239,7 +239,7 @@ var isSymmetric = function (root) {
 
 https://leetcode-cn.com/problems/path-sum
 
-```
+```js
 var hasPathSum = function (root, targetSum) {
   // 深度优先遍历
   if (root === null) {
@@ -262,7 +262,7 @@ var hasPathSum = function (root, targetSum) {
 
 https://leetcode-cn.com/problems/single-number
 
-```
+```js
 /**
  * @param {number[]} nums
  * @return {number}
@@ -281,7 +281,7 @@ var singleNumber = function (nums) {
 
 https://leetcode-cn.com/problems/min-stack
 
-```
+```js
 var MinStack = function () {
   this.x_stack = []
   this.min_stack = [Infinity]
@@ -317,7 +317,7 @@ https://leetcode-cn.com/problems/intersection-of-two-linked-lists
 
 时间复杂度：O(M * N)O(M∗N), M, N 分别为两个链表的长度。 空间复杂度：O(1)O(1)。
 
-```
+```js
 var getIntersectionNode = function (headA, headB) {
   if (!headA || !headB) return null
   let pA = headA
@@ -342,7 +342,7 @@ var getIntersectionNode = function (headA, headB) {
 
 时间复杂度：O(M + N), M, N 分别为两个链表的长度。 空间复杂度：O(N)，N 为链表 A 的长度。
 
-```
+```js
 var getIntersectionNode = function (headA, headB) {
   if (!headA || !headB) return null
   const hashmap = new Map()
@@ -369,7 +369,7 @@ var getIntersectionNode = function (headA, headB) {
 
 时间复杂度：O(M + N) , M, N 分别为两个链表的长度。 空间复杂度：O(1)。
 
-```
+```js
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -398,7 +398,7 @@ var getIntersectionNode = function (headA, headB) {
 
 ## 206.反转链表
 
-```
+```js
 var reverseList = function (head) {
   let prev = null
   cur = head
@@ -414,7 +414,7 @@ var reverseList = function (head) {
 
 ### 方案 2
 
-```
+```js
 var reverseList = function (head) {
   let prev = null
   cur = head
@@ -432,7 +432,7 @@ var reverseList = function (head) {
 
 https://leetcode-cn.com/problems/palindrome-linked-list
 
-```
+```js
 const isPalindrome = (head) => {
   const vals = []
   while (head) {
@@ -460,7 +460,7 @@ https://leetcode-cn.com/problems/diameter-of-binary-tree
 
 ##### 方法 1
 
-```
+```js
 var diameterOfBinaryTree = function (root) {
   // 默认为1是因为默认了根节点自身的路径长度
   let ans = 1
@@ -496,7 +496,7 @@ var diameterOfBinaryTree = function (root) {
 
 ##### 方法 2
 
-```
+```js
 function height(node) {
   //求树高
   if (!node) return 0
@@ -518,7 +518,7 @@ var diameterOfBinaryTree = function (root) {
 
 https://leetcode-cn.com/problems/merge-two-binary-trees/
 
-```
+```js
 var mergeTrees = function (root1, root2) {
   if (root1 == null && root2) {
     return root2
