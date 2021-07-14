@@ -33,6 +33,7 @@ if [ -z "$CODING_TOKEN" ]; then  # -z 字符串 长度为0则为true；$CODING_T
 else
   codingUrl=https://mMFjLAdigb:${CODING_TOKEN}@e.coding.net/serverless-100008396491/note/note.git
 fi
+git init
 git add -A
 git commit -m "${msg}"
 git push -f $codingUrl master # 推送到coding
