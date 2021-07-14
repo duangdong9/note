@@ -50,10 +50,13 @@ const getSiderList = () => {
 
 const sidebar = getSiderList();
 
+const base = '/';
+// const base = '/note/';
+
 module.exports = {
   title: 'qd blog',
   description: '前端相关知识',
-  base: '/note/',
+  base,
   port: 9199,
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   plugins: [
