@@ -65,7 +65,21 @@ const getBaiduTongji = () => {
   `;
 };
 
+const getBaiduSpa = () => {
+  return `
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('?')[0];
+      oldPath = oldPath.split('?')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  `;
+};
+
 const baiduTongji = getBaiduTongji();
+const baiduSpa = getBaiduSpa();
 const base = "/";
 // const base = '/note/';
 
@@ -78,6 +92,7 @@ module.exports = {
     ["link", { rel: "icon", href: "/logo.png" }],
     ["link", { rel: "manifest", href: "/manifest.json" }],
     ["script", {}, baiduTongji],
+    ["script", {}, baiduSpa],
   ],
   plugins: [
     ["@vuepress/medium-zoom", true],
