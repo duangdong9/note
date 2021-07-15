@@ -8,7 +8,7 @@ echo "build successful"
 
 cd docs/.vuepress/dist # 进入生成的文件夹
 
-# echo 'note.qdzhou.cn' > CNAME
+echo 'note.qdzhou.cn' > CNAME
 # deploy to github
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
