@@ -70,8 +70,8 @@ const getBaiduSpa = () => {
   var _hmt = _hmt || [];
   _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
     shouldTrackUrlChange: function (newPath, oldPath) {
-      newPath = newPath.split('?')[0];
-      oldPath = oldPath.split('?')[0];
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
       return newPath != oldPath;
     }}
   ]);
@@ -91,6 +91,14 @@ module.exports = {
   head: [
     ["link", { rel: "icon", href: "/logo.png" }],
     ["link", { rel: "manifest", href: "/manifest.json" }],
+    [
+      "meta",
+      {
+        name: "keywords",
+        content:
+          "qd-blog,js,vuepress,leetcode,react,react进阶,css,js进阶,react性能优化,js设计模式",
+      },
+    ],
     ["script", {}, baiduTongji],
     ["script", {}, baiduSpa],
   ],
