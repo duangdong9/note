@@ -53,27 +53,50 @@ const getSiderList = () => {
 
 const sidebar = getSiderList();
 
+const getBaiduTongji = () => {
+  return `
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  `;
+};
+
+const baiduTongji = getBaiduTongji();
 const base = "/";
 // const base = '/note/';
 
 module.exports = {
   title: "qd blog",
-  description: "前端相关知识",
+  description: "qd前端相关知识总结",
   base,
   port: 9199,
-  head: [["link", { rel: "icon", href: "/logo.png" }]],
+  head: [
+    ["link", { rel: "icon", href: "/logo.png" }],
+    ["link", { rel: "manifest", href: "/manifest.json" }],
+    ["script", {}, baiduTongji],
+  ],
   plugins: [
     ["@vuepress/medium-zoom", true],
     ["@vuepress/back-to-top", true],
     ["vuepress-plugin-code-copy", true],
+    [
+      "@vuepress/pwa",
+      {
+        serviceWorker: true,
+        updatePopup: true,
+      },
+    ],
   ],
-  smoothScroll: true,
-  editLinks: true,
   themeConfig: {
     sidebarDepth: 2,
     searchMaxSuggestions: 10,
     lastUpdated: "上次更新",
     editLinks: true,
+    smoothScroll: true,
     nav: [
       { text: "React", link: "/react/" },
       { text: "Leetcode", link: "/leetcode/" },
