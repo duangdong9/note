@@ -1,5 +1,3 @@
-
-
 # 【React的作弊模式】理解useReducer的优势和高级用法
 
 或许你已经知道，“当多个state需要一起更新时，就应该考虑使用useReducer”；或许你也已经听说过，“使用useReducer能够提高应用的性能”。但是篇文章希望帮助你理解：为什么useReducer能提高代码的可读性和性能，以及如何在reducer中读取props的值。
