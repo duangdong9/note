@@ -2,6 +2,7 @@
   "name": "qd-blog",
   "version": "0.0.1",
   "description": "qd-blog",
+  "author": "qd",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -14,5 +15,13 @@
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "vuepress": "^1.8.2",
     "vuepress-plugin-code-copy": "^1.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZQD1224/note.git"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "homepage": "https://note.qdzhou.cn"
 }

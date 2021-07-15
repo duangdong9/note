@@ -2,17 +2,15 @@
 home: true
 heroImage: /header.jpg
 heroText: qd 的blog
-tagline: 完善的前端知识体系
+tagline: 总结和完善前端知识体系
 actionText: 快速上手 →
 actionLink: /javascript/
 features:
-- title: js技巧
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: React 深入学习
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 工程化
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-- title: 数据结构和算法
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present Evan You
+  - title: JS 技巧
+    details: 常用的js使用技巧以及一些常用的代码片段, js设计模式, js原理解析。
+  - title: React 深入学习
+    details: react项目中的使用总结, react相关性能优化, react进阶 , react运行机制和源码方面的解析。
+  - title: 数据结构和算法
+    details: js相关的数据结构 以及 相关概念的leetcode算法练习 (使用js解答，总结官方以及优质解答)。
+footer: MIT Licensed | Copyright © 2020-present qd
 ---
