@@ -83,6 +83,71 @@ const baiduSpa = getBaiduSpa();
 const base = "/";
 // const base = '/note/';
 
+const nav = [
+  { text: "React", link: "/react/" },
+  { text: "Leetcode", link: "/leetcode/" },
+  {
+    text: "数据结构",
+    link: "/algorithm/",
+  },
+  { text: "可视化", link: "/visual/" },
+  { text: "工程化", link: "/engineering/" },
+  {
+    text: "JS",
+    link: "/javascript/",
+    items: [
+      {
+        text: "js进阶",
+        items: [
+          { text: "《设计模式》", link: "/design-mode/" },
+          { text: "《js进阶》", link: "/js-advanced/" },
+        ],
+      },
+      {
+        text: "js基础",
+        items: [
+          {
+            text: "《js代码片段》",
+            link: "/javascript/2-代码片段/代码片段-2",
+          },
+          {
+            text: "《常用正则》",
+            link: "/javascript/3-常用正则/emoji",
+          },
+          {
+            text: "《常用问题》",
+            link: "/javascript/4-常见问题/qa",
+          },
+          {
+            text: "《js重要类型》",
+            link: "/javascript/1-重要类型/Map",
+          },
+        ],
+      },
+    ],
+  },
+  { text: "Node", link: "/node/" },
+  { text: "TS", link: "/typescript/" },
+  { text: "CSS", link: "/c3/" },
+  { text: "随笔", link: "/essay/" },
+  { text: "Vue", link: "/vue/" },
+  { text: "小程序", link: "/mini-program/" },
+  {
+    text: "个人链接",
+    ariaLabel: "个人链接",
+    items: [
+      { text: "优质链接", link: "/link/" },
+      { text: "博客", link: "http://qdzhou.cn/", target: "_blank" },
+      { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
+      {
+        text: "Github",
+        link: "https://github.com/ZQD1224",
+        target: "_blank",
+      },
+    ],
+  },
+];
+
 module.exports = {
   title: "qd blog",
   description: "qd前端相关知识总结",
@@ -120,70 +185,7 @@ module.exports = {
     lastUpdated: "上次更新",
     editLinks: true,
     smoothScroll: true,
-    nav: [
-      { text: "React", link: "/react/" },
-      { text: "Leetcode", link: "/leetcode/" },
-      {
-        text: "数据结构",
-        link: "/algorithm/",
-      },
-      { text: "可视化", link: "/visual/" },
-      { text: "工程化", link: "/engineering/" },
-      {
-        text: "JS",
-        link: "/javascript/",
-        items: [
-          {
-            text: "js进阶",
-            items: [
-              { text: "《设计模式》", link: "/design-mode/" },
-              { text: "《js运行》", link: "/js-advanced/" },
-            ],
-          },
-          {
-            text: "js基础",
-            items: [
-              {
-                text: "《js代码片段》",
-                link: "/javascript/2-代码片段/代码片段-2",
-              },
-              {
-                text: "《常用正则》",
-                link: "/javascript/3-常用正则/emoji",
-              },
-              {
-                text: "《常用问题》",
-                link: "/javascript/4-常见问题/qa",
-              },
-              {
-                text: "《js重要类型》",
-                link: "/javascript/1-重要类型/Map",
-              },
-            ],
-          },
-        ],
-      },
-      { text: "Node", link: "/node/" },
-      { text: "TS", link: "/typescript/" },
-      { text: "CSS", link: "/c3/" },
-      { text: "随笔", link: "/essay/" },
-      { text: "Vue", link: "/vue/" },
-      { text: "小程序", link: "/mini-program/" },
-      {
-        text: "个人链接",
-        ariaLabel: "个人链接",
-        items: [
-          { text: "优质链接", link: "/link/" },
-          { text: "博客", link: "http://qdzhou.cn/", target: "_blank" },
-          { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
-          {
-            text: "Github",
-            link: "https://github.com/ZQD1224",
-            target: "_blank",
-          },
-        ],
-      },
-    ],
+    nav,
     sidebar,
   },
 };
