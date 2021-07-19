@@ -1,5 +1,7 @@
 ## js 进阶
-
+- [js 是如何运行的](./0-执行/js是如何运行的)
+- [js 执行过程](./0-执行/js执行过程)
+- [Scheduler 调度](./0-执行/Scheduler调度)
 - [QA](./1-QA/1-八股文)
   - [Promise](./1-QA/Promise)
   - [关于addEventListener的第三个参数](./1-QA/关于addEventListener的第三个参数)
@@ -12,8 +14,5 @@
   - [JavaScript运算符使用技巧](./1-QA/JavaScript运算符使用技巧)
 - [动画](./2-动画/动画事件)
   - [数字增加](./2-动画/数字增加)
-- [js 是如何运行的](./js是如何运行的)
-- [js 执行过程](./js执行过程)
-- [Scheduler 调度](./Scheduler调度)
 - [堆栈](./堆栈)
 - [前端模块化](./前端模块化)

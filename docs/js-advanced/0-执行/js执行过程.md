@@ -1,5 +1,7 @@
 ## 详解JavaScript执行过程
 
+> [https://mp.weixin.qq.com/s/_bWxFOaI3xFxwbAzKqOaNA](https://mp.weixin.qq.com/s/_bWxFOaI3xFxwbAzKqOaNA)
+
 > js代码的执行，主要分为两个个阶段：编译阶段、执行阶段!本文所有内容基于V8引擎。
 
 ## 1前言
