@@ -85,6 +85,20 @@ const base = "/";
 
 const nav = [
   { text: "React", link: "/react/" },
+  { text: "QA", link: "/qa/" },
+  {
+    text: "JS进阶",
+    link: "/js-advanced/",
+    items: [
+      {
+        text: "js进阶",
+        items: [
+          { text: "《js进阶》", link: "/js-advanced/" },
+          { text: "《设计模式》", link: "/design-mode/" },
+        ],
+      },
+    ],
+  },
   { text: "Leetcode", link: "/leetcode/" },
   {
     text: "数据结构",
@@ -96,13 +110,6 @@ const nav = [
     text: "JS",
     link: "/javascript/",
     items: [
-      {
-        text: "js进阶",
-        items: [
-          { text: "《设计模式》", link: "/design-mode/" },
-          { text: "《js进阶》", link: "/js-advanced/" },
-        ],
-      },
       {
         text: "js基础",
         items: [
