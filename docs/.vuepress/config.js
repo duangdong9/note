@@ -82,6 +82,19 @@ const baiduTongji = getBaiduTongji();
 const baiduSpa = getBaiduSpa();
 const base = "/";
 // const base = '/note/';
+// {
+//   text: "JS进阶",
+//   link: "/js-advanced/",
+//   items: [
+//     {
+//       text: "js进阶",
+//       items: [
+//         { text: "《js进阶》", link: "/js-advanced/" },
+//         { text: "《设计模式》", link: "/design-mode/" },
+//       ],
+//     },
+//   ],
+// },
 
 const nav = [
   { text: "React", link: "/react/" },
@@ -89,56 +102,20 @@ const nav = [
   {
     text: "JS进阶",
     link: "/js-advanced/",
-    items: [
-      {
-        text: "js进阶",
-        items: [
-          { text: "《js进阶》", link: "/js-advanced/" },
-          { text: "《设计模式》", link: "/design-mode/" },
-        ],
-      },
-    ],
+  },
+  {
+    text: "JS设计模式",
+    link: "/design-mode/",
   },
   { text: "Leetcode", link: "/leetcode/" },
   {
     text: "数据结构",
     link: "/algorithm/",
   },
-  { text: "可视化", link: "/visual/" },
   { text: "工程化", link: "/engineering/" },
-  {
-    text: "JS",
-    link: "/javascript/",
-    items: [
-      {
-        text: "js基础",
-        items: [
-          {
-            text: "《js代码片段》",
-            link: "/javascript/2-代码片段/代码片段-2",
-          },
-          {
-            text: "《常用正则》",
-            link: "/javascript/3-常用正则/emoji",
-          },
-          {
-            text: "《常用问题》",
-            link: "/javascript/4-常见问题/qa",
-          },
-          {
-            text: "《js重要类型》",
-            link: "/javascript/1-重要类型/Map",
-          },
-        ],
-      },
-    ],
-  },
   { text: "Node", link: "/node/" },
   { text: "TS", link: "/typescript/" },
-  { text: "CSS", link: "/c3/" },
-  { text: "随笔", link: "/essay/" },
-  { text: "Vue", link: "/vue/" },
-  { text: "小程序", link: "/mini-program/" },
+  { text: "随笔", link: "https://essay.qdzhou.cn" },
   {
     text: "个人链接",
     ariaLabel: "个人链接",
@@ -159,7 +136,7 @@ module.exports = {
   title: "qd blog",
   description: "qd前端相关知识总结",
   base,
-  port: 9199,
+  port: 9200,
   head: [
     ["link", { rel: "icon", href: "/logo.png" }],
     ["link", { rel: "manifest", href: "/manifest.json" }],
