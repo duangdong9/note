@@ -1,11 +1,10 @@
 # 理解JavaScript 中的执行上下文和执行栈
 
 > [https://muyiy.cn/blog/1/1.1.html](https://muyiy.cn/blog/1/1.1.html)
->
 
 执行上下文是当前 JavaScript 代码被解析和执行时所在环境的抽象概念。
 
-## [#](https://muyiy.cn/blog/1/1.1.html#执行上下文的类型)执行上下文的类型
+## 执行上下文的类型
 
 执行上下文总共有三种类型
 
@@ -13,7 +12,7 @@
 - **函数执行上下文**：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。
 - **Eval 函数执行上下文**： 指的是运行在 `eval` 函数中的代码，很少用而且不建议使用。
 
-## [#](https://muyiy.cn/blog/1/1.1.html#执行栈)执行栈
+## 执行栈
 
 执行栈，也叫调用栈，具有 LIFO（后进先出）结构，用于存储在代码执行期间创建的所有执行上下文。
 
@@ -45,11 +44,11 @@ console.log('Inside Global Execution Context');
 
 ![img](http://resource.muyiy.cn/image/2019-07-24-060219.jpg)
 
-## [#](https://muyiy.cn/blog/1/1.1.html#执行上下文的创建)执行上下文的创建
+## 执行上下文的创建
 
 执行上下文分两个阶段创建：**1）创建阶段；** **2）执行阶段**
 
-## [#](https://muyiy.cn/blog/1/1.1.html#创建阶段)创建阶段
+## 创建阶段
 
 - 1、确定 **this** 的值，也被称为 **This Binding**。
 - 2、**LexicalEnvironment（词法环境）** 组件被创建。
@@ -65,12 +64,12 @@ ExecutionContext = {
 }
 ```
 
-### [#](https://muyiy.cn/blog/1/1.1.html#this-binding)This Binding
+### This Binding
 
 - **全局**执行上下文中，`this` 的值指向全局对象，在浏览器中`this` 的值指向 `window`对象，而在`nodejs`中指向这个文件的`module`对象。
 - **函数**执行上下文中，`this` 的值取决于函数的调用方式。具体有：默认绑定、隐式绑定、显式绑定（硬绑定）、`new`绑定、箭头函数，具体内容会在【this全面解析】部分详解。
 
-### [#](https://muyiy.cn/blog/1/1.1.html#词法环境（lexical-environment）)词法环境（Lexical Environment）
+### 词法环境（Lexical Environment）
 
 词法环境有两个**组成部分**
 
@@ -104,7 +103,7 @@ FunctionExectionContext = { // 函数执行上下文
 }
 ```
 
-### [#](https://muyiy.cn/blog/1/1.1.html#变量环境)变量环境
+### 变量环境
 
 变量环境也是一个词法环境，因此它具有上面定义的词法环境的所有属性。
 
