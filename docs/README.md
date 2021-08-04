@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /header.jpg
-heroText: qd 的blog
+heroText: duangdong的blog
 tagline: 总结和完善前端知识体系
 actionText: 快速上手 →
 actionLink: /js-advanced/

@@ -132,8 +132,8 @@ const nav = [
 ];
 
 module.exports = {
-  title: "qd blog",
-  description: "qd前端相关知识总结",
+  title: "duangdong的blog",
+  description: "前端相关知识归纳总结",
   base,
   port: 9200,
   head: [
