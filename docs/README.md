@@ -4,7 +4,7 @@ heroImage: /header.jpg
 heroText: qd 的blog
 tagline: 总结和完善前端知识体系
 actionText: 快速上手 →
-actionLink: /javascript/
+actionLink: /js-advanced/
 features:
   - title: 总结一些优质博客
     details: 一些博文会来自一些大佬或者是公众号的文章，将其总结汇总，如有侵权告知会删除滴。

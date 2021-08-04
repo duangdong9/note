@@ -114,7 +114,6 @@ const nav = [
   },
   { text: "工程化", link: "/engineering/" },
   { text: "Node", link: "/node/" },
-  { text: "TS", link: "/typescript/" },
   { text: "随笔", link: "https://essay.qdzhou.cn" },
   {
     text: "个人链接",
