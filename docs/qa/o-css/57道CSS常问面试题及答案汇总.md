@@ -427,7 +427,7 @@ webp格式是谷歌在2010年推出的图片格式，压缩率只有jpg的2/3，
 
 ### **40、移动端的布局用过媒体查询吗？**
 
-<head>
+`<head>`
 
 - 
 
@@ -574,12 +574,18 @@ transition:[<transition-property> || <transition-duration> || <transition-timing
 **transition-property：指定过渡的CSS属性。**
 
 1. none：没有指定任何样式。
+
 2. all：默认值，表示指定元素所有支持transition-property属性的样式。
-3. <single-transition-property>：指定一个或多个样式。并不是所有样式都能应用transition-property进行过渡，只有具有一个中点值的样式才能具备过渡效果，如颜色，长度，渐变等。
+
+3. ```
+   <single-transition-property>
+   ```
+
+   ：指定一个或多个样式。并不是所有样式都能应用transition-property进行过渡，只有具有一个中点值的样式才能具备过渡效果，如颜色，长度，渐变等。
 
 **transition-duration：指定完成过渡所需的时间。**
 
-1. <time>为数值，单位为s(秒)或ms(毫秒)，默认值是0。当有多个过渡属性时，可以设置多个过渡时间分别应用过渡属性，也可以设置一个过渡时间应用所有过渡属性。
+1. `<time>`为数值，单位为s(秒)或ms(毫秒)，默认值是0。当有多个过渡属性时，可以设置多个过渡时间分别应用过渡属性，也可以设置一个过渡时间应用所有过渡属性。
 
 **transition-timing-function：指定过渡调速函数。**
 
