@@ -96,17 +96,43 @@ const base = "/";
 //   ],
 // },
 
+// const nav = [
+//   { text: "React", link: "/react/" },
+//   { text: "QA", link: "/qa/" },
+//   {
+//     text: "JS进阶",
+//     link: "/js-advanced/",
+//   },
+//   {
+//     text: "JS设计模式",
+//     link: "/design-mode/",
+//   },
+//   { text: "Leetcode", link: "/leetcode/" },
+//   {
+//     text: "数据结构",
+//     link: "/algorithm/",
+//   },
+//   { text: "工程化", link: "/engineering/" },
+//   { text: "Node", link: "/node/" },
+//   { text: "React", link: "https://react.qdzhou.cn" },
+//   {
+//     text: "个人链接",
+//     ariaLabel: "个人链接",
+//     items: [
+//       { text: "随笔", link: "https://essay.qdzhou.cn", target: "_blank" },
+//       { text: "随笔", link: "https://qa.qdzhou.cn", target: "_blank" },
+//       { text: "博客", link: "http://qdzhou.cn/", target: "_blank" },
+//       { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
+//       {
+//         text: "Github",
+//         link: "https://github.com/ZQD1224/note",
+//         target: "_blank",
+//       },
+//     ],
+//   },
+// ];
+
 const nav = [
-  { text: "React", link: "/react/" },
-  { text: "QA", link: "/qa/" },
-  {
-    text: "JS进阶",
-    link: "/js-advanced/",
-  },
-  {
-    text: "JS设计模式",
-    link: "/design-mode/",
-  },
   { text: "Leetcode", link: "/leetcode/" },
   {
     text: "数据结构",
@@ -114,12 +140,13 @@ const nav = [
   },
   { text: "工程化", link: "/engineering/" },
   { text: "Node", link: "/node/" },
-  { text: "随笔", link: "https://essay.qdzhou.cn" },
+  { text: "React", link: "https://react.qdzhou.cn" },
+  { text: "QA", link: "https://qa.qdzhou.cn" },
   {
     text: "个人链接",
     ariaLabel: "个人链接",
     items: [
-      { text: "优质链接", link: "/link/" },
+      { text: "随笔", link: "https://essay.qdzhou.cn", target: "_blank" },
       { text: "博客", link: "http://qdzhou.cn/", target: "_blank" },
       { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
       {
