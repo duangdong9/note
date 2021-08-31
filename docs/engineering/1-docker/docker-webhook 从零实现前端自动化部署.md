@@ -624,7 +624,11 @@ http.createServer(async (req, res) => {    console.log('receive request')    con
 
 在创建新容器前，需要先把旧容器销毁，这里先介绍几个用到的 docker 命令：
 
+> ```
 > docker ps -a -f "name=^docker" --format="{{.Names}}"
+> ```
+>
+> 
 
 查看所有 name 以 docker 开头的 docker 容器，并只输出容器名
 

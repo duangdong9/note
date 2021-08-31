@@ -1,4 +1,4 @@
-# [源码解读] Webpack 插件架构深度讲解
+# Webpack 插件架构深度讲解
 
 本文大部分篇幅都 focus 在 Tapable 框架，详细枚举了 Tapable 提供的钩子及各类型钩子的特点、运行逻辑、实现原理，并进一步讨论 Tapable 框架在 webpack 的作用，进而揭示 webpack 插件架构的核心逻辑。
 
