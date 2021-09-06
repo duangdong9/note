@@ -2,16 +2,22 @@
 
 > [https://mp.weixin.qq.com/s/QfHHJnzD4vhenjFcFSNMhQ](https://mp.weixin.qq.com/s/QfHHJnzD4vhenjFcFSNMhQ)
 
-原创 synccheng 腾讯AlloyTeam *前天*
-
 > 这段时间在开发一个腾讯文档全品类通用的 HTML 动态服务，为了方便各品类接入的生成与部署，也顺应上云的趋势，考虑使用 Docker 的方式来固定服务内容，统一进行制品版本的管理。本篇文章就将我在服务 Docker 化的过程中积累起来的优化经验分享出来，供大家参考。
 
 以一个例子开头，大部分刚接触 Docker 的同学应该都会这样编写项目的 Dockerfile，如下所示：
 
-```
-FROM node:14WORKDIR /app
-COPY . .# 安装 npm 依赖RUN npm install
-# 暴露端口EXPOSE 8000
+```dockerfile
+
+FROM node:14
+WORKDIR /app
+
+COPY . .
+# 安装 npm 依赖
+RUN npm install
+
+# 暴露端口
+EXPOSE 8000
+
 CMD ["npm", "start"]
 ```
 
@@ -53,45 +59,35 @@ CMD ["npm", "start"]
 
 首先，我们可以在完整版镜像下进行依赖安装，并给该任务设立一个别名（此处为 `build`)。
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+```dockerfile
+# 安装完整依赖并构建产物
+FROM node:14 AS build
+WORKDIR /app
 
-```
-# 安装完整依赖并构建产物FROM node:14 AS buildWORKDIR /app
-COPY package*.json /app/RUN ["npm", "install"]COPY . /app/
+COPY package*.json /app/
+RUN ["npm", "install"]
+COPY . /app/
+
 RUN npm run build
 ```
 
 之后我们可以启用另一个镜像任务来运行生产环境，生产的基础镜像就可以换成 alpine 版本了。其中编译完成后的源码可以通过 `--from`参数获取到处于 `build`任务中的文件，移动到此任务内。
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+```dockerfile
+FROM node:14-alpine AS release
+WORKDIR /release
 
-```
-FROM node:14-alpine AS releaseWORKDIR /release
-COPY package*.json /RUN ["npm", "install", "--registry=http://r.tnpm.oa.com", "--production"]
-# 移入依赖与源码COPY public /release/publicCOPY --from=build /app/dist /release/dist
-# 启动服务EXPOSE 8000
-CMD ["node", "./dist/index.js"]
+COPY package*.json /
+RUN ["npm", "install", "--registry=http://r.tnpm.oa.com", "--production"]
+
+# 移入依赖与源码
+COPY public /release/public
+COPY --from=build /app/dist /release/dist
+
+# 启动服务
+EXPOSE 8000
+
+CMD ["node", "./dist/index.js"]1
 ```
 
 Docker 镜像的生成规则是，生成镜像的结果仅以最后一个镜像任务为准。因此前面的任务并不会占用最终镜像的体积，从而完美解决这一问题。
@@ -100,17 +96,14 @@ Docker 镜像的生成规则是，生成镜像的结果仅以最后一个镜像�
 
 其中最常见的问题就是对 `node-gyp`与 `node-sass`库的引用。由于这个库是用来将其他语言编写的模块转译为 node 模块，因此，我们需要手动增加 `g++make python`这三个依赖。
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+```dockerfile
+# 安装生产环境依赖（为兼容 node-gyp 所需环境需要对 alpine 进行改造）
+FROM node:14-alpine AS dependencies
 
-```
-# 安装生产环境依赖（为兼容 node-gyp 所需环境需要对 alpine 进行改造）FROM node:14-alpine AS dependencies
-RUN apk add --no-cache python make g++COPY package*.json /RUN ["npm", "install", "--registry=http://r.tnpm.oa.com", "--production"]RUN apk del .gyp
+RUN apk add --no-cache python make g++
+COPY package*.json /
+RUN ["npm", "install", "--registry=http://r.tnpm.oa.com", "--production"]
+RUN apk del .gyp
 ```
 
 > 详情可见：https://github.com/nodejs/docker-node/issues/282
@@ -123,33 +116,27 @@ RUN apk add --no-cache python make g++COPY package*.json /RUN ["npm", "install",
 
 如下所示，如果 log 中出现 `Usingcache`字样时，说明缓存生效了，该层将不会执行运算，直接拿原缓存作为该层的输出结果。
 
-- 
-- 
-- 
-
-```
-Step 2/3 : npm install ---> Using cache ---> efvbf79sd1eb
+```shell
+Step 2/3 : npm install
+ ---> Using cache
+ ---> efvbf79sd1eb
 ```
 
 通过研究 Docker 缓存算法，发现在 Docker 构建过程中，**如果某层无法应用缓存，则依赖此步的后续层都不能从缓存加载**。例如下面这个例子：
 
-- 
-- 
-
-```
-COPY . .RUN npm install
+```dockerfile
+COPY . .
+RUN npm install
 ```
 
-此时如果我们更改了仓库的任意一个文件，此时因为 `npm install`层的上层依赖变更了，哪怕依赖没有进行任何变动，缓存也不会被复用。
+**此时如果我们更改了仓库的任意一个文件，此时因为 `npm install`层的上层依赖变更了，哪怕依赖没有进行任何变动，缓存也不会被复用。**
 
-因此，若想尽可能的利用上 `npm install`层缓存，我们可以把 Dockerfile 改成这样：
+因此，若想尽可能的利用上 `npm install`层缓存，我们可以把 `Dockerfile` 改成这样：
 
-- 
-- 
-- 
-
-```
-COPY package*.json .RUN npm installCOPY src .
+```dockerfile
+COPY package*.json .
+RUN npm install
+COPY src .
 ```
 
 这样在仅变更源码时， `node_modules`的依赖缓存仍然能被利用上了。
@@ -167,9 +154,7 @@ COPY package*.json .RUN npm installCOPY src .
 
 2. 如果镜像层数越少，总上传体积就越小。因此，**在命令处于执行链尾部，即不会对其他层缓存产生影响的情况下，尽量合并命令**，从而减少缓存体积。例如，设置环境变量和清理无用文件的指令，它们的输出都是不会被使用的，因此可以将这些命令合并为一行 RUN 命令。
 
-   - 
-
-   ```
+   ```dockerfile
    RUN set ENV=prod && rm -rf ./trash
    ```
 
@@ -185,7 +170,7 @@ COPY package*.json .RUN npm installCOPY src .
 
 我们编写传统的后台服务时，总是会使用例如 pm2、forever 等等进程守护程序，以保证服务在意外崩溃时能被监测到并自动重启。但这一点在 Docker 下非但没有益处，还带来了额外的不稳定因素。
 
-首先，Docker 本身就是一个流程管理器，因此，进程守护程序提供的崩溃重启，日志记录等等工作 Docker 本身或是基于 Docker 的编排程序（如 kubernetes）就能提供了，无需使用额外应用实现。除此之外，由于守护进程的特性，将不可避免的对于以下的情况产生影响：
+首先，Docker 本身就是一个流程管理器，因此，进程守护程序提供的崩溃重启，日志记录等等工作 Docker 本身或是基于 Docker 的编排程序（如 `kubernetes`）就能提供了，无需使用额外应用实现。除此之外，由于守护进程的特性，将不可避免的对于以下的情况产生影响：
 
 1. 增加进程守护程序会使得占用的内存增多，镜像体积也会相应增大。
 2. 由于守护进程一直能正常运行，服务发生故障时，Docker 自身的重启策略将不会生效，Docker 日志里将不会记录崩溃信息，排障溯源困难。
@@ -201,13 +186,11 @@ COPY package*.json .RUN npm installCOPY src .
 
 最简单的做法是利用 `DockerManagerVolume`，这个特性能绕过容器自身的文件系统，直接将数据写到宿主物理机器上。具体用法如下：
 
-- 
-
-```
+```dockerfile
 docker run -d -it --name=app -v /app/log:/usr/share/log app
 ```
 
-运行 docker 时，通过-v 参数为容器绑定 volumes，将宿主机上的 `/app/log` 目录（如果没有会自动创建）挂载到容器的 `/usr/share/log` 中。这样服务在将日志写入该文件夹时，就能持久化存储在宿主机上，不随着 docker 的销毁而丢失了。
+运行 docker 时，通过`-v` 参数为容器绑定` volumes`，将宿主机上的 `/app/log` 目录（如果没有会自动创建）挂载到容器的 `/usr/share/log` 中。这样服务在将日志写入该文件夹时，就能持久化存储在宿主机上，不随着 docker 的销毁而丢失了。
 
 当然，当部署集群变多后，物理宿主机上的日志也会变得难以管理。此时就需要一个服务编排系统来统一管理了。从单纯管理日志的角度出发，我们可以进行网络上报，给到云日志服务（如腾讯云 CLS）托管。或者干脆将容器进行批量管理，例如 `Kubernetes`这样的容器编排系统，这样日志作为其中的一个模块自然也能得到妥善保管了。这样的方法很多，就不多加赘述了。
 
@@ -235,17 +218,17 @@ docker run -d -it --name=app -v /app/log:/usr/share/log app
 
 一通研究下来，差点把一开始的目标忘了，赶紧将 Docker 重新构建一遍，看看优化成果。
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![图片](https://mmbiz.qpic.cn/mmbiz_png/q2ntl21QGgWy9ooicaxXia5LsHhQNUWY6ZOAEmVpPKe00p16leic3PElMycVTzyibPk9lsOF2FDTsFTGwnltBaSCDw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 可以看到，对于镜像体积的优化效果还是不错的，达到了 10 倍左右。当然，如果项目中不需要如此高版本的 node 支持，还能进一步缩小大约一半的镜像体积。
 
 之后镜像仓库会对存放的镜像文件做一次压缩，以 node14 打包的镜像版本最终被压缩到了 50M 以内。
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![图片](https://mmbiz.qpic.cn/mmbiz_png/q2ntl21QGgWy9ooicaxXia5LsHhQNUWY6ZsCDOXYibz52X7smZyumab7ISo8hvl7icVMgpoBdFw35xGPOxlQmt8WHw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 当然，除了看得到的体积数据之外，更重要的优化其实在于，从面向物理机的服务向容器化云服务在架构设计层面上的转变。
 
-容器化已经是看得见的未来，作为一名开发人员，要时刻保持对前沿技术的敏感，积极实践，才能将技术转化为生产力，为项目的  进化做出贡献。
+容器化已经是看得见的未来，作为一名开发人员，要时刻保持对前沿技术的敏感，积极实践，才能将技术转化为生产力，为项目的进化做出贡献。
 
 参考资料：
 

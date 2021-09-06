@@ -140,6 +140,7 @@ const nav = [
   },
   { text: "工程化", link: "/engineering/" },
   { text: "Node", link: "/node/" },
+  { text: "部署", link: "/deploy/" },
   { text: "React", link: "https://react.qdzhou.cn" },
   { text: "QA", link: "https://qa.qdzhou.cn" },
   {
@@ -159,7 +160,7 @@ const nav = [
 ];
 
 module.exports = {
-  title: "duangdong的blog",
+  title: "duangdong的note",
   description: "前端相关知识归纳总结",
   base,
   port: 9200,
@@ -170,8 +171,7 @@ module.exports = {
       "meta",
       {
         name: "keywords",
-        content:
-          "qd-blog,js,vuepress,leetcode,react,react进阶,css,js进阶,react性能优化,js设计模式",
+        content: "qd-blog,node,vuepress,leetcode,algorithm",
       },
     ],
     ["script", {}, baiduTongji],
