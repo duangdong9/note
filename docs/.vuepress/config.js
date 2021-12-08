@@ -133,36 +133,35 @@ const base = "/";
 // ];
 
 const nav = [
-  { text: "Leetcode", link: "/leetcode/" },
-  {
-    text: "数据结构",
-    link: "/algorithm/",
-  },
-  { text: "工程化", link: "/engineering/" },
   { text: "Node", link: "/node/" },
-  { text: "部署", link: "/deploy/" },
-  { text: "React", link: "https://react.qdzhou.cn" },
-  { text: "QA", link: "https://qa.qdzhou.cn" },
   {
-    text: "个人链接",
-    ariaLabel: "个人链接",
-    items: [
-      { text: "随笔", link: "https://essay.qdzhou.cn", target: "_blank" },
-      { text: "博客", link: "http://qdzhou.cn/", target: "_blank" },
-      { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
-      {
-        text: "Github",
-        link: "https://github.com/ZQD1224/note",
-        target: "_blank",
-      },
-    ],
+    text: "JS执行",
+    link: "/principle/",
   },
+  {
+    text: "JS设计模式",
+    link: "/design-mode/",
+  },
+  {
+    text: "JS进阶",
+    link: "/advanced/",
+  },
+  {
+    text: "高阶函数",
+    link: "/advanced-function/",
+  },
+  {
+    text: "手写实现",
+    link: "/tools/",
+  },
+  { text: "Home", link: "https://link.qdzhou.cn" },
 ];
 
 module.exports = {
   title: "duangdong的note",
   description: "前端相关知识归纳总结",
   base,
+  host: "localhost",
   port: 9200,
   head: [
     ["link", { rel: "icon", href: "/logo.png" }],
@@ -188,9 +187,22 @@ module.exports = {
         updatePopup: true,
       },
     ],
+    [
+      "vuepress-plugin-right-anchor",
+      {
+        showDepth: 3,
+        ignore: ["/", "/api/"],
+        expand: {
+          trigger: "click",
+          clickModeDefaultOpen: true,
+        },
+        customClass: "your-customClass",
+        disableGlobalUI: false,
+      },
+    ],
   ],
   themeConfig: {
-    sidebarDepth: 2,
+    sidebarDepth: 0,
     searchMaxSuggestions: 10,
     lastUpdated: "上次更新",
     editLinks: true,
