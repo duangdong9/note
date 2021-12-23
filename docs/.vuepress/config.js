@@ -150,6 +150,7 @@ const nav = [
     text: "高阶函数",
     link: "/advanced-function/",
   },
+  { text: "TS", link: "/typescript/" },
   {
     text: "手写实现",
     link: "/tools/",
