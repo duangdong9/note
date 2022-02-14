@@ -1,8 +1,8 @@
-## JavaScript 事件循环 —— 微任务 Microtask
+# JavaScript事件循环-微任务Microtask
 
 > [https://mp.weixin.qq.com/s/Hkzl-M77nvi_zDupryeUFA](https://mp.weixin.qq.com/s/Hkzl-M77nvi_zDupryeUFA)
 
-# 微任务（Microtask）
+## 微任务（Microtask）
 
 Promise 的处理程序（handlers）`.then`、`.catch` 和 `.finally` 都是异步的。
 
@@ -10,23 +10,29 @@ Promise 的处理程序（handlers）`.then`、`.catch` 和 `.finally` 都是异
 
 示例代码如下：
 
-```
+```js
 let promise = Promise.resolve();
 
 promise.then(() => alert("promise done!"));
 
 alert("code finished"); // 这个 alert 先显示
+
+// run:  code finished  promise done!
 ```
 
 如果你运行它，你会首先看到 `code finished`，然后才是 `promise done`。
 
-这很奇怪，因为这个 promise 肯定是一开始就完成的。
+这很奇怪，因为这个`promise`肯定是一开始就完成的。
 
 为什么 `.then` 会在之后才被触发？这是怎么回事？
 
 ## 微任务队列（Microtask queue）
 
-异步任务需要适当的管理。为此，ECMA 标准规定了一个内部队列 `PromiseJobs`，通常被称为“微任务队列（microtask queue）”（V8 术语）。
+> [https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide)
+>
+> [https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth)
+
+异步任务需要适当的管理。为此，`ECMA` 标准规定了一个内部队列 `PromiseJobs`，通常被称为`微任务队列（microtask queue）`（V8 术语）
 
 如 **规范**[1] 中所述：
 
@@ -35,9 +41,9 @@ alert("code finished"); // 这个 alert 先显示
 
 或者，简单地说，当一个 promise 准备就绪时，它的 `.then/catch/finally` 处理程序（handler）就会被放入队列中：但是它们不会立即被执行。当 JavaScript 引擎执行完当前的代码，它会从队列中获取任务并执行它。
 
-这就是为什么在上面那个示例中 "code finished" 会先显示。
+这就是为什么在上面那个示例中 `code finished` 会先显示。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/W2bdnK4aibDGUNJ55evZeo5Qmibzlib4SXqOZonURRvhBNUQSxTd7ocicAyFrRqEHxCBpfut0bYvJcEic0gcBSHibqnw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202101522837.png)
 
 Promise 的处理程序（handler）总是会经过这个内部队列。
 
@@ -47,7 +53,7 @@ Promise 的处理程序（handler）总是会经过这个内部队列。
 
 很简单，只需要像下面这样使用 `.then` 将其放入队列：
 
-```
+```js
 Promise.resolve()
   .then(() => alert("promise done!"))
   .then(() => alert("code finished"));
@@ -65,7 +71,7 @@ Promise.resolve()
 
 正常来说，如果我们预期可能会发生错误，我们会在 promise 链上添加 `.catch` 来处理 error：
 
-```
+```js
 let promise = Promise.reject(new Error("Promise Failed!"));
 promise.catch(err => alert('caught'));
 
@@ -75,7 +81,7 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 但是如果我们忘记添加 `.catch`，那么，微任务队列清空后，JavaScript 引擎会触发下面这事件：
 
-```
+```js
 let promise = Promise.reject(new Error("Promise Failed!"));
 
 // Promise Failed!
@@ -84,7 +90,7 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 如果我们迟一点再处理这个 error 会怎样？例如：
 
-```
+```js
 let promise = Promise.reject(new Error("Promise Failed!"));
 setTimeout(() => promise.catch(err => alert('caught')), 1000);
 
@@ -102,13 +108,13 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 ## 总结
 
-Promise 处理始终是异步的，因为所有 promise 行为都会通过内部的 "promise jobs" 队列，也被称为“微任务队列”（V8 术语）。
+Promise 处理始终是异步的，因为所有 promise 行为都会通过内部的 `promise jobs` 队列，也被称为`微任务队列`（V8 术语）。
 
 因此，`.then/catch/finally` 处理程序（handler）总是在当前代码完成后才会被调用。
 
 如果我们需要确保一段代码在 `.then/catch/finally` 之后被执行，我们可以将它添加到链式调用的 `.then` 中。
 
-在大多数 JavaScript 引擎中（包括浏览器和 Node.js），微任务（microtask）的概念与“事件循环（event loop）”和“宏任务（macrotasks）”紧密相关。由于这些概念跟 promise 没有直接关系，所以我们将在 [**图解 JavaScript 事件循环：微任务和宏任务**](http://mp.weixin.qq.com/s?__biz=MzU1NTgxMDYxMw==&mid=2247485467&idx=1&sn=81ccb53680c426d9510e9dcf6e5f26a9&chksm=fbcfe241ccb86b5714c139c223f117cb6007ef77e5da3670201e6964cdb8186a6e364889dbb9&scene=21#wechat_redirect) 一文中对它们进行介绍。
+在大多数 JavaScript 引擎中（包括浏览器和 Node.js），`微任务（microtask）`的概念与`事件循环（event loop）`和`宏任务（macrotasks）`紧密相关。由于这些概念跟 promise 没有直接关系，所以我们将在 [**图解 JavaScript 事件循环：微任务和宏任务**](http://mp.weixin.qq.com/s?__biz=MzU1NTgxMDYxMw==&mid=2247485467&idx=1&sn=81ccb53680c426d9510e9dcf6e5f26a9&chksm=fbcfe241ccb86b5714c139c223f117cb6007ef77e5da3670201e6964cdb8186a6e364889dbb9&scene=21#wechat_redirect) 一文中对它们进行介绍。
 
 ------
 
@@ -118,6 +124,10 @@ Promise 处理始终是异步的，因为所有 promise 行为都会通过内部
 
 ------
 
-### 参考资料
+## 参考资料
 
-[1]规范: *https://tc39.github.io/ecma262/#sec-jobs-and-job-queues*[2]使用 promise 进行错误处理: *https://zh.javascript.info/promise-error-handling*[3]React 官方文档推荐，与 MDN 并列的 JavaScript 学习教程: *https://zh-hans.reactjs.org/docs/getting-started.html#javascript-resources
+[1]规范: [https://tc39.github.io/ecma262/#sec-jobs-and-job-queues](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues)
+
+[2]使用 promise 进行错误处理: [https://zh.javascript.info/promise-error-handling](https://zh.javascript.info/promise-error-handling)
+
+[3]React 官方文档推荐，与 MDN 并列的 JavaScript 学习教程: [ https://zh-hans.reactjs.org/docs/getting-started.html#javascript-resources](https://zh-hans.reactjs.org/docs/getting-started.html#javascript-resources)
