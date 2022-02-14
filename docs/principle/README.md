@@ -10,8 +10,11 @@
 
 ## 事件循环
 
+- [关于浏览器事件循环](./事件循环/关于浏览器事件循环.md)
 - [JavaScript 事件循环—微任务 Microtask](./事件循环/JavaScript事件循环—微任务Microtask.md)
 - [JavaScript事件循环-微任务和宏任务](./事件循环/JavaScript事件循环-微任务和宏任务.md)
+- [几张动图带你回顾EventLoop](./事件循环/几张动图带你回顾event-loop.md)
+- [做一些动图学习一下EventLoop](./事件循环/做一些动图学习一下EventLoop.md)
 
 ## V8
 
@@ -20,3 +23,4 @@
 ## 堆栈
 
 - [堆栈](./堆栈/堆栈.md)
+
