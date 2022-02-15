@@ -4,7 +4,7 @@
 
 最近在学习`Vue`源码，刚好学到虚拟DOM的异步更新，这里就涉及到`JavaScript`中的事件循环`Event Loop`。之前对这个概念还是比较模糊，大概知道是什么，但一直没有深入学习。刚好借此机会，回过头来学习一下`Event Loop`。
 
-# JavaScript是单线程的语言
+## JavaScript是单线程的语言
 
 事件循环`Event Loop`，这是目前浏览器和`NodeJS`处理`JavaScript`代码的一种机制，而这种机制存在的背后，就有因为`JavaScript`是一门**单线程**的语言。
 
@@ -29,7 +29,7 @@
 
 现在用个小案例来演示一下调用栈。
 
-```
+```js
 function a() {
     console.log('a');
 }
@@ -53,47 +53,47 @@ c();
 
 执行这段代码的时候，首先调用的是函数`c()`。因此`function c(){}`的执行上下文就会被放入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWibHKYA3Y7T5Xe8RpBzhOu0rZJBibKjFOGvt9BBXgFeF8tKqjLIzkRXLg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_1.gif
+![](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311628.gif)
 
 然后开始执行函数`c`，执行的第一个语句是`console.log('c')`。
 
 因此解释器也会将其放入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWxykaiazCE8LYicf51oWiajc0BQD6W5lcFPsUiaYe2bdp43yvEg7SbBoibUA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_2.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311667.gif)
 
 当`console.log('c')`方法执行完后，控制台打印了`'c'`，调用栈就会将其移除。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWW1ShmO60LbqUbJAAQ1JxUNu5k8rib5zOougBwcXbYMWHKFsQXlRCibgg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_3.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311677.gif)
 
 接着就是执行`a()`函数。
 
 解释器就将`function a() {}`的执行上下文放入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWr0mokOl6csRRYy3R21VHJCYkxYMNFDkUHavKtINNE8kiamIABcwHEbA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_4.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311688.gif)
 
 紧接着就执行`a()`中的语句——`console.log('a')`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWBIrj2Gphn3sqC6YWvkibgweYUMI208KxA1GIz4G3bhgqzQr1c3rreTQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_5.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311699.gif)
 
 当函数`a`执行结束后，调用栈就将执行上下文移除。
 
 然后接着执行`c()`函数剩下的语句，也就是执行`b()`函数，因此它的执行上下文就加入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWwBEFGuDwmRIJGTpiaRDvTkj0XibJiaX3avWxC9jeOLN3Vb6H5w3XY3Mrg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_6.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311715.gif)
 
 紧接着就执行`b()`中的语句——`console.log('b')`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWRUhIibsAKBIMcQYQlSDqZYOQIUlA9LQhxTicm0oUpk35RpF4W55wMGOg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_7.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311725.gif)
 
 `b()`执行完后，调用栈就将其移出。
 
 这时`c()`也执行结束了，调用栈也将其移出栈。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWUsfehjibaZ2BXZ9EkFRQAibtGPHic0ibyvghLibVmLuNRmKuJGdgqDYfCEg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)call_stack_8.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202152311736.gif)
 
 这时候，我们这段语句就执行结束了。
 
-# 任务队列
+## 任务队列
 
 上面的案例简单的介绍了关于`JavaScript`单线程的执行方式。
 
@@ -101,7 +101,7 @@ c();
 
 显而易见，这是不可取的。
 
-## 同步任务和异步任务
+### 同步任务和异步任务
 
 因此，`JavaScript`将所有执行任务分为了同步任务和异步任务。
 
@@ -119,7 +119,7 @@ c();
 
 这里举一个简单的例子。
 
-```
+```js
 console.log(1);
 
 fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -135,7 +135,7 @@ console.log(2);
 
 ![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202142330645.png)
 
-## 宏任务和微任务
+### 宏任务和微任务
 
 前面聊到同步任务和异步任务的时候，提及到了**任务队列**。
 
@@ -165,7 +165,7 @@ console.log(2);
 
 这个其实就可以解释了下列代码为什么后面的定时器会比前面的定时器先执行。因为后者的定时器会先被推进宏任务队列，而前者会之后到点了再被推入宏任务队列。
 
-```
+```js
 setTimeout(() => {
    console.log('a');
 }, 10000);
@@ -195,7 +195,7 @@ setTimeout(() => {
 | MutationObserver           | ✅      | ❌    |
 | Promise.then catch finally | ✅      | ✅    |
 
-# 事件循环 Event Loop
+## 事件循环 Event Loop
 
 其实宏任务队列和微任务队列的执行，就是事件循环的一部分了，所以放在这里一起说。
 
@@ -213,7 +213,7 @@ setTimeout(() => {
 
 接下来，通过一个常见的面试题例子来模拟一下事件循环。
 
-```
+```js
 console.log("a");
 
 setTimeout(function () {
@@ -314,7 +314,7 @@ task_queque_12.gif
 
 task_queque_14.gif
 
-# await
+### await
 
 ECMAScript2017中添加了`async functions`和`await`。
 
@@ -324,7 +324,7 @@ ECMAScript2017中添加了`async functions`和`await`。
 
 下面通过一个例子来体验一下。
 
-```
+```js
 async function async1() {
     console.log("a");
     const res = await async2();
@@ -440,7 +440,7 @@ async_await_14.gif
 
 async_await_15.gif
 
-# 页面渲染
+## 页面渲染
 
 最后来讲将事件循环中的页面更新渲染，这也是`Vue`中异步更新的逻辑所在。
 
@@ -450,7 +450,7 @@ async_await_15.gif
 
 接下来还是通过一个案例来看一下。
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
