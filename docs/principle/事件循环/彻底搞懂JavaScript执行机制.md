@@ -1,14 +1,14 @@
-## 彻底搞懂JavaScript执行机制
+# 彻底搞懂JavaScript执行机制
 
-> [](https://mp.weixin.qq.com/s/eamd3b4mIbaTl9T7JbetQw)
+> [https://mp.weixin.qq.com/s/eamd3b4mIbaTl9T7JbetQw](https://mp.weixin.qq.com/s/eamd3b4mIbaTl9T7JbetQw)
 
 > 不管你是前端新手还是老鸟，在日常的工作或者面试的过程中总会遇到这样的情况：给定的几行代码，写出其输出内容和顺序。所以我们就需要搞懂javascript的运行原理和执行机制
 
-前言
+## 前言
 
 首先，我们先看一道经典的面试题
 
-```
+```js
 setTimeout(function(){
  console.log('定时器开始啦')
 });
@@ -27,13 +27,13 @@ console.log('代码执行结束');
 
 我把这段代码粘贴到chrome执行了一下，输出的结果如图所示
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/JtAicy0ibicVGKXHBicARhApAhfQsu5sQUBuF3UJHREO6naRyfL4X99xcuv2gAbOEdfBb1MmquF37wdicLxicYy3pmicg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161610172.png)
 
 
 
 javascript灵魂三问
 
-##### 1、为什么说js是单线程
+## 为什么说js是单线程
 
 JavaScript语言的一大特点就是 单线程 ，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？
 
@@ -47,18 +47,18 @@ JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它�
 
 HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。这个新标准并没有改变js单线程的本质。
 
-##### 2、JS为什么需要异步?
+## JS为什么需要异步?
 
 javascript事件循环既然js是单线程，那就像只有一个窗口的银行，客户需要排队一个一个办理业务，同理js任务也要一个一个顺序执行。如果一个任务耗时过长，那么后一个任务也必须等着。
 
-如果JS中不存在异步,只能自上而下执行,如果上一行解析时间很长,那么下面的代码就会被阻塞。对于用户而言,阻塞就意味着"卡死",这样就导致了很差的用户体验
+如果JS中不存在异步,只能自上而下执行,如果上一行解析时间很长,那么下面的代码就会被阻塞。对于用户而言,阻塞就意味着`卡死`,这样就导致了很差的用户体验
 
 所以js存在 同步任务 和 异步任务 
 
 > - **同步任务：在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务。**
 > - **异步任务：不进入主线程、而进入"任务队列"（task queue）的任务，只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。**
 
-##### 3、js如何实现异步任务？
+## js如何实现异步任务？
 
 既然JS是单线程的,只能在一条线程上执行,又是如何实现的异步呢?
 
@@ -72,11 +72,7 @@ javascript事件循环既然js是单线程，那就像只有一个窗口的银�
 
 当我们调用一个方法的时候，js会生成一个与这个方法对应的执行环境（context），又叫执行上下文。这个执行环境中存在着这个方法的私有作用域，上层作用域的指向，方法的参数，这个作用域中定义的变量以及这个作用域的this对象。而当一系列方法被依次调用的时候，因为js是单线程的，同一时间只能执行一个方法，于是这些方法被排队在一个单独的地方。这个地方被称为执行栈。
 
-
-
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
-
-
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161950167.gif)
 
 > 任务队列（Task Queue）
 
@@ -86,7 +82,7 @@ js的另一大特点是非阻塞，实现这一点的关键在于任务队列
 
 js引擎遇到一个异步任务后并不会一直等待其返回结果，而是会将这个任务挂起（压入到任务队列中），继续执行执行栈中的其他任务。当一个异步任务返回结果后，js会将这个任务加入与当前执行栈不同的另一个队列，我们称之为任务队列。被放入任务队列不会立刻执行其回调，而是等待当前执行栈中的所有任务都执行完毕， 主线程处于闲置状态时，主线程会去查找任务队列是否有任务。如果有，那么主线程会从中取出排在第一位的事件，并把这个任务对应的回调放入执行栈中，然后执行其中的同步代码，如此反复，这样就形成了一个无限的循环。（下图（转引自Philip Roberts的演讲《Help, I'm stuck in an event-loop》）。）
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161951577.png)
 
 图中的stack表示我们所说的执行栈，web apis则是代表一些异步事件，而callback queue即事件队列。主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。
 
@@ -106,7 +102,7 @@ Event Loop事件循环机制
 
 （4）主线程不断重复上面的步骤。
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202162014134.png)
 
 以上循环执行,这就是event loop
 
@@ -126,7 +122,7 @@ Event Loop事件循环机制
 
 请看网络盗图
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202162014186.png)
 
 按照这种分类方式:JS的执行机制是
 
@@ -137,7 +133,7 @@ Event Loop事件循环机制
 
 下面代码是文章开头的面试题：
 
-```
+```js
 setTimeout(function(){
  console.log('定时器开始啦')
 });

@@ -6,13 +6,15 @@
 
 最近楠溪在看事件相关的文章，然后就跑来和我讨论说以下代码的执行效果和网上的文章不一致，代码如下:
 
-```
+```js
 <div>
  <button>123</button>
 </div>
 <script>
+
   var btn = document.querySelector('button');
   var div = document.querySelector('div');
+
   btn.addEventListener('click', function () {
     console.log('bubble', 'btn');
   }, false);
@@ -25,22 +27,21 @@
   div.addEventListener('click', function () {
     console.log('capture', 'div');
   }, true);
+
 </script>
 ```
 
 以上是一段很简单的事件注册的代码，然后我们点击 `button`。
 
-先不看结果，思考一下。
-
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHcMIprCA8lOYQ1icB8HvKILxY7JajHU69U20tASTfcyib85SHLiadOBdbg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+先不看结果，思考一下
 
 然后我们来看看结果
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zH7QjSHIeQBwgr6o3V1uxVE0XxUNfHkiaHjz6fIO0FD7CSe6XUrOLFUtw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170938222.gif)
 
 对于绝大多数前端老鸟来说，会脱口而出地说出以下顺序。
 
-```
+```js
 capture div
 bubble btn
 capture btn
@@ -51,11 +52,11 @@ bubble div
 
 但是不管是MDN，还是网上大多数的教程而言说的都是这个顺序。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHZSKeaziaqmjKY7sXOUrBWJN1k5rOzKbT4jNqtDJzsLFZCibFAbYDaP5Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170951306.png)
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHia0tPMnIlpmEwCXzOicIgIxKTSXRT2kcXXgybeL2eDwt8ibNlGdVANm1g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170951020.png)
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHPrJma95vYjibYFGjb5rTmf4UicyNQfcPJy5HhbYrtcNxORdDNe6tnBWA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170952093.png)
 
 对于这个现象，我感到很迷惑，我依稀记得，在几个月前，Chrome 还不是这样的行为，盲猜是不是因为 Chrome 版本的问题呢？
 
@@ -63,33 +64,33 @@ bubble div
 
 因此我找了个 Chrome 版本为 84.0.4109.0 进行测试。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHuGJHicnicjmFuCiboibk7HqHXheh5W8VFYItpYAFwDFicaOoO0k4ghyiaEibg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170953762.png)
 
 果然是版本的问题，但是事情的追踪依然很难，由于搜索了规范以及查了谷歌上的一些资料，并没有很好地帮助我解决这个疑惑，我不确定是因为 Chrome 引入的 bug 还是出现了什么问题。
 
 因此我就向 chromium 报告了这个问题。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHXV5iasakZd2gvor3IFjus2rL1mTE6YenKPyFIOzNAgiawCU0DWfbAZaw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170953310.png)
 
 最终在 Chrome 开发人员的帮助下，找到了这两个讨论
 
 https://github.com/whatwg/dom/issues/685
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHe747XWXg5IQSz6ia4EHoTq3kNzCrmbX3BYyxmIot9iaZlzFQ4BibeSzkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170953448.png)
 
 https://github.com/whatwg/dom/issues/746
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zH60y2CajF2wWZLzicHud9BtJicbZg4dicLjbh3bfWx3N8VgdLwqibeyyicyw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170953898.png)
 
 在上述 issues 中可以看到， 起因是在 https://bugs.webkit.org/show_bug.cgi?id=174288 中，有人指出，在 webkit 中当前的事件模型，会导致含有 Shadow DOM 的情况下，子元素的捕获事件会优先于父元素的捕获事件触发。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHz8urDlqhmuqDXsI0G65ebficKBqF1KPSDC7glBafd7Drb3Uf3fAppjg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170952684.png)
 
 而在旧模型中，一旦达到 AT_TARGET ，所有注册的监听器就将按照顺序被触发，而不管他们是否被标记为捕获。由于 Shadow DOM 会创建多个 targets ，导致了事件执行顺序的错误。
 
 而上述问题在 Gecko （Mozilla Firefox 的排版引擎）却运行正常（先捕获再冒泡）。为此 whatwg 提出了一个新的模型结构来解决这个问题。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/gibGQibkduDnC0B2KaQwcLCNoxww5TI2zHfoFiaaicGeWjg4AdG4fgDMROryBOuYuW0xsGSyZ5jRicImEmkhb4xictgQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202170952452.png)
 
 ## 结论
 
@@ -114,7 +115,7 @@ https://github.com/whatwg/dom/issues/746
 
 举个🌰
 
-```
+```js
 <div>
  <button>123</button>
 </div>

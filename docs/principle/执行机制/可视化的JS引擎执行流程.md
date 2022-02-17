@@ -1,4 +1,4 @@
-## 可视化的JS引擎执行流程
+# 可视化的JS引擎执行流程
 
 > [https://mp.weixin.qq.com/s/FyvPo1H8eYExSqxK9VwdAQ](https://mp.weixin.qq.com/s/FyvPo1H8eYExSqxK9VwdAQ)
 
@@ -47,7 +47,7 @@ V8的内容太多了，篇幅有限，后续再出一篇文章聊一聊。
 
 细节很多，所以主要分析的是主要的流程，如图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMSjFKQ66icuEq5AnKADnxibb7aEu7JiaWKzqfZpAqRxehGlfQasVtJBrhA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171009655.png)
 
 从图上，我们可以总结一下几个点:
 
@@ -65,13 +65,13 @@ V8的内容太多了，篇幅有限，后续再出一篇文章聊一聊。
 
 ------
 
-### 生成抽象语法树
+## 生成抽象语法树
 
 HTML解析器遇到了一个带有源的脚本标签。这个源的代码会从**网络**、**缓存**或**已安装**的服务工作者那里加载。响应是请求的脚本作为字节流，由字节流解码器来处理。字节流解码器对正在下载的字节流进行解码。
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMNOAKaQsAtgHxNeWuHyXSrTVcYIaPbCzqR39PTOia8P00StaybaaOMOQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)进行解码
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171009741.gif)进行解码
 
-#### 词法分析
+### 词法分析
 
 生成抽象语法树的 **第一个阶段是分词（tokenize），又叫词法分析**。
 
@@ -85,9 +85,9 @@ HTML解析器遇到了一个带有源的脚本标签。这个源的代码会从*
 
 一个令牌被创建，并被发送到**解析器（parser）**。其余的字节流也是如此,具体如下图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMSCicaAueje0WmuwtwNhvM8ZA3lreU4GXj5gAiauUOZsyibT0drDARdAvg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)词法分析
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171009315.gif)词法分析
 
-#### 语法分析
+### 语法分析
 
 **第二个阶段是解析（parse），也叫语法分析**。
 
@@ -101,7 +101,7 @@ HTML解析器遇到了一个带有源的脚本标签。这个源的代码会从*
 
 解析器根据它从字节流解码器收到的标记创建节点。通过这些节点，它创建了一个**抽象语法树**或**AST**，如图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMMRgnSsw9YicsU5Mia1deVicTE3SIXd869NRJ2jJ655K4bTPJptNsYBn7Q/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)语法分析
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171009915.gif)语法分析
 
 值得思考的是，**AST**到底是什么呢？(到底是怎么样的一个数据结构呢,babel里面是不是也有这些概念呢)
 
@@ -109,7 +109,7 @@ HTML解析器遇到了一个带有源的脚本标签。这个源的代码会从*
 
 ------
 
-### 生成字节码
+## 生成字节码
 
 刚刚我们提到，解释器浏览AST，并根据AST包含的信息生成字节代码，那么它的过程是怎么样的呢？
 
@@ -121,15 +121,15 @@ AST交给**解释器（interpreter）**，遍历整个AST，就会生成**字节
 
 那我们通过一个图来看看它的过程吧:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMFNyQV5DgDaXxkqCy1MFeKeGJw6MsXWSUlDyJvdlKpYOSGnC898762A/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)生成字节码
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171009007.gif)生成字节码
 
 ------
 
-### 代码执行
+## 代码执行
 
 我们有了字节码后，就可以进入执行阶段了。
 
-#### 即时编译
+### 即时编译
 
 虽然字节码的速度很快，但它还可以更快。当这个字节码运行时，信息就会被生成。
 
@@ -139,9 +139,9 @@ AST交给**解释器（interpreter）**，遍历整个AST，就会生成**字节
 
 具体的话，可以参考下面的图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_gif/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMp2eSCQNdIsLpFETGP5x5GmYvGtWpiahF13mce1lU13NEibWytVpA0xeQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)及时编译
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171010663.gif)及时编译
 
-#### 内联缓存
+### 内联缓存
 
 JavaScript是一种动态类型的语言，这意味着数据的类型可以不断变化。如果JavaScript引擎每次都要检查某个值的数据类型，那就会非常慢。
 
@@ -155,12 +155,12 @@ JavaScript是一种动态类型的语言，这意味着数据的类型可以不�
 
 假设我们有以下函数sum，（到目前为止）每次都是以数值作为参数来调用,如图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMy3eicACt9cbcHV6bVeoNBVyqssGEYsz6BWCStOjhlcAq8kJq7icaW7VA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171010915.png)
 
 如果这是真的，就不需要动态查找，它可以重新使用优化后的机器代码。否则，如果假设不正确，它就会恢复到原来的字节码，而不是优化后的机器码。例如，下一次我们调用它时，我们传递一个字符串而不是一个数字。由于JavaScript是动态类型的，我们可以这样做而不会有任何错误!
 
 如图:
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/Voibl9R35rqqPm7VaOo2S7fnJOicMcLLyMMJFZRRvTz4Mbticy7t1CQxwXyMXbasvCXIJtZNib2TRXvNRaONOJqV8w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202171010677.png)
 
 这意味着数字2将被强制变成一个字符串，而函数将返回字符串 "12"。它回到执行解释的字节码并更新类型反馈。

@@ -240,33 +240,33 @@ console.log("f");
 
 首先，当代码执行的时候，整体代码`script`被推入宏任务队列中，并开始执行该宏任务。
 
-![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202142331295.gif)task_queque_1.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202142331295.gif)
 
 按照代码顺序，首先执行`console.log("a")`。
 
 该函数上下文被推入调用栈，执行完后，即移除调用栈。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWYnwWfGgcARia6MWYSwFNOvWxtsyics2ay1X1feY0pfTOu03ibxvBmkiaHw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_2.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129426.gif)task_queque_2.gif
 
 接下来执行`setTimeout()`，该函数上下文也进入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWvibm2TCkMLibJlgYjySy9tncnm7aYnUDluMYqYejTPJgOnlrziaheJgKg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_3.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129441.gif)task_queque_3.gif
 
 因为`setTimeout`是一个宏任务，因此将其`callback`函数推入宏任务队列中，然后该函数就被移除调用栈，继续往下执行。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOW2TY9EqxZNKh8hYgsRDgkToUItIeVM3y6nrdBzllSWN9ymKakpibrKkQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_4.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129454.gif)task_queque_4.gif
 
 紧接着是`Promise`语句，先将其放入调用栈，然后接着往下执行。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWZdRcAniaF3bAZvFIVK9o0iaicG7iaficicxJY5LGXTeWOsGjOFiaLTric6P2tA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_5.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129469.gif)task_queque_5.gif
 
 执行`console.log("c")`和`resolve()`，这里就不多说了。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWictxkvqiaAykmfRrMpSiaX2rDVhypKPwJGvoOicKz5QSiazVNLiby2kt3LhQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_6.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129481.gif)task_queque_6.gif
 
 接着来到`new Promise().then()`方法，这是一个微任务，因此将其推入微任务队列中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWuUsjF3w2KZMMdsOdJsAMqSX6ry5Er5nQ1JUdylhLuT5t2nPOY7qnicg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_7.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202172129493.gif)
 
 这时`new Promise`语句已经执行结束了，就被移除调用栈。
 
@@ -495,67 +495,67 @@ alert('第二次渲染！');
 
 根据`HTML`的执行顺序，第一个被执行的`JavaScript`代码是`render1.js`，因此解释器将其推入宏任务队列，并开始执行。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWn8icDVQGnGu1qibmq1n3LazWwabglM62ZM43QnibfafGDYwPeia8pgO5Jw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_1.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161017350.gif)
 
 第一个被执行的是`console.log("a")`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWExrU4Jm7HmFapNrgzX71RibIeDpU7anJ62icKm2ic9Lwzm5zYwhfqVUgQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_2.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161020696.gif)
 
 其次是`setTimeout`，并将其回调加入宏任务队列中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWctSaCJzEaqzibrHCSrIFjQAc776KQePtutQZMts6iaP5MNUmvMGFuWkA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_3.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161023657.gif)
 
 紧接着执行`new Promise`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWZd1iaVq9Ps3eic6eXtgrRiaAsMrXtlaOSGvianBJPJCvjW4QlBKZYZ8Aiaw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_4.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161025151.gif)
 
 同样，将其`then()`推入微任务队列中去。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOW3chctKicGC71ibwvI7xicwZ3QvURHV1ENMaOluxNPdWFjiatqLkiaMKquLQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_5.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161025161.gif)
 
 紧接着执行`console.log("e")`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOW2Fe6XsXRmaqwmrGhs45AZrFHNVDcXuTNq8LbbdHPXkzyo2e2OpIqLQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_6.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161025171.gif)
 
 最后，修改DOM节点的文本内容，但是这时候页面还不会更新渲染。
 
 这时候`script`宏任务也执行结束了。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWOnB1ichdibM6S2RemdCSDY6kl1gPzhbvRgYKiauCdviaV2KYOdA7U9UdrQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_7.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161025181.gif)
 
 紧接着，开始清空微任务队列，执行`Promise then`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWbfZIdawX6zAHanoEmm9q0nwGewiaypMy0sTf66HnvUYhV0n1JS0iaOGA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_8.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029935.gif)
 
 这时候，`alert`一个通知，而这个语句结束后，则微任务队列清空，代表第一个事件循环结束，即将要开始渲染页面了。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWicPeqat8ZcGNXdFfhQAINtf20ehI8zI4f3IdjqwLVNo9hsWdbAJrBzA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_9.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029947.gif)
 
 当点击关闭`alert`后，事件循环结束，页面也开始渲染。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWnuxIPDxyiaTrDkCfLIU9obicg7UZf7jkqRN99TJqOAWSE99IsAVXNkdg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_10.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029959.gif)
 
 渲染结束后，就开始执行下一个宏任务，即`setTimeout callback`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWaW1X5RydVy6S9OMBJWjrTsSNAich3Fs2InVWHfIckgcXC3raPYGOknA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_11.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029969.gif)
 
 紧接着执行`console.log("b")`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWKiappNBHOLxx2yhfuZ9yNqjfibH15mcNh4ORZ3wNEZ3qd8ZJ8icajQr3w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_12.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029980.gif)
 
 这时候宏任务队列已清空了，但是`html`文件还没执行结束，因此进入`render2.js`继续执行。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWtiacRUxS4niaJGfraBgXgYpolBOAX7ax4wJFibVnXPRgl2zuc8X3W6QrA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_13.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029990.gif)
 
 首先执行`console.log('f')`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWAOMicJpXU6LDEofA1o5dK84QCVZv2n5RMdlEvtuNDpz1rktiafLZ22pg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_14.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029001.gif)
 
 紧接着，再次修改节点的文本信息，此时依旧不会更新页面渲染。
 
 接着执行`alert`语句，当关闭`alert`通知后，该宏任务结束，微任务队列也为空，因此该事件循环也结束了，这时候就开始第二次页面更新。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWmEdYkkYRCeUvQexWZ32AW5MGHK6GlIRQGcchbBfXMeCxB7qUSGknJg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)render_15.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202161029011.gif)
 
 但如果将所有`JavaScript`代码使用内嵌方式的话，浏览器会先把两个`script`丢到宏任务队列中去，因此执行的顺序也会不一样，这里就不一一推导了。
 
