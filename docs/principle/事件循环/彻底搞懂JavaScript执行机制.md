@@ -58,11 +58,11 @@ javascript事件循环既然js是单线程，那就像只有一个窗口的银�
 > - **同步任务：在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务。**
 > - **异步任务：不进入主线程、而进入"任务队列"（task queue）的任务，只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。**
 
-## js如何实现异步任务？
+## JS如何实现异步任务？
 
 既然JS是单线程的,只能在一条线程上执行,又是如何实现的异步呢?
 
-是通过的事件循环(event loop),理解了event loop机制,就理解了JS的执行机制
+是通过的事件循环`(event loop)`,理解了`event loop`机制,就理解了JS的执行机制
 
 执行栈与任务队列
 
@@ -114,9 +114,9 @@ Event Loop事件循环机制
 
 > 微任务（micro-task）
 
-包括Promise，process.nextTick
+包括Promise，`process.nextTick`
 
-不同类型的任务会进入对应的Event Queue，比如宏任务就会进入到宏任务的事件队列中，微任务就会进入到微任务的事件队列中。
+不同类型的任务会进入对应的`Event Queue`，比如宏任务就会进入到宏任务的事件队列中，微任务就会进入到微任务的事件队列中。
 
 事件循环的顺序，进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。
 
@@ -152,7 +152,7 @@ console.log('代码执行结束');
 
 首先执行script下的宏任务,遇到setTimeout,将其放到宏任务的【队列】里
 
-遇到 new Promise直接执行,打印"马上执行for循环啦"
+遇到` new Promise`直接执行,打印"马上执行for循环啦"
 
 遇到then方法,是微任务,将其放到微任务的【队列里】
 
@@ -172,5 +172,10 @@ console.log('代码执行结束');
 
 *参考资料*
 
-*1、阮一峰老师的JavaScript 运行机制详解：再谈Event Loop：**http://www.ruanyifeng.com/blog/2014/10/event-loop.html*
-*2、segmentfault 10分钟理解JS引擎的执行机制：https://segmentfault.com/a/1190000012806637*
+1、阮一峰老师的JavaScript 运行机制详解：再谈Event Loop
+
+​	[http://www.ruanyifeng.com/blog/2014/10/event-loop.html](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+
+2、`segmentfault` 10分钟理解JS引擎的执行机制:
+
+​	[https://segmentfault.com/a/1190000012806637](https://segmentfault.com/a/1190000012806637)

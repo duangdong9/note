@@ -272,13 +272,13 @@ console.log("f");
 
 接着做执行`console.log('f')`。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOW88ZY27fVPqhakUas1713b89vAowZGcULgAPicmmjeAYfjrQrQhxqQng/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_8.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202191247771.gif)task_queque_8.gif
 
 这时候，`script`宏任务已经执行结束了，因此被推出宏任务队列。
 
 紧接着开始清空微任务队列了。首先执行的是`Promise then`，因此它被推入调用栈中。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/zPh0erYjkib3rictT4iaqktnxYYDGGZGQOWaPOeL1RWJk0APlyEGTZwRNK6G379wEW4yM2HVfiaDDia1TSwJC32BlTQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)task_queque_9.gif
+![图片](https://gitee.com/qdzhou/img-upload/raw/master/images/202202191247793.gif)task_queque_9.gif
 
 然后开始执行其中的`console.log("d")`。
 

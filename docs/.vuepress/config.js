@@ -98,6 +98,7 @@ const nav = [
     link: "/advanced-function/",
   },
   { text: "TS", link: "/typescript/" },
+  { text: "八股文", link: "/eight-essay/" },
   {
     text: "手写实现",
     link: "/tools/",
