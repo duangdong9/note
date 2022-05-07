@@ -72,7 +72,7 @@ const base = "/";
 //       { text: "语雀", link: "https://www.yuque.com/xdxmvy" },
 //       {
 //         text: "Github",
-//         link: "https://github.com/ZQD1224/note",
+//         link: "https://github.com/duangdong9/note",
 //         target: "_blank",
 //       },
 //     ],
