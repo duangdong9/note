@@ -101,6 +101,11 @@ const nav = [
   { text: "八股文", link: "/eight-essay/" },
   {
     text: "手写实现",
+    link: "/hand-writing/",
+  },
+  { text: "MDN", link: "/mdn/" },
+  {
+    text: "工具方法",
     link: "/tools/",
   },
   { text: "Home", link: "https://link.qdzhou.cn" },
