@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>axios怎么封装，才能提升效率？ | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/136.14e63782.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link router-link-active">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link router-link-active">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/tools/" aria-current="page" class="sidebar-link">八股文</a></li><li><a href="/tools/15分钟学会Immutable.html" class="sidebar-link">15分钟学会Immutable</a></li><li><a href="/tools/JS 图片压缩.html" class="sidebar-link">ZooTeam</a></li><li><a href="/tools/axios怎么封装.html" class="active sidebar-link">axios怎么封装，才能提升效率？</a></li><li><a href="/tools/rc-form.html" class="sidebar-link">最熟悉的陌生人rc-form</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>代码片段</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/tools/位运算.html" class="sidebar-link">JS中运算符</a></li><li><a href="/tools/如何从 0 到 1 搭建代码全局检索系统.html" class="sidebar-link">如何从 0 到 1 搭建代码全局检索系统</a></li><li><a href="/tools/如何实现高性能的在线 PDF 预览.html" class="sidebar-link">如何实现高性能的在线 PDF 预览</a></li><li><a href="/tools/手写一个虚拟DOM库.html" class="sidebar-link">手写一个虚拟DOM库，彻底让你理解diff算法</a></li><li><a href="/tools/文件下载.html" class="sidebar-link">文件下载，搞懂这9种场景就够了</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="axios怎么封装-才能提升效率"><a href="#axios怎么封装-才能提升效率" class="header-anchor">#</a> axios怎么封装，才能提升效率？</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/8qbSVehFyiVSpBURZYkiNA" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/8qbSVehFyiVSpBURZYkiNA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <hr> <p>作为前端开发者，每个项目基本都需要和后台交互，目前比较流行的ajax库就是axios了，当然也有同学选择request插件，这个萝卜白菜，各有所爱了。目前虽然axios有config、interceptor和各个请求方式，但是针对一个大型的项目，我们还是需要做二次封装才能快速提升开发效率！</p> <p>今天我们针对axios库做二次封装，看看是否有简化我们的开发工作。<img src="https://mmbiz.qpic.cn/mmbiz_jpg/YItGPcJZoxlZdVzngA3gY7PzKHFouWzjkUx3Z7koW3LfopGf9JfbBxmwYvUibCT6PO47sQH80qnnNlQ3zIhEiaCQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="创建项目"><a href="#创建项目" class="header-anchor">#</a> <strong>创建项目</strong></h2> <div class="language- extra-class"><pre class="language-text"><code>  vue create axios-demo
+</code></pre></div><h2 id="创建目录"><a href="#创建目录" class="header-anchor">#</a> <strong>创建目录</strong></h2> <div class="language- extra-class"><pre class="language-text"><code>  // 进入到项目空间中
+  cd axios-demo
+  // 在src下创建api目录
+</code></pre></div><h2 id="创建三个文件-index-js-interceptor-js-request-js"><a href="#创建三个文件-index-js-interceptor-js-request-js" class="header-anchor">#</a> <strong>创建三个文件(index.js/interceptor.js/request.js)</strong></h2> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * index.js
+ * api地址管理
+ */
+export default {
+    login:'/user/login',
+    getInfo:'/user/getInfo'
+}
+</code></pre></div><p>index.js实际上和axios封装没有关系，因为它也属于API这一层，所以我一起创建了，我个人习惯把项目所有url抽取到这里集中管理。</p> <h2 id="封装interceptor"><a href="#封装interceptor" class="header-anchor">#</a> <strong>封装interceptor</strong></h2> <p>interceptor作用就是拦截，可以针对请求参数和响应结果进行拦截处理，一般在项目当中，我们主要会针对接口常规报错、网络报错、系统超时、权限认证等做拦截处理。</p> <p>此处我们对通过create创建实例，设置baseUrl，timeout，然后在设置request和response的拦截。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 生成基础axios对象，并对请求和响应做处理
+ * 前后端约定接口返回解构规范
+ * {
+ *    code:0,
+ *    data:&quot;成功&quot;,
+ *    message:&quot;&quot;
+ * }
+ */
+import axios from 'axios'
+import { Message } from 'element-ui'
+
+// 创建一个独立的axios实例
+const service = axios.create({ 
+    // 设置baseUr地址,如果通过proxy跨域可直接填写base地址
+    baseURL: '/api',
+    // 定义统一的请求头部
+    headers: {
+        post: {
+            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded;charset=UTF-8&quot;
+        }
+    },
+    // 配置请求超时时间
+    timeout: 10000, 
+    // 如果用的JSONP，可以配置此参数带上cookie凭证，如果是代理和CORS不用设置
+    withCredentials: true
+});
+// 请求拦截
+service.interceptors.request.use(config =&gt; {
+    // 自定义header，可添加项目token
+    config.headers.token = 'token';
+    return config;
+});
+// 返回拦截
+service.interceptors.response.use((response)=&gt;{
+    // 获取接口返回结果
+    const res = response.data;
+    // code为0，直接把结果返回回去，这样前端代码就不用在获取一次data.
+    if(res.code === 0){
+        return res;
+    }else if(res.code === 10000){
+        // 10000假设是未登录状态码
+        Message.warning(res.message);
+        // 也可使用router进行跳转
+        window.location.href = '/#/login';
+        return res;
+    }else{
+        // 错误显示可在service中控制，因为某些场景我们不想要展示错误
+        // Message.error(res.message);
+        return res;
+    }
+},()=&gt;{
+    Message.error('网络请求异常，请稍后重试!');
+});
+export default service;
+</code></pre></div><p>如果是CORS/JSONP需要区分环境，可通过<code>process.env.NODE_ENV</code>来选择使用哪个地址。如果使用的是代理，则Vue项目需要在vue.config.js中的proxy里面增加环境判断。</p> <div class="language- extra-class"><pre class="language-text"><code>process.env.NODE_ENV=== &quot;production&quot; ? &quot;http://www.prod.com/api&quot; : &quot;http://localhost/:3000/api&quot;
+</code></pre></div><p>以上是针对interceptor做的二次封装，上面我们没有把常规错误放进去，是因为我们想要在后期控制错误是否显示，所以我们会在request中处理。</p> <h2 id="封装axios"><a href="#封装axios" class="header-anchor">#</a> <strong>封装axios</strong></h2> <p>创建request文件，针对axios做适合业务发展的封装，很多时候架构师做公共机制都是为了迎合自身项目需要，而并非一味求大做全，所以这个大家要适当调整，比如我们只用get/post请求。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * request.js
+ * 通过promise对axios做二次封装，针对用户端参数，做灵活配置
+ */
+import { Message,Loading } from 'element-ui';
+import instance from './interceptor'
+
+/**
+ * 核心函数，可通过它处理一切请求数据，并做横向扩展
+ * @param {url} 请求地址
+ * @param {params} 请求参数
+ * @param {options} 请求配置，针对当前本次请求；
+ * @param loading 是否显示loading
+ * @param mock 本次是否请求mock而非线上
+ * @param error 本次是否显示错误
+ */
+function request(url,params,options={loading:true,mock:false,error:true},method){
+    let loadingInstance;
+    // 请求前loading
+    if(options.loading)loadingInstance=Loading.service();
+    return new Promise((resolve,reject)=&gt;{
+        let data = {}
+        // get请求使用params字段
+        if(method =='get')data = {params}
+        // post请求使用data字段
+        if(method =='post')data = {data:params}
+        // 通过mock平台可对局部接口进行mock设置
+        if(options.mock)url='http://www.mock.com/mock/xxxx/api';
+        instance({
+            url,
+            method,
+            ...data
+        }).then((res)=&gt;{
+            // 此处作用很大，可以扩展很多功能。
+            // 比如对接多个后台，数据结构不一致，可做接口适配器
+            // 也可对返回日期/金额/数字等统一做集中处理
+            if(res.status === 0){
+                resolve(res.data);
+            }else{
+                // 通过配置可关闭错误提示
+                if(options.error)Message.error(res.message);
+                reject(res);
+            }
+        }).catch((error)=&gt;{
+            Message.error(error.message)
+        }).finally(()=&gt;{
+            loadingInstance.close();
+        })
+    })
+}
+// 封装GET请求
+function get(url,params,options){
+    return request(url,params,options,'get')
+}
+// 封装POST请求
+function post(url,params,options){
+    return request(url,params,options,'post')
+}
+export default {
+    get,post
+}
+</code></pre></div><p>request.js主要针对axios做二次封装，目的同样是为了拦截所有前端请求，这样可以做前端loading效果、mock、错误拦截、错误弹框显示、数据适配、参数适配、环境适配等工作。</p> <blockquote><p></p> <p>接下来，我们看下如何使用</p> <p>”</p></blockquote> <ul><li><strong>打开main.js</strong></li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 导入插件
+import request from './api/request'
+// 在原型上扩展,这样不用在每个页面都导入request
+Vue.prototype.request = request;
+</code></pre></div><ul><li><strong>请求调用</strong></li></ul> <div class="language- extra-class"><pre class="language-text"><code>  this.request.get('/login',{userName:'admin',userPwd:'admin'}).then((res={})=&gt;{
+        // 此处只接收成功数据，失败数据不返回
+  }).catch(()=&gt;{
+      // catch 可以不要，如果想要捕获异常，就加上去
+  })
+</code></pre></div><p>如果不做二次封装，我们很难实现以上功能点，这是在公司做了很多个中型后台系统后，总结出来的一些个人经验，我相信您看了之后，会有一些启发和帮助，如果有疑问或者不够完善可以留言或联系我，我进行修订。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/tools/JS 图片压缩.html" class="prev">
+        ZooTeam
+      </a></span> <span class="next"><a href="/tools/rc-form.html">
+        最熟悉的陌生人rc-form
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/136.14e63782.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Js是怎样运行起来的？ | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/128.dd7fed27.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link router-link-active">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link router-link-active">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/principle/" aria-current="page" class="sidebar-link">浏览器运行</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>V8</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>事件循环</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>堆栈</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>执行机制</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/principle/执行机制/Scheduler调度.html" class="sidebar-link">Scheduler调度</a></li><li><a href="/principle/执行机制/chrome更新事件触发顺序.html" class="sidebar-link">Chrome 89 更新事件触发顺序，导致99%的文章都错了（包括MDN）</a></li><li><a href="/principle/执行机制/js执行过程.html" class="sidebar-link">详解JavaScript执行过程</a></li><li><a href="/principle/执行机制/js是如何运行的.html" class="active sidebar-link">Js是怎样运行起来的？</a></li><li><a href="/principle/执行机制/可视化的JS引擎执行流程.html" class="sidebar-link">可视化的JS引擎执行流程</a></li><li><a href="/principle/执行机制/浏览器帧执行.html" class="sidebar-link">看了就会的浏览器帧原理</a></li><li><a href="/principle/执行机制/浏览器渲染魔法之合成层.html" class="sidebar-link">浏览器渲染魔法之合成层</a></li><li><a href="/principle/执行机制/进程通信.html" class="sidebar-link">前端不懂进程通信？看完这篇就懂了</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="js是怎样运行起来的"><a href="#js是怎样运行起来的" class="header-anchor">#</a> Js是怎样运行起来的？</h2> <h1 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h1> <p>不知道大家有没有想过这样一个问题，我们所写的 JavaScript 代码是怎样被计算机认识并且执行的呢？这中间的过程具体是怎样的呢？<img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0jydIknanAByKaWPBjDwRl6QjCPptyHn3jnQDe4hcJMQSvj0kTHaAaQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">有的同学可能已经知道，Js 是通过 Js 引擎运行起来的，那么</p> <ul><li><p>什么是 Js 引擎？</p></li> <li><p>Js 引擎是怎样编译执行和优化 Js 代码的？</p></li></ul> <p>Js 引擎有很多种，比如 Chrome 使用的 V8 引擎，Webkit 使用的是 JavaScriptCore，React Native 使用的是 Hermes。今天我们主要来分析一下比较主流的 V8 引擎是怎样运行 Js 的。</p> <h1 id="v8-引擎"><a href="#v8-引擎" class="header-anchor">#</a> V8 引擎</h1> <p>在介绍 V8 引擎的概念之前，我们先来回顾一下编程语言。<strong>编程语言可以分为机器语言、汇编语言、高级语言。</strong></p> <ul><li><p>机器语言：由 0 和 1 组成的二进制码，对于人类来说是很难记忆的，还要考虑不同 CPU 平台的兼容性。</p></li> <li><p>汇编语言：用更容易记忆的英文缩写标识符代替二进制指令，但还是需要开发人员有足够的硬件知识。</p></li> <li><p>高级语言：更简单抽象且不需要考虑硬件，但是需要更复杂、耗时更久的翻译过程才能被执行。</p></li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0sXFMfsjvzic9vOarl9rHq8jWYtJBw47F3yrUqcasQcqjMENoSDYpCJw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">到了这里我们知道，高级语言一定要转化为机器语言才能被计算机执行，而且越高级的语言转化的时间越久。<strong>高级语言又可以分为解释型语言、编译型语言。</strong></p> <ul><li><p>编译型语言：需要编译器进行一次编译，被编译过的文件可以多次执行。如 C++、C 语言。</p></li> <li><p>解释型语言：不需要事先编译，通过解释器一边解释一边执行。启动快，但执行慢。</p></li></ul> <blockquote><p>我们知道 JavaScript 是一门高级语言，并且是动态类型语言，我们在定义一个变量时不需要关心它的类型，并且可以随意的修改变量的类型。而在像 C++这样的静态类型语言中，我们必须提前声明变量的类型并且赋予正确的值才行。也正是因为 JavaScript 没有像 C++那样可以事先提供足够的信息供编译器编译出更加低级的机器代码，它只能在运行阶段收集类型信息，然后根据这些信息进行编译再执行，所以 JavaScript 也是解释型语言。</p></blockquote> <p>这也就意味着 JavaScript 要想被计算机执行，需要一个能够快速解析并且执行 JavaScript 脚本的程序，这个程序就是我们平时所说的 JavaScript 引擎。这里我们给出 V8 引擎的概念:<strong>V8 是 Google 基于 C++ 编写的开源高性能 Javascript 与 WebAssembly 引擎。用于 Google Chrome（Google 的开源浏览器） 以及 Node.js 等。</strong></p> <h1 id="cpu-是如何执行机器指令的"><a href="#cpu-是如何执行机器指令的" class="header-anchor">#</a> CPU 是如何执行机器指令的？</h1> <p>将高级语言转化为机器语言之后，CPU 又是怎样执行的呢？我们以一段 C 代码为例：</p> <div class="language- extra-class"><pre class="language-text"><code>int main()
+
+{
+
+    int x = 1;
+
+    int y = 2;
+
+    int z = x + y;
+
+    return z;
+
+}}
+</code></pre></div><p>先来看一下以上代码被转换为机器语言是什么样子。下图左侧是用十六进制表示的二进制机器码，中间部分是汇编代码，右侧是指令的含义。<img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0x7A7PvzwweIap7bYulfTot4icLibCwQ2ICnwB5icTyeia1Eibic85oWjndfw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="cpu-执行机器指令的流程"><a href="#cpu-执行机器指令的流程" class="header-anchor">#</a> CPU 执行机器指令的流程</h2> <ul><li><p>首先程序在执行之前会被装进内存。</p></li> <li><p>系统会将二进制代码中的第一条指令的地址写入到 PC 寄存器中。</p></li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0xQbLlrWaKxm7ttRQP39rbKjxJUILrbJA4g6yA292QxMbrko5viaKZ3g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li><p>CPU 根据 PC 寄存器中的地址，从内存中取出指令。</p></li> <li><p>将下一条指令的地址更新到 PC 寄存器中。</p></li> <li><p>分析当前取出指令，并识别出不同的类型的指令，以及各种获取操作数的方法。</p></li> <li><p>加载指令：从内存中复制指定长度的内容到通用寄存器中，并覆盖寄存器中原来的内容。</p></li> <li><p>存储指令：将寄存器中的内容复制到内存某个位置，并覆盖掉内存中的这个位置上原来的内容。</p></li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0EgzgickcldFO9KFr7D2qaYeWBfyjEwbVYKf24Splib3EcFOa4y4tv0Lw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">上图中 movl 指令后面的 %ecx 就是寄存器地址，-8(%rbp) 是内存中的地址，这条指令的作用是将寄存器中的值拷贝到内存中。</p> <ul><li>更新指令：复制两个寄存器中的内容到 ALU 中，也可以是一块寄存器和一块内存中的内容到 ALU 中，ALU 将两个字相加，并将结果存放在其中的一个寄存器中，并覆盖该寄存器中的内容。</li></ul> <p>...</p> <ul><li>执行指令完毕，进入下一个 CPU 时钟周期。</li></ul> <h1 id="v8-引擎的编译流水线"><a href="#v8-引擎的编译流水线" class="header-anchor">#</a> V8 引擎的编译流水线</h1> <p>接下来我们先从宏观的角度来看一下 V8 是怎么执行 JavaScript 代码的，然后再对每一步进行分析。</p> <ul><li>初始化基础环境；</li> <li>解析源码生成 AST 和作用域；</li> <li>依据 AST 和作用域生成字节码；</li> <li>解释执行字节码；监听热点代码；</li> <li>...</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h2 id="完整的分析一段-javascript-代码是怎样被执行的"><a href="#完整的分析一段-javascript-代码是怎样被执行的" class="header-anchor">#</a> 完整的分析一段 JavaScript 代码是怎样被执行的</h2> <h3 id="_1、初始化基础环境"><a href="#_1、初始化基础环境" class="header-anchor">#</a> 1、初始化基础环境</h3> <p>V8 执行 Js 代码是离不开宿主环境的，V8 的宿主可以是浏览器，也可以是 Node.js。下图是浏览器的组成结构，其中渲染引擎就是平时所说的浏览器内核，它包括网络模块，Js 解释器等。当打开一个渲染进程时，就为 V8 初始化了一个运行时环境。<img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0KyaSUZF2cTUWH3D4WbicFx1cK9KIY01lfynWrTBOHOrmrwId2BEzQow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">运行时环境为 V8 提供了堆空间，栈空间、全局执行上下文、消息循环系统、宿主对象及宿主 API 等。V8 的核心是实现了 ECMAScript 标准，此外还提供了垃圾回收器等内容。<img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0l3vr44a7UPQa3wPx9VQNicj3rHc3OOic5fRnlzQlOIUHEicjDP7zuFa9Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h3 id="_2、解析源码生成-ast-和作用域"><a href="#_2、解析源码生成-ast-和作用域" class="header-anchor">#</a> 2、解析源码生成 AST 和作用域</h3> <p>基础环境准备好之后，接下来就可以向 V8 提交要执行的 JavaScript 代码了。首先 V8 会接收到要执行的 JavaScript 源代码，不过这对 V8 来说只是一堆字符串，V8 并不能直接理解这段字符串的含义，它需要结构化这段字符串。</p> <div class="language- extra-class"><pre class="language-text"><code>function add(x, y) {
+
+  var z = x+y
+
+  return z
+
+}
+
+console.log(add(1, 2))
+</code></pre></div><p>比如针对如上源代码，V8 首先通过解析器（parser）解析成如下的抽象语法树 AST：</p> <div class="language- extra-class"><pre class="language-text"><code>[generating bytecode for function: add]
+
+--- AST ---
+
+FUNC at 12
+
+. KIND 0
+
+. LITERAL ID 1
+
+. SUSPEND COUNT 0
+
+. NAME &quot;add&quot;
+
+. PARAMS
+
+. . VAR (0x7fa7bf8048e8) (mode = VAR, assigned = false) &quot;x&quot;
+
+. . VAR (0x7fa7bf804990) (mode = VAR, assigned = false) &quot;y&quot;
+
+. DECLS
+
+. . VARIABLE (0x7fa7bf8048e8) (mode = VAR, assigned = false) &quot;x&quot;
+
+. . VARIABLE (0x7fa7bf804990) (mode = VAR, assigned = false) &quot;y&quot;
+
+. . VARIABLE (0x7fa7bf804a38) (mode = VAR, assigned = false) &quot;z&quot;
+
+. BLOCK NOCOMPLETIONS at -1
+
+. . EXPRESSION STATEMENT at 31
+
+. . . INIT at 31
+
+. . . . VAR PROXY local[0] (0x7fa7bf804a38) (mode = VAR, assigned = false) &quot;z&quot;
+
+. . . . ADD at 32
+
+. . . . . VAR PROXY parameter[0] (0x7fa7bf8048e8) (mode = VAR, assigned = false) &quot;x&quot;
+
+. . . . . VAR PROXY parameter[1] (0x7fa7bf804990) (mode = VAR, assigned = false) &quot;y&quot;
+
+. RETURN at 37
+
+. . VAR PROXY local[0] (0x7fa7bf804a38) (mode = VAR, assigned = false) &quot;z&quot;
+</code></pre></div><p>V8 在生成 AST 的同时，还生成了 add 函数的作用域：</p> <div class="language- extra-class"><pre class="language-text"><code>Global scope:
+
+function add (x, y) { // (0x7f9ed7849468) (12, 47)
+
+  // will be compiled
+
+  // 1 stack slots
+
+  // local vars:
+
+  VAR y;  // (0x7f9ed7849790) parameter[1], never assigned
+
+  VAR z;  // (0x7f9ed7849838) local[0], never assigned
+
+  VAR x;  // (0x7f9ed78496e8) parameter[0], never assigned
+
+}
+</code></pre></div><p>在解析期间，所有函数体中声明的变量和函数参数，都被放进作用域中，如果是普通变量，那么默认值是 undefined，如果是函数声明，那么将指向实际的函数对象。在执行阶段，作用域中的变量会指向堆和栈中相应的数据。</p> <h3 id="_3、依据-ast-和作用域生成字节码"><a href="#_3、依据-ast-和作用域生成字节码" class="header-anchor">#</a> 3、依据 AST 和作用域生成字节码</h3> <p>生成了作用域和 AST 之后，V8 就可以依据它们来生成字节码了。AST 之后会被作为输入传到字节码生成器 (BytecodeGenerator)，这是 Ignition 解释器中的一部分，用于生成以函数为单位的字节码。</p> <div class="language- extra-class"><pre class="language-text"><code>[generated bytecode for function: add (0x079e0824fdc1 &lt;SharedFunctionInfo add&gt;)]
+
+Parameter count 3
+
+Register count 2
+
+Frame size 16
+
+         0x79e0824ff7a @    0 : a7                StackCheck
+
+         0x79e0824ff7b @    1 : 25 02             Ldar a1
+
+         0x79e0824ff7d @    3 : 34 03 00          Add a0, [0]
+
+         0x79e0824ff80 @    6 : 26 fb             Star r0
+
+         0x79e0824ff82 @    8 : 0c 02             LdaSmi [2]
+
+         0x79e0824ff84 @   10 : 26 fa             Star r1
+
+         0x79e0824ff86 @   12 : 25 fb             Ldar r0
+
+         0x79e0824ff88 @   14 : ab                Return
+
+Constant pool (size = 0)
+
+Handler Table (size = 0)
+
+Source Position Table (size = 0)
+</code></pre></div><h3 id="_4、解释执行字节码"><a href="#_4、解释执行字节码" class="header-anchor">#</a> 4、解释执行字节码</h3> <p>和 CPU 执行二进制机器代码类似：使用内存中的一块区域来存放字节码；使通用寄存器用来存放一些中间数据；PC 寄存器用来指向下一条要执行的字节码；栈顶寄存器用来指向当前的栈顶的位置。<img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS07CSKESKibqsV9xjAEIibJ1cvzOtyq85ia36ev9LTiaNh9gsDv7FkcAWXVA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li><p>StackCheck 字节码指令就是检查栈是否达到了溢出的上限。</p></li> <li><p>Ldar 表示将寄存器中的值加载到累加器中。</p></li> <li><p>Add 表示寄存器加载值并将其与累加器中的值相加，然后将结果再次放入累加器。</p></li> <li><p>Star 表示 把累加器中的值保存到某个寄存器中。</p></li> <li><p>Return 结束当前函数的执行，并将控制权传回给调用方。返回的值是累加器中的值。</p></li></ul> <h3 id="_5、即时编译"><a href="#_5、即时编译" class="header-anchor">#</a> 5、即时编译</h3> <p>在解释器 Ignition 执行字节码的过程中，如果发现有热点代码（HotSpot），比如一段代码被重复执行多次，这种就称为热点代码，那么后台的编译器 TurboFan 就会把该段热点的字节码编译为高效的机器码，然后当再次执行这段被优化的代码时，只需要执行编译后的机器码就可以了，这样就大大提升了代码的执行效率。这种字节码配合解释器和编译器的技术被称为即时编译（JIT）。<img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0KkDH6QODtJRY2Wf3icPoYcyyhSEv9iaf1r1wTKRCpIkyW6ddFkXRFXBg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h1 id="v8-的优化策略"><a href="#v8-的优化策略" class="header-anchor">#</a> V8 的优化策略</h1> <p>下面我们来看一下，V8 为了提升解析和执行 Js 的速度，做了哪些优化。由于篇幅关系，这里只介绍 5 个优化点。</p> <h2 id="_1、重新引入字节码"><a href="#_1、重新引入字节码" class="header-anchor">#</a> 1、重新引入字节码</h2> <p>早期的 V8 团队认为先生成字节码再执行字节码的方式会降低代码的执行效率，于是直接将 JavaScript 代码编译成机器代码。这样做带来的问题有两点，一是需要较长的编译时间，二是产生的二进制机器码需要占用较大的内存空间。<img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0H4wiaabYYpFODA3OdeKibWoPOHN1icL3AFSJj7aDqEZD9VNrH3tcbOOrQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">使用字节码的话虽然牺牲了一点执行效率，但是节省了内存空间并且降低了编译时间。此外，字节码也降低了 V8 代码的复杂度，使得 V8 移植到不同的 CPU 架构平台更加容易。这是因为统一将字节码转换为不同平台的二进制代码要比编译器编写不同 CPU 体系的二进制代码更加容易。</p> <h2 id="_2、延迟解析"><a href="#_2、延迟解析" class="header-anchor">#</a> 2、延迟解析</h2> <p>通过 V8 的编译流程我们可以看出，V8 执行 JavaScript 代码需要经过编译和执行两个阶段。</p> <ul><li><p>编译过程：是指 V8 将 JavaScript 代码转换为字节码，或者二进制机器代码的阶段。</p></li> <li><p>执行阶段：是指解释器解释执行字节码，或者是 CPU 直接执行二进制机器代码的阶段。</p></li></ul> <p>V8 并不会一次性将所有的 JavaScript 解析为中间代码，这主要是基于以下两点：</p> <ul><li><p>如果一次解析和编译所有的 JavaScript 代码，过多的代码会增加编译时间，这会严重影响到首次执行 JavaScript 代码的速度，让用户感觉到卡顿。</p></li> <li><p>其次，解析完成的字节码和编译之后的机器代码都会存放在内存中，如果一次性解析和编译所有 JavaScript 代码，那么这些中间代码和机器代码将会一直占用内存。</p></li></ul> <p><strong>延迟解析</strong>是指解析器在解析的过程中，如果遇到函数声明，那么会跳过函数内部的代码，并不会为其生成 AST 和字节码。</p> <h2 id="_3、隐藏类"><a href="#_3、隐藏类" class="header-anchor">#</a> 3、隐藏类</h2> <p>我们可以结合一段代码来分析下隐藏类是怎么工作的：</p> <div class="language- extra-class"><pre class="language-text"><code>let point = {x:100,y:200}
+</code></pre></div><p>当 V8 执行到这段代码时，会先为 point 对象创建一个隐藏类，在 V8 中，把隐藏类又称为 map，每个对象都有一个 map 属性，其值指向内存中的隐藏类。隐藏类描述了对象的属性布局，它主要包括了属性名称和每个属性所对应的偏移量，比如 point 对象的隐藏类就包括了 x 和 y 属性，x 的偏移量是 4，y 的偏移量是 8。<img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">有了隐藏类之后，那么当 V8 访问某个对象中的某个属性时，就会先去隐藏类中查找该属性相对于它的对象的偏移量，有了偏移量和属性类型，V8 就可以直接去内存中取出对应的属性值，而不需要经历一系列的查找过程，那么这就大大提升了 V8 查找对象的效率。</p> <h2 id="_4、快属性与慢属性"><a href="#_4、快属性与慢属性" class="header-anchor">#</a> 4、快属性与慢属性</h2> <p>当我们在控制台输入如下代码时：</p> <div class="language- extra-class"><pre class="language-text"><code>function Foo() {
+
+    this[100] = 'test-100'
+
+    this[1] = 'test-1'
+
+    this[&quot;B&quot;] = 'bar-B'
+
+    this[50] = 'test-50'
+
+    this[9] =  'test-9'
+
+    this[8] = 'test-8'
+
+    this[3] = 'test-3'
+
+    this[5] = 'test-5'
+
+    this[&quot;A&quot;] = 'bar-A'
+
+    this[&quot;C&quot;] = 'bar-C'
+
+}
+
+var bar = new Foo()
+
+
+
+
+
+for(key in bar){
+
+    console.log(`index:${key}  value:${bar[key]}`)
+
+}
+</code></pre></div><p>打印出来的结果如下：</p> <div class="language- extra-class"><pre class="language-text"><code>index:1  value:test-1
+
+index:3  value:test-3
+
+index:5  value:test-5
+
+index:8  value:test-8
+
+index:9  value:test-9
+
+index:50  value:test-50
+
+index:100  value:test-100
+
+index:B  value:bar-B
+
+index:A  value:bar-A
+
+index:C  value:bar-C
+</code></pre></div><p>之所以出现这样的结果，是因为在 ECMAScript 规范中定义了数字属性应该按照索引值大小升序排列，字符串属性根据创建时的顺序升序排列。</p> <ul><li><p>数字属性称为排序属性，在 V8 中被称为 elements。</p></li> <li><p>字符串属性就被称为常规属性，在 V8 中被称为 properties。</p></li></ul> <p>下面我们执行这样一段代码，看一看当对象中的属性数目发生变化时，其在内存中结构是怎样变化的。</p> <div class="language- extra-class"><pre class="language-text"><code>function Foo(property_num,element_num) {
+
+    //添加排序属性
+
+    for (let i = 0; i &lt; element_num; i++) {
+
+        this[i] = `element${i}`
+
+    }
+
+    //添加常规属性
+
+    for (let i = 0; i &lt; property_num; i++) {
+
+        let ppt = `property${i}`
+
+        this[ppt] = ppt
+
+    }
+
+}
+
+var bar = new Foo(10,10)
+</code></pre></div><p>将 Chrome 开发者工具切换到 Memory 标签，然后点击左侧的小圆圈就可以捕获以上代码的内存快照，最终截图如下所示：<img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0gH96fBoCq60AXTphViac61Gs1gRv0b1Ho09ovU4eYDlrUv5VaRoiblxw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">将创建的对象属性的个数调整到 20 个</p> <div class="language- extra-class"><pre class="language-text"><code>var bar2 = new Foo(20,10)
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0fOlwfD1bg1cQQeueEVx9YKnXAjYO7WK5zib9J7bZcEM9REk8Vic5BULA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">总结：当对象中的属性过多时，或者存在反复添加或者删除属性的操作，那么 V8 就会将线性的存储模式（快属性）降级为非线性的字典存储模式(慢属性)，这样虽然降低了查找速度，但是却提升了修改对象的属性的速度。</p> <h2 id="_5、内联缓存"><a href="#_5、内联缓存" class="header-anchor">#</a> 5、内联缓存</h2> <p>我们再来看一段这样的代码。</p> <div class="language- extra-class"><pre class="language-text"><code>function loadX(o) {
+
+    o.y = 4
+
+    return o.x
+
+}
+
+var o = { x: 1,y:3}
+
+var o1 = { x: 3 ,y:6}
+
+for (var i = 0; i &lt; 90000; i++) {
+
+    loadX(o)
+
+    loadX(o1)
+
+}
+</code></pre></div><p>通常 V8 获取 o.x 的流程是这样的：查找对象 o 的隐藏类，再通过隐藏类查找 x 属性偏移量，然后根据偏移量获取属性值，在这段代码中 loadX 函数会被反复执行，那么获取 o.x 流程也需要反复被执行。为了提升对象的查找效率。V8 执行的策略就是使用内联缓存 (Inline Cache)，简称为 IC。IC 会为每个函数维护一个反馈向量 (FeedBack Vector)，反馈向量记录了函数在执行过程中的一些关键的中间数据。然后将这些数据缓存起来，当下次再次执行该函数时，V8 就可以直接利用这些中间数据，节省了再次获取这些数据的过程。V8 会在反馈向量中为每个调用点分配一个插槽(Slot)，比如 o.y = 4 和 return o.x 这两段就是调用点 (CallSite)，因为它们使用了对象和属性。每个插槽中包括了插槽的索引 (slot index)、插槽的类型 (type)、插槽的状态 (state)、隐藏类 (map) 的地址、还有属性的偏移量，比如上面这个函数中的两个调用点都使用了对象 o，那么反馈向量两个插槽中的 map 属性也都是指向同一个隐藏类的，因此这两个插槽的 map 地址是一样的。<img src="https://mmbiz.qpic.cn/mmbiz_jpg/lP9iauFI73z9o1UvQH2OibWhkHAmAkJFS0nc1CegGtFbzHQhwbjnfEvhLZJR0niajic36TDBicEPGibu0jWkuaxJlniaA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">通过内联缓存策略，就能够提升下次执行函数时的效率，但是这有一个前提，那就是多次执行时，对象的形状是固定的，如果对象的形状不是固定的，这意味着 V8 为它们创建的隐藏类也是不同的。面对这种情况，V8 会选择将新的隐藏类也记录在反馈向量中，同时记录属性值的偏移量，这时，反馈向量中的一个槽里就会出现包含了多个隐藏类和偏移量的情况，如果超过 4 个，那么 V8 会采取 hash 表的结构来存储。讲到这里我的分享就结束了，如果有不足之处欢迎大家多多批评指正。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/principle/执行机制/js执行过程.html" class="prev">
+        详解JavaScript执行过程
+      </a></span> <span class="next"><a href="/principle/执行机制/可视化的JS引擎执行流程.html">
+        可视化的JS引擎执行流程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/128.dd7fed27.js" defer></script>
+  </body>
+</html>

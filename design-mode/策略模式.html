@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>设计模式之策略模式 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/42.4e87216c.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link router-link-active">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link router-link-active">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/design-mode/" aria-current="page" class="sidebar-link">js设计模式</a></li><li><a href="/design-mode/function.html" class="sidebar-link">javascript中的类的构造</a></li><li><a href="/design-mode/js设计模式.html" class="sidebar-link">JavaScript设计模式--前奏</a></li><li><a href="/design-mode/代理模式.html" class="sidebar-link">设计模式之代理模式</a></li><li><a href="/design-mode/单例模式.html" class="sidebar-link">单例模式</a></li><li><a href="/design-mode/工厂模式.html" class="sidebar-link">设计模式之工厂模式</a></li><li><a href="/design-mode/建造者模式.html" class="sidebar-link">设计模式之建造者模式</a></li><li><a href="/design-mode/策略模式.html" class="active sidebar-link">设计模式之策略模式</a></li><li><a href="/design-mode/装饰者模式.html" class="sidebar-link">设计模式之装饰者模式</a></li><li><a href="/design-mode/观察者模式.html" class="sidebar-link">设计模式之观察者模式</a></li><li><a href="/design-mode/设计模式的通俗解释.html" class="sidebar-link">23 种设计模式的通俗解释，虽然有点污，但是秒懂</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="设计模式之策略模式"><a href="#设计模式之策略模式" class="header-anchor">#</a> 设计模式之策略模式</h2> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> <strong>介绍</strong></h2> <p>策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。</p> <h3 id="正文"><a href="#正文" class="header-anchor">#</a> <strong>正文</strong></h3> <p>在理解策略模式之前，我们先来一个例子，一般情况下，如果我们要做数据合法性验证，很多时候都是按照swith语句来判断，但是这就带来几个问题，首先如果增加需求的话，我们还要再次修改这段代码以增加逻辑，而且在进行单元测试的时候也会越来越复杂，代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>validator <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'isNonEmpty '</span><span class="token operator">:</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// NonEmpty 验证结果</span>
+                <span class="token punctuation">}</span>
+            <span class="token keyword">case</span> <span class="token string">'isNumber '</span><span class="token operator">:</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// Number 验证结果</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token keyword">case</span> <span class="token string">'isAlphaNum '</span><span class="token operator">:</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// AlphaNum 验证结果</span>
+                <span class="token punctuation">}</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 测试</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;isNonEmpty&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>那如何来避免上述代码中的问题呢，根据策略模式，我们可以将相同的工作代码单独封装成不同的类，然后通过统一的策略处理类来处理，OK，我们先来定义策略处理类，代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> validator <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 所有可以的验证规则处理类存放的地方，后面会单独定义</span>
+    <span class="token literal-property property">types</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 验证类型所对应的错误消息</span>
+    <span class="token literal-property property">messages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 当然需要使用的验证类型</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 暴露的公开验证方法</span>
+    <span class="token comment">// 传入的参数是 key =&gt; value对</span>
+    <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">var</span> i<span class="token punctuation">,</span> msg<span class="token punctuation">,</span> type<span class="token punctuation">,</span> checker<span class="token punctuation">,</span> result_ok<span class="token punctuation">;</span>
+
+        <span class="token comment">// 清空所有的错误信息</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>messages <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                type <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>config<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// 根据key查询是否有存在的验证规则</span>
+                checker <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>types<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 获取验证规则的验证类</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">continue</span><span class="token punctuation">;</span> <span class="token comment">// 如果验证规则不存在，则不处理</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>checker<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 如果验证规则类不存在，抛出异常</span>
+                    <span class="token keyword">throw</span> <span class="token punctuation">{</span>
+                        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;ValidationError&quot;</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;No handler to validate type &quot;</span> <span class="token operator">+</span> type
+                    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                result_ok <span class="token operator">=</span> checker<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用查到到的单个验证类进行验证</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result_ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    msg <span class="token operator">=</span> <span class="token string">&quot;Invalid value for *&quot;</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">&quot;*, &quot;</span> <span class="token operator">+</span> checker<span class="token punctuation">.</span>instructions<span class="token punctuation">;</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>messages<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// helper</span>
+    <span class="token function-variable function">hasErrors</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>messages<span class="token punctuation">.</span>length <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>然后剩下的工作，就是定义types里存放的各种验证类了，我们这里只举几个例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 验证给定的值是否不为空</span>
+validator<span class="token punctuation">.</span>types<span class="token punctuation">.</span>isNonEmpty <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value <span class="token operator">!==</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">instructions</span><span class="token operator">:</span> <span class="token string">&quot;传入的值不能为空&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 验证给定的值是否是数字</span>
+validator<span class="token punctuation">.</span>types<span class="token punctuation">.</span>isNumber <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">isNaN</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">instructions</span><span class="token operator">:</span> <span class="token string">&quot;传入的值只能是合法的数字，例如：1, 3.14 or 2010&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 验证给定的值是否只是字母或数字</span>
+validator<span class="token punctuation">.</span>types<span class="token punctuation">.</span>isAlphaNum <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[^a-z0-9]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">instructions</span><span class="token operator">:</span> <span class="token string">&quot;传入的值只能保护字母和数字，不能包含特殊字符&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>使用的时候，我们首先要定义需要验证的数据集合，然后还需要定义每种数据需要验证的规则类型，代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">first_name</span><span class="token operator">:</span> <span class="token string">&quot;Tom&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">last_name</span><span class="token operator">:</span> <span class="token string">&quot;Xu&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token string">&quot;unknown&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">&quot;TomXu&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+validator<span class="token punctuation">.</span>config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">first_name</span><span class="token operator">:</span> <span class="token string">'isNonEmpty'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token string">'isNumber'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">'isAlphaNum'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>最后，获取验证结果的代码就简单了：</p> <div class="language-js extra-class"><pre class="language-js"><code>validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>validator<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>validator<span class="token punctuation">.</span>messages<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="总结"><a href="#总结" class="header-anchor">#</a> <strong>总结</strong></h3> <p>策略模式定义了一系列算法，从概念上来说，所有的这些算法都是做相同的事情，只是实现不同，他可以以相同的方式调用所有的方法，减少了各种算法类与使用算法类之间的耦合。</p> <p>从另外一个层面上来说，单独定义算法类，也方便了单元测试，因为可以通过自己的算法进行单独测试。</p> <p>实践中，不仅可以封装算法，也可以用来封装几乎任何类型的规则，是要在分析过程中需要在不同时间应用不同的业务规则，就可以考虑是要策略模式来处理各种变化。</p> <p>本文完〜</p> <p><strong>推荐阅读</strong></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649099032&amp;idx=1&amp;sn=59453efa7e98682c1425a0824cec33ad&amp;chksm=be582cb5892fa5a3ce8e28a4ee454f1360924d50c4ee2049789fcc1f0144c1e51cc69801f613&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">JavaScript设计模式之单例模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649099091&amp;idx=2&amp;sn=993653a0a19df937efe80e8559ae00ef&amp;chksm=be582cfe892fa5e8215dbe1be984cbf143789931f53f188c53afd3520dad8222ac52db505d76&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">JavaScript设计模式之构造函数模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107417&amp;idx=4&amp;sn=c03edc8c6cd629df0b0103128981f069&amp;chksm=be580c74892f8562660101afcb98c37321c0718a31451f9c567cd1c9ec8dba527ef3efb67b61&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之建造者模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107452&amp;idx=4&amp;sn=091166f44aa55c72d43520f000ad4883&amp;chksm=be580c51892f8547b53c17f90660177f1e54e30a01bb7d1a1513f3ad44bd6a1f679bf3e7c771&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之工厂模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107505&amp;idx=3&amp;sn=2c808a38ad66cf0d6198b2ec6ca9e0ac&amp;chksm=be580b9c892f828aa71760e88d4f8caf16cfe4b4e4320e67e38873b945b706119824c68c4f86&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之装饰者模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107543&amp;idx=3&amp;sn=ab446a03ce14c3e1f48ccccadf61070c&amp;chksm=be580bfa892f82ec2c9464a0c5d35f3b565e19c841fa398646ef4597cf081495e322bd018c46&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之外观模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107589&amp;idx=3&amp;sn=6c127c6be767f97084621e0d4d33b47d&amp;chksm=be580b28892f823eaaccba709355351b68ebff2ded31d8da72d94472ad3cb732a822e7cdcc22&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之代理模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649107686&amp;idx=2&amp;sn=e423b1bf53b78fb7b1f5787b40c247a7&amp;chksm=be580b4b892f825d2be3626feef098ad74f8ab0bb6a148f14cfa5f26ee0d3f4b090ede2dfc77&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">设计模式之观察者模式<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/design-mode/建造者模式.html" class="prev">
+        设计模式之建造者模式
+      </a></span> <span class="next"><a href="/design-mode/装饰者模式.html">
+        设计模式之装饰者模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/42.4e87216c.js" defer></script>
+  </body>
+</html>

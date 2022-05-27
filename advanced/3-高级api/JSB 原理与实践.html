@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JSB 原理与实践 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/18.ec5b4213.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced/" aria-current="page" class="sidebar-link">js 进阶</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>2-动画</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>3-高级api</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/advanced/3-高级api/JSB 原理与实践.html" class="active sidebar-link">JSB 原理与实践</a></li><li><a href="/advanced/3-高级api/axios是如何封装HTTP请求的.html" class="sidebar-link">axios 是如何封装 HTTP 请求的</a></li><li><a href="/advanced/3-高级api/mutation-observer.html" class="sidebar-link">DOM 变动观察器（Mutation observer）</a></li><li><a href="/advanced/3-高级api/《You-Dont-Know-JS》笔记小计.html" class="sidebar-link">《You-Dont-Know-JS》笔记小计</a></li><li><a href="/advanced/3-高级api/前端鉴权.html" class="sidebar-link">前端鉴权必须了解的5个兄弟：cookie、session、token、jwt、单点登录</a></li><li><a href="/advanced/3-高级api/发布订阅模式.html" class="sidebar-link">JavaScript的发布订阅模式</a></li><li><a href="/advanced/3-高级api/图解JavaScript继承.html" class="sidebar-link">图解 JavaScript 继承，一文搞定继承相关知识</a></li><li><a href="/advanced/3-高级api/基于js管理大文件上传以及断点续传.html" class="sidebar-link">基于js管理大文件上传以及断点续传</a></li><li><a href="/advanced/3-高级api/手写简易版的axios.html" class="sidebar-link">面试官不要再问我axios了？我能手写简易版的axios</a></li><li><a href="/advanced/3-高级api/页面生命周期.html" class="sidebar-link">页面生命周期：DOMContentLoaded，load，beforeunload，unload</a></li></ul></section></li><li><a href="/advanced/CORS完全手册之CORS详解.html" class="sidebar-link">CORS 完全手册之 CORS 详解</a></li><li><a href="/advanced/ES12新特性.html" class="sidebar-link">JavaScriptES12新特性抢先体验</a></li><li><a href="/advanced/前端模块化.html" class="sidebar-link">彻底掌握前端模块化</a></li><li><a href="/advanced/变量和类型-1.html" class="sidebar-link">变量和类型</a></li><li><a href="/advanced/变量和类型-2.html" class="sidebar-link">变量和类型-2</a></li><li><a href="/advanced/深入分析 JavaScript 模块循环引用.html" class="sidebar-link">深入分析 JavaScript 模块循环引用</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="jsb-原理与实践"><a href="#jsb-原理与实践" class="header-anchor">#</a> JSB 原理与实践</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/rlFMdzqtL5nKS9KVT2zPqg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/rlFMdzqtL5nKS9KVT2zPqg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h1 id="什么是-jsb"><a href="#什么是-jsb" class="header-anchor">#</a> 什么是 JSB</h1> <p>我们开发的 h5 页面运行在端上的 WebView 容器之中，很多业务场景下 h5 需要依赖端上提供的信息/能力，这时我们需要一个可以连接原生运行环境和 JS 运行环境的桥梁 <strong>。</strong> 这个桥梁就是 JSB，<strong>JSB</strong> <strong>让 Web 端和 Native 端得以实现双向通信</strong>。</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ndgH50E7pIrf4VGNkh5u49ToJZJPpK2s8mD1ogCuHiaHwC7a1O74f8vU7hcjyFcj5lhaNHk76xwYeIjKGjWGFcw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h1 id="webview-概述"><a href="#webview-概述" class="header-anchor">#</a> WebView 概述</h1> <p>WebView 是移动端中的一个控件，它为 JS 运行提供了一个沙箱环境。WebView 能够加载指定的 url，拦截页面发出的各种请求等各种页面控制功能，JSB 的实现就依赖于 WebView 暴露的各种接口。由于历史原因，安卓和 iOS 均有高低两套版本的 WebView 内核：</p> <table><thead><tr><th style="text-align:center;"><strong>平台和版本</strong></th> <th style="text-align:center;"><strong>WebView</strong> <strong>内核</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">iOS 8+</td> <td style="text-align:center;">WKWebView</td></tr> <tr><td style="text-align:center;">iOS 2-8</td> <td style="text-align:center;">UIWebView</td></tr> <tr><td style="text-align:center;">Android 4.4+</td> <td style="text-align:center;">Chrome</td></tr> <tr><td style="text-align:center;">Android 4.4-</td> <td style="text-align:center;">Webkit</td></tr></tbody></table> <p>PS: 下文中出现的高版本均代指 iOS 8+ 或 Android 4.4+，低版本则相反。</p> <h1 id="jsb-原理"><a href="#jsb-原理" class="header-anchor">#</a> JSB 原理</h1> <p>要实现双向通信自然要依次实现 Native 向 Web 发送消息和 Web 向 Native 发送消息。</p> <h2 id="native-向-web-发送消息"><a href="#native-向-web-发送消息" class="header-anchor">#</a> Native 向 Web 发送消息</h2> <p>Native 向 Web 发送消息基本原理上是在 WebView 容器中动态地执行一段 JS 脚本，通常情况下是调用一个挂载在全局上下文的方法。Android 和 iOS 均提供了不同的接口来实现这一过程。</p> <h3 id="方法"><a href="#方法" class="header-anchor">#</a> 方法</h3> <ul><li>Android 高低版本存在两种直接执行 JS 字符串的方法：</li></ul> <table><thead><tr><th style="text-align:center;"><strong>Android 版本</strong></th> <th style="text-align:center;"><strong>API</strong></th> <th style="text-align:center;"><strong>特点</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">低版本</td> <td style="text-align:center;">WebView.loadUrl</td> <td style="text-align:center;">无法执行回调</td></tr> <tr><td style="text-align:center;">高版本</td> <td style="text-align:center;">WebView.evaluateJavascript</td> <td style="text-align:center;">可以拿到 JS 执行完毕的返回值</td></tr></tbody></table> <ul><li>iOS 高低版本同样存在两种不同的实现方式：</li></ul> <table><thead><tr><th style="text-align:center;"><strong>iOS 版本</strong></th> <th style="text-align:center;"><strong>API</strong></th> <th style="text-align:center;"><strong>特点</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">低版本</td> <td style="text-align:center;">UIWebView.stringByEvaluatingJavaScriptFromString</td> <td style="text-align:center;">无法执行回调</td></tr> <tr><td style="text-align:center;">高版本</td> <td style="text-align:center;">WKWebView.evaluateJavaScript</td> <td style="text-align:center;">可以拿到 JS 执行完毕的返回值</td></tr></tbody></table> <h3 id="实践"><a href="#实践" class="header-anchor">#</a> 实践</h3> <p>下面我们通过一个小 Demo 来看一下在 iOS 端实现 Native 向 Web 端发消息的实际效果：</p> <p>（<strong>本文所有 Demo 均运行在 iOS14.5 模拟器中，WebView 容器采用 WKWebView 内核</strong>）</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>页面上半部分的 UI 是由 HTML + CSS 渲染所得，是一个纯静态的 webpage，中间的输入框和按钮是 Native 原生控件，直接覆盖在 WebView 容器之上。<strong>在 Native 按钮上绑定了一个点击事件：将文本框输入的字符视为 JS 字符串并调用相关 API 直接执行</strong>。</p> <p>可以看到当我们在文本框中输入下列字符并点击按钮后，h5 页面中 id 为 test 的 p 标签内容被修改了。</p> <div class="language- extra-class"><pre class="language-text"><code>document.querySelector('#test').innerHTML = 'I am from native';
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>敏锐同学到这一步其实就已经知道我们在日常使用 JSB 时客户端是如何调用前端 JS 代码了，我们在刚刚的静态 html 文件中添加几行 JS 代码：</p> <div class="language- extra-class"><pre class="language-text"><code>function evaluateByNative(params) {
+    const p = document.createElement('p');
+    p.innerText = params;
+    document.body.appendChild(p);
+    return 'Hello Bridge!';
+}
+</code></pre></div><p>在文本框中输入 <code>evaluateByNative(23333)</code>，来看一下调用的结果：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>可以看到 <strong>Native 端可以直接调用挂载在 window 上的全局方法并传入相应的函数执行参数</strong>，<strong>并且在函数执行结束后 Native 端可以直接拿到执行成功的返回值。</strong></p> <h2 id="web-向-native-发送消息"><a href="#web-向-native-发送消息" class="header-anchor">#</a> Web 向 Native 发送消息</h2> <p>Web 向 Native 发送消息本质上就是某段 JS 代码的执行端上是可感知的，目前业界主流的实现方案有两种，分别是<strong>拦截式</strong>和<strong>注入式</strong>。</p> <h3 id="拦截式"><a href="#拦截式" class="header-anchor">#</a> 拦截式</h3> <p>和浏览器类似 WebView 中发出的所有请求都是可以被 Native 容器感知到的（是不是想到了Gecko），因此拦截式具体指的是 Native 拦截 Web 发出的 URL 请求，双方在此之前约定一个 JSB 请求格式，如果该请求是 JSB 则进行相应的处理，若不是则直接转发。</p> <p><strong>Native 拦截请求的钩子方法：</strong></p> <table><thead><tr><th style="text-align:center;"><strong>平台</strong></th> <th style="text-align:center;"><strong>API</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">Android</td> <td style="text-align:center;">shouldOverrideUrlLoading</td></tr> <tr><td style="text-align:center;">iOS 8+</td> <td style="text-align:center;">decidePolicyForNavigationAction</td></tr> <tr><td style="text-align:center;">iOS 8-</td> <td style="text-align:center;">shouldStartLoadWithRequest</td></tr></tbody></table> <p><strong>拦截式的基本流程如下</strong>：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>上述流程存在几个问题：</p> <ol><li><strong>通过何种方式发出请求？</strong></li></ol> <p>Web 端发出请求的方式非常多样，例如 <code>&lt;a/&gt;</code> 、<code>iframe.src</code>、<code>location.href</code>、<code>ajax</code>等，但 <code>&lt;a/&gt;</code> 需要用户手动触发，<code>location.href</code> 可能会导致页面跳转，安卓端拦截 <code>ajax</code>的能力有所欠缺，因此<strong>绝大多数拦截式实现方案均采用</strong><code>iframe</code> <strong>来发送请求</strong>。</p> <ol><li><strong>如何规定</strong> <strong>JSB</strong> <strong>的请求格式？</strong></li></ol> <p>一个标准的 URL 由 <code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;</code> 组成，相信大家都有过从微信或手机浏览器点击某个链接意外跳转到其他 App 的经历，如果有仔细留意过这些链接的 URL 你会发现目前主流 App 都有其专属的一个 scheme 来作为该应用的标识，例如微信的 URL scheme 就是 <code>weixin://</code>。<strong>JSB</strong> <strong>的实现借鉴这一思路，定制业务自身专属的一个 URL scheme 来作为 JSB 请求的标识</strong>，例如字节内部实现拦截式 JSB 的 SDK 中就定义了 <code>bytedance://</code> 这样一个 scheme。</p> <div class="language- extra-class"><pre class="language-text"><code>// Web 通过动态创建 iframe，将 src 设置为符合双端规范的 url scheme
+const CUSTOM_PROTOCOL_SCHEME = 'prek'
+
+function web2Native(event) {    
+    const messagingIframe = document.createElement('iframe');
+    messagingIframe.style.display = 'none';
+    messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + event;
+    document.documentElement.appendChild(messagingIframe);
+
+    setTimeout(() =&gt; {
+        document.documentElement.removeChild(messagingIframe);
+    }, 200)
+}
+</code></pre></div><p>拦截式在双端都具有非常好的向下兼容性，曾经是最主流的 JSB 实现方案，但目前在高版本的系统中已经逐渐被淘汰，理由是它有如下几个劣势：</p> <ul><li><p>连续发送时可能会造成消息丢失（可以使用消息队列解决该问题）</p></li> <li><p>URL  字符串长度有限制</p></li> <li><p>性能一般，URL request 创建请求有一定的耗时（Android 端 200-400ms）</p></li></ul> <p><strong>实践案例</strong></p> <p>同样用一个简单的 Demo2 来看一下如何使用拦截式实现 Web 向 Native 发送消息，这里实现了在 Web 端唤起 Native 的相册。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>遵循上述实现方式，Web 发送消息的代码如下：</p> <div class="language- extra-class"><pre class="language-text"><code>const CUSTOM_PROTOCOL_SCHEME = 'prek' // 自定义 url scheme
+
+function web2Native(event_name) {
+    const messagingIframe = document.createElement('iframe')
+    messagingIframe.style.display = 'none'
+    messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + event_name
+    document.documentElement.appendChild(messagingIframe)
+    setTimeout(() =&gt; {
+        document.documentElement.removeChild(messagingIframe)
+    }, 0)
+}
+
+const btn = document.querySelector('#btn')
+
+btn.onclick = () =&gt; {
+    web2Native('openPhotoAlbum')
+}
+</code></pre></div><p>Native 侧通过 <code>decidePolicyForNavigationAction</code> 这一 delegate 实现请求拦截，解析 URL 参数，若 URL scheme 是 <code>prek</code> 则认为该请求是一个来自 Web 的 JSB 调用：</p> <div class="language- extra-class"><pre class="language-text"><code>- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+  NSURL *url = navigationAction.request.URL;
+  NSLog(@&quot;拦截到 Web 发出的请求 = %@&quot;, url);
+
+  if ([self isSchemeMatchPrek:url]) {
+    NSString* host = url.host.lowercaseString;
+    if ([host isEqualToString: @&quot;openphotoalbum&quot;]) {
+      [self openCameraForWeb]; // 打开相册
+      NSLog(@&quot;打开相册&quot;);
+    }
+    decisionHandler(WKNavigationActionPolicyCancel);
+    return;
+  } else {
+    decisionHandler(WKNavigationActionPolicyAllow);
+  }
+}
+</code></pre></div><p>为了更清晰地看到 Native 拦截的结果，在上述代理方法中打个断点：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>继续执行，Congratulation！模拟器的相册被打开了！</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h3 id="注入式"><a href="#注入式" class="header-anchor">#</a> 注入式</h3> <p>注入式的原理是通过 WebView 提供的接口向 JS 全局上下文对象（window）中注入对象或者方法，当 JS 调用时，可直接执行相应的 Native 代码逻辑，从而达到 Web 调用 Native 的目的。</p> <p><strong>Native 注入 API 的相关方法：</strong></p> <table><thead><tr><th style="text-align:center;"><strong>平台</strong></th> <th style="text-align:center;"><strong>API</strong></th> <th style="text-align:center;"><strong>特点</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">Android</td> <td style="text-align:center;">addJavascriptInterface</td> <td style="text-align:center;">4.2 版本以下有安全风险</td></tr> <tr><td style="text-align:center;">iOS 8+</td> <td style="text-align:center;">WKScriptMessageHandler</td> <td style="text-align:center;">无</td></tr> <tr><td style="text-align:center;">iOS 7+</td> <td style="text-align:center;">JavaSciptCore</td> <td style="text-align:center;">无</td></tr></tbody></table> <div class="language- extra-class"><pre class="language-text"><code>JSContext *context = [webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];
+
+context[@&quot;getAppInfo&quot;] = ^(msg) {
+    return @&quot;ggl_2693&quot;;
+};
+window.getAppInfo(); // 'ggl_2693'
+</code></pre></div><p>这种方法简单而直观，并且不存在参数长度限制和性能瓶颈等问题，目前主流的 JSB SDK 都将注入式方案作为优先使用的对象。注入式的实现非常简单，这里不做案例展示。</p> <h3 id="两种方案对比"><a href="#两种方案对比" class="header-anchor">#</a> 两种方案对比</h3> <p>为了更清晰地表达这两种方式的区别，这里贴一个对比表格：</p> <table><thead><tr><th style="text-align:center;"><strong>方案</strong></th> <th style="text-align:center;"><strong>兼容性</strong></th> <th style="text-align:center;"><strong>性能</strong></th> <th style="text-align:center;"><strong>参数长度限制</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">拦截式</td> <td style="text-align:center;">无兼容性问题</td> <td style="text-align:center;">较差，安卓端尤为明显</td> <td style="text-align:center;">有限制</td></tr> <tr><td style="text-align:center;">注入式</td> <td style="text-align:center;">安卓4.2+ 和 iOS 7+以上可用</td> <td style="text-align:center;">较好</td> <td style="text-align:center;">无</td></tr></tbody></table> <h2 id="如何执行回调"><a href="#如何执行回调" class="header-anchor">#</a> 如何执行回调</h2> <p>通过上述介绍我们已经知道如何实现双端互相发送消息，但上述两个通信过程缺少了“回应”这一动作，原因就是上述步骤缺少了回调函数的执行。以拦截式为例，常见的一个 JSB 调用是 Web 获取当前 App 信息， Native 拦截到 <code>bytedance://getAppInfo</code>这样一个请求后将获取当前 App 信息，那获取完成后如何让 Web 端拿到该信息呢？</p> <p>一个最简单的做法是类比 JSONP 的实现，我们可以在请求的 URL 上拼接回调方法的事件名，将该事件挂载在全局 window 上，由于 Native 端可以轻松执行 JS 代码，因此在完成端逻辑后直接执行该事件名对应的回调方法即可。以 <code>getAppInfo</code> 为例：</p> <div class="language- extra-class"><pre class="language-text"><code>// Web
+const uniqueID = 1 // 为防止事件名冲突，给每个 callback 设置一个唯一标识
+function webCallNative(event, params, callback) {
+    if (typeof callback === 'Function') {
+        const callbackID = 'jsb_cb_' + (uniqueID++) + '_' + Date.now();
+        window[callbackID] = callback
+    }
+    const params = {callback: callbackID}
+    // 构造 url scheme
+    const src = 'bytedance://getAppInfo?' + JSON.stringify(params)
+    ...
+}
+
+// Native
+1. 解析传入的参数 'getAppInfo' 得知 Web 希望获取 AppInfo
+2. 执行端逻辑获取 AppInfo
+3. 执行参数中挂载在全局的 callback 方法，AppInfo 作为回调方法的参数
+</code></pre></div><p>因此只要把相应的回调方法挂载在全局对象上，Native 即可把每次调用后的响应通过动态执行 JS 方法的形式传递到 Web 端，这样一来整个通信过程就实现了闭环。</p> <h2 id="串联双端通信的过程"><a href="#串联双端通信的过程" class="header-anchor">#</a> 串联双端通信的过程</h2> <p>现在我们已经知道如何实现两端互相发送消息以及执行回调了，但看起来并不好用：首先调用 JSB 时需要在方法名后拼接参数和对应的回调函数，其次回调函数还需要一个一个地挂载在全局对象上。</p> <p>我们期望的使用方式其实是这样：</p> <div class="language- extra-class"><pre class="language-text"><code>// Web
+web.call('event1', {param1}, (res) =&gt; {...}) // 触发 native event1 执行
+web.on('event2', (res) =&gt; {...})
+
+// Native 
+// 这里用 js 代替，理解大致意思即可
+native.call('event2', {param2}, (res) =&gt; {...}) // 触发 web event2 执行
+native.on('event1', (res) =&gt; {...})
+</code></pre></div><p>这里的 <strong>JSB 就像是一个跨越两端的 EventEmitter</strong>，因此需要 Web 和 Native 遵循同一套调度机制。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>上图给出了 Web 调用 -&gt; Native 监听的执行过程，同理 Native 调用 -&gt; Web 监听也是同样的逻辑，只是把两边的实现调换一种语言，这里不赘述了。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>贴一张其他同学画的时序图，帮助理解整个通信过程</p> <p>Demo3 基于开源的 WebViewJavascriptBridge 演示了一套完整的通讯流程是怎样进行的，有兴趣的同学请自行戳源码地址 JSB_Demo 自行体验。（需要使用 Xcode 打开，会涉及一些客户端的知识，请配合文档和 Google 使用）。</p> <h1 id="一点感受"><a href="#一点感受" class="header-anchor">#</a> 一点感受</h1> <p>笔者所在业务使用的 bridge 即司内目前最新的 SDK，没有历史包袱、使用体验也非常良好。得益于客户端遵循该 SDK 配套的实现机制，即使完全不了解 JSB 原理的同学在与端上对接 bridge 时也几乎没有遇到障碍。倘若抛开公司完备的基础建设，想实现一个通用且好用的 JSB 并非易事，因此了解其中的门道还是非常有益的。（巨人的肩膀站久了，确实巴适得很🐶)</p> <h1 id="参考文献"><a href="#参考文献" class="header-anchor">#</a> 参考文献</h1> <p><strong>深入浅出 JSBridge</strong>**[4]**</p> <p><strong>JSB 实战</strong>**[5]**</p> <h3 id=""><a href="#" class="header-anchor">#</a></h3> <p>[1]JSONP: <em>https://en.wikipedia.org/wiki/JSONP</em>[2]WebViewJavascriptBridge: <em>https://github.com/marcuswestin/WebViewJavascriptBridge</em>[3]JSB_Demo: <em>https://code.byted.org/caocheng.viccc/JSB_Demo</em>[4]深入浅出 JSBridge: <em>https://juejin.cn/post/6936814903021797389#heading-8</em>[5]JSB 实战: <em>https://juejin.cn/post/6844903702721986568</em></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced/2-动画/数字增加.html" class="prev">
+        数字自增的动画
+      </a></span> <span class="next"><a href="/advanced/3-高级api/axios是如何封装HTTP请求的.html">
+        axios 是如何封装 HTTP 请求的
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/18.ec5b4213.js" defer></script>
+  </body>
+</html>

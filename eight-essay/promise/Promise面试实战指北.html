@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise面试实战指北 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/50.727fb121.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>promise</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/promise/19道promise 面试题.html" class="sidebar-link">搜尽全网，整理了19道promise 面试题，你能做对几个？</a></li><li><a href="/eight-essay/promise/Promise.html" class="sidebar-link">Promise</a></li><li><a href="/eight-essay/promise/Promise面试实战指北.html" class="active sidebar-link">Promise面试实战指北</a></li><li><a href="/eight-essay/promise/c.html" class="sidebar-link">面试官问：Promise.all 使用、原理实现及错误处理</a></li><li><a href="/eight-essay/promise/基于把原生ajax封装为Promise形式.html" class="sidebar-link">基于把原生ajax封装为Promise形式。</a></li><li><a href="/eight-essay/promise/实现自己promise.html" class="sidebar-link">两天时间，实现自己的 Promise</a></li><li><a href="/eight-essay/promise/异步循环打印.html" class="sidebar-link">实现异步循环打印</a></li><li><a href="/eight-essay/promise/最简实现Promise.html" class="sidebar-link">最简实现Promise-支持异步链式调用</a></li><li><a href="/eight-essay/promise/模拟实现.html" class="sidebar-link">基础版本</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>this解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>手写题</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="promise面试实战指北"><a href="#promise面试实战指北" class="header-anchor">#</a> Promise面试实战指北</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/hz0P_brF8uCu2DDtW_vgVQ" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/hz0P_brF8uCu2DDtW_vgVQ<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="超时控制"><a href="#超时控制" class="header-anchor">#</a> 超时控制</h2> <h3 id="背景"><a href="#背景" class="header-anchor">#</a> <strong>背景</strong></h3> <ol><li>众所周知，fetch请求是无法设置超时时间的，因此我们需要自己去模拟一个超时控制。</li> <li>转盘问题，一个抽奖转盘动画效果有5秒，但是一般来说向后端请求转盘结果只需要不到一秒，因此请求结果至少得等5秒才能展现给用户。</li></ol> <h3 id="问题分析"><a href="#问题分析" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>首先，超时控制比较简单，和Promise.race()的思想是类似，或者可以直接使用这个函数去解决。</p> <p>然后，转盘问题如果要答好，需要考虑两种情况。</p> <ol><li>转盘动画还未完成，请求结果已经拿到了，此时要等到动画完成再展示结果给用户。</li> <li>转盘动画完成了，请求结果还未拿到，此时需要等待结果返回（可以设置请求超时时间）。</li></ol> <p>所以，转盘问题更适合用Promise.all()来解决。</p> <h3 id="实战版源码"><a href="#实战版源码" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <p>代码分为多个版本，从上自下，记忆难度递增但面试成绩更优，请按需选择。</p> <p>一、基于<code>Promise.race()</code>的超时控制。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 超时控制版本一
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(requestFn, timeout) {
+  return Promise.race([requestFn(), sleep(timeout)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 超时的例子
+timeoutPromise(createRequest(2000), 1000).catch((error) =&gt;
+  console.error(error)
+);
+// 不超时的例子
+timeoutPromise(createRequest(2000), 3000).then((res) =&gt; console.log(res));
+
+复制代码
+</code></pre></div><p>二、将<code>promise.race()</code>干掉。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 超时控制版本二
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(requestFn, timeout) {
+  const promises = [requestFn(), sleep(timeout)];
+  return new Promise((resolve, reject) =&gt; {
+    for (const p of promises) {
+      p.then((res) =&gt; resolve(res)).catch((error) =&gt; reject(error));
+    }
+  });
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 超时的例子
+timeoutPromise(createRequest(2000), 1000).catch((error) =&gt;
+  console.error(error)
+);
+// 不超时的例子
+timeoutPromise(createRequest(2000), 3000).then((res) =&gt; console.log(res));
+
+复制代码
+</code></pre></div><p>三、基于<code>Promise.all()</code>的转盘问题（不考虑请求超时），和上面略有不同的是<code>sleep</code>函数超时后<code>Promise</code>从<code>pending</code>态转到<code>fulfilled</code>态而不是<code>rejected</code>态。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 转盘问题不考虑超时
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; resolve(delay), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个转盘promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} animationDuration 动画持续时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function turntablePromise(requestFn, animationDuration) {
+  return Promise.all([requestFn(), sleep(animationDuration)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 请求比转盘动画快
+turntablePromise(createRequest(2000), 5000).then((res) =&gt; console.log(res));
+
+// 请求比转盘动画慢
+turntablePromise(createRequest(2000), 1000).then((res) =&gt; console.error(res));
+
+复制代码
+</code></pre></div><p>四：基于<code>Promise.all()</code>的转盘问题（考虑请求超时），无非就是拼刀刀没什么亮点。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 转盘问题考虑超时
+ */
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {Promise&lt;any&gt;} request 你的请求
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(request, timeout) {
+  function sleep(delay) {
+    return new Promise((resolve, reject) =&gt; {
+      setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+    });
+  }
+  const promises = [request, sleep(timeout)];
+  return new Promise((resolve, reject) =&gt; {
+    for (const p of promises) {
+      p.then((res) =&gt; resolve(res)).catch((error) =&gt; reject(error));
+    }
+  });
+}
+
+/**
+ * 将原promise包装成一个转盘promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 超时时间
+ * @param {number} animationDuration 动画持续时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function turntablePromise(requestFn, timeout, animationDuration) {
+  function sleep(delay) {
+    return new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; resolve(delay), delay);
+    });
+  }
+  return Promise.all([timeoutPromise(requestFn(), timeout), sleep(animationDuration)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 请求比转盘动画慢且超时
+turntablePromise(createRequest(2000), 1500, 1000).catch((error) =&gt;
+  console.error(error)
+);
+
+复制代码
+</code></pre></div><p>五：干掉<code>Promise.all()</code>，这版代码没有加什么核心的东西，无非就是手写一下这个api，所以留给大家自测。</p> <h2 id="取消重复请求"><a href="#取消重复请求" class="header-anchor">#</a> 取消重复请求</h2> <h3 id="背景-2"><a href="#背景-2" class="header-anchor">#</a> <strong>背景</strong></h3> <p>当用户频繁点击一个搜索Button时，会在短时间内发出大量的搜索请求，给服务器造成一定的压力，同时也会因请求响应的先后次序不同而导致渲染的数据与预期不符。这里，我们可以使用防抖来减小服务器压力，但是却没法很好地解决后面的问题。</p> <h3 id="问题分析-2"><a href="#问题分析-2" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>这个问题的本质在于，同一类请求是有序发出的（根据按钮点击的次序），但是响应顺序却是无法预测的，我们通常只希望渲染最后一次发出请求响应的数据，而其他数据则丢弃。因此，我们需要丢弃（或不处理）除最后一次请求外的其他请求的响应数据。</p> <h3 id="实战版源码-2"><a href="#实战版源码-2" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <p>其实axios已经有了很好的实践，大家可以配合阿宝哥的文章来食用。此处取消<code>promise</code>的实现借助了上一章节的技巧，而在<code>axios</code>中因为所有异步都是由xhr发出的，所以<code>axios</code>的实现中还借助了xhr.abort()来取消一个请求。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 取消请求
+ */
+
+function CancelablePromise() {
+  this.pendingPromise = null;
+}
+
+// 包装一个请求并取消重复请求
+CancelablePromise.prototype.request = function (requestFn) {
+  if (this.pendingPromise) {
+    this.cancel(&quot;取消重复请求&quot;);
+  }
+  const _promise = new Promise((resolve, reject) =&gt; (this.reject = reject));
+  this.pendingPromise = Promise.race([requestFn(), _promise]);
+  return this.pendingPromise;
+};
+
+// 取消当前请求
+CancelablePromise.prototype.cancel = function (reason) {
+  this.reject(new Error(reason));
+  this.pendingPromise = null;
+};
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+
+const cancelPromise = new CancelablePromise();
+
+// 前四个请求将被自动取消
+for (let i = 0; i &lt; 5; i++) {
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res)) // 最后一个 done
+    .catch((err) =&gt; console.error(err)); // 前四个 error: 取消重复请求
+}
+
+// 设置一个定时器等3s，让前面的请求都处理完再继续测试
+setTimeout(() =&gt; {
+  // 手动取消最后一个请求
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res))
+    .catch((err) =&gt; console.error(err)); // error:手动取消
+  cancelPromise.cancel(&quot;手动取消&quot;);
+}, 3000);
+
+// 设置一个定时器等4s，让前面的请求都处理完再继续测试
+setTimeout(() =&gt; {
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res)) // done
+    .catch((err) =&gt; console.error(err));
+}, 4000);
+
+复制代码
+</code></pre></div><h2 id="限制并发请求数"><a href="#限制并发请求数" class="header-anchor">#</a> 限制并发请求数</h2> <h3 id="背景-3"><a href="#背景-3" class="header-anchor">#</a> <strong>背景</strong></h3> <p>一般来说，我们不会刻意去控制请求的并发。只有在一些场景下可能会用到，比如，收集用户的批量操作（每个操作对应一次请求），待用户操作完成后一次性发出。另外，为了减小服务器的压力，我们还会<strong>限制并发数</strong>。</p> <h3 id="问题分析-3"><a href="#问题分析-3" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>看上去，Promise.allSettled很适合应对这样的场景，但是稍微想一下就能发现，它能控制的粒度还是太粗了。首先，它必须等待所有<code>Promise</code>都<code>resolve</code>或<code>reject</code>，其次，如果有并发限制的话用它来做还需要分批请求，实际效率也会比较低，短木板效应很明显。</p> <h3 id="实战版源码-3"><a href="#实战版源码-3" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 限制并发请求数
+ */
+
+/**
+ * 并发请求限制并发数
+ * @param {()=&gt;Promise&lt;any&gt; []} requestFns 并发请求函数数组
+ * @param {numer} limit 限制最大并发数
+ */
+function concurrentRequest(requestFns, limit) {
+  // 递归函数
+  function recursion(requestFn) {
+    requestFn().finally(() =&gt; {
+      if (_requestFns.length &gt; 0) {
+        recursion(_requestFns.pop());
+      }
+    });
+  }
+  const _requestFns = [...requestFns];
+  // 限制最大并发量
+  for (let i = 0; i &lt; limit &amp;&amp; _requestFns.length &gt; 0; i++) {
+    recursion(_requestFns.pop());
+  }
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    }).then((res) =&gt; {
+      console.log(res);
+    });
+}
+
+const requestFns = [];
+for (let i = 0; i &lt; 10; i++) {
+  requestFns.push(createRequest(1000));
+}
+
+concurrentRequest(requestFns, 3);
+
+复制代码
+</code></pre></div><h2 id="管理全局loading态"><a href="#管理全局loading态" class="header-anchor">#</a> 管理全局loading态</h2> <h3 id="背景-4"><a href="#背景-4" class="header-anchor">#</a> <strong>背景</strong></h3> <p>当我们一个页面或组件涉及到多个请求时，可能会对应多个loading态的管理。在某些场景下，我们只希望用一个loading态去管理所有异步请求，当任一存在pending态的请求时，展示全局loading组件，当所有请求都fulfilled或rejected时，隐藏全局loading组件。</p> <h3 id="问题分析-4"><a href="#问题分析-4" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>这个问题的关键就是在于我们需要管理所有pending态的请求，并适时更新loading态。</p> <h3 id="实战版源码-4"><a href="#实战版源码-4" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 管理全局loading态
+ */
+
+function PromiseManager() {
+  this.pendingPromise = new Set();
+  this.loading = false;
+}
+
+// 给每个pending态的promise生成一个身份标志
+PromiseManager.prototype.generateKey = function () {
+  return `${new Date().getTime()}-${parseInt(Math.random() * 1000)}`;
+};
+
+PromiseManager.prototype.push = function (...requestFns) {
+  for (const requestFn of requestFns) {
+    const key = this.generateKey();
+    this.pendingPromise.add(key);
+    requestFn().finally(() =&gt; {
+      this.pendingPromise.delete(key);
+      this.loading = this.pendingPromise.size !== 0;
+    });
+  }
+};
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    }).then((res) =&gt; console.log(res));
+}
+
+const manager = new PromiseManager();
+
+// 增加多个请求
+manager.push(createRequest(1000), createRequest(2000), createRequest(3000));
+manager.push(createRequest(1500));
+
+// 每秒轮询loading态，直到loading为false
+const id = setInterval(() =&gt; {
+  console.log(manager.loading);
+  if (!manager.loading) clearInterval(id);
+}, 1000);
+
+// 增加多个请求
+manager.push(createRequest(2500));
+复制代码
+</code></pre></div><h2 id="加餐"><a href="#加餐" class="header-anchor">#</a> 加餐</h2> <h3 id="串行化的三种实现方式"><a href="#串行化的三种实现方式" class="header-anchor">#</a> <strong>串行化的三种实现方式</strong></h3> <p>使用串行化的常见场景，请求之间有依赖关系或时序关系，如红绿灯。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 串行化的三种实现
+ **/
+
+// 法一，递归法
+function runPromiseInSeq1(requestFns) {
+  function recursion(requestFns) {
+    if (requestFns.length === 0) return;
+    requestFns
+      .shift()()
+      .finally(() =&gt; recursion(requestFns));
+  }
+  const _requestFns = [...requestFns];
+  recursion(_requestFns);
+}
+// 法二：迭代法
+async function runPromiseInSeq2(requestFns) {
+  for (const requestFn of requestFns) {
+    await requestFn();
+  }
+}
+// 法三：reduce
+function runPromiseInSeq3(requestFns) {
+  requestFns.reduce((pre, cur) =&gt; pre.finally(() =&gt; cur()), Promise.resolve());
+}
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(delay);
+      }, delay);
+    }).then((res) =&gt; {
+      console.log(res);
+    });
+}
+// 执行顺序从左至右
+const requestFns = [
+  createRequest(3000),
+  createRequest(2000),
+  createRequest(1000),
+];
+// 串行调用
+runPromiseInSeq1(requestFns);
+// runPromiseInSeq2(requestFns);
+// runPromiseInSeq3(requestFns);
+
+复制代码
+</code></pre></div><h3 id="_20行最简异步链式调用"><a href="#_20行最简异步链式调用" class="header-anchor">#</a> <strong>20行最简异步链式调用</strong></h3> <p>这里模拟了Promise的异步链式调用，代码出处见文章。</p> <div class="language- extra-class"><pre class="language-text"><code>function Promise(fn) {
+  this.cbs = [];
+
+  const resolve = (value) =&gt; {
+    setTimeout(() =&gt; {
+      this.data = value;
+      this.cbs.forEach((cb) =&gt; cb(value));
+    });
+  }
+
+  fn(resolve);
+}
+
+Promise.prototype.then = function (onResolved) {
+  return new Promise((resolve) =&gt; {
+    this.cbs.push(() =&gt; {
+      const res = onResolved(this.data);
+      if (res instanceof Promise) {
+        res.then(resolve);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};
+</code></pre></div><h2 id="写在后面"><a href="#写在后面" class="header-anchor">#</a> 写在后面</h2> <p>这位笔名<code>鼠子</code>，是22届的学弟。想要找他交流的话，可以加我微信，我拉你进群，他长期在群里。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">个人微信</p> <p>往期推荐</p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247497006&amp;idx=2&amp;sn=bcd167d3f9ec511e863b18808d31e75e&amp;chksm=cfdbe673f8ac6f650c65b9f9306aa0fe95fd0322e58b23cd023d5eaebefb095ee36b1c42ea48&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">TypeScript 4.4beat版本发布<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247496983&amp;idx=1&amp;sn=0f6d70881803b6f97a501915e318501d&amp;chksm=cfdbe64af8ac6f5cd04f60f3291676e3165c7b4da4187dee695d492ba64ffca05b177db1fbd0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">进腾讯了<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247497139&amp;idx=1&amp;sn=c9e5ca74d903aeccd0862bb3aa44e40f&amp;chksm=cfdbe6eef8ac6ff8d86547accd41d2fe4bc36ff486baab04695ff86d861f23c418aae85c818c&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">张一鸣先生的四年收获与工作感悟<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>收录于话题 #前端面试</p> <p>14个</p> <p>下一篇21 道关于性能优化的面试题（附答案）</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/promise/Promise.html" class="prev">
+        Promise
+      </a></span> <span class="next"><a href="/eight-essay/promise/c.html">
+        面试官问：Promise.all 使用、原理实现及错误处理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/50.727fb121.js" defer></script>
+  </body>
+</html>

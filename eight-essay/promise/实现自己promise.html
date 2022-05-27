@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>两天时间，实现自己的 Promise | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/53.03ab34e0.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>promise</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/promise/19道promise 面试题.html" class="sidebar-link">搜尽全网，整理了19道promise 面试题，你能做对几个？</a></li><li><a href="/eight-essay/promise/Promise.html" class="sidebar-link">Promise</a></li><li><a href="/eight-essay/promise/Promise面试实战指北.html" class="sidebar-link">Promise面试实战指北</a></li><li><a href="/eight-essay/promise/c.html" class="sidebar-link">面试官问：Promise.all 使用、原理实现及错误处理</a></li><li><a href="/eight-essay/promise/基于把原生ajax封装为Promise形式.html" class="sidebar-link">基于把原生ajax封装为Promise形式。</a></li><li><a href="/eight-essay/promise/实现自己promise.html" class="active sidebar-link">两天时间，实现自己的 Promise</a></li><li><a href="/eight-essay/promise/异步循环打印.html" class="sidebar-link">实现异步循环打印</a></li><li><a href="/eight-essay/promise/最简实现Promise.html" class="sidebar-link">最简实现Promise-支持异步链式调用</a></li><li><a href="/eight-essay/promise/模拟实现.html" class="sidebar-link">基础版本</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>this解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>手写题</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="两天时间-实现自己的-promise"><a href="#两天时间-实现自己的-promise" class="header-anchor">#</a> 两天时间，实现自己的 Promise</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/-2vIKWRPzdXCZlPupw4XcA" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/-2vIKWRPzdXCZlPupw4XcA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="_01-目录"><a href="#_01-目录" class="header-anchor">#</a> 01. 目录</h2> <ul><li><strong>02.自下而上</strong>[1]</li> <li><strong>03.如何实现</strong>[2]</li> <li><strong>04.Promise/A+规范</strong>[3]</li> <li><strong>05.更多优化</strong>[4]</li> <li><strong>06.源码</strong>[5]</li> <li><strong>07.小结</strong>[6]</li> <li><strong>08.其他参考</strong>[7]</li></ul> <h2 id="_02-自下而上"><a href="#_02-自下而上" class="header-anchor">#</a> 02.自下而上</h2> <h3 id="_02-01-基本概念"><a href="#_02-01-基本概念" class="header-anchor">#</a> 02.01 基本概念</h3> <ul><li>首先我们来整理一些 <code>Promise</code> 基本的概念，包括私有状态，内部方法，静态方法等等。</li></ul> <h4 id="私有属性"><a href="#私有属性" class="header-anchor">#</a> 私有属性</h4> <ul><li><p>私有属性包括状态和值 <code>PromisState</code> <code>PromiseResult</code>，这些属性外部无法访问。</p></li> <li><p>状态属性有以下三种：</p></li> <li><ul><li><code>pending</code> 初始化状态</li> <li><code>fulfilled</code> 兑现(完成)</li> <li><code>rejected</code> 拒绝</li></ul></li> <li><p>值属性，由 <code>resolve</code> 或 <code>reject</code> 处理来决定。</p></li></ul> <h4 id="实例方法"><a href="#实例方法" class="header-anchor">#</a> 实例方法</h4> <ul><li><strong><code>then</code></strong>[8]</li> <li><strong><code>catch</code></strong>[9]</li> <li><strong><code>finally</code></strong>[10]</li></ul> <h4 id="静态方法"><a href="#静态方法" class="header-anchor">#</a> 静态方法</h4> <ul><li><strong><code>Promise.reject</code></strong>[11]</li> <li><strong><code>Promise.resolve</code></strong>[12]</li> <li><strong><code>Promise.race</code></strong>[13]</li> <li><strong><code>Promise.all</code></strong>[14]</li> <li><strong><code>Promise.allSettled</code></strong>[15]</li> <li><strong><code>Promise.any</code></strong>[16]</li></ul> <h2 id="_03-如何实现"><a href="#_03-如何实现" class="header-anchor">#</a> 03.如何实现</h2> <h3 id="_03-01-基础类"><a href="#_03-01-基础类" class="header-anchor">#</a> 03.01 基础类</h3> <ul><li><p>在罗列所有的状态和方法之后，我们首先来实现一个最基础的 <code>Promise</code> 类。</p></li> <li><p>最基础的类，包括以下核心几点：</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * Promise 内部状态的枚举
+ */
+enum PROMISE_STATES {
+  PENDING = 'pending',
+  FULFILLED = 'fulfilled',
+  REJECTED = 'rejected'
+}
+
+type PromiseStates = PROMISE_STATES.PENDING | PROMISE_STATES.FULFILLED | PROMISE_STATES.REJECTED;
+
+export const isFunction = (fn: any):boolean =&gt; typeof fn === 'function';
+export const isObject = (obj: any):boolean =&gt; typeof obj === 'object';
+
+class PromiseLike {
+  protected PromiseState: PromiseStates;
+  protected PromiseResult: any;
+
+constructor(executor) {
+  this.PromiseState = PROMISE_STATES.PENDING;
+  this.PromiseResult = undefined;
+
+  executor(this._resolve, this._reject)
+}
+
+_resolve = (value?: any) =&gt; {
+  if (this.PromiseState !== PROMISE_STATES.PENDING) {
+    return;
+  }
+  this.PromiseState = PROMISE_STATES.FULFILLED;
+  this.PromiseResult = value;
+}
+
+_reject = (value?: any) =&gt; {
+  if (this.PromiseState !== PROMISE_STATES.PENDING) {
+    return;
+  }
+  this.PromiseState = PROMISE_STATES.REJECTED;
+  this.PromiseResult = value;
+}
+}
+复制代码
+</code></pre></div></li> <li><ul><li>拥有私有状态，也有着能够改变私有状态的私有方法。</li> <li>同时接收一个执行器函数作为参数，执行器函数内部则是预先定义好的私有方法。</li> <li>私有状态一旦改变（兑现或拒绝）后不可逆。</li></ul></li></ul> <h4 id="resolve-和-reject"><a href="#resolve-和-reject" class="header-anchor">#</a> resolve 和 reject</h4> <ul><li><p>上述代码比较好理解， 我们定义了状态，定义了执行器函数以及相关的两个参数，这两个参数对应的方法分别修改了对应的状态。</p></li> <li><p>但是差点忘了， <code>Promise</code> 是异步的，意味着这两个函数处理也应当是异步的；这里可以使用 <code>setTimeout</code> 来模拟异步进程。这部分还可以优化，后面我们会提到。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+  * 使状态变更为 fulfilled
+  * 调用注册的事件，注意调用后进行清除
+  * @param value
+  * @returns
+  */
+_resolve = (value?: any) =&gt; {
+  const resolveCb = () =&gt; {
+    if (this.PromiseState !== PROMISE_STATES.PENDING) {
+      return;
+    }
+
+    this.PromiseState = FULFILLED;
+    this.PromiseResult = value;
+  }
+
+  // 使任务变成异步的
+  setTimeout(resolveCb, 0);
+}
+
+/**
+ * 使状态变更为 rejected
+  * @param value
+  */
+_reject = (value?: any) =&gt; {
+  const rejectCb = () =&gt; {
+    if (this.PromiseState !== PROMISE_STATES.PENDING) {
+      return;
+    }
+
+    this.PromiseState = REJECTED;
+    this.PromiseResult = value;
+  }
+
+  setTimeout(rejectCb, 0);
+}
+}
+复制代码
+</code></pre></div></li> <li><p>我们可以接着实现相关的静态方法，因为它们所做的事很简单，就是修改当前的内部状态，于是完全可以直接调用当前类实例化来处理。</p></li> <li><p>重复代码不再罗列，下面是新增的静态方法：</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+// ...sth
+static resolve(value?: any) {
+  return new PromiseLike((resolve) =&gt; resolve(value));
+}
+
+static reject(value?: any) {
+  return new PromiseLike((resolve, reject) =&gt; reject(value));
+}
+}
+复制代码
+</code></pre></div></li> <li><p>一个简单的基础类就这样完成了。不过先不要着急，当前的实现显然有许多要完善的地方，甚至也许有错误，让我们进一步来梳理。</p></li></ul> <h3 id="_03-02-原型方法"><a href="#_03-02-原型方法" class="header-anchor">#</a> 03.02 原型方法</h3> <h4 id="promise-prototype-then"><a href="#promise-prototype-then" class="header-anchor">#</a> <code>Promise.prototype.then</code></h4> <ul><li><p>相信对 <code>Promise</code> 有所了解的都知道 <code>Promise</code> 的 <code>then</code> 方法以及它的链式调用。本质上，**它是对 <code>Thenable</code> 接口的具体实现。**这句话很重要，后面会用到。</p></li> <li><p>让我们先来回顾一下 <code>then</code> 的用法：</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.resolve(29).then(function fulfilled(res) {
+console.info(res);
+return res;
+}, function rejected(err) {
+console.error(err);
+});
+复制代码
+</code></pre></div></li> <li><p><code>then</code> 方法接收两个参数，分别用来处理 <code>resolve</code> 和 <code>reject</code> 的结果，称之为完成回调和拒绝回调。默认情况下，同时注册这两个回调方法，一次只可能会调用到其中一个。即使在前一个函数中抛出了异常，第二个异常捕获函数也无法立即捕获。</p></li> <li><ul><li>完成回调，接收先前 <code>promise</code> 的 <code>resolve</code> 值作为默认参数，处理对应数据，并返回一个值，作为下一个 <code>then</code> 内部函数调用的默认参数。</li> <li>让我们再仔细想想， <code>then</code> 注册事件的调用次数是否和注册次数相同？是的。假如使用 <code>then</code> 注册了多个回调函数，则它们会依次执行。这意味着我们得在原先的基础上加上相应的事件队列。</li> <li>另外别忘了， <code>then</code> 方法支持<strong>链式调用</strong>，我们这里先使用 <code>return this</code> 的方式来简单实现。</li></ul></li> <li><p>现在我们对上面的基础类进行改进和修复。</p> <div class="language- extra-class"><pre class="language-text"><code>export interface ICallbackFn {
+(value?: any): any;
+}
+
+type CallbackParams = ICallbackFn | null;
+
+export interface IExecutorFn {
+(resolve: ICallbackFn,  reject: ICallbackFn): any;
+}
+
+class PromiseLike {
+protected PromiseState: PromiseStates;
+protected PromiseResult: any;
+
+resolveCallbackQueues: Array&lt;ICallbackFn&gt;;
+rejectCallbackQueues: Array&lt;ICallbackFn&gt;;
+
+constructor(executor: IExecutorFn) {
+  if (!isFunction(executor)) {
+    throw new Error('Promise resolver undefined is not a function');
+  }
+  this.PromiseState = PENDING;
+  this.PromiseResult = undefined;
+
+  // 分别用于两个注册事件保存的数组
+  this.resolveCallbackQueues = [];
+  this.rejectCallbackQueues = [];
+
+  executor(this._resolve, this._reject);
+}
+
+/**
+ * 使状态变更为 fulfilled
+* 调用注册的事件，注意调用后进行清除
+* @param value
+* @returns
+*/
+_resolve = (value: any) =&gt; {
+  const resolveCb = () =&gt; {
+    if (this.PromiseState !== PROMISE_STATES.PENDING) {
+      return;
+    }
+    while (this.resolveCallbackQueues.length) {
+      const fn = this.resolveCallbackQueues.shift();
+      fn &amp;&amp; fn(value);
+    }
+    this.PromiseState = FULFILLED;
+    this.PromiseResult = value;
+  }
+
+  // 使任务变成异步的
+  setTimeout(resolveCb, 0);
+}
+
+/**
+ * 使状态变更为 rejected
+* @param value
+*/
+_reject = (value: any) =&gt; {
+  const rejectCb = () =&gt; {
+    if (this.PromiseState !== PROMISE_STATES.PENDING) {
+      return;
+    }
+    while (this.rejectCallbackQueues.length) {
+      const fn = this.rejectCallbackQueues.shift();
+      fn &amp;&amp; fn(value);
+    }
+    this.PromiseState = REJECTED;
+    this.PromiseResult = value;
+  }
+
+  setTimeout(rejectCb, 0);
+}
+
+/**
+ * 根据当前不同状态来执行对应逻辑
+* 如果在默认状态就是注册对应事件
+* 如果状态变化则是执行对应事件
+* @param onFulfilled
+* @param onRejected
+* @returns
+*/
+then = (onFulfilled, onRejected) =&gt; {
+  switch (this.PromiseState) {
+    case PENDING:
+      isFunction(onFulfilled) &amp;&amp; this.resolveCallbackQueues.push(onFulfilled);
+      isFunction(onRejected) &amp;&amp; this.rejectCallbackQueues.push(onRejected);
+    case FULFILLED:
+      isFunction(onFulfilled) &amp;&amp; onFulfilled(this.PromiseResult);
+      break;
+    case REJECTED:
+      isFunction(onRejected) &amp;&amp; onRejected(this.PromiseResult);
+      break;
+  }
+  return this;
+}
+}
+复制代码
+</code></pre></div></li> <li><ul><li>定义两个数组，分别用来保存完成回调和拒绝回调。</li> <li>下面罗列核心代码：</li></ul></li> <li><p>我们丰富了 <code>then</code> 方法。但是你我都知道，<code>return this</code> 看起来并不太可靠。</p></li> <li><p>让我们来回顾一点，<strong><code>Promise</code> 的私有状态一旦改变后不可逆</strong>。如果在这个 <code>then</code> 方法里抛出异常， <code>promise</code> 显然会变成拒绝状态，而同一实例的状态在改变后是不能够再次修改的。所以， <code>then</code> 的链式调用本质上是每次都会生成一个新的实例。</p></li> <li><p>也许再贴一个使用 <code>then</code> 的例子会让我们有一些启发。</p> <div class="language- extra-class"><pre class="language-text"><code>const p = Promise.resolve(123);
+const p1 = p.then();
+const p2 = p1.then((val) =&gt; val + 123))
+const p3 = p2.then(console.info));
+const p4 = p3.then(() =&gt; {
+throw new Error('Oops!');
+});
+// 分别打印 p1 p2 p3 p4
+// Promise {&lt;fulfilled&gt;: 123}
+// Promise {&lt;fulfilled&gt;: 246}
+// Promise {&lt;fulfilled&gt;: undefined}
+// Promise {&lt;rejected&gt;: Error: Oops!
+复制代码
+</code></pre></div></li> <li><p>这段代码的输出，有助于让我们进一步理解 <code>then</code> 内部所做的事。</p></li> <li><ul><li>p1: 在没有传入回调函数的时候，它仅仅是将值传递，也就是内部会初始化一个默认的处理函数，这个处理函数只会乖乖地传递值。</li> <li>p2: 存在完成回调时，可以获取值并进行处理，这个新的值通过<strong>返回的形式</strong>继续往后传递。</li> <li>p3: 如果传入完成回调函数，但没有显式返回值，则最终的 <code>promise</code> 的值是 <code>undefined</code>.</li> <li>p4: <code>promise</code> 状态已经变更成 <code>rejected</code>, 意味着是新的 <code>promise</code>. 符合我们的预期。</li></ul></li> <li><p>带着上述理解，我们来改进 <code>then</code> 方法。</p></li> <li><p>首先，需要处理参数异常的情况，也就是传入参数不是函数，或者未传的情况，就给定默认处理函数。</p> <div class="language- extra-class"><pre class="language-text"><code>then = (onFulfilled?: CallbackParams, onRejected?: CallbackParams) =&gt; {
+</code></pre></div></li> <li><ul><li>完成回调负责传递参数。</li> <li>拒绝回调负责抛出异常。</li></ul></li></ul> <p>// 默认处理！！！onFulfilled = isFunction(onFulfilled) ? onFulfilled : value =&gt; value; onRejected = isFunction(onRejected) ? onRejected : err =&gt; { throw err }; } 复制代码</p> <div class="language- extra-class"><pre class="language-text"><code>- 我们把这两个兼容处理放在函数内的顶部，这样有助于理解，也可以简化后续的逻辑。
+
+- 下面是具体的内容，其中核心改动已注释说明。
+
+```ts
+class PromiseLike {
+/**
+ * 根据当前不同状态来执行对应逻辑
+* 如果在默认状态就是注册对应事件
+* 如果状态变化则是执行对应事件
+* @param onFulfilled
+* @param onRejected
+* @returns
+*/
+then = (onFulfilled: CallbackParams, onRejected: CallbackParams) =&gt; {
+  // 默认处理！！！
+  onFulfilled = isFunction(onFulfilled) ? onFulfilled : value =&gt; value;
+  onRejected = isFunction(onRejected) ? onRejected : err =&gt; { throw err };
+  return new PromiseLike((resolve, reject) =&gt; {
+    /**
+     * 封装完成回调函数
+    * @param val
+    */
+    const handleFulfilled = (val: any) =&gt; {
+      try {
+        const res = onFulfilled(val);
+        resolve(res);
+      } catch (error) {
+        // 如果当前执行逻辑内发生异常，则抛出异常
+        reject(error);
+      }
+    };
+
+    /**
+     * 封装错误回调函数
+    * @param val
+    */
+    const handleRejected = (val: any) =&gt; {
+      try {
+        const res = onRejected(val);
+        reject(res);
+      } catch (error) {
+        reject(error);
+      }
+    }
+
+    switch (this.PromiseState) {
+      case PROMISE_STATES.PENDING:
+        this.resolveCallbackQueues.push(handleFulfilled);
+        this.rejectCallbackQueues.push(handleRejected);
+        break;
+      case PROMISE_STATES.FULFILLED:
+        handleFulfilled(this.PromiseResult);
+        break;
+      case PROMISE_STATES.REJECTED:
+        handleRejected(this.PromiseResult);
+        break;
+    }
+  });
+}
+}
+复制代码
+</code></pre></div><ul><li><p>这个 <code>then</code> 方法的处理已经接近完善，不过在 <code>Promise</code> 里有一点容易被人遗忘。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.resolve(41) === Promise.resolve(Promise.resolve(41)); // false
+复制代码
+</code></pre></div></li> <li><ul><li>在 <code>Promise</code> 中处理 <code>Promise</code>，内部处理会将其展开来获取其中的值。</li> <li>下面这个例子出来你就理解了。</li></ul></li> <li><p>不好意思，走错片场。js 中每个单独定义的引用类型都是不相等的。</p> <div class="language- extra-class"><pre class="language-text"><code>const p = Promise.resolve(41);
+Promise.resolve(p) === p; // true
+复制代码
+</code></pre></div></li> <li><ul><li>再来一次。</li></ul></li> <li><p>没错，如果我们给 <code>promise</code> 一个 <code>promise</code> 值，内部机制会将其展开。这个过程是递归的，这里我们先不展开探讨，但记住有这样的场景需要处理。</p></li> <li><p>可以先定义一个静态方法判断是否是 <code>Promise</code> 实例，方便后续的判断。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * 判断是否是当前类的实例
+* @param promise
+* @returns
+*/
+static is(promise: PromiseType) {
+  return promise instanceof PromiseLike;
+}
+}
+复制代码
+</code></pre></div></li> <li><p>有了这个方法，我们可以进一步完善上面的 <code>then</code> 方法。注意观察其中的变化，有注释说明。</p></li> <li><p>为方便阅读，只展示核心方法（只有这里改动）。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><p>封装完成回调函数</p></li> <li><p>@param val */ const handleFulfilled = (val) =&gt; { try { const res = onFulfilled(val); if (PromiseLike.is(res)) { // 如果参数是 Promise 实例，直接可以把 promise 实例进行传递 res.then(resolve, reject); } else  { resolve(res); } } catch (error) { // 如果当前执行逻辑内发生异常，则抛出异常 reject(error); } }; 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>#### `Promise.prototype.catch`
+
+- 在实现 `then` 方法之后，其实 `catch` 的实现是你想象不到的简单。
+
+- 因为本质上 `catch` 方法是 `then` 第二个参数也就是错误回调函数的语法糖。照着这个理解，实现起来就比较容易。
+
+```ts
+class PromiseLike {
+/**
+ * 错误处理
+* https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
+* @param rejectedCb
+* @returns
+*/
+catch = (rejectedCb: CallbackParams) =&gt; {
+  return this.then(null, rejectedCb);
+}
+}
+复制代码
+</code></pre></div><h4 id="promise-prototype-finally"><a href="#promise-prototype-finally" class="header-anchor">#</a> <code>Promise.prototype.finally</code></h4> <ul><li><p>实现 <code>finally</code> 需要我们理解几个点。</p></li> <li><ul><li>前面的状态只要不是 <code>pending</code>, 则一定会进入执行。</li> <li>类似于 <code>then</code>, 它可以注册多个回调，每个回调函数会依次执行。</li> <li>回调函数内无法获取内部值。</li> <li>除非在回调函数内抛出异常会把状态变成 <code>rejected</code>，否则它所做的仅仅是把状态和值传递。</li></ul></li> <li><p>了解上述几点之后，我们可以复用 <code>then</code> 方法，并自定义回调函数传入来实现。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
+* @param finallyCb
+* @returns
+*/
+finally = (finallyCb: CallbackParams) =&gt; {
+  return this.then(
+    // 完成回调时，执行注册函数，并且将原来的值传递下去
+    // 封装 Promise 类，再调用 then 方法传递
+    val =&gt; PromiseLike.resolve(finallyCb &amp;&amp; finallyCb()).then(() =&gt; val),
+    // 异常回调时，执行注册函数，并且抛出异常
+    err =&gt; PromiseLike.resolve(finallyCb &amp;&amp; finallyCb()).then(() =&gt; { throw err })
+  );
+}
+}
+复制代码
+</code></pre></div></li> <li><p>写到这里，几个核心的原型方法我们就实现完毕了。</p></li> <li><p>心急的伙伴可以直接实例化一个对象来尝试，不过 <code>Promise</code> 当然还不止于此，接下来我们来实现对应的静态方法。</p></li></ul> <h3 id="_03-03-静态方法"><a href="#_03-03-静态方法" class="header-anchor">#</a> 03.03 静态方法</h3> <ul><li>前面已经实现了一个自定义的 <code>Promise.is</code> 方法来判断实例。这个工具类函数简单实用，可以留着。</li> <li>还有两个快速实例化 <code>Promise</code> 类的方法我们也进行了实现：<code>Promise.resolve</code> 和 <code>Promise.reject</code>. 下面来做一点改进。</li></ul> <h4 id="promise-resolve"><a href="#promise-resolve" class="header-anchor">#</a> <code>Promise.resolve</code></h4> <ul><li><p>既然我们定义好了 <code>Promise.is</code> 方法，加上对 <code>Promise</code> 的理解进一步加深，知道了如果传入的已经是 <code>Promise</code> 实例，则不必再进行处理。所以这个方法需要做一点兼容处理。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * 直接实例化 proimse
+* https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
+* @param value
+* @returns
+*/
+static resolve(value?: any) {
+  if (PromiseLike.is(value)) {
+    return value;
+  }
+  return new PromiseLike((resolve) =&gt; resolve(value));
+}
+}
+复制代码
+</code></pre></div></li> <li><p>现在我们可以尝试实现 <code>Promise</code> 提供的剩下两个类方法 <code>Promise.all</code>, <code>Promise.race</code>.</p></li></ul> <h4 id="promise-all"><a href="#promise-all" class="header-anchor">#</a> <code>Promise.all</code></h4> <ul><li><p>该方法是接收一个由 <code>Promise</code> 实例组成的数组，并返回 <code>Promise</code> 实例，其值是所有 <code>Promise</code> 实例的 <code>resolve</code> 的值组成的数组。</p></li> <li><ul><li>当其中任意一个 <code>Promise</code> 有 <code>reject</code> 的值时，<code>Promise.all</code> 会返回最先 <code>rejected</code>的值。</li> <li>等到所有 <code>Promise</code> <code>resolve</code> 之后，<code>Promise</code>.all 才会返回结果。</li> <li><code>Promise.all</code> 也是支持链式调用的。</li></ul></li> <li><p>大白话也许有些晦涩，我们直接看案例。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.all([Promise.resolve(1), Promise.reject(2)]); // Promise {&lt;rejected&gt;: 2}
+Promise.all([Promise.resolve(1), Promise.resolve(2)]); // Promise {&lt;fulfilled&gt;: Array(2)} [1, 2]
+Promise.all([]); // Promise {&lt;fulfilled&gt;: Array(2)}
+复制代码
+</code></pre></div></li> <li><p>其中，第三个表达式的结果对理解 <code>Promise.race</code> 和 <code>Promise.all</code> 的区别很重要。这点后面会谈。除此之外，结果是显而易见的。</p></li> <li><p><code>Promise.all</code> 返回的结果是传入数组的参数的顺序，也可以理解为顺序执行，并填入对应的位置。基于这几点，要实现它就有思路了。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+* @param promises 严格意义上来说，参数是可迭代对象，为了简化实现这里统一成数组
+* @returns
+*/
+static all(promises: Array&lt;ICallbackFn&gt;) {
+  // 支持链式调用
+  return new PromiseLike((resolve, reject) =&gt; {
+    const len = promises.length;
+    let resolvedPromisesCount = 0;
+    let resolvedPromisesResult = &lt;any&gt;[];
+    for (let i = 0; i &lt; len; i++) {
+      const currentPromise = promises[i];
+      // 如果不是 Promise 实例，则需要包装一份；
+      // 但因为直接包装 Promise 类的效果是幂等的，所以这里不需要判断，直接处理即可
+      PromiseLike.resolve(currentPromise)
+      .then((res: any) =&gt; {
+        resolvedPromisesCount++;
+        resolvedPromisesResult[i] = res;
+        // 当所有值都 resolve 之后， 返回对应数组
+        if (resolvedPromisesCount === len) {
+          resolve(resolvedPromisesResult);
+        }
+      })
+      // 如果有任意一个异常，则直接推出
+      .catch((err: any) =&gt; {
+        reject(err);
+      });
+    }
+  });
+}
+}
+复制代码
+</code></pre></div></li> <li><ul><li>顺序执行所有 <code>Promise</code>，并把结果保存到数组的对应位置，同时统计已执行的数量；当该数量等同于传入的数组长度时，返回由结果组成的数组。</li></ul></li> <li><p>如同在方法注释里说明的一样，其实 <code>Promise.all</code> 和 <code>Promise.race</code> 方法接收的参数都是可迭代对象，并不仅仅是数组。这里为了方便实现，使用数组替代。可迭代对象不在这篇文章的核心讨论范围之内，感兴趣的可以点进上面的链接继续了解。</p></li></ul> <h4 id="promise-race"><a href="#promise-race" class="header-anchor">#</a> <code>Promise.race</code></h4> <ul><li><p><code>Promise.race</code> 和 <code>Promise.all</code> 有些相似，至少就参数而言，都接收可迭代对象作为参数，也可以链式调用，意味着它也返回一个新的 <code>Promise</code> 实例。</p></li> <li><p>不同的是，<code>Promise.race</code> 将会返回第一个 <code>Promise.resolve</code> 的值，或是第一个 reject 的值，而且这个值并不是数组。</p></li> <li><p>了解到这两点之后，实现起来就有清晰的思路了。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
+* @param promises
+* @returns
+*/
+static race(promises: Array&lt;ICallbackFn&gt;) {
+  return new PromiseLike((resolve, reject) =&gt; {
+    for (let i = 0; i &lt; promises.length; i++) {
+      const currentPromise = promises[i];
+      PromiseLike.resolve(currentPromise)
+        .then((res: any) =&gt; {
+          resolve(res);
+        })
+        .catch((err: any) =&gt; {
+          reject(err);
+        });
+    }
+  });
+}
+}
+复制代码
+</code></pre></div></li> <li><ul><li>遍历顺序执行所有 Promise 并取出第一个 resolve 的值。</li></ul></li> <li><p>再运行这样一段代码，得到的结果应该并不会让你意外。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.race([]); // Promise {&lt;pending&gt;} 与 Promise.all 的结果不同
+复制代码
+</code></pre></div></li> <li><p>至此，目前已广泛兼容的两个核心方法我们都已经实现了。这是不是意味着可以愉快的玩耍了呢，当然可以。不过，既然都走到这一步了，我们顺带可以实现更多的 <code>Promise</code> 方法，一来锻炼动手能力，二来证明学以致用。</p></li></ul> <h3 id="_03-04-其他静态方法"><a href="#_03-04-其他静态方法" class="header-anchor">#</a> 03.04 其他静态方法</h3> <h4 id="promise-allsettled"><a href="#promise-allsettled" class="header-anchor">#</a> <code>Promise.allSettled</code></h4> <ul><li><p>这个方法和 <code>Promise.all</code> 非常相似，执行所有的 <code>Promise</code> 实例并返回所有的结果，不论结果如何，都在返回的数组里塞回一个对象。</p></li> <li><ul><li>每个对象只有两个属性 <code>status</code> 和 <code>value</code> 或 <code>reason</code>；如果当前 <code>proimse</code> 是 <code>fulfilled</code> 则属性是 <code>status</code> 和 <code>value</code>, 如果当前是 <code>rejected</code> 则属性是 <code>status</code> 和 <code>reason</code>.</li></ul></li> <li><p>对 <code>Promise.all</code> 稍加改动就可以实现。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><ul><li>判断计数的逻辑在两个回调函数中都进行，并且对返回值加一层包装。</li></ul></li> <li><p>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled</p></li> <li><p>@param promises 严格意义上来说，参数是可迭代对象，为了简化实现这里统一成数组</p></li> <li><p>@returns */ static allSettled(promises: Array) { // 支持链式调用 return new PromiseLike((resolve, reject) =&gt; { const len = promises.length; const startTime = Date.now(); let resolvedPromisesCount = 0; let resolvedPromisesResult =[];</p> <p>for (let i = 0; i &lt; len; i++) { const currentPromise = promises[i]; // 如果不是 Promise 实例，则需要包装一份；// 但因为直接包装 Promise 类的效果是幂等的，所以这里不需要判断，直接处理即可 PromiseLike.resolve(currentPromise) .then((res: any) =&gt; { resolvedPromisesCount++; resolvedPromisesResult[i] = { status: PROMISE_STATES.FULFILLED, value: res }; // 当所有 promises 完成后，返回数组；多封装了一个属性用于显示执行时间 if (resolvedPromisesCount === len) { resolvedPromisesResult.duringTime = Date.now() - startTime + 'ms'; resolve(resolvedPromisesResult); } }) // 如果有任意一个异常，则直接推出 .catch((err: any) =&gt; { resolvedPromisesCount++; resolvedPromisesResult[i] = { status: PROMISE_STATES.REJECTED, reason: err }; if (resolvedPromisesCount === len) { resolvedPromisesResult.duringTime = Date.now() - startTime + 'ms'; resolve(resolvedPromisesResult); } }); } }); } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>#### `Promise.any`
+
+- 这是今年\(2021\)刚刚落定草案的新 API。定义和 `Promise.race` 很相似，接收可迭代对象作为参数，可以链式调用。
+
+- 不同的是，它会返回第一个落定的，也就是 `resolve` 的值；如果传入的 `promise` 全都都进入拒绝状态，则它会等到所有拒绝状态都完成后，再返回一个由拒绝错误组成的对象。这个对象是新定义的类型 [AggregateError](https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FAggregateError &quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/AggregateError&quot;)，这里暂且先不展开，直接使用它。
+
+- 从定义上来看，它和 `Promise.race` 相似，不过从实现上观察，却和 `Promise.all` 更加相似。
+
+ -    只需要把计算数量的逻辑搬到错误回调中，并将其返回错误对象即可。
+
+```javascript
+class PromiseLike {
+/**
+ * 2021 年刚纳入规范的 any
+* https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
+* @param promises
+* @returns
+*/
+static any(promises: Array&lt;ICallbackFn&gt;) {
+  return new PromiseLike((resolve, reject) =&gt; {
+    const len = promises.length;
+    let rejectedPromisesCount = 0;
+    let rejectedPromisesResult = &lt;any&gt;[];
+    for (let i = 0; i &lt; promises.length; i++) {
+      const currentPromise = promises[i];
+      PromiseLike.resolve(currentPromise)
+        .then((res: any) =&gt; {
+          resolve(res);
+        })
+        .catch((err: any) =&gt; {
+          rejectedPromisesCount++;
+          rejectedPromisesResult[i] = err;
+          if (rejectedPromisesCount === len) {
+            // 如果浏览器支持，则直接抛出这个新对象，否则则直接抛出异常
+            if (isFunction(AggregateError)) {
+              throw new AggregateError(rejectedPromisesResult, 'All promises were rejected');
+            } else {
+              throw (rejectedPromisesResult);
+            }
+          }
+        });
+    }
+  })
+}
+}
+复制代码
+</code></pre></div><h2 id="_04-promise-a-规范"><a href="#_04-promise-a-规范" class="header-anchor">#</a> 04.Promise/A+规范</h2> <h3 id="_04-01-promises-aplus-tests-验证"><a href="#_04-01-promises-aplus-tests-验证" class="header-anchor">#</a> 04.01 promises-aplus-tests 验证</h3> <ul><li><p>这个库 <strong>promises-aplus-tests</strong>[17] 可以用来验证我们实现的 <code>Promise</code> 是否遵循 <strong>Promise/A+规范</strong>[18] 。</p></li> <li><p>使用方式比较简单，注入一个方法即可，这个方法返回的对象包含 <code>Promise/resolve/reject</code>.</p></li> <li><p>由于我们使用类的方式编写，所以直接新增一个静态函数即可。</p> <div class="language- extra-class"><pre class="language-text"><code>class PromiseLike {
+/**
+ * 三方库验证
+* @returns
+*/
+static deferred() {
+  let defer: any = {};
+  defer.promise = new PromiseLike((resolve, reject) =&gt; {
+    defer.resolve = resolve;
+    defer.reject = reject;
+  });
+  return defer;
+}
+}
+复制代码
+</code></pre></div></li> <li><p>需要注意的是，要用 <code>commonjs</code> 规范的方式来导出，否则会出现报错。</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = PromiseLike;
+复制代码
+</code></pre></div></li> <li><p>运行 <code>npx promises-aplus-tests 目录名</code> 进行验证。</p></li></ul> <h3 id="_04-02-并不完美-兼容修复"><a href="#_04-02-并不完美-兼容修复" class="header-anchor">#</a> 04.02 并不完美（兼容修复）</h3> <ul><li>运行结果显示，有部分 case 没有通过。糟透了！下面一一提取。</li></ul> <h4 id="chaining-cycle-detected-for-promise"><a href="#chaining-cycle-detected-for-promise" class="header-anchor">#</a> 'Chaining cycle detected for promise'</h4> <ul><li><p>这个异常显示，我们不能在 <code>promise</code> 中使用自身，否则会造成死循环。</p></li> <li><p>举个例子：</p> <div class="language- extra-class"><pre class="language-text"><code>const p = Promise.resolve(1).then(() =&gt; p);
+复制代码
+</code></pre></div></li> <li><p>运行这段代码，就会得到上述报错。</p></li> <li><p>解决办法并不难，定义变量来保存 <code>then</code> 函数的返回值，同时在内部方法返回的位置进行兼容处理，如果相等就抛出异常。</p> <div class="language- extra-class"><pre class="language-text"><code>const res = onFulfilled(val);
+// 返回的 promise 不可以是当前的 promise 否则会造成死循环
+if (newPromise === res) {
+ throw new TypeError('Chaining cycle detected for promise #&lt;Promise&gt;');
+}
+复制代码
+</code></pre></div></li></ul> <h4 id="_2-3-3-otherwise-if-x-is-an-object-or-function"><a href="#_2-3-3-otherwise-if-x-is-an-object-or-function" class="header-anchor">#</a> <code>2.3.3: Otherwise, if</code> x <code>is an object or function</code></h4> <ul><li><p>再次执行，发现 <code>Promise</code> 规范对传入参数是对象和函数类型也有着特殊的处理。我们并没有处理，所以出现了上述报错。<strong>规范里</strong>[19] 有所定义，我们可以简单理解为如果传入的参数是 <code>Thenable</code> 的，则需要调用其中的 <code>then</code> 方法，也就是将其展开调用。上文中自己有提到，终究是逃不过。</p></li> <li><p>之前我们仅仅对 <code>Promise</code> 的实例进行了特殊处理，现在意识到还需要处理 <code>Thenable</code> 接口的对象。但因为 <code>Promise</code> 实例本身就是实现 <code>Thenable</code> 接口的特殊对象。(<code>typeof Promise.resolve(1); // object</code>)，所以实现了对 <code>Thenable</code> 接口的处理，自然也能涵盖原有的逻辑。</p></li> <li><p>新定义一个单独的方法来实现，以提高可读性。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><ul><li>这个函数有些复杂，但每一条逻辑都可以在规范里追溯。</li></ul></li> <li><p>该实现遵循 Promise/A+ 规范</p></li> <li><p>https://github.com/promises-aplus/promises-spec</p></li> <li><p>@param promise</p></li> <li><p>@param x</p></li> <li><p>@param resolve</p></li> <li><p>@param reject</p></li> <li><p>@returns */ const resolvePromise = (promise: any, x: any, resolve: ICallbackFn, reject: ICallbackFn) =&gt;// 返回的 promise 不可以是当前的 promise 否则会造成死循环 if (newPromise === x) { reject(new TypeError('Chaining cycle detected for promise #')); } // 对可能是 thenable 接口实现的对象判断 if (isObject(x)| isFunction(x)) { if (x === null) { return resolve(x);let thenCb; try { thenCb = x.then; } catch (error) { return reject(error); }</p> <p>// 如果是 thenable 的对象，则调用其 then 方法 // 这一步涵盖了 Promise 实例的可能性 if (isFunction(thenCb)) { let isCalled = false; try { thenCb.call( x, // 指向当前函数或对象 (y: any) =&gt; { // 如果 resolvePromise 和 rejectPromise 都可能被调用 // 则只需调用第一次（resolvePromise 或 rejectPromise），后续无需再执行 if (isCalled) return; isCalled = true; // 传入当前函数，以实现递归展开调用 resolvePromise(promise, y, resolve, reject); }, (r: any) =&gt; { // 对应前面任意的调用之后，就不再只需后续逻辑 if (isCalled) return; isCalled = true; reject(r); } ) } catch (error) { if (isCalled) return; reject(error); } } else { resolve(x); } } else { resolve(x); } } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>- 在原先处理数据的地方，换成 `resolvePromise` 函数就可以了。
+
+- 这下是可算是完整通过测试了。
+
+```shell
+872 passing (14s)
+复制代码
+</code></pre></div><h2 id="_05-更多优化"><a href="#_05-更多优化" class="header-anchor">#</a> 05.更多优化</h2> <h3 id="_05-01-queuemicrosoft-20"><a href="#_05-01-queuemicrosoft-20" class="header-anchor">#</a> 05.01 queueMicrosoft[20]</h3> <ul><li>学习过程中，意外发现 <code>queueMicrosoft</code> 这个方法，用于将任务转换成微任务。我们知道 <code>setTimeout</code> 虽然可以实现异步的效果，但它属于宏任务，与 <code>Promise</code> 所属的微任务不符。所以可以用 <code>queueMicrosoft</code> 来替换。</li> <li>有关使用方式，可以<strong>查看这里</strong>[21]</li></ul> <h3 id="_05-02-typescript-完善"><a href="#_05-02-typescript-完善" class="header-anchor">#</a> 05.02 typescript 完善</h3> <ul><li><p>前面的例子里已经定义许多接口。这里举个例子完善一哈，更多详细内容可以查看下文的源码。</p> <div class="language- extra-class"><pre class="language-text"><code>export interface IPromiseType {
+then: IExecutorFn;
+catch: ICallbackFn;
+finally: ICallbackFn;
+}
+
+class PromiseLike implements IPromiseType {}
+复制代码
+</code></pre></div></li> <li><p>由于自己的 typescript 实践仍在学习中，可能源码中还存在许多值得改进和优化的地方，可以在评论或 issue 中指出，合理的改进建议一定会采纳并实践。</p></li> <li><p>使用版本：<code>&quot;typescript&quot;: &quot;^4.3.5&quot;</code></p></li></ul> <h3 id="_05-03-花里胡哨的变种方法"><a href="#_05-03-花里胡哨的变种方法" class="header-anchor">#</a> 05.03 花里胡哨的变种方法</h3> <h4 id="promise-last"><a href="#promise-last" class="header-anchor">#</a> <code>Promise.last</code></h4> <ul><li><p>定义一个函数，返回最后一个完成的 <code>promise</code>, 并且可以选择是否需要 <code>rejected</code> 的 <code>promise</code>.</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><p>返回最后一个完成的值，可以自行决定是否忽略异常</p></li> <li><p>如果不忽略，异常优先抛出</p></li> <li><p>如果忽略，返回完成值</p></li> <li><p>@param promises</p></li> <li><p>@param ignoreRejected</p></li> <li><p>@returns */ static last(promises: Array, ignoreRejected: boolean = false) { return new PromiseLike((resolve, reject) =&gt; { const len = promises.length; const startTime = Date.now(); let resolvedPromisesCount = 0;</p> <p>for (let i = 0; i &lt; len; i++) { const currentPromise = promises[i]; PromiseLike.resolve(currentPromise) .then((res: any) =&gt; { resolvedPromisesCount++; // 当所有 promises 完成后，返回最后一个值；封装一个属性用于显示执行时间 if (resolvedPromisesCount === len) { isObject(res) &amp;&amp; (res.duringTime = Date.now() - startTime + 'ms'); resolve(res); } }) // 如果有任意一个异常，则直接推出 .catch((err: any) =&gt; { if (ignoreRejected) { resolvedPromisesCount++; } else { reject(err) } }); } }); } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>- 还可以实现一个它的变种，即返回最后一个更新的值，不论是 `fulfilled` 或者 `rejected` 状态.源码有展示，这里不再赘述。
+
+#### `Promise.wrap`
+
+- 该方法可以将原来的普通异步请求包装成 `Promise` 实例，便于链式调用等。
+
+- 假设有这样一个请求处理函数。
+
+```ts
+function fn(url, cb) {
+ajax(url, cb);
+}
+复制代码
+</code></pre></div><ul><li><p>想让它变成可以使用链式调用，使用方式见注释。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><p>把不是 promise 实例的函数包装成 promise 实例</p></li> <li><p>例如 ajax 请求</p></li> <li><p>const request = Promise.wrap(ajax);</p></li> <li><p>request.then(callback);</p></li> <li><p>@param fn</p></li> <li><p>@returns */ static wrap(fn: any) { if (!isFunction(fn)) { return fn; } return function () { const args: any[] = Array.prototype.slice.call(arguments); return new PromiseLike((resolve) =&gt; { fn.apply(null, args.concat(function (res: any, err: any) { res &amp;&amp; resolve(res); err &amp;&amp; resolve(err); })); }) } } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>#### `Promise.sequence`
+
+- 链式调用的能力可以结合数组的 `reduce` 完成串行操作，把函数传入组合成新的函数。
+
+ -    这里的参数不涉及 `Promise` 实例，使用链式调用来实现。
+
+```ts
+/**
+* 返回一个函数来执行
+* @param fns
+* @returns
+*/
+static sequence(fns: Array&lt;ICallbackFn&gt;) {
+return (x: number) =&gt; fns.reduce((acc, fn: ICallbackFn) =&gt; {
+  if (!isFunction(fn)) {
+    fn = x =&gt; x;
+  }
+  return acc.then(fn).catch((err: any) =&gt; { throw err });
+}, PromiseLike.resolve(x));
+}
+复制代码
+</code></pre></div><ul><li><p>假设有多个函数，我们可以通过这样的操作来将它们组合，组合的内容是处理函数。</p> <div class="language- extra-class"><pre class="language-text"><code>function addThree(x) {
+return x + 3;
+}
+function addFive(x) {
+return x + 5;
+}
+const addEight = ProimseLike.sequence([addThree, addFive]);
+addEight(2); // 10
+复制代码
+</code></pre></div></li> <li><p>上面的函数其实已经实现了串行；还可以做一些改动把每个值按顺序保存下来。</p></li></ul> <h4 id="promise-sequencebyorder"><a href="#promise-sequencebyorder" class="header-anchor">#</a> <code>Promise.sequenceByOrder</code></h4> <ul><li><p>该方法顺序执行函数，并返回按完成顺序排列的值。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><p>串行执行所有 promises,并返回按返回顺序排列的数组</p></li> <li><p>注意接收的参数是返回 promise 实例的函数组成的数组</p></li> <li><p>@param promises</p></li> <li><p>@returns */ static sequenceByOrder(promises: Array) { return new PromiseLike((resolve) =&gt; { let promiseResults: any = []; const reduceRes = promises.reduce((prevPromise, currentPromise: ICallbackFn, currentIndex: number) =&gt; { return prevPromise.then((val: any) =&gt; { promiseResults.push(val); const newVal = currentPromise(val); // 最后一次循环时保存，并剔除第一个值（默认 undefined) if (currentIndex === promises.length - 1) { promiseResults.unshift(); } return newVal; }); }, PromiseLike.resolve()); reduceRes.then((val: any) =&gt; { promiseResults.push(val); resolve(promiseResults); }); }); } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>#### `Promise.map`
+
+- 定义一个可以处理所有 `promise` 值的函数，类似数组的 `map` 方法。
+
+```ts
+/**
+* 对每个 promise 的值进行特定的处理
+* Promise.map([p1, p2, p3], (val, resolve) =&gt; {
+*   resolve(val + 1);
+* })
+* @param promises
+* @param fn
+* @returns
+*/
+static map(promises: Array&lt;IPromiseType&gt;, fn: any) {
+return PromiseLike.all(promises.map((currentPromise) =&gt; {
+  return new PromiseLike((resolve) =&gt; {
+    if (!isFunction(fn)) {
+      fn = (val:any, resolve: ICallbackFn) =&gt; resolve(val);
+    }
+    fn(currentPromise, resolve);
+  })
+}));
+}
+复制代码
+</code></pre></div><h4 id="promise-observe"><a href="#promise-observe" class="header-anchor">#</a> <code>Promise.observe</code></h4> <ul><li><p>定义这样一个函数，用于清理 <code>promise</code> 相关的副作用，通常用在 <code>Promise.race</code> 中。假设我们使用 <code>Promise.race</code> 来设定超时，但仍然希望超时的场景里能够处理数据。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+</code></pre></div></li> <li><p>Promise.race([Promise.observe(p, cleanup // 处理函数), timeoutFn // 超时函数])</p></li> <li><p>@param promise</p></li> <li><p>@param fn</p></li> <li><p>@returns */ static observe(promise: IPromiseType, fn: ICallbackFn) { promise .then((res: any) =&gt; { PromiseLike.resolve(res).then(fn); }, (err) =&gt; { PromiseLike.resolve(err).then(fn); }); return promise; } 复制代码</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>## 06.源码
+
+### 06.01 部分源码
+
+- 所有源码虽不多，全部张贴出来也比较占版面。下面是 `then` 的完整实现。
+
+```ts
+class PromiseLike {
+/**
+ * 根据当前不同状态来执行对应逻辑
+* 如果在默认状态就是注册对应事件
+* 如果状态变化则是执行对应事件
+* @param onFulfilled
+* @param onRejected
+* @returns
+*/
+then = (onFulfilled?: CallbackParams, onRejected?: CallbackParams) =&gt; {
+  // 默认处理！！！
+  onFulfilled = isFunction(onFulfilled) ? onFulfilled : value =&gt; value;
+  onRejected = isFunction(onRejected) ? onRejected : err =&gt; { throw err };
+
+  /**
+   * 该实现遵循 Promise/A+ 规范
+  * https://github.com/promises-aplus/promises-spec
+  * @param promise
+  * @param x
+  * @param resolve
+  * @param reject
+  * @returns
+  */
+  const resolvePromise = (promise: IPromiseType, x: any, resolve: ICallbackFn, reject: ICallbackFn) =&gt; {
+    // 返回的 promise 不可以是当前的 promise 否则会造成死循环
+    if (newPromise === x) {
+      reject(new TypeError('Chaining cycle detected for promise #&lt;Promise&gt;'));
+    }
+    // 对可能是 thenable 接口实现的对象判断
+    if (isObject(x) || isFunction(x)) {
+      if (x === null) {
+        return resolve(x);
+      }
+      let thenCb;
+      try {
+        thenCb = x.then;
+      } catch (error) {
+        return reject(error);
+      }
+
+      // 如果是 thenable 的对象，则调用其 then 方法
+      // 这一步涵盖了 Promise 实例的可能性
+      if (isFunction(thenCb)) {
+        let isCalled = false;
+        try {
+          thenCb.call(
+            x, // 指向当前函数或对象
+            (y: any) =&gt; {
+              // 如果 resolvePromise 和 rejectPromise 都可能被调用
+              // 则只需调用第一次（resolvePromise 或 rejectPromise），后续无需再执行
+              if (isCalled) return;
+              isCalled = true;
+              // 传入当前函数，以实现递归展开调用
+              resolvePromise(promise, y, resolve, reject);
+            },
+            (r: any) =&gt; {
+              // 对应前面任意的调用之后，就不再只需后续逻辑
+              if (isCalled) return;
+              isCalled = true;
+              reject(r);
+            }
+          )
+        } catch (error) {
+          if (isCalled) return;
+          reject(error);
+        }
+      } else {
+        resolve(x);
+      }
+    } else {
+      resolve(x);
+    }
+  }
+
+  // 定义变量，用于传参进行比较
+  const newPromise = new PromiseLike((resolve, reject) =&gt; {
+    /**
+     * 封装完成回调函数
+    * @param val
+    */
+    const handleFulfilled = (val: any) =&gt; {
+      try {
+        const x = onFulfilled &amp;&amp; onFulfilled(val);
+        resolvePromise(newPromise, x, resolve, reject);
+      } catch (error) {
+        // 如果当前执行逻辑内发生异常，则抛出异常
+        reject(error);
+      };
+    };
+
+    /**
+     * 封装错误回调函数
+    * @param val
+    */
+    const handleRejected = (val: any) =&gt; {
+      try {
+        const x = onRejected &amp;&amp; onRejected(val);
+        resolvePromise(newPromise, x, resolve, reject);
+      } catch (error) {
+        reject(error);
+      }
+    }
+
+    switch (this.PromiseState) {
+      case PROMISE_STATES.PENDING:
+        this.resolveCallbackQueues.push(handleFulfilled);
+        this.rejectCallbackQueues.push(handleRejected);
+        break;
+      case PROMISE_STATES.FULFILLED:
+        handleFulfilled(this.PromiseResult);
+        break;
+      case PROMISE_STATES.REJECTED:
+        handleRejected(this.PromiseResult);
+        break;
+    }
+  });
+
+  return newPromise;
+}
+}
+复制代码
+</code></pre></div><h3 id="_06-02-全部源码"><a href="#_06-02-全部源码" class="header-anchor">#</a> 06.02 全部源码</h3> <ul><li><strong>Github 地址</strong>[22]</li></ul> <h2 id="_07-小结"><a href="#_07-小结" class="header-anchor">#</a> 07.小结</h2> <ul><li><p>在这次尝试实现 <code>Promise</code> 的过程中，自己也在边写边学。这是我理解和实践的整个思路，并不一定适用其他人；希望它能作为一种参考，启发或者影响到他人。在写这篇文章之前，我没想到会投入了整整两天时间，却也只是弄懂了些皮毛。而 <code>Promise</code> 内部显然还有许多值得探讨的地方，涉及的微任务， <code>async/await</code> 相关，迭代器和生成器；只是目前精力所限，先止于此。后面也许会解析迭代器和生成器的内容。</p></li> <li><p>整个实践，也是自己练习 <code>typescipt</code> 的过程，这里我使用类的方式编写，主要是便于自己理解；但它也完全可以用函数实现。<code>typescript</code> 编译后的代码就是函数的实现，而且是 js. 可以直接查看下面的地址了解。另外，其中内容的编译转换也是值得探索的。</p></li> <li><ul><li><strong>Github</strong>**：https://github.com/kyriejoshua/promise-like/blob/master/dist/index.js**</li></ul></li></ul> <p>关于本文</p> <h1 id="作者-deadpool-ky"><a href="#作者-deadpool-ky" class="header-anchor">#</a> 作者：deadpool_ky</h1> <p>https://juejin.cn/post/6987674192166518821</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/promise/基于把原生ajax封装为Promise形式.html" class="prev">
+        基于把原生ajax封装为Promise形式。
+      </a></span> <span class="next"><a href="/eight-essay/promise/异步循环打印.html">
+        实现异步循环打印
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/53.03ab34e0.js" defer></script>
+  </body>
+</html>

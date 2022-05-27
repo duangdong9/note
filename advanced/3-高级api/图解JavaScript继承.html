@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>图解 JavaScript 继承，一文搞定继承相关知识 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/24.1edc62bc.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced/" aria-current="page" class="sidebar-link">js 进阶</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>2-动画</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>3-高级api</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/advanced/3-高级api/JSB 原理与实践.html" class="sidebar-link">JSB 原理与实践</a></li><li><a href="/advanced/3-高级api/axios是如何封装HTTP请求的.html" class="sidebar-link">axios 是如何封装 HTTP 请求的</a></li><li><a href="/advanced/3-高级api/mutation-observer.html" class="sidebar-link">DOM 变动观察器（Mutation observer）</a></li><li><a href="/advanced/3-高级api/《You-Dont-Know-JS》笔记小计.html" class="sidebar-link">《You-Dont-Know-JS》笔记小计</a></li><li><a href="/advanced/3-高级api/前端鉴权.html" class="sidebar-link">前端鉴权必须了解的5个兄弟：cookie、session、token、jwt、单点登录</a></li><li><a href="/advanced/3-高级api/发布订阅模式.html" class="sidebar-link">JavaScript的发布订阅模式</a></li><li><a href="/advanced/3-高级api/图解JavaScript继承.html" class="active sidebar-link">图解 JavaScript 继承，一文搞定继承相关知识</a></li><li><a href="/advanced/3-高级api/基于js管理大文件上传以及断点续传.html" class="sidebar-link">基于js管理大文件上传以及断点续传</a></li><li><a href="/advanced/3-高级api/手写简易版的axios.html" class="sidebar-link">面试官不要再问我axios了？我能手写简易版的axios</a></li><li><a href="/advanced/3-高级api/页面生命周期.html" class="sidebar-link">页面生命周期：DOMContentLoaded，load，beforeunload，unload</a></li></ul></section></li><li><a href="/advanced/CORS完全手册之CORS详解.html" class="sidebar-link">CORS 完全手册之 CORS 详解</a></li><li><a href="/advanced/ES12新特性.html" class="sidebar-link">JavaScriptES12新特性抢先体验</a></li><li><a href="/advanced/前端模块化.html" class="sidebar-link">彻底掌握前端模块化</a></li><li><a href="/advanced/变量和类型-1.html" class="sidebar-link">变量和类型</a></li><li><a href="/advanced/变量和类型-2.html" class="sidebar-link">变量和类型-2</a></li><li><a href="/advanced/深入分析 JavaScript 模块循环引用.html" class="sidebar-link">深入分析 JavaScript 模块循环引用</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="图解-javascript-继承-一文搞定继承相关知识"><a href="#图解-javascript-继承-一文搞定继承相关知识" class="header-anchor">#</a> 图解 JavaScript 继承，一文搞定继承相关知识</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/PBY_HzcBSJIQDMCZ1Et1Lg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/PBY_HzcBSJIQDMCZ1Et1Lg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>继承是面向对象编程中讨论最多的话题。很多面向对象语言都支持两种继承：接口继承和实现继承。前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，因为函数没有签名。实现继承是 ECMAScript 唯一支持的继承方式，而这主要是通过原型链实现的。</p> <h2 id="原型知识前置"><a href="#原型知识前置" class="header-anchor">#</a> 原型知识前置</h2> <div class="language- extra-class"><pre class="language-text"><code>var Person = function(name){
+  this.name = name; // tip: 当函数执行时这个 this 指的是谁？
+};
+Person.prototype.getName = function(){
+  return this.name;  // tip: 当函数执行时这个 this 指的是谁？
+}
+var person1 = new Person('Mick');
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbiblqQGllQLxVwYQcugdZK3I2vr0rUttAUAEhk1hW8CwmPMgic2Nk7hfBiaQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="继承"><a href="#继承" class="header-anchor">#</a> 继承</h2> <h3 id="原型链继承"><a href="#原型链继承" class="header-anchor">#</a> 原型链继承</h3> <p>原型链定义为ECMA的主要继承方式。</p> <div class="language- extra-class"><pre class="language-text"><code>function Parent () {
+    this.name = 'kevin';
+}
+
+Parent.prototype.getName = function () {
+    console.log(this.name);
+}
+
+function Child () {
+
+}
+
+Child.prototype = new Parent();
+
+var child1 = new Child();
+
+console.log(child1.getName()) 
+</code></pre></div><p>原先是这样：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbiblArRLYhdFQx03r7jCrOd3vnyBuA4deEP5N1PAbib0yoH8vyxqZiall95A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>现在是这样：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>Child创建的对象的__proto__指向new Parent对象。contructor指向Parent构造函数。这里有一个问题是没有将原型对象的contructor指向Child。加一行代码就可以了。</p> <div class="language- extra-class"><pre class="language-text"><code>Child.prototype.constructor = Child;
+</code></pre></div><h4 id="缺点"><a href="#缺点" class="header-anchor">#</a> 缺点</h4> <ul><li>引用类型的属性被所有实例共享，<strong>值类型不会被共享，是因为当我们在执行[[get]]操作的时候会去查询原型链。执行[[put]]的时候，会自动给当前的对象创建一个属性</strong>。</li> <li>在创建 Child 的实例时，不能向Parent传参</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function Parent () {
+    this.name = 'kevin';
+   this.information = {
+     age: 12
+    }
+}
+
+Parent.prototype.getName = function () {
+    console.log(this.name);
+}
+
+function Child () {
+
+}
+
+Child.prototype = new Parent();
+
+var child1 = new Child();
+var child2 = new Child();
+
+console.log(child1.getName())
+</code></pre></div><p>子类型在实例化时不能给父类型的构造函数传参。事实上，我们无法在不影响所有对象实例的情况下把参数传进父类的构造函数。再加上之前提到的原型中包含引用值的问题，就导致原型链基本不会被单独使用。</p> <h3 id="借用构造函数继承【经典继承】"><a href="#借用构造函数继承【经典继承】" class="header-anchor">#</a> 借用构造函数继承【经典继承】</h3> <p>为了解决<strong>原型包含引用值导致的继承问题</strong>，一种叫作“盗用构造函数”（constructor stealing）的技术在开发社区流行起来（这种技术有时也称作“<strong>对象伪装</strong>”或“<strong>经典继承</strong>”）。</p> <p>基本思路很简单：在子类构造函数中调用父类构造函数。因为毕竟函数就是在特定上下文中执行代码的简单对象，所以可以使用apply()和 call()方法以新创建的对象为上下文执行构造函数。</p> <div class="language- extra-class"><pre class="language-text"><code>function Parent (name) {
+    this.name = name;
+}
+
+function Child (name) {
+    Parent.call(this, name);
+}
+
+var child1 = new Child('kevin');
+
+console.log(child1.name); // kevin
+
+var child2 = new Child('daisy');
+
+console.log(child2.name); // daisy
+</code></pre></div><p>原先是这样：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbiblq0la1RicERvnXtbak9uLFsoO6VFkWx6fmRomgWegZJxNmUM25h6IXwg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>现在是这样：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibl3LHqVKQ5bxsg6YkwYZtWQvvGmEInQcB503zjm7xtbzALtHvhUlicicxA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>从上图可以清楚看到：
+当前的继承方式是通过new操作的时候，绑定child的this执行Parent的方法，去执行一次Parent内部的方法。和原型链啥的没有任何关系。</p> <h4 id="缺点-2"><a href="#缺点-2" class="header-anchor">#</a> 缺点</h4> <p>盗用构造函数的主要缺点，也是使用构造函数模式自定义类型的问题：必须在构造函数中定义方法，因此<strong>函数不能重用【因为二者之间的函数是两个函数，本质是不相等的函数】</strong>。此外，子类也不能访问父类原型上定义的方法，因此所有类型只能使用<strong>构造函数模式</strong>。由于存在这些问题，盗用构造函数基本上也不能单独使用。</p> <h3 id="组合继承"><a href="#组合继承" class="header-anchor">#</a> 组合继承</h3> <p>组合继承（有时候也叫伪经典继承）综合了原型链和盗用构造函数，将两者的优点集中了起来。</p> <div class="language- extra-class"><pre class="language-text"><code>function Parent (name) {
+  console.log('执行Parent')
+    this.name = name;
+    this.colors = ['red', 'blue', 'green'];
+    this.publicMethod = () =&gt; {
+  }
+}
+
+Parent.prototype.getName = function () {
+    console.log(this.name)
+}
+
+function Child (name, age) {
+    Parent.call(this, name);
+    this.age = age;
+}
+
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
+
+var child1 = new Child('kevin', '18');
+
+child1.colors.push('black');
+
+console.log(child1.name); // kevin
+console.log(child1.age); // 18
+console.log(child1.colors); // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;black&quot;]
+
+var child2 = new Child('daisy', '20');
+
+console.log(child2.name); // daisy
+console.log(child2.age); // 20
+console.log(child2.colors); // [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibl0ic47icYAQ1uwrwibhgsoQLMXRUO4DMdxLmwtZHXDHh0VVNFnIuaBIyoA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>组合继承弥补了原型链和盗用构造函数的不足，是 JavaScript 中使用最多的继承模式。而且组合继承也保留了 instanceof 操作符和 isPrototypeOf()方法识别合成对象的能力。</p> <h3 id="原型式继承"><a href="#原型式继承" class="header-anchor">#</a> 原型式继承</h3> <p>2006 年，Douglas Crockford 写了一篇文章：《JavaScript 中的原型式继承》（“Prototypal Inheritance in JavaScript”）。这篇文章介绍了一种不涉及严格意义上构造函数的继承方法。他的出发点是即使不自定义类型也可以通过原型实现对象之间的信息共享。</p> <div class="language- extra-class"><pre class="language-text"><code>function object(o) { 
+ function F() {} 
+ F.prototype = o; 
+ return new F(); 
+}
+
+let person = { 
+ name: &quot;Nicholas&quot;, 
+ friends: [&quot;Shelby&quot;, &quot;Court&quot;, &quot;Van&quot;] 
+}; 
+
+let anotherPerson = object(person); 
+anotherPerson.name = &quot;Greg&quot;; 
+anotherPerson.friends.push(&quot;Rob&quot;); 
+
+let yetAnotherPerson = object(person); 
+yetAnotherPerson.name = &quot;Linda&quot;; 
+yetAnotherPerson.friends.push(&quot;Barbie&quot;); 
+console.log(person.friends); // &quot;Shelby,Court,Van,Rob,Barbie&quot;
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibll9OX4j9qdib5xoLakvHvHQORqrXBfQK7PEfibXm2cYdmfchNDxB2UccA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>原型式继承虽然说是不自定义类型来实现原型对象之间的信息共享，但是我们可以发现object里面还是自定义了一个类型，去实现原型链继承的方式。</p> <p><strong>特定场景</strong>：原型式继承非常适合不需要单独创建构造函数，你有一个对象，想在它的基础上再创建一个新对象。</p> <p>ECMAScript 5 通过增加 <strong>Object.create()</strong> 方法将原型式继承的概念规范化了。这个方法接收两个参数：作为新对象原型的对象，以及给新对象定义额外属性的对象（第二个可选）。</p> <h3 id="寄生式继承"><a href="#寄生式继承" class="header-anchor">#</a> 寄生式继承</h3> <p>与原型式继承比较接近的一种继承方式是寄生式继承（parasitic inheritance），也是 Crockford 首倡的一种模式。寄生式继承背后的思路类似于寄生构造函数和工厂模式：创建一个实现继承的函数，以某种方式增强对象，然后返回这个对象。</p> <p>这种模式依赖于上面的object方法，这里直接使用Obect.create()方法</p> <div class="language- extra-class"><pre class="language-text"><code>function createObj (o) {
+    var clone = Object.create(o);
+    clone.sayName = function () {
+        console.log('hi');
+    }
+    return clone;
+}
+</code></pre></div><p>这里的图和上面的基本相同，就不画了。这里说的是一种思想，在createObj的方法里统一对我们创建的对象做一些处理。</p> <h3 id="寄生组合式继承"><a href="#寄生组合式继承" class="header-anchor">#</a> 寄生组合式继承</h3> <p>组合继承其实也存在效率问题。最主要的效率问题就是父类构造函数始终会被调用两次：一次在是创建子类原型时调用，另一次是在子类构造函数中调用。本质上，子类原型最终是要包含超类对象的所有实例属性，子类构造函数只要在执行时重写自己的原型就行了。</p> <p>可以翻到组合继承的地方，看到Parent会被调用两次，call一次，原型对象一次。</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibl0ic47icYAQ1uwrwibhgsoQLMXRUO4DMdxLmwtZHXDHh0VVNFnIuaBIyoA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>寄生式组合继承通过盗用构造函数继承属性，但使用混合式原型链继承方法。基本思路是<strong>不通过调用父类构造函数给子类原型赋值，而是取得父类原型的一个副本</strong>。说到底就是使用寄生式继承来继承父类原型，然后将返回的新对象赋值给子类原型。</p> <div class="language- extra-class"><pre class="language-text"><code>function inheritPrototype(subType, superType) {
+    let prototype = Object.create(superType.prototype); // 创建对象
+    prototype.constructor = subType; // 增强对象
+    subType.prototype = prototype; // 赋值对象
+}
+
+function SuperType(name) {
+    this.name = name;
+    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;];
+}
+
+SuperType.prototype.sayName = function() {
+    console.log(this.name);
+};
+
+function SubType(name, age) {
+   console.log('执行SubType')
+    SuperType.call(this, name);
+    this.age = age;
+}
+
+inheritPrototype(SubType, SuperType);
+SubType.prototype.sayAge = function() {
+    console.log(this.age);
+};
+
+var subTupe1 = new SubType('name1', 1)
+var subTupe2 = new SubType('name2', 2)
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibloWv0cFW9IhD0YP3mVY0jBuGyRtXzJxIcejo1oL6GuhMhzoF3UFPnQQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="总结继承"><a href="#总结继承" class="header-anchor">#</a> 总结继承</h2> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbibluKKT6uDfjr0o7OKMiaTsza9M3svK0RkQs0ApaDyO9lySibWiaczlZDMPQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/HGbXibXadZe2HsQsXiaD8gAGdVfdaJHbiblUKt97ja2ospVZGl27DXw3XZRteheoRZq4PKJQPGpRM7DSXgwAb6X0g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="思考问题"><a href="#思考问题" class="header-anchor">#</a> 思考问题：</h2> <p>每个构造函数都有一个原型对象，原型有一个属性指回构造函数，而实例有一个内部指针指向原型。如果原型是另一个类型的实例呢？那就意味着这个原型本身有一个内部指针指向另一个原型，相应地另一个原型也有一个指针指向另一个构造函数。这样就在实例和原型之间构造了一条原型链。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h3 id="为什么要有继承呢"><a href="#为什么要有继承呢" class="header-anchor">#</a> 为什么要有继承呢？</h3> <p>通过【某种方式】让一个对象可以访问到另一个对象中的属性和方法，我们把这种方式称之为继承。避免在某一个构造函数中声明创建过多的方法。造成内存增加。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <h3 id="为什么会有借用构造函数继承呢"><a href="#为什么会有借用构造函数继承呢" class="header-anchor">#</a> 为什么会有借用构造函数继承呢？</h3> <p>首先谈到的是原型继承的缺点：</p> <p>继承的本质还是想共享属性，方法，实例当中有着自己从原型当中继承而来的属性和方法，<strong>自己独有</strong>。但是现在对于<strong>引用属性是共享</strong>的，实例之间彼此会互相影响。而且对于构造函数当中的属性值，不能通过传入参数来进行定义。</p> <p>构造函数是为了解决这个问题的。</p> <p>但是构造函数也有自己的缺点。没有应用原型链，失去了原型链的意义。实际上是普通函数的借用而已。所以基本不会单独使用。</p> <h3 id="组合继承的来源"><a href="#组合继承的来源" class="header-anchor">#</a> 组合继承的来源</h3> <ul><li>是将原型链继承和借用构造函数继承。</li> <li>原型继承实现原型链，借用构造函数继承，实现创建实例属性。</li></ul> <h3 id="原型式继承和寄生式继承来源"><a href="#原型式继承和寄生式继承来源" class="header-anchor">#</a> 原型式继承和寄生式继承来源</h3> <p>解决原型继承需要调用父类构造函数创建原型对象指向，通过原型式和寄生式来实现。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced/3-高级api/发布订阅模式.html" class="prev">
+        JavaScript的发布订阅模式
+      </a></span> <span class="next"><a href="/advanced/3-高级api/基于js管理大文件上传以及断点续传.html">
+        基于js管理大文件上传以及断点续传
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/24.1edc62bc.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>能否模拟实现JS的bind方法（高频考点） | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/68.b6e197f0.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>promise</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>this解析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/this解析/5种this绑定全面解析.html" class="sidebar-link">JavaScript深入之史上最全--5种this绑定全面解析</a></li><li><a href="/eight-essay/this解析/JavaScript深入之重新认识箭头函数的this.html" class="sidebar-link">JavaScript深入之重新认识箭头函数的this</a></li><li><a href="/eight-essay/this解析/apply原理.html" class="sidebar-link">一文搞懂 this、apply、call、bind</a></li><li><a href="/eight-essay/this解析/apply实现-1.html" class="sidebar-link">apply/call/bind 自我实现</a></li><li><a href="/eight-essay/this解析/apply实现.html" class="sidebar-link">防抖、节流、call、bind、apply、new、柯里化实现</a></li><li><a href="/eight-essay/this解析/bind实现.html" class="sidebar-link">js 实现 bind 的这五层，你在第几层？</a></li><li><a href="/eight-essay/this解析/可能是最好的 this 解析了.html" class="sidebar-link">可能是最好的 this 解析了</a></li><li><a href="/eight-essay/this解析/模拟实现call-1.html" class="sidebar-link">模拟实现call</a></li><li><a href="/eight-essay/this解析/深度广度解析call和apply原理.html" class="sidebar-link">深度广度解析 call 和 apply 原理、使用场景及实现</a></li><li><a href="/eight-essay/this解析/深度解析bind原理.html" class="sidebar-link">深度解析bind原理、使用场景及模拟实现</a></li><li><a href="/eight-essay/this解析/深度解析new原理及模拟实现.html" class="sidebar-link">深度解析 new 原理及模拟实现</a></li><li><a href="/eight-essay/this解析/能否模拟实现JS的bind方法.html" class="active sidebar-link">能否模拟实现JS的bind方法（高频考点）</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>手写题</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="能否模拟实现js的bind方法-高频考点"><a href="#能否模拟实现js的bind方法-高频考点" class="header-anchor">#</a> 能否模拟实现JS的bind方法（高频考点）</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/Sas7eltchfa9GaVQIMzSxA" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/Sas7eltchfa9GaVQIMzSxA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <blockquote><p>这是面试官问系列的第二篇，旨在帮助读者提升<code>JS</code>基础知识，包含<code>new、call、apply、this、继承</code>相关知识。
+<code>面试官问系列</code>文章如下：感兴趣的读者可以点击阅读。
+1.<a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650747275&amp;idx=1&amp;sn=bb679c3534bad87d5f9650e313fcf43e&amp;chksm=88663207bf11bb11a61ab43b345dafa881d1f5f9aab919b5646764dab6ec597ce44be4b13389&amp;token=769761577&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">面试官问：能否模拟实现JS的new操作符<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+2.面试官问：能否模拟实现JS的bind方法（本文）
+3.<a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650744687&amp;idx=1&amp;sn=ea517155eddbed9511cf6b5e2b9f24ca&amp;chksm=886624e3bf11adf540a6cb1e0f51077b0938757f389e1de666fc953635af167d9de9ea0278ff&amp;token=2051144447&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">面试官问：能否模拟实现JS的call和apply方法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+4.<a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650744695&amp;idx=1&amp;sn=63c761b9129c3c55ad7a2c21ddb4d82b&amp;chksm=886624fbbf11aded9c57e7846c98961848cee7871f5e10bac3bdb949e9135fbc2095ae677102&amp;token=1471663946&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">面试官问：JS的this指向<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+5.<a href="http://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650744527&amp;idx=1&amp;sn=3db8bffc690b1b6abd0c38ccaa0f37d3&amp;chksm=88662543bf11ac554181d36d618bcc5d058e555265a6963bc0e8a02ebe3cceee0ec61cee1383&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">面试官问：JS的继承<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>用过<code>React</code>的同学都知道，经常会使用<code>bind</code>来绑定<code>this</code>。</p> <div class="language- extra-class"><pre class="language-text"><code>import React, { Component } from 'react';
+class TodoItem extends Component{
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick(){
+        console.log('handleClick');
+    }
+    render(){
+        return  (
+            &lt;div onClick={this.handleClick}&gt;点击&lt;/div&gt;
+        );
+    };
+}
+export default TodoItem;
+</code></pre></div><p><strong>那么面试官可能会问是否想过<code>bind</code>到底做了什么，怎么模拟实现呢。</strong></p> <blockquote><p>附上之前写文章写过的一段话：已经有很多模拟实现<code>bind</code>的文章，为什么自己还要写一遍呢。学习就好比是座大山，人们沿着不同的路登山，分享着自己看到的风景。你不一定能看到别人看到的风景，体会到别人的心情。只有自己去登山，才能看到不一样的风景，体会才更加深刻。</p></blockquote> <p>先看一下<code>bind</code>是什么。从上面的<code>React</code>代码中，可以看出<code>bind</code>执行后是函数，并且每个函数都可以执行调用它。眼见为实，耳听为虚。读者可以在控制台一步步点开<strong>例子1</strong>中的<code>obj</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>var obj = {};
+console.log(obj);
+console.log(typeof Function.prototype.bind); // function
+console.log(typeof Function.prototype.bind());  // function
+console.log(Function.prototype.bind.name);  // bind
+console.log(Function.prototype.bind().name);  // bound
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_png/Mpt86EGjlpsvT5hPrdvtpxo2ZKOm1kNDLLLkN0Esdw7FD4iaVbtWKjpGnqK9usznCicW7SaLV5nRWWQGgMCENVew/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"><code>Function.prototype.bind</code></p> <h3 id="因此可以得出结论1"><a href="#因此可以得出结论1" class="header-anchor">#</a> 因此可以得出结论1：</h3> <p>1、<code>bind</code>是<code>Functoin</code>原型链中<code>Function.prototype</code>的一个属性，每个函数都可以调用它。
+2、<code>bind</code>本身是一个函数名为<code>bind</code>的函数，返回值也是函数，函数名是<code>bound</code>。（打出来就是<code>bound加上一个空格</code>）。知道了<code>bind</code>是函数，就可以传参，而且返回值<code>'bound '</code>也是函数，也可以传参，就很容易写出<strong>例子2</strong>：
+后文统一 <code>bound</code> 指原函数<code>original</code> <code>bind</code>之后返回的函数，便于说明。</p> <div class="language- extra-class"><pre class="language-text"><code>var obj = {
+    name: '若川',
+};
+function original(a, b){
+    console.log(this.name);
+    console.log([a, b]);
+    return false;
+}
+var bound = original.bind(obj, 1);
+var boundResult = bound(2); // '若川', [1, 2]
+console.log(boundResult); // false
+console.log(original.bind.name); // 'bind'
+console.log(original.bind.length); // 1
+console.log(original.bind().length); // 2 返回original函数的形参个数
+console.log(bound.name); // 'bound original'
+console.log((function(){}).bind().name); // 'bound '
+console.log((function(){}).bind().length); // 0
+</code></pre></div><h3 id="由此可以得出结论2"><a href="#由此可以得出结论2" class="header-anchor">#</a> 由此可以得出结论2：</h3> <p>1、调用<code>bind</code>的函数中的<code>this</code>指向<code>bind()</code>函数的第一个参数。</p> <p>2、传给<code>bind()</code>的其他参数接收处理了，<code>bind()</code>之后返回的函数的参数也接收处理了，也就是说合并处理了。</p> <p>3、并且<code>bind()</code>后的<code>name</code>为<code>bound + 空格 + 调用bind的函数名</code>。如果是匿名函数则是<code>bound + 空格</code>。</p> <p>4、<code>bind</code>后的返回值函数，执行后返回值是原函数（<code>original</code>）的返回值。</p> <p>5、<code>bind</code>函数形参（即函数的<code>length</code>）是<code>1</code>。<code>bind</code>后返回的<code>bound</code>函数形参不定，根据绑定的函数原函数（<code>original</code>）形参个数确定。</p> <p>根据结论2：我们就可以简单模拟实现一个简版<code>bindFn</code></p> <div class="language- extra-class"><pre class="language-text"><code>// 第一版 修改this指向，合并参数
+Function.prototype.bindFn = function bind(thisArg){
+    if(typeof this !== 'function'){
+        throw new TypeError(this + 'must be a function');
+    }
+    // 存储函数本身
+    var self = this;
+    // 去除thisArg的其他参数 转成数组
+    var args = [].slice.call(arguments, 1);
+    var bound = function(){
+        // bind返回的函数 的参数转成数组
+        var boundArgs = [].slice.call(arguments);
+        // apply修改this指向，把两个函数的参数合并传给self函数，并执行self函数，返回执行结果
+        return self.apply(thisArg, args.concat(boundArgs));
+    }
+    return bound;
+}
+// 测试
+var obj = {
+    name: '若川',
+};
+function original(a, b){
+    console.log(this.name);
+    console.log([a, b]);
+}
+var bound = original.bindFn(obj, 1);
+bound(2); // '若川', [1, 2]
+</code></pre></div><p>如果面试官看到你答到这里，估计对你的印象60、70分应该是会有的。但我们知道函数是可以用<code>new</code>来实例化的。那么<code>bind()</code>返回值函数会是什么表现呢。
+接下来看<strong>例子3</strong>：</p> <div class="language- extra-class"><pre class="language-text"><code>var obj = {
+    name: '若川',
+};
+function original(a, b){
+    console.log('this', this); // original {}
+    console.log('typeof this', typeof this); // object
+    this.name = b;
+    console.log('name', this.name); // 2
+    console.log('this', this);  // original {name: 2}
+    console.log([a, b]); // 1, 2
+}
+var bound = original.bind(obj, 1);
+var newBoundResult = new bound(2);
+console.log(newBoundResult, 'newBoundResult'); // original {name: 2}
+</code></pre></div><p>从<strong>例子3</strong>种可以看出<code>this</code>指向了<code>new bound()</code>生成的新对象。</p> <h3 id="可以分析得出结论3"><a href="#可以分析得出结论3" class="header-anchor">#</a> 可以分析得出结论3：</h3> <p>1、<code>bind</code>原先指向<code>obj</code>的失效了，其他参数有效。</p> <p>2、<code>new bound</code>的返回值是以<code>original</code>原函数构造器生成的新对象。<code>original</code>原函数的<code>this</code>指向的就是这个新对象。另外前不久写过一篇文章：<a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650747275&amp;idx=1&amp;sn=bb679c3534bad87d5f9650e313fcf43e&amp;chksm=88663207bf11bb11a61ab43b345dafa881d1f5f9aab919b5646764dab6ec597ce44be4b13389&amp;token=769761577&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">面试官问：能否模拟实现JS的new操作符<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。简单摘要：<strong>new做了什么：</strong></p> <blockquote><p>1.创建了一个全新的对象。
+2.这个对象会被执行<code>[[Prototype]]</code>（也就是<code>__proto__</code>）链接。
+3.生成的新对象会绑定到函数调用的this。
+4.通过<code>new</code>创建的每个对象将最终被<code>[[Prototype]]</code>链接到这个函数的<code>prototype</code>对象上。
+5.如果函数没有返回对象类型<code>Object</code>(包含<code>Functoin</code>, <code>Array</code>, <code>Date</code>, <code>RegExg</code>, <code>Error</code>)，那么<code>new</code>表达式中的函数调用会自动返回这个新的对象。</p></blockquote> <p>所以相当于<code>new</code>调用时，<code>bind</code>的返回值函数<code>bound</code>内部要模拟实现<code>new</code>实现的操作。话不多说，直接上代码。</p> <div class="language- extra-class"><pre class="language-text"><code>// 第三版 实现new调用
+Function.prototype.bindFn = function bind(thisArg){
+    if(typeof this !== 'function'){
+        throw new TypeError(this + ' must be a function');
+    }
+    // 存储调用bind的函数本身
+    var self = this;
+    // 去除thisArg的其他参数 转成数组
+    var args = [].slice.call(arguments, 1);
+    var bound = function(){
+        // bind返回的函数 的参数转成数组
+        var boundArgs = [].slice.call(arguments);
+        var finalArgs = args.concat(boundArgs);
+        // new 调用时，其实this instanceof bound判断也不是很准确。es6 new.target就是解决这一问题的。
+        if(this instanceof bound){
+            // 这里是实现上文描述的 new 的第 1, 2, 4 步
+            // 1.创建一个全新的对象
+            // 2.并且执行[[Prototype]]链接
+            // 4.通过`new`创建的每个对象将最终被`[[Prototype]]`链接到这个函数的`prototype`对象上。
+            // self可能是ES6的箭头函数，没有prototype，所以就没必要再指向做prototype操作。
+            if(self.prototype){
+                // ES5 提供的方案 Object.create()
+                // bound.prototype = Object.create(self.prototype);
+                // 但 既然是模拟ES5的bind，那浏览器也基本没有实现Object.create()
+                // 所以采用 MDN ployfill方案 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+                function Empty(){}
+                Empty.prototype = self.prototype;
+                bound.prototype = new Empty();
+            }
+            // 这里是实现上文描述的 new 的第 3 步
+            // 3.生成的新对象会绑定到函数调用的`this`。
+            var result = self.apply(this, finalArgs);
+            // 这里是实现上文描述的 new 的第 5 步
+            // 5.如果函数没有返回对象类型`Object`(包含`Functoin`, `Array`, `Date`, `RegExg`, `Error`)，
+            // 那么`new`表达式中的函数调用会自动返回这个新的对象。
+            var isObject = typeof result === 'object' &amp;&amp; result !== null;
+            var isFunction = typeof result === 'function';
+            if(isObject || isFunction){
+                return result;
+            }
+            return this;
+        }
+        else{
+            // apply修改this指向，把两个函数的参数合并传给self函数，并执行self函数，返回执行结果
+            return self.apply(thisArg, finalArgs);
+        }
+    };
+    return bound;
+}
+</code></pre></div><p>面试官看到这样的实现代码，基本就是满分了，心里独白：这小伙子/小姑娘不错啊。不过可能还会问<code>this instanceof bound</code>不准确问题。上文注释中提到<code>this instanceof bound</code>也不是很准确，<code>ES6 new.target</code>很好的解决这一问题，我们举个<strong>例子4</strong>:</p> <h3 id="instanceof-不准确-es6-new-target很好的解决这一问题"><a href="#instanceof-不准确-es6-new-target很好的解决这一问题" class="header-anchor">#</a> <code>instanceof</code> 不准确，<code>ES6 new.target</code>很好的解决这一问题</h3> <div class="language- extra-class"><pre class="language-text"><code>function Student(name){
+    if(this instanceof Student){
+        this.name = name;
+        console.log('name', name);
+    }
+    else{
+        throw new Error('必须通过new关键字来调用Student。');
+    }
+}
+var student = new Student('若');
+var notAStudent = Student.call(student, '川'); // 不抛出错误，且执行了。
+console.log(student, 'student', notAStudent, 'notAStudent');
+
+function Student2(name){
+    if(typeof new.target !== 'undefined'){
+        this.name = name;
+        console.log('name', name);
+    }
+    else{
+        throw new Error('必须通过new关键字来调用Student2。');
+    }
+}
+var student2 = new Student2('若');
+var notAStudent2 = Student2.call(student2, '川');
+console.log(student2, 'student2', notAStudent2, 'notAStudent2'); // 抛出错误
+</code></pre></div><p>细心的同学可能会发现了这版本的代码没有实现<code>bind</code>后的<code>bound</code>函数的<code>name</code>MDN Function.name和<code>length</code>MDN Function.length。面试官可能也发现了这一点继续追问，如何实现，或者问是否看过<code>es5-shim</code>的源码实现<code>L201-L335</code>。如果不限<code>ES</code>版本。其实可以用<code>ES5</code>的<code>Object.defineProperties</code>来实现。</p> <div class="language- extra-class"><pre class="language-text"><code>Object.defineProperties(bound, {
+    'length': {
+        value: self.length,
+    },
+    'name': {
+        value: 'bound ' + self.name,
+    }
+});
+</code></pre></div><h3 id="es5-shim的源码实现bind"><a href="#es5-shim的源码实现bind" class="header-anchor">#</a> <code>es5-shim</code>的源码实现<code>bind</code></h3> <p>直接附上源码（有删减注释和部分修改等）</p> <div class="language- extra-class"><pre class="language-text"><code>var $Array = Array;
+var ArrayPrototype = $Array.prototype;
+var $Object = Object;
+var array_push = ArrayPrototype.push;
+var array_slice = ArrayPrototype.slice;
+var array_join = ArrayPrototype.join;
+var array_concat = ArrayPrototype.concat;
+var $Function = Function;
+var FunctionPrototype = $Function.prototype;
+var apply = FunctionPrototype.apply;
+var max = Math.max;
+// 简版 源码更复杂些。
+var isCallable = function isCallable(value){
+    if(typeof value !== 'function'){
+        return false;
+    }
+    return true;
+};
+var Empty = function Empty() {};
+// 源码是 defineProperties
+// 源码是bind笔者改成bindFn便于测试
+FunctionPrototype.bindFn = function bind(that) {
+    var target = this;
+    if (!isCallable(target)) {
+        throw new TypeError('Function.prototype.bind called on incompatible ' + target);
+    }
+    var args = array_slice.call(arguments, 1);
+    var bound;
+    var binder = function () {
+        if (this instanceof bound) {
+            var result = apply.call(
+                target,
+                this,
+                array_concat.call(args, array_slice.call(arguments))
+            );
+            if ($Object(result) === result) {
+                return result;
+            }
+            return this;
+        } else {
+            return apply.call(
+                target,
+                that,
+                array_concat.call(args, array_slice.call(arguments))
+            );
+        }
+    };
+    var boundLength = max(0, target.length - args.length);
+    var boundArgs = [];
+    for (var i = 0; i &lt; boundLength; i++) {
+        array_push.call(boundArgs, '$' + i);
+    }
+    // 这里是Function构造方式生成形参length $1, $2, $3...
+    bound = $Function('binder', 'return function (' + array_join.call(boundArgs, ',') + '){ return binder.apply(this, arguments); }')(binder);
+
+    if (target.prototype) {
+        Empty.prototype = target.prototype;
+        bound.prototype = new Empty();
+        Empty.prototype = null;
+    }
+    return bound;
+};
+</code></pre></div><p>你说出<code>es5-shim</code>源码<code>bind</code>实现，感慨这代码真是高效、严谨。面试官心里独白可能是：你就是我要找的人，薪酬福利你可以和<code>HR</code>去谈下。</p> <h2 id="最后总结一下"><a href="#最后总结一下" class="header-anchor">#</a> 最后总结一下</h2> <p>1、<code>bind</code>是<code>Function</code>原型链中的<code>Function.prototype</code>的一个属性，它是一个函数，修改<code>this</code>指向，合并参数传递给原函数，返回值是一个新的函数。
+2、<code>bind</code>返回的函数可以通过<code>new</code>调用，这时提供的<code>this</code>的参数被忽略，指向了<code>new</code>生成的全新对象。内部模拟实现了<code>new</code>操作符。
+3、<code>es5-shim</code>源码模拟实现<code>bind</code>时用<code>Function</code>实现了<code>length</code>。
+事实上，平时其实很少需要使用自己实现的投入到生成环境中。但面试官通过这个面试题能考察很多知识。比如<code>this</code>指向，原型链，闭包，函数等知识，可以扩展很多。
+读者发现有不妥或可改善之处，欢迎指出。另外觉得写得不错，可以点个赞，也是对笔者的一种支持。</p> <p>文章中的例子和测试代码放在<code>github</code>中bind模拟实现 github。bind模拟实现 预览地址 <code>F12</code>看控制台输出，结合<code>source</code>面板查看效果更佳。</p> <div class="language- extra-class"><pre class="language-text"><code>// 最终版 删除注释 详细注释版请看上文
+Function.prototype.bind = Function.prototype.bind || function bind(thisArg){
+    if(typeof this !== 'function'){
+        throw new TypeError(this + ' must be a function');
+    }
+    var self = this;
+    var args = [].slice.call(arguments, 1);
+    var bound = function(){
+        var boundArgs = [].slice.call(arguments);
+        var finalArgs = args.concat(boundArgs);
+        if(this instanceof bound){
+            if(self.prototype){
+                function Empty(){}
+                Empty.prototype = self.prototype;
+                bound.prototype = new Empty();
+            }
+            var result = self.apply(this, finalArgs);
+            var isObject = typeof result === 'object' &amp;&amp; result !== null;
+            var isFunction = typeof result === 'function';
+            if(isObject || isFunction){
+                return result;
+            }
+            return this;
+        }
+        else{
+            return self.apply(thisArg, finalArgs);
+        }
+    };
+    return bound;
+}
+</code></pre></div><h2 id="推荐阅读"><a href="#推荐阅读" class="header-anchor">#</a> 推荐阅读</h2> <p><a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650745461&amp;idx=1&amp;sn=eee04a825483aa9187b4e5f52b20b2fe&amp;chksm=886629f9bf11a0ef421eed7d42fe76a0b2431746116a60e76cb919d985fd78e847fb7669832e&amp;token=678682054&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">我在阿里招前端，我该怎么帮你？（现在还可以加模拟面试群）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650745366&amp;idx=1&amp;sn=247eab2756abbf2dfecb43398c64c71a&amp;chksm=8866299abf11a08ca4a2836ef3dd4cc46ba58b4da9adbb036545e7b291696a2cf7dc72a46e62&amp;token=1789278776&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">如何拿下阿里巴巴 P6 的前端 Offer<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650745128&amp;idx=1&amp;sn=ac84f8a38008e45e368c17a99a9338c2&amp;chksm=88662aa4bf11a3b202c62ae0bfd131c40bd1afb0937b129ff8d8c0e028691a1b3b63b483803c&amp;token=605825829&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">如何准备阿里P6/P7前端面试--项目经历准备篇<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650744843&amp;idx=1&amp;sn=3f9d80765a4c543f90a8d804beb74b80&amp;chksm=88662b87bf11a291e49cefafd70335a9fbbc284a11e95542a328d44d5da51b370b2838252216&amp;token=605825829&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">大厂面试官常问的亮点，该如何做出？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650745439&amp;idx=1&amp;sn=21297c7333f3e8417472dc5358032a50&amp;chksm=886629d3bf11a0c572a6c876c38c0f3c44dc3d93eb5d6f066129008e2d236f5401f13a78ccf9&amp;token=678682054&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">如何从初级到专家(P4-P7)打破成长瓶颈和有效突破<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+**<a href="https://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650744727&amp;idx=1&amp;sn=c0709ea50ef9a91ae157cac7d3638cc0&amp;chksm=8866241bbf11ad0d5f5f1bf1c5c93a46a2092b9fdc9eb399c31d001e03b13748fb1a22335afe&amp;token=192125900&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">若川知乎问答：2年前端经验，做的项目没什么技术含量，怎么办？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+**<strong><a href="http://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650746362&amp;idx=1&amp;sn=afe3a26cdbde1d423aae4fa99355f369&amp;chksm=88662e76bf11a760a7f0a8565b9e8d52f5e4f056dc2682f213eec6475127d71f6f1d203d6c3a&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">若川知乎高赞：有哪些必看的 JS库？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></strong></p> <h2 id="末尾"><a href="#末尾" class="header-anchor">#</a> 末尾</h2> <p><strong>你好，我是</strong><a href="http://mp.weixin.qq.com/s?__biz=MzA5MjQwMzQyNw==&amp;mid=2650746939&amp;idx=2&amp;sn=8744a672d3e176b4c6a846fd623d533f&amp;chksm=886633b7bf11baa11df53a388ae583e6f0db3f59c8fb5638426d4758279ffbdc12fe96b38958&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">若川，江湖人称菜如若川，历时一年只写了一个学习源码整体架构系列<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a><strong>~(点击蓝字了解我)</strong></p> <ol><li>关注<code>若川视野</code>，回复&quot;pdf&quot; 领取优质前端书籍pdf，回复&quot;1&quot;，可加群长期交流学习</li> <li>我的博客地址：https://lxchuan12.gitee.io 欢迎收藏</li> <li>觉得文章不错，可以点个<code>在看</code>呀^_^另外欢迎<code>留言</code>交流～</li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/this解析/深度解析new原理及模拟实现.html" class="prev">
+        深度解析 new 原理及模拟实现
+      </a></span> <span class="next"><a href="/eight-essay/作用域闭包/JavaScript深入之闭包面试题解.html">
+        JavaScript深入之闭包面试题解
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/68.b6e197f0.js" defer></script>
+  </body>
+</html>

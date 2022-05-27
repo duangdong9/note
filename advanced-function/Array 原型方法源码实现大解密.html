@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Array 原型方法源码实现大解密 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/8.89fa1943.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link router-link-active">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link router-link-active">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced-function/" aria-current="page" class="sidebar-link">高阶函数</a></li><li><a href="/advanced-function/Array 原型方法源码实现大解密.html" class="active sidebar-link">Array 原型方法源码实现大解密</a></li><li><a href="/advanced-function/JavaScript 高阶函数浅析.html" class="sidebar-link">JavaScript 高阶函数浅析</a></li><li><a href="/advanced-function/一文讲懂什么是函数柯里化.html" class="sidebar-link">一文讲懂什么是函数柯里化，柯里化的目的及其代码实现</a></li><li><a href="/advanced-function/函数式编程.html" class="sidebar-link">函数式编程</a></li><li><a href="/advanced-function/函数柯里化实现.html" class="sidebar-link">函数柯里化</a></li><li><a href="/advanced-function/如何使用异步 add 来实现一个 sum 函数.html" class="sidebar-link">头条面试题：如何使用异步 add 来实现一个 sum 函数</a></li><li><a href="/advanced-function/深入高阶函数应用之柯里化.html" class="sidebar-link">深入高阶函数应用之柯里化</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="array-原型方法源码实现大解密"><a href="#array-原型方法源码实现大解密" class="header-anchor">#</a> Array 原型方法源码实现大解密</h2> <blockquote><p><a href="https://muyiy.cn/blog/6/6.3.html#%E5%BC%95%E8%A8%80" target="_blank" rel="noopener noreferrer">https://muyiy.cn/blog/6/6.3.html#引言<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h2> <p>几个常用数组方法的使用方式已经在【进阶 6-1 期】 中介绍过了，今天这篇文章主要看看 ECMA-262 规范中是如何定义这些方法的，并且在看完规范后我们用 JS 模拟实现下，透过源码探索一些底层的知识，希望本文对你有所帮助。</p> <h2 id="array-prototype-map"><a href="#array-prototype-map" class="header-anchor">#</a> Array.prototype.map</h2> <p>完整的结构是 <code>Array.prototype.map(callbackfn[, thisArg])</code>，<code>map</code> 函数接收两个参数，一个是必填项回调函数，另一个是可选项 callbackfn 函数执行时的 this 值。</p> <p><code>map</code> 方法的主要功能就是把原数组中的每个元素按顺序执行一次  <code>callbackfn</code> 函数，并且把所有返回的结果组合在一起生成一个新的数组，<code>map</code> 方法的返回值就是这个新数组。</p> <p>ECMA-262 规范文档实现如下。</p> <ol><li><p>Let O be ? ToObject(this value).</p></li> <li><p>Let len be ? LengthOfArrayLike(O).</p></li> <li><p>If IsCallable(callbackfn) is false, throw a TypeError exception.</p></li> <li><p>If thisArg is present, let T be thisArg; else let T be undefined.</p></li> <li><p>Let A be ? ArraySpeciesCreate(O, len).</p></li> <li><p>Let k be 0.</p></li> <li><p>Repeat, while k &lt; len</p></li> <li><ol><li>Let Pk be ! ToString(k).</li> <li>Let kPresent be ? HasProperty(O, Pk).</li></ol></li> <li><p>If kPresent is true, then</p></li> <li><ol><li>Let kValue be ? Get(O, Pk).</li> <li>Let mappedValue be ? Call(callbackfn, T, « kValue, k, O »).</li> <li>Perform ? CreateDataPropertyOrThrow(A, Pk, mappedValue).</li></ol></li> <li><p>Set k to k + 1.</p></li> <li><p>Return A.</p></li></ol> <p>用 JS 来模拟实现，核心逻辑如下：</p> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.map = function(callbackfn, thisArg) {
+  // 异常处理
+  if (this == null) {
+      throw new TypeError(&quot;Cannot read property 'map' of null or undefined&quot;);
+  }
+  // Step 1. 转成数组对象，有 length 属性和 K-V 键值对
+  let O = Object(this)
+  // Step 2. 无符号右移 0 位，左侧用 0 填充，结果非负
+  let len = O.length &gt;&gt;&gt; 0
+  // Step 3. callbackfn 不是函数时抛出异常
+  if (typeof callbackfn !== 'function') {
+    throw new TypeError(callbackfn + ' is not a function')
+  }
+  // Step 4.
+  let T = thisArg
+  // Step 5.
+  let A = new Array(len)
+  // Step 6.
+  let k = 0
+  // Step 7.
+  while(k &lt; len) {
+    // Step 7.1、7.2、7.3
+    // 检查 O 及其原型链是否包含属性 k
+    if (k in O) {
+      // Step 7.3.1
+      let kValue = O[k]
+      // Step 7.3.2 执行 callbackfn 函数
+      // 传入 this, 当前元素 element, 索引 index, 原数组对象 O
+      let mappedValue = callbackfn.call(T, kValue, k, O)
+        // Step 7.3.3 返回结果赋值给新生成数组
+      A[k] = mappedValue
+    }
+    // Step 7.4
+    k++
+  }
+  // Step 8. 返回新数组
+  return A
+}
+
+// 代码亲测已通过
+</code></pre></div><p>看完代码其实挺简单，核心就是在一个 <code>while</code> 循环中执行 <code>callbackfn</code>，并传入 4 个参数，回调函数具体的执行逻辑这里并不关心，只需要拿到返回结果并赋值给新数组就好了。</p> <p>只有 O 及其原型链上包含属性 k 时才会执行  <code>callbackfn</code> 函数，所以对于稀疏数组 empty 元素或者使用 <code>delete</code> 删除后的索引则<strong>不会被调用</strong>。</p> <div class="language- extra-class"><pre class="language-text"><code>let arr = [1, , 3, , 5]
+console.log(0 in arr) // true
+delete arr[0]
+console.log(0 in arr) // false
+console.log(arr) // [empty × 2, 3, empty, 5]
+arr.map(ele =&gt; {
+  console.log(ele) // 3, 5
+})
+</code></pre></div><p><code>map</code> 并不会修改原数组，不过也不是绝对的，如果你在 <code>callbackfn</code> 中修改了原数组，那还是会改变。那问题来了，修改后会影响到 <code>map</code> 自身的执行吗？</p> <p>答案是会的！不过得区分以下几种情况。</p> <ul><li>原数组新增元素：因为 <code>map</code> 第一次执行时 length 已经确定了，所以不影响</li> <li>原数组修改元素：传递给 <code>callbackfn</code> 的元素是 map 遍历到它们那一瞬间的值，所以可能受影响</li> <li>修改当前索引之前的元素，不受影响</li> <li>修改当前索引之后的元素，受影响</li> <li>原数组删除元素：被删除的元素无法被访问到，所以可能受影响</li> <li>删除当前索引之前的元素，已经访问过了，所以不受影响</li> <li>删除当前索引之后的元素，受影响</li></ul> <p>简单看下面几个例子，在 <code>callbackfn</code> 中不要改变原数组，不然会有意想不到的情况发生。</p> <div class="language- extra-class"><pre class="language-text"><code>// 1、原数组新增元素，不受影响
+let arr = [1, 2, 3]
+let result = arr.map((ele, index, array) =&gt; {
+  array.push(4);
+  return ele * 2
+})
+console.log(result) 
+// 2, 4, 6
+// ----------- 完美分割线 -----------
+
+
+// 2、原数组修改当前索引之前的元素，不受影响
+let arr = [1, 2, 3]
+let result = arr.map((ele, index, array) =&gt; {
+  if (index === 1) {
+    array[0] = 4
+  }
+  return ele * 2
+})
+console.log(result) 
+// 2, 4, 6
+// ----------- 完美分割线 -----------
+
+
+// 3、原数组修改当前索引之后的元素，受影响
+let arr = [1, 2, 3]
+let result = arr.map((ele, index, array) =&gt; {
+  if (index === 1) {
+    array[2] = 4
+  }
+  return ele * 2
+})
+console.log(result) 
+// 2, 4, 8
+</code></pre></div><p>最后来说说 <code>this</code>，源码中有这么一段 <code>callbackfn.call(T, kValue, k, O)</code>，其中  <code>T</code> 就是 <code>thisArg</code> 值，如果没有设置，那就是 undefined。</p> <p>根据【进阶 3-3 期】  中对于 call 的解读，传入 undefined 时，非严格模式下指向 Window，严格模式下为 undefined。记住这时候回调函数不能用箭头函数，因为箭头函数是没有自己的 this 的。</p> <div class="language- extra-class"><pre class="language-text"><code>// 1、传入 thisArg 但使用箭头函数
+let name = 'Muyiy'
+let obj = {
+    name: 'Hello',
+    callback: (ele) =&gt; {
+        return this.name + ele
+    }
+}
+let arr = [1, 2, 3]
+let result = arr.map(obj.callback, obj);
+console.log(result) 
+// [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]，此时 this 指向 window
+// 那为啥不是 &quot;Muyiy1&quot; 这样呢，不急，第 3 步介绍
+// ----------- 完美分割线 -----------
+
+
+// 2、传入 thisArg，使用普通函数
+let name = 'Muyiy'
+let obj = {
+    name: 'Hello',
+    callback: function (ele) {
+        return this.name + ele
+    }
+}
+let arr = [1, 2, 3]
+let result = arr.map(obj.callback, obj);
+console.log(result) 
+// [&quot;Hello1&quot;, &quot;Hello2&quot;, &quot;Hello3&quot;]，完美
+// ----------- 完美分割线 -----------
+
+// 3、不传入 thisArg，name 使用 let 声明
+let name = 'Muyiy'
+let obj = {
+    name: 'Hello',
+    callback: function (ele) {
+        return this.name + ele
+    }
+}
+let arr = [1, 2, 3]
+let result = arr.map(obj.callback);
+console.log(result)
+// [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
+// 为什么呢，因为 let 和 const 声明的变量不会挂载到 window 上
+// ----------- 完美分割线 -----------
+
+// 4、不传入 thisArg，name 使用 var 声明
+var name = 'Muyiy'
+let obj = {
+    name: 'Hello',
+    callback: function (ele) {
+        return this.name + ele
+    }
+}
+let arr = [1, 2, 3]
+let result = arr.map(obj.callback);
+console.log(result)
+// [&quot;Muyiy1&quot;, &quot;Muyiy2&quot;, &quot;Muyiy3&quot;]
+// 看看，改成 var 就好了
+// ----------- 完美分割线 -----------
+
+// 5、严格模式
+'use strict'
+var name = 'Muyiy'
+let obj = {
+    name: 'Hello',
+    callback: function (ele) {
+        return this.name + ele
+    }
+}
+let arr = [1, 2, 3]
+let result = arr.map(obj.callback);
+console.log(result)
+// TypeError: Cannot read property 'name' of undefined
+// 因为严格模式下 this 指向 undefined
+</code></pre></div><p>上面这部分实操代码介绍了 5 种情况，分别是传入 thisArg 两种情况，非严格模式下两种情况，以及严格模式下一种情况。这部分的知识在之前的文章中都有介绍过，这里主要是温故下。如果这块知识不熟悉，可以详细看我的 博客</p> <h2 id="array-prototype-filter"><a href="#array-prototype-filter" class="header-anchor">#</a> Array.prototype.filter</h2> <p>完整的结构是 <code>Array.prototype.filter(callbackfn[, thisArg])</code>，和 <code>map</code> 是一样的。</p> <p><code>filter</code> 字如其名，它的主要功能就是过滤，<code>callbackfn</code> 执行结果如果是 true 就返回当前元素，false 则不返回，返回的所有元素组合在一起生成新数组，并返回。如果没有任何元素通过测试，则返回空数组。</p> <p>所以这部分源码相比 <code>map</code> 而言，多了一步判断 <code>callbackfn</code> 的返回值。</p> <p>ECMA-262 规范文档实现如下。</p> <ol><li><p>Let O be ? ToObject(this value).</p></li> <li><p>Let len be ? LengthOfArrayLike(O).</p></li> <li><p>If IsCallable(callbackfn) is false, throw a TypeError exception.</p></li> <li><p>If thisArg is present, let T be thisArg; else let T be undefined.</p></li> <li><p>Let A be ? ArraySpeciesCreate(O, 0).</p></li> <li><p>Let k be 0.</p></li> <li><p>Let to be 0.</p></li> <li><p>Repeat, while k &lt; len</p></li> <li><ol><li>Let kValue be ? Get(O, Pk).</li> <li>Let selected be ! ToBoolean(? Call(callbackfn, T, « kValue, k, O »)).</li> <li>If selected is true, then</li> <li>Set k to k + 1.</li> <li>Perform ? CreateDataPropertyOrThrow(A, ! ToString(to), kValue).</li> <li>Set to to to + 1.</li> <li>Let Pk be ! ToString(k).</li> <li>Let kPresent be ? HasProperty(O, Pk).</li> <li>If kPresent is true, then</li></ol></li> <li><p>Return A.</p></li></ol> <p>用 JS 来模拟实现，核心逻辑如下：</p> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.filter = function(callbackfn, thisArg) {
+  // 异常处理
+  if (this == null) {
+      throw new TypeError(&quot;Cannot read property 'map' of null or undefined&quot;);
+  }
+  if (typeof callbackfn !== 'function') {
+    throw new TypeError(callbackfn + ' is not a function')
+  }
+
+  let O = Object(this), len = O.length &gt;&gt;&gt; 0,
+      T = thisArg, A = new Array(len), k = 0
+  // 新增，返回数组的索引
+  let to = 0
+
+  while(k &lt; len) {
+    if (k in O) {
+      let kValue = O[k]
+      // 新增
+      if (callbackfn.call(T, kValue, k, O)) {
+        A[to++] = kValue;
+      }
+    }
+    k++
+  }
+
+  // 新增，修改 length，初始值为 len
+  A.length = to;
+  return A
+}
+
+// 代码亲测已通过
+</code></pre></div><p>看懂 <code>map</code> 再看这个实现就简单多了，改动点在于判断 <code>callbackfn</code> 返回值，新增索引 <code>to</code>，这样主要避免使用 <code>k</code> 时生成空元素，并在返回之前修改 <code>length</code> 值。</p> <p>这部分源码还是挺有意思的，惊喜点在于 <code>A.length = to</code>，之前还没用过。</p> <h2 id="array-prototype-reduce"><a href="#array-prototype-reduce" class="header-anchor">#</a> Array.prototype.reduce</h2> <p><code>reduce</code> 可以理解为「归一」，意为海纳百川，万剑归一，完整的结构是 <code>Array.prototype.reduce(callbackfn[, initialValue])</code>，这里第二个参数并不是 thisArg 了，而是初始值 <code>initialValue</code>，关于初始值之前有介绍过。</p> <ul><li>如果没有提供 <code>initialValue</code>，那么第一次调用 <code>callback</code> 函数时，<code>accumulator</code>使用原数组中的第一个元素，<code>currentValue</code> 即是数组中的第二个元素。</li> <li>如果提供了 <code>initialValue</code>，<code>accumulator</code> 将使用这个初始值，<code>currentValue</code>使用原数组中的第一个元素。</li> <li>在没有初始值的空数组上调用 <code>reduce</code> 将报错。</li></ul> <p>ECMA-262 规范文档实现如下。</p> <ol><li><p>Let O be ? ToObject(this value).</p></li> <li><p>Let len be ? LengthOfArrayLike(O).</p></li> <li><p>If IsCallable(callbackfn) is false, throw a TypeError exception.</p></li> <li><p>If len is 0 and initialValue is not present, throw a TypeError exception.</p></li> <li><p>Let k be 0.</p></li> <li><p>Let accumulator be undefined.</p></li> <li><p>If initialValue is present, then</p></li> <li><ol><li>Set accumulator to initialValue.</li></ol></li> <li><p>Else,</p></li> <li><ol><li>Let Pk be ! ToString(k).</li> <li>Set kPresent to ? HasProperty(O, Pk).</li> <li>If kPresent is true, then</li> <li>Set k to k + 1.</li> <li>Set accumulator to ? Get(O, Pk).</li> <li>Let kPresent be false.</li> <li>Repeat, while kPresent is false and k &lt; len</li> <li>If kPresent is false, throw a TypeError exception.</li></ol></li> <li><p>Repeat, while k &lt; len</p></li> <li><ol><li>Let kValue be ? Get(O, Pk).</li> <li>Set accumulator to ? Call(callbackfn, undefined, « accumulator, kValue, k, O »).</li> <li>Let Pk be ! ToString(k).</li> <li>Let kPresent be ? HasProperty(O, Pk).</li> <li>If kPresent is true, then</li> <li>Set k to k + 1.</li></ol></li> <li><p>Return accumulator.</p></li></ol> <p>用 JS 来模拟实现，核心逻辑如下：</p> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.reduce = function(callbackfn, initialValue) {
+  // 异常处理
+  if (this == null) {
+      throw new TypeError(&quot;Cannot read property 'map' of null or undefined&quot;);
+  }
+  if (typeof callbackfn !== 'function') {
+    throw new TypeError(callbackfn + ' is not a function')
+  }
+  let O = Object(this)
+  let len = O.length &gt;&gt;&gt; 0
+  let k = 0, accumulator
+
+  // 新增
+  if (initialValue) {
+    accumulator = initialValue
+  } else {
+    // Step 4.
+    if (len === 0) {
+      throw new TypeError('Reduce of empty array with no initial value');
+    }
+    // Step 8.
+    let kPresent = false
+    while(!kPresent &amp;&amp; (k &lt; len)) {
+      kPresent = k in O
+      if (kPresent) {
+        accumulator = O[k] 
+      }
+      k++
+    }
+  }
+
+  while(k &lt; len) {
+    if (k in O) {
+      let kValue = O[k]
+      accumulator = callbackfn.call(undefined, accumulator, kValue, k, O)
+    }
+    k++
+  }
+  return accumulator
+}
+
+// 代码亲测已通过
+</code></pre></div><p>这部分源码主要多了对于 <code>initialValue</code> 的处理，有初始值时比较简单，即 <code>accumulator = initialValue</code>，<code>kValue = O[0]</code>。</p> <p>无初始值处理在 Step 8，循环判断当 O 及其原型链上存在属性 k 时，<code>accumulator = O[k]</code> 并退出循环，因为 <code>k++</code>，所以 <code>kValue = O[k++]</code>。</p> <p>更多的数组方法有 <code>find</code>、<code>findIndex</code>、<code>forEach</code> 等，其源码实现也是大同小异，无非就是在 <code>callbackfn.call</code> 这部分做些处理，有兴趣的可以看看 TC39 和 MDN 官网，参考部分链接直达。</p> <h2 id="注意"><a href="#注意" class="header-anchor">#</a> 注意</h2> <p><code>forEach</code> 的源码和 <code>map</code> 很相同，在 map 的源码基础上做些改造就是啦。</p> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.forEach = function(callbackfn, thisArg) {
+  // 相同
+  ...
+  while(k &lt; len) {
+    if (k in O) {
+      let kValue = O[k]
+
+      // 这部分是 map
+      // let mappedValue = callbackfn.call(T, kValue, k, O)
+      // A[k] = mappedValue
+
+      // 这部分是 forEach
+      callbackfn.call(T, kValue, k, O)
+    }
+    k++
+  }
+  // 返回 undefined
+  // return undefined
+}
+</code></pre></div><p>可以看到，不同之处在于不处理 <code>callbackfn</code> 执行的结果，也不返回。</p> <p>特意指出来是因为在此之前看到过一种错误的说法，叫做「forEach 会跳过空，但是 map 不跳过」</p> <p>为什么说 <code>map</code> 不跳过呢，因为原始数组有 empty 元素时，map 返回的结果也有 empty 元素，所以不跳过，但是这种说法并不正确。</p> <div class="language- extra-class"><pre class="language-text"><code>let arr = [1, , 3, , 5]
+console.log(arr) // [1, empty, 3, empty, 5]
+
+let result = arr.map(ele =&gt; {
+  console.log(ele) // 1, 3, 5
+  return ele
+})
+console.log(result) // [1, empty, 3, empty, 5]
+</code></pre></div><p>看 <code>ele</code> 输出就会明白 map 也是跳空的，原因就在于源码中的 <code>k in O</code>，这里是检查 O 及其原型链是否包含属性 k，所以有的实现中用 <code>hasOwnProperty</code> 也是不正确的。</p> <p>另外 <code>callbackfn</code> 中不可以使用 break 跳出循环，是因为 break 只能跳出循环，而 <code>callbackfn</code> 并不是循环体。如果有类似的需求可以使用<code>for..of</code>、<code>for..in</code>、 <code>some</code>、<code>every</code> 等。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>熟悉源码之后很多问题就迎刃而解啦，感谢阅读。</p> <h2 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h2> <ul><li>TC39 Array.prototype.map</li> <li>TC39 Array.prototype.filter</li> <li>TC39 Array.prototype.reduce</li> <li>MDN Array.prototype.map</li> <li>MDN Array.prototype.filter</li> <li>MDN Array.prototype.reduce</li></ul> <h3 id="references"><a href="#references" class="header-anchor">#</a> References</h3> <p><code>[1]</code> 【进阶 6-1 期】: <em>https://www.muyiy.cn/blog/6/6.1.html</em> <code>[2]</code> 【进阶 3-3 期】: <em>https://muyiy.cn/blog/3/3.3.html</em> <code>[3]</code> 博客: <em>https://muyiy.cn/blog/</em> <code>[4]</code> TC39 Array.prototype.map: <em>https://tc39.es/ecma262/#sec-array.prototype.map</em> <code>[5]</code> TC39 Array.prototype.filter: <em>https://tc39.es/ecma262/#sec-array.prototype.filter</em> <code>[6]</code> TC39 Array.prototype.reduce: <em>https://tc39.es/ecma262/#sec-array.prototype.reduce</em> <code>[7]</code> MDN Array.prototype.map: <em>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map</em> <code>[8]</code> MDN Array.prototype.filter: <em>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</em> <code>[9]</code> MDN Array.prototype.reduce: <em>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce</em></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced-function/" class="prev router-link-active">
+        高阶函数
+      </a></span> <span class="next"><a href="/advanced-function/JavaScript 高阶函数浅析.html">
+        JavaScript 高阶函数浅析
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/8.89fa1943.js" defer></script>
+  </body>
+</html>

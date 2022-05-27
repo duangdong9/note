@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TypeScript在项目开发中的实践心得 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/154.74eb8531.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link router-link-active">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link router-link-active">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/typescript/" aria-current="page" class="sidebar-link">typescript</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>基础</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/typescript/项目使用心得.html" class="active sidebar-link">TypeScript在项目开发中的实践心得</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="typescript在项目开发中的实践心得"><a href="#typescript在项目开发中的实践心得" class="header-anchor">#</a> TypeScript在项目开发中的实践心得</h2> <blockquote><p>Typescript实践经验分享</p></blockquote> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>从<code>2020年</code>年底的时候，我开始使用<code>Typescript</code>进行项目的开发。期间团队也开始转向<code>Typescript</code>。</p> <p>在这期间，做过很多尝试，也阅读过一些优质的文章和源码。现如今，大多数开源项目都将<code>Typescript</code>做为开发的主力军。</p> <p>在这期间，我查阅的大多数文章都是在进行一个<code>Typescript</code>的基础使用，开发实践这一块更是少之又少，少有的一些干货文啃起来也非常的不过瘾。</p> <p>相信在读的各位收藏夹里面已经有很多份学习<code>Typescript</code>的小文章都在吃灰，看了一遍但到了项目中依旧无从下手，该如何去进行开发？</p> <p>独乐乐不如众乐乐，本篇文章就从开发的角度来聊聊，探讨下<code>Typescript</code>在真实项目中开发的实践心得和开发体验。</p> <p>当你看完文章时，我建议先思考团队是否需要<code>Typescript</code>。以及<code>Typescript</code>是否可以解决当前项目生产的困境。</p> <h2 id="必知必会的特性"><a href="#必知必会的特性" class="header-anchor">#</a> 必知必会的特性</h2> <p>在<code>TypeScript</code>中，有一些好用的<code>特性</code>和<code>功能</code>对于日常开发来说是比较常见的。下面就罗列一些较为实用的知识点作为一个小小的备忘录。</p> <h3 id="readonly"><a href="#readonly" class="header-anchor">#</a> Readonly</h3> <p>有了<code>Readonly</code>，可以声明更加严谨的可读属性，亦或者变量。</p> <p>在<code>ES6</code>当中，可以通过<code>const</code>进行常量量声明，切声明后不可修改，如果进行修改的话会直接<code>Cannot assign to 'a' because it is a constant.</code>进行异常抛错。</p> <p>虽然不能更改整个值，但是如果值是一个引用类型的话，依旧可以对其内部的属性进行修改。那么从<code>只读</code>的概念上来说，显然不具备当前的能力。</p> <p>而使用<code>Typescript</code>当中的<code>readonly</code>关键字对属性或者是变量进行声明，那么将会在编译时就发出告警。那么在声明部分</p> <p><img src="https://gitee.com/qdzhou/img-upload/raw/master/images/202112171729273.png" alt="图片"></p> <h3 id="条件类型-conditional-type"><a href="#条件类型-conditional-type" class="header-anchor">#</a> 条件类型(Conditional Type)</h3> <p>如果你不知道条件类型，那么来看一段<code>@vue/reactivity</code>中的代码吧。</p> <div class="language- extra-class"><pre class="language-text"><code>export type DeepReadonly&lt;T&gt; = T extends Builtin
+  ? T
+  : T extends Map&lt;infer K, infer V&gt;
+    ? ReadonlyMap&lt;DeepReadonly&lt;K&gt;, DeepReadonly&lt;V&gt;&gt;
+    : T extends ReadonlyMap&lt;infer K, infer V&gt;
+      ? ReadonlyMap&lt;DeepReadonly&lt;K&gt;, DeepReadonly&lt;V&gt;&gt;
+      : T extends WeakMap&lt;infer K, infer V&gt;
+          ......
+</code></pre></div><p>其中<code>DeepReadonly</code>通过<code>extends</code>的方式继承父类然后通过<code>? :</code>表达式来进行一个<code>类型三目运算符</code>的操作进行一个类型的条件判断。</p> <p>通过一个简单的案例来进行理解，当泛型<code>T</code>为<code>string</code>类型的时候，那么<code>B</code>为<code>1</code>，反之为<code>2</code>。可以看到同样的一个类型，因为传入的<code>泛型T</code>不一样，结果自然而然的有了出入。</p> <p><img src="https://gitee.com/qdzhou/img-upload/raw/master/images/202112171728065.png" alt="图片"></p> <h3 id="namespace"><a href="#namespace" class="header-anchor">#</a> namespace</h3> <p><code>命名空间(namespace)</code>是一个比较常见的东西，它常用于组织一份类型区域防止类型之间的重命名冲突，需要配置 <code>declare</code> 输出到外部环境才能够使用，非常便捷的在于使用<code>declare namespace</code>在工程项目中可以不需要引入任何类型而直接可以访问。</p> <p><img src="https://gitee.com/qdzhou/img-upload/raw/master/images/202112171729106.png" alt="图片"></p> <h3 id="declare"><a href="#declare" class="header-anchor">#</a> declare</h3> <p><code>declare</code>是用于声明形式存在的。</p> <ul><li><code>declare var/let/const</code>用来声明全局的变量。</li> <li><code>declare function</code> 用来声明全局方法(函数)</li> <li><code>declare class</code> 用来声明全局类</li> <li><code>declare namespace</code> 用来声明命名空间</li> <li><code>declare module</code> 用来声明模块</li> <li><code>...</code></li></ul> <p>在这里需要注意的是<code>Global augmentations have the same behavior and limits as module augmentations.</code></p> <p>Declaration Merging</p> <p>什么意思呢？</p> <p><img src="https://gitee.com/qdzhou/img-upload/raw/master/images/202112171730030.png" alt="图片"></p> <p>大体上翻译成大白话就是:</p> <blockquote><p><code>declare</code>与<code>declare global</code>它们功能是一样的。在<code>d.ts</code>中，使用<code>declare</code>与<code>declare global</code>两个作用是相等的。</p></blockquote> <p>因此，在<code>d.ts</code>进行<code>declare</code>，它默认是全局的，在使用<code>declare global</code>显得有点画蛇添足了。</p> <p>那么什么时候使用<code>declare</code>, 又什么时候使用<code>declare global</code>？</p> <blockquote><p>在模块文件中定义<code>declare</code>，如果想要用作全局就可以使用<code>declare global</code>完成该需求。</p></blockquote> <p>那么，可以来看个🌰栗子，看完之后就大体上懂了，都是一些比较常见的实例。</p> <ul><li>在使用<code>TypeScript</code>开发的时候想为一些<code>API</code>添加一些自定义的属性，或者进行一些覆盖。</li> <li>在使用<code>vue</code>的时候，通过<code>import</code>引入的<code>vue</code>组件大多会提示错误。</li></ul> <p>如何解决？</p> <p>可以通过对模块的定义来进行<code>.vue</code>文件模块进行一个<code>declare module</code>在内部可以将其<code>export</code>为相关类型。在这里<code>vue2</code>和<code>vue3</code>不太一样。</p> <div class="language- extra-class"><pre class="language-text"><code>declare module '*.vue' {
+    ///
+    export ...
+}
+</code></pre></div><h3 id="模块类型"><a href="#模块类型" class="header-anchor">#</a> 模块类型</h3> <p>在渐进式的过程中，很多代码和包都可能没有对应的<code>.d.ts</code>。因此需要对部分文件进行<code>.d.ts</code>的类型文件编写，那么，你真的知道<code>ES Module</code> 和 <code>CommonJS Module</code>之间的导入吗？</p> <p><code>ES Module</code>的引入方式大家都知道，但是如何对其声明<code>.d.ts</code>，就看下面这个用例。</p> <p>我对<code>config/index.js</code>创建了一个<code>index.d.ts</code>作为其声明文件，并且导出了<code>config</code>对象。那么，我如何将类型提供给引入方呢？</p> <p>首先，知道<code>index.js</code>导出是一个对象，那么<code>declare const</code>一个类型出来，然后通过<code>export = config</code>的形式对导出进行声明。那么在通过<code>import { xxx } from '@/config</code>就可以获悉具体的类型了。</p> <div class="language- extra-class"><pre class="language-text"><code>declare const config: BaseConfig &amp; EnvConfig
+
+export = config
+</code></pre></div><p>如图，<code>baseApi</code>拥有了<code>HTTP</code> ｜ <code>HTTPS</code>的类型。</p> <p><img src="https://gitee.com/qdzhou/img-upload/raw/master/images/202112171730067.png" alt="图片"></p> <h3 id="模板字符串类型"><a href="#模板字符串类型" class="header-anchor">#</a> 模板字符串类型</h3> <p>模板字符串是一个非常有意思的东西，它能够对文本进行一定程度上的约束，如上面<code>baseApi</code>在项目中被定义为了<code>HTTP | HTTPS</code>的类型。约定当前值中必须包含<code>http://</code>或者是<code>https://</code>才算校验成功。</p> <div class="language- extra-class"><pre class="language-text"><code>// global.d.ts
+declare type HTTP = `http://${string}`
+declare type HTTPS = `https://${string}`
+
+// @/config/index.d.ts
+type baseApi = HTTP | HTTPS
+</code></pre></div><p>同样的，在使用<code>dva</code>中，也可以利用特性对<code>type</code>进行<code>namespace</code>和<code>action</code>的组合，这样在写<code>dispatch</code>时，可以有一定的提示和约束能力。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p>想看更多实践可以看<code>ssh</code>的TypeScript 4.1 新特性：字符串模板类型，Vuex 终于有救了？这篇文章深入一下。</p> <h3 id="函数重载"><a href="#函数重载" class="header-anchor">#</a> 函数重载</h3> <p><code>函数重载</code>是一个非常常用的特性，它大多数用于多态函数。大多数同学可能都不怎么使用。但是它能够定义不同的参数类型。需要有<code>多个重载签名</code>和一个<code>实现签名</code>。</p> <ul><li><code>重载签名</code>：就是对参数形式的不同书写，可以定义多种模式。</li> <li><code>实现签名</code>：对函数内部方法的具体实现。</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="getter-setter"><a href="#getter-setter" class="header-anchor">#</a> getter/setter</h3> <p><code>get/set存取器</code>是在<code>class</code>当中比较实用的一个功能，它保证了类中变量的私有化。在外部时时不能直接对其更改的，如果大家了解<code>javaBean</code>的话理解起来并不是很困难。</p> <p>在<code>class</code>中声明一个带<code>_</code>下标的变量，那么就可以通过<code>get</code>， <code>set</code>对其进行设置值。</p> <p>在实例中当我们调用<code>.name</code>的时候，其实本身就是调用了其<code>get</code>的方式，而设置值时，则是调用<code>set</code>方法，</p> <blockquote><p>需要注意的是，<code>._name</code>值也输出了，但是<code>TypeScript</code>会进行提示你<code>._name是私有的</code>不允许你访问。</p></blockquote> <h2 id="枚举"><a href="#枚举" class="header-anchor">#</a> 枚举</h2> <p>对于<code>typescript</code>思想来说，(<code>enum</code>)是对代码具有侵入式的，它的实现方式可以看其编译成<code>javascript</code>后的代码。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p>枚举(<code>enum</code>)的使用场景在于可以定义部分行为和状态。通过一个🌰可以来看下：</p> <p>对其某个任务的行为定义在枚举当中，这样做可以进行一些状态复用，避免在页面写太多<code>status === 1</code>的代码，因为没人知道<code>1</code>代表什么，有什么含义，不利于维护。</p> <p>将其定义成<code>enum</code>的标注用于标识状态，如：<code>status === Status.START</code>。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p>枚举可以看一篇阿宝哥的小文章一文让你彻底掌握 TS 枚举</p> <h2 id="泛型"><a href="#泛型" class="header-anchor">#</a> 泛型</h2> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <p>泛型是<code>TypeScript</code>当中必知必会的一个属性，在很多的时候，类型推导在开始时很难进行推倒。相比于使用 any 类型，使用泛型来创建可复用的组件要更好，因为泛型会保留参数类型。</p> <blockquote><p><code>泛型</code>很多时候作用于对一个类型的多种形态定义，能够非常灵活的对一个类型进行定义和延伸推导。</p></blockquote> <p>那么，来看几个比较简单的实例</p> <h3 id="简单的泛型"><a href="#简单的泛型" class="header-anchor">#</a> 简单的泛型</h3> <div class="language- extra-class"><pre class="language-text"><code>type Generics&lt;T&gt; = {
+    name: string
+    age: number
+    sex: T
+}
+
+interface Generics&lt;T&gt; {
+    name: string
+    age: number
+    sex: T
+}
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="简单的函数泛型"><a href="#简单的函数泛型" class="header-anchor">#</a> 简单的函数泛型</h3> <div class="language- extra-class"><pre class="language-text"><code>function setSex&lt;T&gt; (sex: T) {
+}
+
+setSex&lt;'男'&gt;('女')
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="泛型类"><a href="#泛型类" class="header-anchor">#</a> 泛型类</h3> <div class="language- extra-class"><pre class="language-text"><code>class Person&lt;T&gt; {
+    private sex: T;
+    constructor(readonly type: T) { 
+        this.sex = type; 
+    }
+}
+
+const person = new Person&lt;'男'&gt;('女')
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <blockquote><p>对于<code>泛型</code>的实践来说，使用是需要一定理解，复杂的<code>泛型</code>使用会非常的复杂。</p></blockquote> <h2 id="工具类型"><a href="#工具类型" class="header-anchor">#</a> 工具类型</h2> <p><code>TypeScript</code>当中也提供了一些非常好用的工具类型，能够配合我们更好的使用工具类型。</p> <h3 id="readonly-partial"><a href="#readonly-partial" class="header-anchor">#</a> Readonly &amp; Partial</h3> <p><code>Readonly</code>可以将类型转换为只读对象，使用方式是<code>Readonly&lt;T&gt;</code>。</p> <p>一个实栗立即了解：</p> <div class="language- extra-class"><pre class="language-text"><code>interface Person{
+    name: string;
+}
+type Person2 = Readonly&lt;Person&gt;;
+
+const a: Person2 = {
+    name: 'wangly19'
+}
+
+const b: Person = {
+    name: 'wangly19'
+}
+
+a.name = 'wangly19 new'
+b.name = 'wangly19 new'
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="record"><a href="#record" class="header-anchor">#</a> Record</h3> <p><code>Record</code>能够快速创建对象类型。它的使用方式是<code>Record&lt;K, V&gt;</code>，能够快速的为<code>object</code>创建统一的<code>key</code>和<code>value</code>类型。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="pick-omit"><a href="#pick-omit" class="header-anchor">#</a> Pick &amp; Omit</h3> <ul><li><code>Pick</code>：主要作用是从一组属性中拿出某个属性，并将其返回，那么先来看一下实例。</li></ul> <p><code>Pick</code>的使用方法是<code>Pick&lt;P, K&gt;</code>，如（P）类型中拥有<code>name</code>,<code>age</code>,<code>desc</code>三个属性，那么<code>K</code>为 <code>name</code>则最终将取到只有<code>name</code>的属性，其他的将会被排出。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <ul><li><code>Omit</code>：主要作用是从一组属性中排除某个属性，并将排除属性后的结果返回。</li></ul> <p><code>Omit</code>的使用方法是<code>Omit&lt;P, K&gt;</code>，与<code>Pick</code>的结果是相反的，如果说<code>Pick</code>是取出，那么<code>Omit</code>则是过滤的效果，具体可以看下面的案例。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="exclude-extract"><a href="#exclude-extract" class="header-anchor">#</a> Exclude &amp; Extract</h3> <ul><li><code>Exclude</code>：从一个联合类型中排除掉属于另一个联合类型的子集</li></ul> <p>来看下，<code>Exclude</code>使用形式是<code>Exclude&lt;T, S&gt;</code>，如果<code>T</code>中的属性在<code>S</code>不存在那么就会返回。</p> <div class="language- extra-class"><pre class="language-text"><code>interface A {
+    show: boolean,
+    hidden: boolean,
+    status: string
+}
+
+interface B {
+    show: boolean,
+    name: string
+}
+
+type outPut = Exclude&lt;keyof A, keyof B&gt;
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <ul><li><code>Extract</code>：跟Exclude相反，从从一个联合类型中取出属于另一个联合类型的子集</li></ul> <p>举一反三，如果<code>Exclude</code>是取差集，那么<code>Extract</code>就是取交集。会返回两个<code>联合类型</code>中相同的部分。</p> <div class="language- extra-class"><pre class="language-text"><code>interface A {
+    show: boolean,
+    hidden: boolean,
+    status: string
+}
+
+interface B {
+    show: boolean,
+    name: string
+}
+
+type outPut = Extract&lt;keyof A, keyof B&gt;
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="partial"><a href="#partial" class="header-anchor">#</a> Partial</h3> <p><code>Partial</code>是一个将类型转为可选类型的工具，对于不明确的类型来说，需要将所有的属性转化为可选的<code>?.</code>形式，转换成为可选的属性类型。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h3 id="其他"><a href="#其他" class="header-anchor">#</a> 其他</h3> <p><code>TypeScript</code>的工具类型有很多，不只是官方提供，在日常实践中，也会定义非常多的工具类型。那么在了解工具类型的同时，更多的是知晓这些工具类型是如何来的，怎么实现。</p> <p>相信我，当你弄懂后，你对于使用<code>Typescript</code>会有一个新的认识，写起来会更加的得心应手。</p> <h2 id="实践场景"><a href="#实践场景" class="header-anchor">#</a> 实践场景</h2> <p>看完了太多的理论东西，那么来看看在日常实践中是如何真实实践一把呢?</p> <h3 id="dva的实践"><a href="#dva的实践" class="header-anchor">#</a> Dva的实践</h3> <p>如果使用过<code>Dva</code>开发的朋友可能知道，<code>dispatch</code>的类型提示非常的艰难，因此，在开发的时候重新定义了<code>Dispatch</code>的类型，用来做一些主动的类型提示。</p> <p>对于<code>Modal</code>的类型作为一些基本定义，然后对<code>DvaDispatch</code>进行部分的注入和推导。</p> <ul><li><code>type</code>拥有<code>modal</code>中<code>namespace</code>和<code>effects &amp; reducers</code>的类型推导。</li> <li><code>Promise</code>返回值的主动暴露。</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <ul><li>如何使用？</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 方案一
+const dispatch: DvaDispatch&lt;DeskTopModel&gt; = useDispatch();
+
+dispatch&lt;null&gt;({
+    ...
+})
+
+// 方案二
+dispatch&lt;DeskTopModel, null&gt;({
+    ...
+})
+</code></pre></div><p>那么<code>DeskTopModel</code>是什么呢？</p> <p>没错，就是<code>model</code>的类型声明，在其中，对每一项<code>effects</code>和<code>reducers</code>都进行详细的定义，根据这些信息就可以推导出当前<code>type</code>的类型了。</p> <div class="language- extra-class"><pre class="language-text"><code>export interface DeskTopModel {
+  namespace: 'desktop',
+  state: DeskTopModelState,
+  effects: {
+    getTableSourceData: Effect
+  },
+  reducers: {
+    saveTableData: Reducer&lt;DeskTopModelState&gt;
+  }
+}
+</code></pre></div><p>对于<code>Dva</code>来说，很多时候都需要在<code>Effect</code>后做某事，这个时候有两个方式，一是<code>callback</code>，另外一个就是<code>Promise</code>回调。</p> <p>而通过<code>Promise</code>方式，进行返回值的推导可以让使用<code>dispatch</code>拥有返回类型的能力。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h4 id="dva-dispatch"><a href="#dva-dispatch" class="header-anchor">#</a> Dva Dispatch</h4> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * ActionType， 推导当前effect &amp; reducer
+ * @default string
+ */
+type ActionType&lt;M extends Model | string&gt; = M extends Model ? 
+`${M['namespace']}/${(keyof M['effects'] | keyof M['reducers']) &amp; string}` : 
+string
+
+
+/**
+ * dvaDispatch新增类型
+ * @example
+ * dispatch: DvaDispatch&lt;Store&gt;
+ */
+export type DvaDispatch&lt;S = void&gt; = &lt;T = undefined, R = undefined&gt;(action: {
+  type: ActionType&lt;
+    S extends Model 
+      ? S 
+        : T extends Model 
+          ? T 
+            : string&gt;,
+  payload?: any
+  loading?: boolean,
+  toast?: Taro.showToast.Option
+  [key: string]: any
+}) =&gt; 
+T extends Model 
+  ? R extends undefined 
+    ? undefined 
+      : Promise&lt;R&gt; 
+        : T extends undefined 
+          ? undefined 
+            : Promise&lt;T&gt;
+</code></pre></div><h3 id="service-response-实践"><a href="#service-response-实践" class="header-anchor">#</a> Service Response 实践</h3> <p><code>Service Response</code>是什么？</p> <p>在于后端通信时，会返回很多的数据，那么在使用<code>TypeScript</code>的时候怎么去定义这些类型呢？又怎么在团队协作中进行合作呢？</p> <p>在大部分实验当中，我们是这样做的。</p> <h4 id="创建api命名空间"><a href="#创建api命名空间" class="header-anchor">#</a> 创建API命名空间</h4> <p>绝大多数数据，都是存放在<code>API</code>的命名空间当中。它的目录如下：</p> <div class="language- extra-class"><pre class="language-text"><code>-- index.d.ts
+-- api1.d.ts
+-- api2.d.ts
+-- api3.d.ts
+...
+</code></pre></div><p>团队协作当中，<code>index.d.ts</code>多数为公共类型。而其他文件中的则是模块类型。举个例子，<code>Request</code>的返回类型。</p> <div class="language- extra-class"><pre class="language-text"><code>declare namespace API {
+  type commonResult&lt;T = any&gt; = {
+    data: T,
+    code: string,
+    showMessage: false | {
+      method: 'message' | 'notification',
+      type: 'success' | 'error' | 'info' | 'warning',
+      message: string,
+      description?: string
+    }
+  }
+}
+</code></pre></div><p>而对应请求方案配置则对应相应的<code>api</code>文件。</p> <p>如<code>home.ts</code>声明了<code>配置转请求函数</code>的方式。</p> <div class="language- extra-class"><pre class="language-text"><code>// #home.ts
+module.exports = {
+  getVisualizationListApi: 'GET /service-admin/v1/visualization/table/list'
+  addVisualizationItemApi: 'GET /service-admin/v1/visualization/table/add'
+}
+</code></pre></div><p>然后对应的在<code>types</code>下声明一个新的<code>.d.ts</code>类型声明文件。比如：<code>home.ts</code>对应<code>home.d.ts</code>。</p> <p>那么在多人协作下，每个人负责的模块本身来说都不会冲突。在项目迭代管理中，大多数都是一个人对应一个小模块的开发节奏，彼此不会有太大的重复。</p> <div class="language- extra-class"><pre class="language-text"><code>// #home.d.ts
+
+declare namespace API {
+  type VisualizationListResponse = {}
+  type VisualizationActionResponse = {}
+}
+</code></pre></div><blockquote><p>所有的<code>declare namespace API</code>都会合并。在<code>namespace</code>之间依旧可以使用API.xx(其他模块的type)来结合声明类型。</p></blockquote> <h4 id="如何使用"><a href="#如何使用" class="header-anchor">#</a> 如何使用？</h4> <p>在进行<code>namespace</code>的声明定义后，可以在需要使用的地方，无需任何引入直接访问<code>API</code>，然后通过<code>API.VisualizationListResponse</code>就可以访问到定义的<code>VisualizationListResponse</code>类型。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image.png</p> <h2 id="资源"><a href="#资源" class="header-anchor">#</a> 资源</h2> <ul><li>你为什么不使用 TypeScript？</li> <li>Declaration Merging</li> <li>TypeScript 4.1 新特性：字符串模板类型，Vuex 终于有救了？</li> <li>一文让你彻底掌握 TS 枚举</li> <li>TypeScript 高级用法</li> <li>一文读懂 TypeScript 泛型及应用（ 7.8K字）</li> <li>在线Typescript，Playground</li> <li>utility-types</li></ul> <h2 id="如何深入学习typescript"><a href="#如何深入学习typescript" class="header-anchor">#</a> 如何深入学习TypeScript?</h2> <p>当了解<code>TypeScript</code>后，想学习进阶的使用方式，可以看看一些类型库的源码，这些源码内很多<code>TypeScript</code>的操作都能够在其中看到。</p> <p>比较好的如：<code>utility-types</code>, 里面有一些实用的基本类型，可以对源码进行阅读，阅读难度不大，多动手实践下就会对类型有一个更加清晰的明确。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p><code>TypeScript</code>是一把双刃剑，对开发者来说具有一定门槛，在使用不当的时候，其实对于项目来说会变得更加的复杂，可读性并没有过多的提升。</p> <p>根据自身团队的实际情况，慢慢推动<code>TypeScript</code>的基建，保持当前生态体系下的框架和库对<code>TypeScript</code>的支持度良好的情况下逐步替换到<code>TypeScript</code>是一个不错的选择。</p> <p>打个比方：如果你现在使用的是<code>vue2</code>，那么不妨可以考虑下，用<code>TypeScript</code>写组件真的好吗？</p> <p><code>TypeScript</code>上手需要一定的学习的学习成本和任务负担，并不是说会<code>javaScript</code>就会<code>TypeScript</code>，其中<code>OOP</code>的思想来说，对团队成员其实是有一定的影响的。尤其是在敏捷项目开发下，影响还是蛮大的。</p> <p>因此，如果项目迭代本身高频快，那么在估量开发需求时，质量和效率很明显并不能兼得之。可以慢慢的进行推动。</p> <blockquote><p><code>TypeScript</code>不会防止屎山的出现，也没有大多数人传言中的那么香。只是很多吹捧的人会把屎山说香。它只是一个类型系统，并没有传的那么神乎其神，能做的只是杜绝了很多<code>奇技淫巧</code>，让代码可以在一个较为正常的环境下进行开发。</p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/typescript/基础/联合类型.html" class="prev">
+        联合类型
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/154.74eb8531.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>彻底掌握前端模块化 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/31.99b2787c.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link router-link-active">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced/" aria-current="page" class="sidebar-link">js 进阶</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>2-动画</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>3-高级api</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/advanced/CORS完全手册之CORS详解.html" class="sidebar-link">CORS 完全手册之 CORS 详解</a></li><li><a href="/advanced/ES12新特性.html" class="sidebar-link">JavaScriptES12新特性抢先体验</a></li><li><a href="/advanced/前端模块化.html" class="active sidebar-link">彻底掌握前端模块化</a></li><li><a href="/advanced/变量和类型-1.html" class="sidebar-link">变量和类型</a></li><li><a href="/advanced/变量和类型-2.html" class="sidebar-link">变量和类型-2</a></li><li><a href="/advanced/深入分析 JavaScript 模块循环引用.html" class="sidebar-link">深入分析 JavaScript 模块循环引用</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="彻底掌握前端模块化"><a href="#彻底掌握前端模块化" class="header-anchor">#</a> 彻底掌握前端模块化</h2> <h3 id="_1-1-javascript设计缺陷"><a href="#_1-1-javascript设计缺陷" class="header-anchor">#</a> 1.1. JavaScript设计缺陷</h3> <p>那么，到底什么是模块化开发呢？</p> <ul><li>事实上模块化开发最终的目的是将程序划分成一个个小的结构；</li> <li>这个结构中编写属于自己的逻辑代码，有自己的作用域，不会影响到其他的结构；</li> <li>这个结构可以将自己希望暴露的变量、函数、对象等导出给其结构使用；</li> <li>也可以通过某种方式，导入另外结构中的变量、函数、对象等；</li></ul> <p><strong>上面说提到的结构，就是模块；</strong></p> <p><strong>按照这种结构划分开发程序的过程，就是模块化开发的过程；</strong></p> <p>无论你多么喜欢JavaScript，以及它现在发展的有多好，我们都需要承认在<em>Brendan Eich</em>用了10天写出JavaScript的时候，它都有很多的缺陷：</p> <ul><li>比如var定义的变量作用域问题；</li> <li>比如JavaScript的面向对象并不能像常规面向对象语言一样使用class；</li> <li>比如JavaScript没有模块化的问题；</li></ul> <p><em>Brendan Eich</em>本人也多次承认过JavaScript设计之初的缺陷，但是随着JavaScript的发展以及标准化，存在的缺陷问题基本都得到了完善。</p> <ul><li>JavaScript目前已经得到了快速的发展，无论是web、移动端、小程序端、服务器端、桌面应用都被广泛的使用；</li></ul> <p>在网页开发的早期，<em>Brendan Eich</em>开发JavaScript仅仅作为一种脚本语言，做一些简单的表单验证或动画实现等，那个时候代码还是很少的：</p> <ul><li>这个时候我们只需要讲JavaScript代码写到<code>&lt;script&gt;</code>标签中即可；</li> <li>并没有必要放到多个文件中来编写；</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">&quot;btn&quot;</span><span class="token operator">&gt;</span>按钮<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;btn&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;按钮被点击了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><p>但是随着前端和JavaScript的快速发展，JavaScript代码变得越来越复杂了：</p> <ul><li>ajax的出现，前后端开发分离，意味着后端返回数据后，我们需要通过JavaScript进行前端页面的渲染；</li> <li>SPA的出现，前端页面变得更加复杂：包括前端路由、状态管理等等一系列复杂的需求需要通过JavaScript来实现；</li> <li>包括Node的实现，JavaScript编写复杂的后端程序，没有模块化是致命的硬伤；</li></ul> <p>所以，模块化已经是JavaScript一个非常迫切的需求：</p> <ul><li>但是JavaScript本身，直到ES6（2015）才推出了自己的模块化方案；</li> <li>在此之前，为了让JavaScript支持模块化，涌现出了很多不同的模块化规范：AMD、CMD、CommonJS等；</li></ul> <p>在这个章节，我们将详细学习JavaScript的模块化，尤其是CommonJS和ES6的模块化。</p> <h3 id="_1-2-没有模块化的问题"><a href="#_1-2-没有模块化的问题" class="header-anchor">#</a> 1.2. 没有模块化的问题</h3> <p>我们先来简单体会一下没有模块化代码的问题。</p> <p>我们知道，对于一个大型的前端项目，通常是多人开发的（即使一个人开发，也会将代码划分到多个文件夹中）：</p> <ul><li>我们假设有两个人：小明和小丽同时在开发一个项目，并且会将自己的JavaScript代码放在一个单独的js文件中。</li></ul> <p>小明开发了aaa.js文件，代码如下（当然真实代码会复杂的多）：</p> <div class="language- extra-class"><pre class="language-text"><code>var flag = true;
+
+if (flag) {
+  console.log(&quot;aaa的flag为true&quot;)
+}
+</code></pre></div><p>小丽开发了bbb.js文件，代码如下：</p> <div class="language- extra-class"><pre class="language-text"><code>var flag = false;
+
+if (!flag) {
+  console.log(&quot;bbb使用了flag为false&quot;);
+}
+</code></pre></div><p>很明显出现了一个问题：</p> <ul><li>大家都喜欢使用flag来存储一个boolean类型的值；</li> <li>但是一个人赋值了true，一个人赋值了false；</li> <li>如果之后都不再使用，那么也没有关系；</li></ul> <p>但是，小明又开发了ccc.js文件：</p> <div class="language- extra-class"><pre class="language-text"><code>if (flag) {
+  console.log(&quot;使用了aaa的flag&quot;);
+}
+</code></pre></div><p>问题来了：小明发现ccc中的flag值不对</p> <ul><li>对于聪明的你，当然一眼就看出来，是小丽将flag赋值为了false；</li> <li>但是如果每个文件都有上千甚至更多的代码，而且有上百个文件，你可以一眼看出来flag在哪个地方被修改了吗？</li></ul> <p>备注：引用路径如下：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;./aaa.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./bbb.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./ccc.js&quot;&gt;&lt;/script&gt;
+</code></pre></div><p>所以，没有模块化对于一个大型项目来说是灾难性的。</p> <p><strong>当然，我们有办法可以解决上面的问题：立即函数调用表达式（IIFE）</strong></p> <ul><li><strong>IIFE</strong> (Immediately Invoked Function Expression)</li></ul> <p>aaa.js</p> <div class="language- extra-class"><pre class="language-text"><code>const moduleA = (function () {
+  var flag = true;
+
+  if (flag) {
+    console.log(&quot;aaa的flag为true&quot;)
+  }
+
+  return {
+    flag: flag
+  }
+})();
+</code></pre></div><p>bbb.js</p> <div class="language- extra-class"><pre class="language-text"><code>const moduleB = (function () {
+  var flag = false;
+
+  if (!flag) {
+    console.log(&quot;bbb使用了flag为false&quot;);
+  }
+})();
+</code></pre></div><p>ccc.js</p> <div class="language- extra-class"><pre class="language-text"><code>const moduleC = (function() {
+  const flag = moduleA.flag;
+  if (flag) {
+    console.log(&quot;使用了aaa的flag&quot;);
+  }
+})();
+</code></pre></div><p>命名冲突的问题，有没有解决呢？解决了。</p> <p>但是，我们其实带来了新的问题：</p> <ul><li>第一，我必须记得每一个模块中返回对象的命名，才能在其他模块使用过程中正确的使用；</li> <li>第二，代码写起来混乱不堪，每个文件中的代码都需要包裹在一个匿名函数中来编写；</li> <li>第三，在没有合适的规范情况下，每个人、每个公司都可能会任意命名、甚至出现模块名称相同的情况；</li></ul> <p><strong>所以，我们会发现，虽然实现了模块化，但是我们的实现过于简单，并且是没有规范的。</strong></p> <ul><li>我们需要制定一定的规范来约束每个人都按照这个规范去编写模块化的代码；</li> <li>这个规范中应该包括核心功能：模块本身可以导出暴露的属性，模块又可以导入自己需要的属性；</li></ul> <p>JavaScript社区为了解决上面的问题，涌现出一系列好用的规范，接下来我们就学习具有代表性的一些规范。</p> <h2 id="二-commonjs规范"><a href="#二-commonjs规范" class="header-anchor">#</a> 二. CommonJS规范</h2> <h3 id="_2-1-commonjs和node"><a href="#_2-1-commonjs和node" class="header-anchor">#</a> 2.1. CommonJS和Node</h3> <p>我们需要知道CommonJS是一个规范，最初提出来是在浏览器意外的地方使用，并且当时被命名为<strong>ServerJS</strong>，后来为了体现它的广泛性，修改为<strong>CommonJS</strong>，平时我们也会简称为CJS。</p> <ul><li>Node是CommonJS在服务器端一个具有代表性的实现；</li> <li>Browserify是CommonJS在浏览器中的一种实现；</li> <li>webpack打包工具具备对CommonJS的支持和转换（后面我会讲到）；</li></ul> <p>所以，Node中对CommonJS进行了支持和实现，让我们在开发node的过程中可以方便的进行模块化开发：</p> <ul><li>在Node中每一个js文件都是一个单独的模块；</li> <li>这个模块中包括CommonJS规范的核心变量：exports、module.exports、require；</li> <li>我们可以使用这些变量来方便的进行模块化开发；</li></ul> <p>前面我们提到过模块化的核心是导出和导入，Node中对其进行了实现：</p> <ul><li>exports和module.exports可以负责对模块中的内容进行导出；</li> <li>require函数可以帮助我们导入其他模块（自定义模块、系统模块、第三方库模块）中的内容；</li></ul> <h3 id="_2-2-node模块化开发"><a href="#_2-2-node模块化开发" class="header-anchor">#</a> 2.2. Node模块化开发</h3> <p>我们来看一下两个文件：</p> <p>bar.js</p> <div class="language- extra-class"><pre class="language-text"><code>const name = 'coderwhy';
+const age = 18;
+
+function sayHello(name) {
+  console.log(&quot;Hello &quot; + name);
+}
+</code></pre></div><p>main.js</p> <div class="language- extra-class"><pre class="language-text"><code>console.log(name);
+console.log(age);
+
+sayHello('kobe');
+</code></pre></div><p>上面的代码会报错：</p> <ul><li>在node中每一个文件都是一个独立的模块，有自己的作用域；</li> <li>那么，就意味着别的模块main中不能随便访问另外一个模块bar中的内容；</li> <li>bar需要导出自己想要暴露的变量、函数、对象等等；</li> <li>main从bar中导入自己想要使用的变量、函数、对象等等；</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/O8xWXzAqXuseDpSr345APaEno34kiboje8hwm1puPMdA3bP3sUYp9LA7m7LpVibnl8ACF7EyTwLgJEtoiadNV6tmQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">导出和导入</p> <h4 id="_2-2-1-exports导出"><a href="#_2-2-1-exports导出" class="header-anchor">#</a> 2.2.1. exports导出</h4> <p><strong>强调：exports是一个对象，我们可以在这个对象中添加很多个属性，添加的属性会导出</strong></p> <p>bar.js中导出内容：</p> <div class="language- extra-class"><pre class="language-text"><code>exports.name = name;
+exports.age = age;
+exports.sayHello = sayHello;
+</code></pre></div><p>main.js中导入内容：</p> <div class="language- extra-class"><pre class="language-text"><code>const bar = require('./bar');
+</code></pre></div><p>上面这行代码意味着什么呢？</p> <ul><li>意味着main中的bar变量等于exports对象；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>main中的bar = bar中的exports
+</code></pre></div><p>所以，我可以编写下面的代码：</p> <div class="language- extra-class"><pre class="language-text"><code>const bar = require('./bar');
+
+const name = bar.name;
+const age = bar.age;
+const sayHello = bar.sayHello;
+
+console.log(name);
+console.log(age);
+
+sayHello('kobe');
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/O8xWXzAqXuseDpSr345APaEno34kibojewT2wSgxhOcSHdyzZWicejEY7dYHuicgm9AzH1jtLibH0U9Loj7ZTVFbKw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">模块之间的引用关系</p> <p>为了进一步论证，bar和exports是同一个对象：</p> <ul><li>所以，bar对象是exports对象的浅拷贝；</li> <li>浅拷贝的本质就是一种引用的赋值而已；</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/O8xWXzAqXuseDpSr345APaEno34kibojeicBuAibNeFXU9qkIauXYDOMsE7QCUxZesYWFouOBC7SQatrZpb4lUoEA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">定时器修改对象</p> <h4 id="_2-2-2-module-exports"><a href="#_2-2-2-module-exports" class="header-anchor">#</a> 2.2.2. module.exports</h4> <p>但是Node中我们经常导出东西的时候，又是通过module.exports导出的：</p> <ul><li>module.exports和exports有什么关系或者区别呢？</li></ul> <p>我们追根溯源，通过维基百科中对CommonJS规范的解析：</p> <ul><li>CommonJS中是没有module.exports的概念的；</li> <li>但是为了实现模块的导出，Node中使用的是Module的类，每一个模块都是Module的一个实例，也就是module；</li> <li>所以在Node中真正用于导出的其实根本不是exports，而是module.exports；</li> <li>因为module才是导出的真正实现者；</li></ul> <p>但是，为什么exports也可以导出呢？</p> <ul><li>这是因为module对象的exports属性是exports对象的一个引用；</li> <li>也就是说 <code>module.exports = exports = main中的bar</code>；</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/O8xWXzAqXuseDpSr345APaEno34kibojeib966pL7iazrlQAJFO14AUekibxu8JF2MHxUrVoX0csXo1nJMjZeWOjmw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201011163653515</p> <p>注意：真正导出的模块内容的核心其实是module.exports，只是为了实现CommonJS的规范，刚好module.exports对exports对象有一个引用而已；</p> <p>那么，如果我的代码这样修改了：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/O8xWXzAqXuseDpSr345APaEno34kibojeE1wEXS3pNL4evJyQ0ia6lF5nx0aH7Lc6CQichwyWtoOKUlcBqIM8qOHQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image-20201011164006266</p> <p>你能猜到内存中会有怎么样的表现吗？</p> <ul><li>结论：和exports对象没有任何关系了，exports你随便玩自己的吧；</li> <li>module.exports我现在导出一个自己的对象，不带着你玩了；</li> <li>新的对象取代了exports对象的导出，那么就意味着require导入的对象是新的对象；</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201011164223607</p> <h4 id="_2-2-3-require细节"><a href="#_2-2-3-require细节" class="header-anchor">#</a> 2.2.3. require细节</h4> <p>我们现在已经知道，require是一个函数，可以帮助我们引入一个文件（模块）中导入的对象。</p> <p>那么，require的查找规则是怎么样的呢？</p> <ul><li>https://nodejs.org/dist/latest-v14.x/docs/api/modules.html#modules_all_together</li></ul> <p><strong>这里我总结比较常见的查找规则：</strong></p> <p>导入格式如下：require(X)</p> <ul><li><p>情况一：X是一个核心模块，比如path、http</p></li> <li><ul><li>直接返回核心模块，并且停止查找</li></ul></li> <li><p>情况二：X是以 <code>./</code> 或 <code>../</code> 或 <code>/</code>（根目录）开头的</p></li> <li><ul><li>查找目录下面的index文件</li> <li>1&gt; 查找X/index.js文件</li> <li>2&gt; 查找X/index.json文件</li> <li>3&gt; 查找X/index.node文件</li> <li>1.如果有后缀名，按照后缀名的格式查找对应的文件</li> <li>2.如果没有后缀名，会按照如下顺序：</li> <li>1&gt; 直接查找文件X</li> <li>2&gt; 查找X.js文件</li> <li>3&gt; 查找X.json文件</li> <li>4&gt; 查找X.node文件</li> <li>第一步：将X当做一个文件在对应的目录下查找；</li> <li>第二步：没有找到对应的文件，将X作为一个目录</li> <li>如果没有找到，那么报错：<code>not found</code></li></ul></li> <li><p>情况三：直接是一个X（没有路径），并且X不是一个核心模块</p></li> <li><ul><li>比如 <code>/Users/coderwhy/Desktop/Node/TestCode/04_learn_node/05_javascript-module/02_commonjs/main.js</code>中编写 <code>require('why')</code></li> <li><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">查找顺序</li> <li>如果上面的路径中都没有找到，那么报错：<code>not found</code></li></ul></li></ul> <h4 id="_2-2-4-模块加载顺序"><a href="#_2-2-4-模块加载顺序" class="header-anchor">#</a> 2.2.4. 模块加载顺序</h4> <p>这里我们研究一下模块的加载顺序问题。</p> <p><strong>结论一：模块在被第一次引入时，模块中的js代码会被运行一次</strong></p> <p>aaa.js</p> <div class="language- extra-class"><pre class="language-text"><code>const name = 'coderwhy';
+
+console.log(&quot;Hello aaa&quot;);
+
+setTimeout(() =&gt; {
+  console.log(&quot;setTimeout&quot;);
+}, 1000);
+</code></pre></div><p>main.js</p> <div class="language- extra-class"><pre class="language-text"><code>const aaa = require('./aaa');
+</code></pre></div><p>aaa.js中的代码在引入时会被运行一次</p> <p><strong>结论二：模块被多次引入时，会缓存，最终只加载（运行）一次</strong></p> <p>main.js</p> <div class="language- extra-class"><pre class="language-text"><code>const aaa = require('./aaa');
+const bbb = require('./bbb');
+</code></pre></div><p>aaa.js</p> <div class="language- extra-class"><pre class="language-text"><code>const ccc = require(&quot;./ccc&quot;);
+</code></pre></div><p>bbb.js</p> <div class="language- extra-class"><pre class="language-text"><code>const ccc = require(&quot;./ccc&quot;);
+</code></pre></div><p>ccc.js</p> <div class="language- extra-class"><pre class="language-text"><code>console.log('ccc被加载');
+</code></pre></div><p>ccc中的代码只会运行一次。</p> <p><strong>为什么只会加载运行一次呢？</strong></p> <ul><li>这是因为每个模块对象module都有一个属性：loaded。</li> <li>为false表示还没有加载，为true表示已经加载；</li></ul> <p><strong>结论三：如果有循环引入，那么加载顺序是什么？</strong></p> <p>如果出现下面模块的引用关系，那么加载顺序是什么呢？</p> <ul><li>这个其实是一种数据结构：图结构；</li> <li>图结构在遍历的过程中，有深度优先搜索（DFS, depth first search）和广度优先搜索（BFS, breadth first search）；</li> <li>Node采用的是深度优先算法：main -&gt; aaa -&gt; ccc -&gt; ddd -&gt; eee -&gt;bbb</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">多个模块的引入关系</p> <h3 id="_2-3-node的源码解析"><a href="#_2-3-node的源码解析" class="header-anchor">#</a> 2.3. Node的源码解析</h3> <p>Module类</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">Module类</p> <p>Module.prototype.require函数</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">require函数</p> <p>Module._load函数</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">_load函数的实现</p> <h2 id="三-amd和cmd规范"><a href="#三-amd和cmd规范" class="header-anchor">#</a> 三. AMD和CMD规范</h2> <h3 id="_3-1-commonjs规范缺点"><a href="#_3-1-commonjs规范缺点" class="header-anchor">#</a> 3.1. CommonJS规范缺点</h3> <p>CommonJS加载模块是同步的：</p> <ul><li>同步的意味着只有等到对应的模块加载完毕，当前模块中的内容才能被运行；</li> <li>这个在服务器不会有什么问题，因为服务器加载的js文件都是本地文件，加载速度非常快；</li></ul> <p>如果将它应用于浏览器呢？</p> <ul><li>浏览器加载js文件需要先从服务器将文件下载下来，之后在加载运行；</li> <li>那么采用同步的就意味着后续的js代码都无法正常运行，即使是一些简单的DOM操作；</li></ul> <p>所以在浏览器中，我们通常不使用CommonJS规范：</p> <ul><li>当然在webpack中使用CommonJS是另外一回事；</li> <li>因为它会将我们的代码转成浏览器可以直接执行的代码；</li></ul> <p>在早期为了可以在浏览器中使用模块化，通常会采用AMD或CMD：</p> <ul><li>但是目前一方面现代的浏览器已经支持ES Modules，另一方面借助于webpack等工具可以实现对CommonJS或者ES Module代码的转换；</li> <li>AMD和CMD已经使用非常少了，所以这里我们进行简单的演练；</li></ul> <h3 id="_3-2-amd规范"><a href="#_3-2-amd规范" class="header-anchor">#</a> 3.2. AMD规范</h3> <p>AMD主要是应用于浏览器的一种模块化规范：</p> <ul><li>AMD是Asynchronous Module Definition（异步模块定义）的缩写；</li> <li>它采用的是异步加载模块；</li> <li>事实上AMD的规范还要早于CommonJS，但是CommonJS目前依然在被使用，而AMD使用的较少了；</li></ul> <p>我们提到过，规范只是定义代码的应该如何去编写，只有有了具体的实现才能被应用：</p> <ul><li>AMD实现的比较常用的库是require.js和curl.js；</li></ul> <p><strong>这里我们以require.js为例讲解：</strong></p> <p>第一步：下载require.js</p> <ul><li>下载地址：https://github.com/requirejs/requirejs</li> <li>找到其中的require.js文件；</li></ul> <p>第二步：定义HTML的script标签引入require.js和定义入口文件：</p> <ul><li>data-main属性的作用是在加载完src的文件后会加载执行该文件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;./lib/require.js&quot; data-main=&quot;./index.js&quot;&gt;&lt;/script&gt;
+</code></pre></div><p>第三步：编写如下目录和代码</p> <div class="language- extra-class"><pre class="language-text"><code>├── index.html
+├── index.js
+├── lib
+│   └── require.js
+└── modules
+    ├── bar.js
+    └── foo.js
+</code></pre></div><p>index.js</p> <div class="language- extra-class"><pre class="language-text"><code>(function() {
+  require.config({
+    baseUrl: '',
+    paths: {
+      foo: './modules/foo',
+      bar: './modules/bar'
+    }
+  })
+ 
+  // 开始加载执行foo模块的代码
+  require(['foo'], function(foo) {
+
+  })
+})();
+</code></pre></div><p>modules/bar.js</p> <ul><li>如果一个模块不依赖其他，那么直接使用define(function)即可</li></ul> <div class="language- extra-class"><pre class="language-text"><code>define(function() {
+  const name = &quot;coderwhy&quot;;
+  const age = 18;
+  const sayHello = function(name) {
+    console.log(&quot;Hello &quot; + name);
+  }
+
+  return {
+    name,
+    age, 
+    sayHello
+  }
+})
+</code></pre></div><p>modules/foo.js</p> <div class="language- extra-class"><pre class="language-text"><code>define(['bar'], function(bar) {
+  console.log(bar.name);
+  console.log(bar.age);
+  bar.sayHello('kobe');
+})
+</code></pre></div><h3 id="_3-3-cmd规范"><a href="#_3-3-cmd规范" class="header-anchor">#</a> 3.3. CMD规范</h3> <p>CMD规范也是应用于浏览器的一种模块化规范：</p> <ul><li>CMD 是Common Module Definition（通用模块定义）的缩写；</li> <li>它也采用了异步加载模块，但是它将CommonJS的优点吸收了过来；</li> <li>但是目前CMD使用也非常少了；</li></ul> <p>CMD也有自己比较优秀的实现方案：</p> <ul><li>SeaJS</li></ul> <p><strong>我们一起看一下SeaJS如何使用：</strong></p> <p>第一步：下载SeaJS</p> <ul><li>下载地址：https://github.com/seajs/seajs</li> <li>找到dist文件夹下的sea.js</li></ul> <p>第二步：引入sea.js和使用主入口文件</p> <ul><li><code>seajs</code>是指定主入口文件的</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;./lib/sea.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  seajs.use('./index.js');
+&lt;/script&gt;
+</code></pre></div><p>第三步：编写如下目录和代码</p> <div class="language- extra-class"><pre class="language-text"><code>├── index.html
+├── index.js
+├── lib
+│   └── sea.js
+└── modules
+    ├── bar.js
+    └── foo.js
+</code></pre></div><p>index.js</p> <div class="language- extra-class"><pre class="language-text"><code>define(function(require, exports, module) {
+  const foo = require('./modules/foo');
+})
+</code></pre></div><p>bar.js</p> <div class="language- extra-class"><pre class="language-text"><code>define(function(require, exports, module) {
+  const name = 'lilei';
+  const age = 20;
+  const sayHello = function(name) {
+    console.log(&quot;你好 &quot; + name);
+  }
+
+  module.exports = {
+    name,
+    age,
+    sayHello
+  }
+})
+</code></pre></div><p>foo.js</p> <div class="language- extra-class"><pre class="language-text"><code>define(function(require, exports, module) {
+  const bar = require('./bar');
+
+  console.log(bar.name);
+  console.log(bar.age);
+  bar.sayHello(&quot;韩梅梅&quot;);
+})
+</code></pre></div><h2 id="四-es-module"><a href="#四-es-module" class="header-anchor">#</a> 四. ES Module</h2> <h3 id="_4-1-认识es-module"><a href="#_4-1-认识es-module" class="header-anchor">#</a> 4.1. 认识ES Module</h3> <p>JavaScript没有模块化一直是它的痛点，所以才会产生我们前面学习的社区规范：CommonJS、AMD、CMD等，所以在ES推出自己的模块化系统时，大家也是兴奋异常。</p> <p>ES Module和CommonJS的模块化有一些不同之处：</p> <ul><li>一方面它使用了import和export关键字；</li> <li>另一方面它采用编译期静态类型检测，并且动态引用的方式；</li></ul> <p>ES Module模块采用export和import关键字来实现模块化：</p> <ul><li>export负责将模块内的内容导出；</li> <li>import负责从其他模块导入内容；</li></ul> <p>了解：采用ES Module将自动采用严格模式：<code>use strict</code></p> <ul><li>如果你不熟悉严格模式可以简单看一下MDN上的解析；</li> <li>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode</li></ul> <h3 id="_4-2-es-module的使用"><a href="#_4-2-es-module的使用" class="header-anchor">#</a> 4.2. ES Module的使用</h3> <h4 id="_4-2-1-代码结构组件"><a href="#_4-2-1-代码结构组件" class="header-anchor">#</a> 4.2.1. 代码结构组件</h4> <p>这里我在浏览器中演示ES6的模块化开发：</p> <p>代码结构如下：</p> <div class="language- extra-class"><pre class="language-text"><code>├── index.html
+├── main.js
+└── modules
+    └── foo.js
+</code></pre></div><p>index.html中引入两个js文件作为模块：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;./modules/foo.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+</code></pre></div><p>如果直接在浏览器中运行代码，会报如下错误：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">模块化运行</p> <p>这个在MDN上面有给出解释：</p> <ul><li>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules</li> <li>你需要注意本地测试 — 如果你通过本地加载Html 文件 (比如一个 <code>file://</code> 路径的文件), 你将会遇到 CORS 错误，因为Javascript 模块安全性需要。</li> <li>你需要通过一个服务器来测试。</li></ul> <p>我这里使用的VSCode，VSCode中有一个插件：Live Server</p> <ul><li>通过插件运行，可以将我们的代码运行在一个本地服务中；</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">image-20201012153439900</p> <h4 id="_4-2-2-export关键字"><a href="#_4-2-2-export关键字" class="header-anchor">#</a> 4.2.2. export关键字</h4> <p>export关键字将一个模块中的变量、函数、类等导出；</p> <p>foo.js文件中默认代码如下：</p> <div class="language- extra-class"><pre class="language-text"><code>const name = 'coderwhy';
+const age = 18;
+let message = &quot;my name is why&quot;;
+
+function sayHello(name) {
+  console.log(&quot;Hello &quot; + name);
+}
+</code></pre></div><p><strong>我们希望将其他中内容全部导出，它可以有如下的方式：</strong></p> <p>方式一：在语句声明的前面直接加上export关键字</p> <div class="language- extra-class"><pre class="language-text"><code>export const name = 'coderwhy';
+export const age = 18;
+export let message = &quot;my name is why&quot;;
+
+export function sayHello(name) {
+  console.log(&quot;Hello &quot; + name);
+}
+</code></pre></div><p>方式二：将所有需要导出的标识符，放到export后面的 <code>{}</code>中</p> <ul><li>注意：这里的 <code>{}</code>里面不是ES6的对象字面量的增强写法，<code>{}</code>也不是表示一个对象的；</li> <li>所以：<code>export {name: name}</code>，是错误的写法；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const name = 'coderwhy';
+const age = 18;
+let message = &quot;my name is why&quot;;
+
+function sayHello(name) {
+  console.log(&quot;Hello &quot; + name);
+}
+
+export {
+  name,
+  age,
+  message,
+  sayHello
+}
+</code></pre></div><p>方式三：导出时给<code>标识符</code>起一个别名</p> <div class="language- extra-class"><pre class="language-text"><code>export {
+  name as fName,
+  age as fAge,
+  message as fMessage,
+  sayHello as fSayHello
+}
+</code></pre></div><h4 id="_4-2-3-import关键字"><a href="#_4-2-3-import关键字" class="header-anchor">#</a> 4.2.3. import关键字</h4> <p>import关键字负责从另外一个模块中导入内容</p> <p><strong>导入内容的方式也有多种：</strong></p> <p>方式一：<code>import {标识符列表} from '模块'</code>；</p> <ul><li>注意：这里的<code>{}</code>也不是一个对象，里面只是存放导入的标识符列表内容；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>import { name, age, message, sayHello } from './modules/foo.js';
+
+console.log(name)
+console.log(message);
+console.log(age);
+sayHello(&quot;Kobe&quot;);
+</code></pre></div><p>方式二：导入时给标识符起别名</p> <div class="language- extra-class"><pre class="language-text"><code>import { name as wName, age as wAge, message as wMessage, sayHello as wSayHello } from './modules/foo.js';
+</code></pre></div><p>方式三：将模块功能放到一个模块功能对象（a module object）上</p> <div class="language- extra-class"><pre class="language-text"><code>import * as foo from './modules/foo.js';
+
+console.log(foo.name);
+console.log(foo.message);
+console.log(foo.age);
+foo.sayHello(&quot;Kobe&quot;);
+</code></pre></div><h4 id="_4-2-4-export和import结合"><a href="#_4-2-4-export和import结合" class="header-anchor">#</a> 4.2.4. export和import结合</h4> <p>如果从一个模块中导入的内容，我们希望再直接导出出去，这个时候可以直接使用export来导出。</p> <p>bar.js中导出一个sum函数：</p> <div class="language- extra-class"><pre class="language-text"><code>export const sum = function(num1, num2) {
+  return num1 + num2;
+}
+</code></pre></div><p>foo.js中导入，但是只是做一个中转：</p> <div class="language- extra-class"><pre class="language-text"><code>export { sum } from './bar.js';
+</code></pre></div><p>main.js直接从foo中导入：</p> <div class="language- extra-class"><pre class="language-text"><code>import { sum } from './modules/foo.js';
+console.log(sum(20, 30));
+</code></pre></div><p>甚至在foo.js中导出时，我们可以变化它的名字</p> <div class="language- extra-class"><pre class="language-text"><code>export { sum as barSum } from './bar.js';
+</code></pre></div><p>为什么要这样做呢？</p> <ul><li>在开发和封装一个功能库时，通常我们希望将暴露的所有接口放到一个文件中；</li> <li>这样方便指定统一的接口规范，也方便阅读；</li> <li>这个时候，我们就可以使用export和import结合使用；</li></ul> <h4 id="_4-2-4-default用法"><a href="#_4-2-4-default用法" class="header-anchor">#</a> 4.2.4. default用法</h4> <p>前面我们学习的导出功能都是有名字的导出（named exports）：</p> <ul><li>在导出export时指定了名字；</li> <li>在导入import时需要知道具体的名字；</li></ul> <p>还有一种导出叫做默认导出（default export）</p> <ul><li>默认导出export时可以不需要指定名字；</li> <li>在导入时不需要使用 <code>{}</code>，并且可以自己来指定名字；</li> <li>它也方便我们和现有的CommonJS等规范相互操作；</li></ul> <p>导出格式如下：</p> <div class="language- extra-class"><pre class="language-text"><code>export default function sub(num1, num2) {
+  return num1 - num2;
+}
+</code></pre></div><p>导入格式如下：</p> <div class="language- extra-class"><pre class="language-text"><code>import sub from './modules/foo.js';
+
+console.log(sub(20, 30));
+</code></pre></div><p>注意：在一个模块中，只能有一个默认导出（default export）；</p> <h4 id="_4-2-5-import"><a href="#_4-2-5-import" class="header-anchor">#</a> 4.2.5. import()</h4> <p>通过import加载一个模块，是不可以在其放到逻辑代码中的，比如：</p> <div class="language- extra-class"><pre class="language-text"><code>if (true) {
+  import sub from './modules/foo.js';
+}
+</code></pre></div><p>为什么会出现这个情况呢？</p> <ul><li>这是因为ES Module在被JS引擎解析时，就必须知道它的依赖关系；</li> <li>由于这个时候js代码没有任何的运行，所以无法在进行类似于if判断中根据代码的执行情况；</li> <li>甚至下面的这种写法也是错误的：因为我们必须到运行时能确定path的值；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const path = './modules/foo.js';
+
+import sub from path;
+</code></pre></div><p>但是某些情况下，我们确确实实希望动态的来加载某一个模块：</p> <ul><li>如果根据不懂的条件，动态来选择加载模块的路径；</li> <li>这个时候我们需要使用 <code>import()</code> 函数来动态加载；</li></ul> <p>aaa.js模块：</p> <div class="language- extra-class"><pre class="language-text"><code>export function aaa() {
+  console.log(&quot;aaa被打印&quot;);
+}
+</code></pre></div><p>bbb.js模块：</p> <div class="language- extra-class"><pre class="language-text"><code>export function bbb() {
+  console.log(&quot;bbb被执行&quot;);
+}
+</code></pre></div><p>main.js模块：</p> <div class="language- extra-class"><pre class="language-text"><code>let flag = true;
+if (flag) {
+  import('./modules/aaa.js').then(aaa =&gt; {
+    aaa.aaa();
+  })
+} else {
+  import('./modules/bbb.js').then(bbb =&gt; {
+    bbb.bbb();
+  })
+}
+</code></pre></div><h3 id="_4-3-es-module的原理"><a href="#_4-3-es-module的原理" class="header-anchor">#</a> 4.3. ES Module的原理</h3> <h4 id="_4-3-1-es-module和commonjs的区别"><a href="#_4-3-1-es-module和commonjs的区别" class="header-anchor">#</a> 4.3.1. ES Module和CommonJS的区别</h4> <p><strong>CommonJS模块加载js文件的过程是运行时加载的，并且是同步的：</strong></p> <ul><li>运行时加载意味着是js引擎在执行js代码的过程中加载 模块；</li> <li>同步的就意味着一个文件没有加载结束之前，后面的代码都不会执行；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>console.log(&quot;main代码执行&quot;);
+
+const flag = true;
+if (flag) {
+  // 同步加载foo文件，并且执行一次内部的代码
+  const foo = require('./foo');
+  console.log(&quot;if语句继续执行&quot;);
+}
+</code></pre></div><p><strong>CommonJS通过module.exports导出的是一个对象：</strong></p> <ul><li>导出的是一个对象意味着可以将这个对象的引用在其他模块中赋值给其他变量；</li> <li>但是最终他们指向的都是同一个对象，那么一个变量修改了对象的属性，所有的地方都会被修改；</li></ul> <p><strong>ES Module加载js文件的过程是编译（解析）时加载的，并且是异步的：</strong></p> <ul><li><p>编译时（解析）时加载，意味着import不能和运行时相关的内容放在一起使用：</p></li> <li><ul><li>比如from后面的路径需要动态获取；</li> <li>比如不能将import放到if等语句的代码块中；</li> <li>所以我们有时候也称ES Module是静态解析的，而不是动态或者运行时解析的；</li></ul></li> <li><p>异步的意味着：JS引擎在遇到<code>import</code>时会去获取这个js文件，但是这个获取的过程是异步的，并不会阻塞主线程继续执行；</p></li> <li><ul><li>也就是说设置了 <code>type=module</code> 的代码，相当于在script标签上也加上了 <code>async</code> 属性；</li> <li>如果我们后面有普通的script标签以及对应的代码，那么ES Module对应的js文件和代码不会阻塞它们的执行；</li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;!-- 这个js文件的代码不会被阻塞执行 --&gt;
+&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+</code></pre></div><p><strong>ES Module通过export导出的是变量本身的引用：</strong></p> <ul><li>export在导出一个变量时，js引擎会解析这个语法，并且创建<strong>模块环境记录</strong>（module environment record）；</li> <li><strong>模块环境记录</strong>会和变量进行 <code>绑定</code>（binding），并且这个绑定是实时的；</li> <li>而在导入的地方，我们是可以实时的获取到绑定的最新值的；</li></ul> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">export和import绑定的过程</p> <p><strong>所以我们下面的代码是成立的：</strong></p> <p>bar.js文件中修改</p> <div class="language- extra-class"><pre class="language-text"><code>let name = 'coderwhy';
+
+setTimeout(() =&gt; {
+  name = &quot;湖人总冠军&quot;;
+}, 1000);
+
+setTimeout(() =&gt; {
+  console.log(name);
+}, 2000);
+
+export {
+  name
+}
+</code></pre></div><p>main.js文件中获取</p> <div class="language- extra-class"><pre class="language-text"><code>import { name } from './modules/bar.js';
+
+console.log(name);
+
+// bar中修改, main中验证
+setTimeout(() =&gt; {
+  console.log(name);
+}, 2000);
+</code></pre></div><p>但是，下面的代码是不成立的：main.js中修改</p> <div class="language- extra-class"><pre class="language-text"><code>import { name } from './modules/bar.js';
+
+console.log(name);
+
+// main中修改, bar中验证
+setTimeout(() =&gt; {
+  name = 'kobe';
+}, 1000);
+</code></pre></div><p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">导入的变量不可以被修改</p> <p>思考：如果bar.js中导出的是一个对象，那么main.js中是否可以修改对象中的属性呢？</p> <ul><li>答案是可以的，因为他们指向同一块内存空间；（自己编写代码验证，这里不再给出）</li></ul> <h4 id="_4-3-2-node中支持-es-module"><a href="#_4-3-2-node中支持-es-module" class="header-anchor">#</a> 4.3.2. Node中支持 ES Module</h4> <p><strong>在Current版本中</strong></p> <p>在最新的Current版本（v14.13.1）中，支持es module我们需要进行如下操作：</p> <ul><li>方式一：在package.json中配置 <code>type: module</code>（后续再学习，我们现在还没有讲到package.json文件的作用）</li> <li>方式二：文件以 <code>.mjs</code> 结尾，表示使用的是ES Module；</li></ul> <p>这里我们暂时选择以 <code>.mjs</code> 结尾的方式来演练：</p> <p>bar.mjs</p> <div class="language- extra-class"><pre class="language-text"><code>const name = 'coderwhy';
+
+export {
+  name
+}
+</code></pre></div><p>main.mjs</p> <div class="language- extra-class"><pre class="language-text"><code>import { name } from './modules/bar.mjs';
+
+console.log(name);
+</code></pre></div><p><strong>在LTS版本中</strong></p> <p>在最新的LST版本（v12.19.0）中，我们也是可以正常运行的，但是会报一个警告：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">lts版本的警告</p> <h4 id="_4-3-3-es-module和commonjs的交互"><a href="#_4-3-3-es-module和commonjs的交互" class="header-anchor">#</a> 4.3.3. ES Module和CommonJS的交互</h4> <p><strong>CommonJS加载ES Module</strong></p> <p>结论：通常情况下，CommonJS不能加载ES Module</p> <ul><li>因为CommonJS是同步加载的，但是ES Module必须经过静态分析等，无法在这个时候执行JavaScript代码；</li> <li>但是这个并非绝对的，某些平台在实现的时候可以对代码进行针对性的解析，也可能会支持；</li> <li>Node当中是不支持的；</li></ul> <p><strong>ES Module加载CommonJS</strong></p> <p>结论：多数情况下，ES Module可以加载CommonJS</p> <ul><li>ES Module在加载CommonJS时，会将其module.exports导出的内容作为default导出方式来使用；</li> <li>这个依然需要看具体的实现，比如webpack中是支持的、Node最新的Current版本也是支持的；</li> <li>但是在最新的LTS版本中就不支持；</li></ul> <p>foo.js</p> <div class="language- extra-class"><pre class="language-text"><code>const address = 'foo的address';
+
+module.exports = {
+  address
+}
+</code></pre></div><p>main.js</p> <div class="language- extra-class"><pre class="language-text"><code>import foo from './modules/foo.js';
+console.log(foo.address);
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced/ES12新特性.html" class="prev">
+        JavaScriptES12新特性抢先体验
+      </a></span> <span class="next"><a href="/advanced/变量和类型-1.html">
+        变量和类型
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/31.99b2787c.js" defer></script>
+  </body>
+</html>

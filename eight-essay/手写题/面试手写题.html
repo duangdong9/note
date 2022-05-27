@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>一文帮你搞定 90% 的 JS 手写题！面试手写题不慌了 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/78.9130c8b3.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>promise</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>this解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>手写题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/手写题/如何使用JS实现一个发布订阅器.html" class="sidebar-link">如何使用JS实现一个发布订阅器？</a></li><li><a href="/eight-essay/手写题/手动实现jsonp.html" class="sidebar-link">手动实现jsonp</a></li><li><a href="/eight-essay/手写题/死磕 36 个 JS 手写题.html" class="sidebar-link">死磕 36 个 JS 手写题（搞懂后，提升真的大）</a></li><li><a href="/eight-essay/手写题/面试手写题.html" class="active sidebar-link">一文帮你搞定 90% 的 JS 手写题！面试手写题不慌了</a></li></ul></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="一文帮你搞定-90-的-js-手写题-面试手写题不慌了"><a href="#一文帮你搞定-90-的-js-手写题-面试手写题不慌了" class="header-anchor">#</a> 一文帮你搞定 90% 的 JS 手写题！面试手写题不慌了</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/VyBjZzrFK25B7DpLXPduhQ" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/VyBjZzrFK25B7DpLXPduhQ<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h3 id="_1-call的实现"><a href="#_1-call的实现" class="header-anchor">#</a> 1.call的实现</h3> <ul><li>第一个参数为null或者undefined时，this指向全局对象window，值为原始值的指向该原始值的自动包装对象，如 String、Number、Boolean</li> <li>为了避免函数名与上下文(context)的属性发生冲突，使用Symbol类型作为唯一值</li> <li>将函数作为传入的上下文(context)属性执行</li> <li>函数执行完成后删除该属性</li> <li>返回执行结果</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.myCall = function(context,...args){
+    let cxt = context || window;
+    //将当前被调用的方法定义在cxt.func上.(为了能以对象调用形式绑定this)
+    //新建一个唯一的Symbol变量避免重复
+    let func = Symbol() 
+    cxt[func] = this;
+    args = args ? args : []
+    //以对象调用形式调用func,此时this指向cxt 也就是传入的需要绑定的this指向
+    const res = args.length &gt; 0 ? cxt[func](...args) : cxt[func]();
+    //删除该方法，不然会对传入对象造成污染（添加该方法）
+    delete cxt[func];
+    return res;
+}
+</code></pre></div><h3 id="_2-apply的实现"><a href="#_2-apply的实现" class="header-anchor">#</a> 2.apply的实现</h3> <ul><li>前部分与call一样</li> <li>第二个参数可以不传，但类型必须为数组或者类数组</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.myApply = function(context,args = []){
+    let cxt = context || window;
+    //将当前被调用的方法定义在cxt.func上.(为了能以对象调用形式绑定this)
+    //新建一个唯一的Symbol变量避免重复
+    let func = Symbol()
+    cxt[func] = this;
+    //以对象调用形式调用func,此时this指向cxt 也就是传入的需要绑定的this指向
+    const res = args.length &gt; 0 ? cxt[func](...args) : cxt[func]();
+    delete cxt[func];
+    return res;
+}
+</code></pre></div><h3 id="_3-bind的实现"><a href="#_3-bind的实现" class="header-anchor">#</a> 3.bind的实现</h3> <p>需要考虑：</p> <ul><li>bind() 除了 this 外，还可传入多个参数；</li> <li>bind 创建的新函数可能传入多个参数；</li> <li>新函数可能被当做构造函数调用；</li> <li>函数可能有返回值；</li></ul> <p>实现方法：</p> <ul><li>bind 方法不会立即执行，需要返回一个待执行的函数；（闭包）</li> <li>实现作用域绑定（apply）</li> <li>参数传递（apply 的数组传参）</li> <li>当作为构造函数的时候，进行原型继承</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.myBind = function (context, ...args) {
+    //新建一个变量赋值为this，表示当前函数
+    const fn = this
+    //判断有没有传参进来，若为空则赋值[]
+    args = args ? args : []
+    //返回一个newFn函数，在里面调用fn
+    return function newFn(...newFnArgs) {
+        if (this instanceof newFn) {
+            return new fn(...args, ...newFnArgs)
+        }
+        return fn.apply(context, [...args,...newFnArgs])
+    }
+}
+</code></pre></div><ul><li>测试</li></ul> <div class="language- extra-class"><pre class="language-text"><code>let name = '小王',age =17;
+let obj = {
+    name:'小张',
+    age: this.age,
+    myFun: function(from,to){
+        console.log(this.name + ' 年龄 ' + this.age+'来自 '+from+'去往'+ to)
+    }
+}
+let db = {
+    name: '德玛',
+    age: 99
+}
+
+//结果
+obj.myFun.myCall(db,'成都','上海');     // 德玛 年龄 99  来自 成都去往上海
+obj.myFun.myApply(db,['成都','上海']);      // 德玛 年龄 99  来自 成都去往上海
+obj.myFun.myBind(db,'成都','上海')();       // 德玛 年龄 99  来自 成都去往上海
+obj.myFun.myBind(db,['成都','上海'])();   // 德玛 年龄 99  来自 成都, 上海去往 undefined
+</code></pre></div><h3 id="_4-寄生式组合继承"><a href="#_4-寄生式组合继承" class="header-anchor">#</a> 4.寄生式组合继承</h3> <div class="language- extra-class"><pre class="language-text"><code>function Person(obj) {
+    this.name = obj.name
+    this.age = obj.age
+}
+Person.prototype.add = function(value){
+    console.log(value)
+}
+var p1 = new Person({name:&quot;番茄&quot;, age: 18})
+
+function Person1(obj) {
+    Person.call(this, obj)
+    this.sex = obj.sex
+}
+// 这一步是继承的关键
+Person1.prototype = Object.create(Person.prototype);
+Person1.prototype.constructor = Person1;
+
+Person1.prototype.play = function(value){
+    console.log(value)
+}
+var p2 = new Person1({name:&quot;鸡蛋&quot;, age: 118, sex: &quot;男&quot;})
+</code></pre></div><h3 id="_5-es6继承"><a href="#_5-es6继承" class="header-anchor">#</a> 5.ES6继承</h3> <div class="language- extra-class"><pre class="language-text"><code>//class 相当于es5中构造函数
+//class中定义方法时，前后不能加function，全部定义在class的protopyte属性中
+//class中定义的所有方法是不可枚举的
+//class中只能定义方法，不能定义对象，变量等
+//class和方法内默认都是严格模式
+//es5中constructor为隐式属性
+class People{
+  constructor(name='wang',age='27'){
+    this.name = name;
+    this.age = age;
+  }
+  eat(){
+    console.log(`${this.name} ${this.age} eat food`)
+  }
+}
+//继承父类
+class Woman extends People{ 
+   constructor(name = 'ren',age = '27'){ 
+     //继承父类属性
+     super(name, age); 
+   } 
+    eat(){ 
+     //继承父类方法
+      super.eat() 
+    } 
+} 
+let wonmanObj=new Woman('xiaoxiami'); 
+wonmanObj.eat();
+
+//es5继承先创建子类的实例对象，然后再将父类的方法添加到this上（Parent.apply(this)）。 
+//es6继承是使用关键字super先创建父类的实例对象this，最后在子类class中修改this。
+</code></pre></div><h3 id="_6-new的实现"><a href="#_6-new的实现" class="header-anchor">#</a> 6.new的实现</h3> <ul><li>一个继承自 Foo.prototype 的新对象被创建。</li> <li>使用指定的参数调用构造函数 Foo，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。</li> <li>由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。</li> <li>一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function Ctor(){
+    ....
+}
+
+function myNew(ctor,...args){
+    if(typeof ctor !== 'function'){
+      throw 'myNew function the first param must be a function';
+    }
+    var newObj = Object.create(ctor.prototype); //创建一个继承自ctor.prototype的新对象
+    var ctorReturnResult = ctor.apply(newObj, args); //将构造函数ctor的this绑定到newObj中
+    var isObject = typeof ctorReturnResult === 'object' &amp;&amp; ctorReturnResult !== null;
+    var isFunction = typeof ctorReturnResult === 'function';
+    if(isObject || isFunction){
+        return ctorReturnResult;
+    }
+    return newObj;
+}
+
+let c = myNew(Ctor);
+</code></pre></div><h3 id="_7-instanceof的实现"><a href="#_7-instanceof的实现" class="header-anchor">#</a> 7.instanceof的实现</h3> <ul><li>instanceof 是用来判断A是否为B的实例，表达式为：A instanceof B，如果A是B的实例，则返回true,否则返回false。</li> <li>instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。</li> <li>不能检测基本数据类型，在原型链上的结果未必准确，不能检测null,undefined</li> <li>实现：遍历左边变量的原型链，直到找到右边变量的 prototype，如果没有找到，返回 false</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function myInstanceOf(a,b){
+    let left = a.__proto__;
+    let right = b.prototype;
+    while(true){
+        if(left == null){
+            return false
+        }
+        if(left == right){
+            return true
+        }
+        left = left.__proto__
+    }
+}
+
+//instanceof 运算符用于判断构造函数的 prototype 属性是否出现在对象的原型链中的任何位置。
+function myInstanceof(left, right) {
+    let proto = Object.getPrototypeOf(left), // 获取对象的原型
+    prototype = right.prototype; // 获取构造函数的 prototype 对象
+    // 判断构造函数的 prototype 对象是否在对象的原型链上
+    while (true) {
+        if (!proto) return false;
+        if (proto === prototype) return true;
+        proto = Object.getPrototypeOf(proto);
+    }
+}
+</code></pre></div><h3 id="_8-object-create-的实现"><a href="#_8-object-create-的实现" class="header-anchor">#</a> 8.Object.create()的实现</h3> <ul><li>MDN文档</li> <li>Object.create()会将参数对象作为一个新创建的空对象的原型, 并返回这个空对象</li></ul> <div class="language- extra-class"><pre class="language-text"><code>//简略版
+function myCreate(obj){
+    // 新声明一个函数
+    function C(){};
+    // 将函数的原型指向obj
+    C.prototype = obj;
+    // 返回这个函数的实力化对象
+    return new C()
+}
+//官方版Polyfill
+if (typeof Object.create !== &quot;function&quot;) {
+    Object.create = function (proto, propertiesObject) {
+        if (typeof proto !== 'object' &amp;&amp; typeof proto !== 'function') {
+            throw new TypeError('Object prototype may only be an Object: ' + proto);
+        } else if (proto === null) {
+            throw new Error(&quot;This browser's implementation of Object.create is a shim and doesn't support 'null' as the first argument.&quot;);
+        }
+
+        if (typeof propertiesObject !== 'undefined') throw new Error(&quot;This browser's implementation of Object.create is a shim and doesn't support a second argument.&quot;);
+
+        function F() {}
+        F.prototype = proto;
+
+        return new F();
+    };
+}
+</code></pre></div><h3 id="_9-实现-object-assign"><a href="#_9-实现-object-assign" class="header-anchor">#</a> 9.实现 Object.assign</h3> <div class="language- extra-class"><pre class="language-text"><code>Object.assign2 = function(target, ...source) {
+    if (target == null) {
+        throw new TypeError('Cannot convert undefined or null to object')
+    }
+    let ret = Object(target) 
+    source.forEach(function(obj) {
+        if (obj != null) {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    ret[key] = obj[key]
+                }
+            }
+        }
+    })
+    return ret
+}
+</code></pre></div><h3 id="_10-promise的实现"><a href="#_10-promise的实现" class="header-anchor">#</a> 10.Promise的实现</h3> <p>实现 Promise 需要完全读懂 Promise A+ 规范，不过从总体的实现上看，有如下几个点需要考虑到：</p> <ul><li>Promise本质是一个状态机，且状态只能为以下三种：Pending（等待态）、Fulfilled（执行态）、Rejected（拒绝态），状态的变更是单向的，只能从Pending -&gt; Fulfilled 或 Pending -&gt; Rejected，状态变更不可逆</li> <li>then 需要支持链式调用</li></ul> <div class="language- extra-class"><pre class="language-text"><code>class Promise {
+    callbacks = [];
+    state = 'pending';//增加状态
+    value = null;//保存结果
+    constructor(fn) {
+        fn(this._resolve.bind(this), this._reject.bind(this));
+    }
+    then(onFulfilled, onRejected) {
+        return new Promise((resolve, reject) =&gt; {
+            this._handle({
+                onFulfilled: onFulfilled || null,
+                onRejected: onRejected || null,
+                resolve: resolve,
+                reject: reject
+            });
+        });
+    }
+    _handle(callback) {
+        if (this.state === 'pending') {
+            this.callbacks.push(callback);
+            return;
+        }
+ 
+        let cb = this.state === 'fulfilled' ? callback.onFulfilled : callback.onRejected;
+ 
+        if (!cb) {//如果then中没有传递任何东西
+            cb = this.state === 'fulfilled' ? callback.resolve : callback.reject;
+            cb(this.value);
+            return;
+        }
+ 
+        let ret = cb(this.value);
+        cb = this.state === 'fulfilled' ? callback.resolve : callback.reject;
+        cb(ret);
+    }
+    _resolve(value) {
+ 
+        if (value &amp;&amp; (typeof value === 'object' || typeof value === 'function')) {
+            var then = value.then;
+            if (typeof then === 'function') {
+                then.call(value, this._resolve.bind(this), this._reject.bind(this));
+                return;
+            }
+        }
+ 
+        this.state = 'fulfilled';//改变状态
+        this.value = value;//保存结果
+        this.callbacks.forEach(callback =&gt; this._handle(callback));
+    }
+    _reject(error) {
+        this.state = 'rejected';
+        this.value = error;
+        this.callbacks.forEach(callback =&gt; this._handle(callback));
+    }
+}
+</code></pre></div><h4 id="promise-resolve"><a href="#promise-resolve" class="header-anchor">#</a> Promise.resolve</h4> <ul><li>Promsie.resolve(value) 可以将任何值转成值为 value 状态是 fulfilled 的 Promise，但如果传入的值本身是 Promise 则会原样返回它。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.resolve(value) {
+  if (value &amp;&amp; value instanceof Promise) {
+    return value;
+  } else if (value &amp;&amp; typeof value === 'object' &amp;&amp; typeof value.then === 'function') {
+    let then = value.then;
+    return new Promise(resolve =&gt; {
+      then(resolve);
+    });
+  } else if (value) {
+    return new Promise(resolve =&gt; resolve(value));
+  } else {
+    return new Promise(resolve =&gt; resolve());
+  }
+}
+</code></pre></div><h4 id="promise-reject"><a href="#promise-reject" class="header-anchor">#</a> Promise.reject</h4> <ul><li>和 Promise.resolve() 类似，Promise.reject() 会实例化一个 rejected 状态的 Promise。但与 Promise.resolve() 不同的是，如果给 Promise.reject() 传递一个 Promise 对象，则这个对象会成为新 Promise 的值。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.reject = function(reason) {
+    return new Promise((resolve, reject) =&gt; reject(reason))
+}
+</code></pre></div><h4 id="promise-all"><a href="#promise-all" class="header-anchor">#</a> Promise.all</h4> <ul><li>传入的所有 Promsie 都是 fulfilled，则返回由他们的值组成的，状态为 fulfilled 的新 Promise；</li> <li>只要有一个 Promise 是 rejected，则返回 rejected 状态的新 Promsie，且它的值是第一个 rejected 的 Promise 的值；</li> <li>只要有一个 Promise 是 pending，则返回一个 pending 状态的新 Promise；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.all = function(promiseArr) {
+    let index = 0, result = []
+    return new Promise((resolve, reject) =&gt; {
+        promiseArr.forEach((p, i) =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                index++
+                result[i] = val
+                if (index === promiseArr.length) {
+                    resolve(result)
+                }
+            }, err =&gt; {
+                reject(err)
+            })
+        })
+    })
+}
+</code></pre></div><h4 id="promise-race"><a href="#promise-race" class="header-anchor">#</a> Promise.race</h4> <ul><li>Promise.race 会返回一个由所有可迭代实例中第一个 fulfilled 或 rejected 的实例包装后的新实例。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.race = function(promiseArr) {
+    return new Promise((resolve, reject) =&gt; {
+        promiseArr.forEach(p =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                resolve(val)
+            }, err =&gt; {
+                rejecte(err)
+            })
+        })
+    })
+}
+</code></pre></div><h3 id="_11-ajax的实现"><a href="#_11-ajax的实现" class="header-anchor">#</a> 11.Ajax的实现</h3> <div class="language- extra-class"><pre class="language-text"><code>function ajax(url,method,body,headers){
+    return new Promise((resolve,reject)=&gt;{
+        let req = new XMLHttpRequest();
+        req.open(methods,url);
+        for(let key in headers){
+            req.setRequestHeader(key,headers[key])
+        }
+        req.onreadystatechange(()=&gt;{
+            if(req.readystate == 4){
+                if(req.status &gt;= '200' &amp;&amp; req.status &lt;= 300){
+                    resolve(req.responeText)
+                }else{
+                    reject(req)
+                }
+            }
+        })
+        req.send(body)
+    })
+}
+</code></pre></div><h3 id="_12-实现防抖函数-debounce"><a href="#_12-实现防抖函数-debounce" class="header-anchor">#</a> 12.实现防抖函数（debounce）</h3> <ul><li>连续触发在最后一次执行方法，场景：输入框匹配</li></ul> <div class="language- extra-class"><pre class="language-text"><code>let debounce = (fn,time = 1000) =&gt; {
+    let timeLock = null
+
+    return function (...args){
+        clearTimeout(timeLock)
+        timeLock = setTimeout(()=&gt;{
+            fn(...args)
+        },time)
+    }
+}
+</code></pre></div><h3 id="_13-实现节流函数-throttle"><a href="#_13-实现节流函数-throttle" class="header-anchor">#</a> 13.实现节流函数（throttle）</h3> <ul><li>在一定时间内只触发一次，场景：长列表滚动节流</li></ul> <div class="language- extra-class"><pre class="language-text"><code>let throttle = (fn,time = 1000) =&gt; {
+    let flag = true;
+
+    return function (...args){
+        if(flag){
+            flag = false;
+            setTimeout(()=&gt;{
+                flag = true;
+                fn(...args)
+            },time)
+        }
+    }
+}
+</code></pre></div><h3 id="_14-深拷贝-deepclone"><a href="#_14-深拷贝-deepclone" class="header-anchor">#</a> 14.深拷贝（deepclone）</h3> <ul><li>判断类型，正则和日期直接返回新对象</li> <li>空或者非对象类型，直接返回原值</li> <li>考虑循环引用，判断如果hash中含有直接返回hash中的值</li> <li>新建一个相应的new obj.constructor加入hash</li> <li>遍历对象递归（普通key和key是symbol情况）</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function deepClone(obj,hash = new WeakMap()){
+    if(obj instanceof RegExp) return new RegExp(obj);
+    if(obj instanceof Date) return new Date(obj);
+    if(obj === null || typeof obj !== 'object') return obj;
+    //循环引用的情况
+    if(hash.has(obj)){
+        return hash.get(obj)
+    }
+    //new 一个相应的对象
+    //obj为Array，相当于new Array()
+    //obj为Object，相当于new Object()
+    let constr = new obj.constructor();
+    hash.set(obj,constr);
+    for(let key in obj){
+        if(obj.hasOwnProperty(key)){
+            constr[key] = deepClone(obj[key],hash)
+        }
+    }
+    //考虑symbol的情况
+    let symbolObj = Object.getOwnPropertySymbols(obj)
+    for(let i=0;i&lt;symbolObj.length;i++){
+        if(obj.hasOwnProperty(symbolObj[i])){
+            constr[symbolObj[i]] = deepClone(obj[symbolObj[i]],hash)
+        }
+    }
+    return constr
+}
+</code></pre></div><h3 id="_15-数组扁平化的实现-flat"><a href="#_15-数组扁平化的实现-flat" class="header-anchor">#</a> 15.数组扁平化的实现(flat)</h3> <div class="language- extra-class"><pre class="language-text"><code>let arr = [1,2,[3,4,[5,[6]]]]
+console.log(arr.flat(Infinity))//flat参数为指定要提取嵌套数组的结构深度，默认值为 1
+//用reduce实现
+function fn(arr){
+   return arr.reduce((prev,cur)=&gt;{
+      return prev.concat(Array.isArray(cur)?fn(cur):cur)
+   },[])
+}
+</code></pre></div><h3 id="_16-函数柯里化"><a href="#_16-函数柯里化" class="header-anchor">#</a> 16.函数柯里化</h3> <div class="language- extra-class"><pre class="language-text"><code>function sumFn(a,b,c){return a+ b + c};
+let sum = curry(sumFn);
+sum(2)(3)(5)//10
+sum(2,3)(5)//10
+function curry(fn,...args){
+  let fnLen = fn.length,
+      argsLen = args.length;
+  //对比函数的参数和当前传入参数
+  //若参数不够就继续递归返回curry
+  //若参数够就调用函数返回相应的值
+  if(fnLen &gt; argsLen){
+    return function(...arg2s){
+      return curry(fn,...args,...arg2s)
+    }
+  }else{
+    return fn(...args)
+  }
+}
+</code></pre></div><h3 id="_17-使用闭包实现每隔一秒打印-1-2-3-4"><a href="#_17-使用闭包实现每隔一秒打印-1-2-3-4" class="header-anchor">#</a> 17.使用闭包实现每隔一秒打印 1,2,3,4</h3> <div class="language- extra-class"><pre class="language-text"><code>for (var i=1; i&lt;=5; i++) {
+  (function (i) {
+    setTimeout(() =&gt; console.log(i), 1000*i)
+  })(i)
+}
+</code></pre></div><h3 id="_18-手写一个-jsonp"><a href="#_18-手写一个-jsonp" class="header-anchor">#</a> 18.手写一个 jsonp</h3> <div class="language- extra-class"><pre class="language-text"><code>const jsonp = function (url, data) {
+    return new Promise((resolve, reject) =&gt; {
+        // 初始化url
+        let dataString = url.indexOf('?') === -1 ? '?' : ''
+        let callbackName = `jsonpCB_${Date.now()}`
+        url += `${dataString}callback=${callbackName}`
+        if (data) {
+            // 有请求参数，依次添加到url
+            for (let k in data) {
+                url += `${k}=${data[k]}`
+            }
+        }
+        let jsNode = document.createElement('script')
+        jsNode.src = url
+        // 触发callback，触发后删除js标签和绑定在window上的callback
+        window[callbackName] = result =&gt; {
+            delete window[callbackName]
+            document.body.removeChild(jsNode)
+            if (result) {
+                resolve(result)
+            } else {
+                reject('没有返回数据')
+            }
+        }
+        // js加载异常的情况
+        jsNode.addEventListener('error', () =&gt; {
+            delete window[callbackName]
+            document.body.removeChild(jsNode)
+            reject('JavaScript资源加载失败')
+        }, false)
+        // 添加js节点到document上时，开始请求
+        document.body.appendChild(jsNode)
+    })
+}
+jsonp('http://192.168.0.103:8081/jsonp', {
+    a: 1,
+    b: 'heiheihei'
+})
+.then(result =&gt; {
+    console.log(result)
+})
+.catch(err =&gt; {
+    console.error(err)
+})
+</code></pre></div><h3 id="_19-手写一个观察者模式"><a href="#_19-手写一个观察者模式" class="header-anchor">#</a> 19.手写一个观察者模式</h3> <div class="language- extra-class"><pre class="language-text"><code>class Subject{
+  constructor(name){
+    this.name = name
+    this.observers = []
+    this.state = 'XXXX'
+  }
+  // 被观察者要提供一个接受观察者的方法
+  attach(observer){
+    this.observers.push(observer)
+  }
+
+  // 改变被观察着的状态
+  setState(newState){
+    this.state = newState
+    this.observers.forEach(o=&gt;{
+      o.update(newState)
+    })
+  }
+}
+
+class Observer{
+  constructor(name){
+    this.name = name
+  }
+
+  update(newState){
+    console.log(`${this.name}say:${newState}`)
+  }
+}
+
+// 被观察者 灯
+let sub = new Subject('灯')
+let mm = new Observer('小明')
+let jj = new Observer('小健')
+ 
+// 订阅 观察者
+sub.attach(mm)
+sub.attach(jj)
+ 
+sub.setState('灯亮了来电了')
+</code></pre></div><h3 id="_20-eventemitter-实现"><a href="#_20-eventemitter-实现" class="header-anchor">#</a> 20.EventEmitter 实现</h3> <div class="language- extra-class"><pre class="language-text"><code>class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+    on(event, callback) {
+        let callbacks = this.events[event] || [];
+        callbacks.push(callback);
+        this.events[event] = callbacks;
+        return this;
+    }
+    off(event, callback) {
+        let callbacks = this.events[event];
+        this.events[event] = callbacks &amp;&amp; callbacks.filter(fn =&gt; fn !== callback);
+        return this;
+    }
+    emit(event, ...args) {
+        let callbacks = this.events[event];
+        callbacks.forEach(fn =&gt; {
+            fn(...args);
+        });
+        return this;
+    }
+    once(event, callback) {
+        let wrapFun = function (...args) {
+            callback(...args);
+            this.off(event, wrapFun);
+        };
+        this.on(event, wrapFun);
+        return this;
+    }
+}
+</code></pre></div><h3 id="_21-生成随机数的各种方法"><a href="#_21-生成随机数的各种方法" class="header-anchor">#</a> 21.生成随机数的各种方法？</h3> <div class="language- extra-class"><pre class="language-text"><code>function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min   
+}
+</code></pre></div><h3 id="_22-如何实现数组的随机排序"><a href="#_22-如何实现数组的随机排序" class="header-anchor">#</a> 22.如何实现数组的随机排序？</h3> <div class="language- extra-class"><pre class="language-text"><code>let arr = [2,3,454,34,324,32]
+arr.sort(randomSort)
+function randomSort(a, b) {
+  return Math.random() &gt; 0.5 ? -1 : 1;
+}
+</code></pre></div><h3 id="_23-写一个通用的事件侦听器函数。"><a href="#_23-写一个通用的事件侦听器函数。" class="header-anchor">#</a> 23.写一个通用的事件侦听器函数。</h3> <div class="language- extra-class"><pre class="language-text"><code>const EventUtils = {
+  // 视能力分别使用dom0||dom2||IE方式 来绑定事件
+  // 添加事件
+  addEvent: function(element, type, handler) {
+    if (element.addEventListener) {
+      element.addEventListener(type, handler, false);
+    } else if (element.attachEvent) {
+      element.attachEvent(&quot;on&quot; + type, handler);
+    } else {
+      element[&quot;on&quot; + type] = handler;
+    }
+  },
+  // 移除事件
+  removeEvent: function(element, type, handler) {
+    if (element.removeEventListener) {
+      element.removeEventListener(type, handler, false);
+    } else if (element.detachEvent) {
+      element.detachEvent(&quot;on&quot; + type, handler);
+    } else {
+      element[&quot;on&quot; + type] = null;
+    }
+  },
+ // 获取事件目标
+  getTarget: function(event) {
+    return event.target || event.srcElement;
+  },
+  // 获取 event 对象的引用，取到事件的所有信息，确保随时能使用 event
+  getEvent: function(event) {
+    return event || window.event;
+  },
+ // 阻止事件（主要是事件冒泡，因为 IE 不支持事件捕获）
+  stopPropagation: function(event) {
+    if (event.stopPropagation) {
+      event.stopPropagation();
+    } else {
+      event.cancelBubble = true;
+    }
+  },
+  // 取消事件的默认行为
+  preventDefault: function(event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    } else {
+      event.returnValue = false;
+    }
+  }
+};
+</code></pre></div><h3 id="_24-使用迭代的方式实现-flatten-函数。"><a href="#_24-使用迭代的方式实现-flatten-函数。" class="header-anchor">#</a> 24.使用迭代的方式实现 flatten 函数。</h3> <div class="language- extra-class"><pre class="language-text"><code>var arr = [1, 2, 3, [4, 5], [6, [7, [8]]]]
+/** * 使用递归的方式处理 * wrap 内保
+存结果 ret * 返回一个递归函数 **/
+function wrap() {
+    var ret = [];
+    return function flat(a) {
+        for (var item of
+            a) {
+                if (item.constructor === Array) {
+                    ret.concat(flat(item))
+                } else {
+                    ret.push(item)
+                }
+        }
+        return ret
+    }
+} 
+console.log(wrap()(arr));
+</code></pre></div><h3 id="_25-怎么实现一个sleep"><a href="#_25-怎么实现一个sleep" class="header-anchor">#</a> 25.怎么实现一个sleep</h3> <ul><li>sleep函数作用是让线程休眠，等到指定时间在重新唤起。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function sleep(delay) {
+  var start = (new Date()).getTime();
+  while ((new Date()).getTime() - start &lt; delay) {
+    continue;
+  }
+}
+
+function test() {
+  console.log('111');
+  sleep(2000);
+  console.log('222');
+}
+
+test()
+</code></pre></div><h3 id="_26-实现正则切分千分位-10000-10-000"><a href="#_26-实现正则切分千分位-10000-10-000" class="header-anchor">#</a> 26.实现正则切分千分位（10000 =&gt; 10,000）</h3> <div class="language- extra-class"><pre class="language-text"><code>//无小数点
+let num1 = '1321434322222'
+num1.replace(/(\d)(?=(\d{3})+$)/g,'$1,')
+//有小数点
+let num2 = '342243242322.3432423'
+num2.replace(/(\d)(?=(\d{3})+\.)/g,'$1,')
+</code></pre></div><h3 id="_27-对象数组去重"><a href="#_27-对象数组去重" class="header-anchor">#</a> 27.对象数组去重</h3> <div class="language- extra-class"><pre class="language-text"><code>输入:
+[{a:1,b:2,c:3},{b:2,c:3,a:1},{d:2,c:2}]
+输出:
+[{a:1,b:2,c:3},{d:2,c:2}]
+</code></pre></div><ul><li>首先写一个函数把对象中的key排序，然后再转成字符串</li> <li>遍历数组利用Set将转为字符串后的对象去重</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function objSort(obj){
+    let newObj = {}
+    //遍历对象，并将key进行排序
+    Object.keys(obj).sort().map(key =&gt; {
+        newObj[key] = obj[key]
+    })
+    //将排序好的数组转成字符串
+    return JSON.stringify(newObj)
+}
+
+function unique(arr){
+    let set = new Set();
+    for(let i=0;i&lt;arr.length;i++){
+        let str = objSort(arr[i])
+        set.add(str)
+    }
+    //将数组中的字符串转回对象
+    arr = [...set].map(item =&gt; {
+        return JSON.parse(item)
+    })
+    return arr
+}
+</code></pre></div><h3 id="_28-解析-url-params-为对象"><a href="#_28-解析-url-params-为对象" class="header-anchor">#</a> 28.解析 URL Params 为对象</h3> <div class="language- extra-class"><pre class="language-text"><code>let url = 'http://www.domain.com/?user=anonymous&amp;id=123&amp;id=456&amp;city=%E5%8C%97%E4%BA%AC&amp;enabled';
+parseParam(url)
+/* 结果
+{ user: 'anonymous',
+  id: [ 123, 456 ], // 重复出现的 key 要组装成数组，能被转成数字的就转成数字类型
+  city: '北京', // 中文需解码
+  enabled: true, // 未指定值得 key 约定为 true
+}
+*/
+function parseParam(url) {
+  const paramsStr = /.+\?(.+)$/.exec(url)[1]; // 将 ? 后面的字符串取出来
+  const paramsArr = paramsStr.split('&amp;'); // 将字符串以 &amp; 分割后存到数组中
+  let paramsObj = {};
+  // 将 params 存到对象中
+  paramsArr.forEach(param =&gt; {
+    if (/=/.test(param)) { // 处理有 value 的参数
+      let [key, val] = param.split('='); // 分割 key 和 value
+      val = decodeURIComponent(val); // 解码
+      val = /^\d+$/.test(val) ? parseFloat(val) : val; // 判断是否转为数字
+
+      if (paramsObj.hasOwnProperty(key)) { // 如果对象有 key，则添加一个值
+        paramsObj[key] = [].concat(paramsObj[key], val);
+      } else { // 如果对象没有这个 key，创建 key 并设置值
+        paramsObj[key] = val;
+      }
+    } else { // 处理没有 value 的参数
+      paramsObj[param] = true;
+    }
+  })
+
+  return paramsObj;
+}
+</code></pre></div><h3 id="_29-模板引擎实现"><a href="#_29-模板引擎实现" class="header-anchor">#</a> 29.模板引擎实现</h3> <div class="language- extra-class"><pre class="language-text"><code>let template = '我是{{name}}，年龄{{age}}，性别{{sex}}';
+let data = {
+  name: '姓名',
+  age: 18
+}
+render(template, data); // 我是姓名，年龄18，性别undefined
+function render(template, data) {
+  const reg = /\{\{(\w+)\}\}/; // 模板字符串正则
+  if (reg.test(template)) { // 判断模板里是否有模板字符串
+    const name = reg.exec(template)[1]; // 查找当前模板里第一个模板字符串的字段
+    template = template.replace(reg, data[name]); // 将第一个模板字符串渲染
+    return render(template, data); // 递归的渲染并返回渲染后的结构
+  }
+  return template; // 如果模板没有模板字符串直接返回
+}
+</code></pre></div><h3 id="_30-转化为驼峰命名"><a href="#_30-转化为驼峰命名" class="header-anchor">#</a> 30.转化为驼峰命名</h3> <div class="language- extra-class"><pre class="language-text"><code>var s1 = &quot;get-element-by-id&quot;
+// 转化为 getElementById
+var f = function(s) {
+    return s.replace(/-\w/g, function(x) {
+        return x.slice(1).toUpperCase();
+    })
+}
+</code></pre></div><h3 id="_31-查找字符串中出现最多的字符和个数"><a href="#_31-查找字符串中出现最多的字符和个数" class="header-anchor">#</a> 31.查找字符串中出现最多的字符和个数</h3> <ul><li>例: abbcccddddd -&gt; 字符最多的是d，出现了5次</li></ul> <div class="language- extra-class"><pre class="language-text"><code>let str = &quot;abcabcabcbbccccc&quot;;
+let num = 0;
+let char = '';
+
+ // 使其按照一定的次序排列
+str = str.split('').sort().join('');
+// &quot;aaabbbbbcccccccc&quot;
+
+// 定义正则表达式
+let re = /(\w)\1+/g;
+str.replace(re,($0,$1) =&gt; {
+    if(num &lt; $0.length){
+        num = $0.length;
+        char = $1;        
+    }
+});
+console.log(`字符最多的是${char}，出现了${num}次`);
+</code></pre></div><h3 id="_32-图片懒加载"><a href="#_32-图片懒加载" class="header-anchor">#</a> 32.图片懒加载</h3> <div class="language- extra-class"><pre class="language-text"><code>let imgList = [...document.querySelectorAll('img')]
+let length = imgList.length
+
+const imgLazyLoad = function() {
+    let count = 0
+    return (function() {
+        let deleteIndexList = []
+        imgList.forEach((img, index) =&gt; {
+            let rect = img.getBoundingClientRect()
+            if (rect.top &lt; window.innerHeight) {
+                img.src = img.dataset.src
+                deleteIndexList.push(index)
+                count++
+                if (count === length) {
+                    document.removeEventListener('scroll', imgLazyLoad)
+                }
+            }
+        })
+        imgList = imgList.filter((img, index) =&gt; !deleteIndexList.includes(index))
+    })()
+}
+
+// 这里最好加上防抖处理
+document.addEventListener('scroll', imgLazyLoad)
+</code></pre></div><h2 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h2> <ul><li>高频 JavaScript 手写</li> <li>初、中级前端应该要掌握的手写代码实现</li> <li>22 道高频 JavaScript 手写</li> <li>死磕 36 个 JS 手写题（搞懂后，提升真的大）</li></ul> <blockquote><p>作者：xpsilvester</p> <p>链接：https://juejin.cn/post/6963167124881670152</p></blockquote> <p>- EOF -</p> <p>推荐阅读 点击标题可跳转</p> <p>1、<a href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651578105&amp;idx=2&amp;sn=ace9b43370fea5359b9c6f8af587b8c1&amp;chksm=80250938b752802e300740b2036c5f20f32c1ec50cf41b098528f50c7ebec7abb606e837ff68&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">Node.js 有难度的面试题，你能答对几个？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>2、<a href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651573707&amp;idx=1&amp;sn=2601b3e36c2476bfcfd842585764a15b&amp;chksm=80251a0ab752931c485c432463632f94d0cc52fe3f9debea91fa25f57861159575a60d7ccff6&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">JS 语法 ES6、ES7、ES8、ES9、ES10、ES11、ES12新特性<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>3、<a href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651577125&amp;idx=1&amp;sn=b2e0effb451cb7ae0faa256bf5abba1e&amp;chksm=80250ce4b75285f2bfddf30f5a78679cbe18640b5a34c44c6c3e3519fd8d639738ad348f7181&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">原以为很简单，结果这道 Promise 面试题让我失眠好一会<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/手写题/死磕 36 个 JS 手写题.html" class="prev">
+        死磕 36 个 JS 手写题（搞懂后，提升真的大）
+      </a></span> <span class="next"><a href="/eight-essay/掘金八股文.html">
+        八股文总结
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/78.9130c8b3.js" defer></script>
+  </body>
+</html>

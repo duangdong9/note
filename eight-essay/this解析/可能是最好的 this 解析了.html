@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>可能是最好的 this 解析了 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/63.0c9d8ccc.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>promise</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>this解析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/this解析/5种this绑定全面解析.html" class="sidebar-link">JavaScript深入之史上最全--5种this绑定全面解析</a></li><li><a href="/eight-essay/this解析/JavaScript深入之重新认识箭头函数的this.html" class="sidebar-link">JavaScript深入之重新认识箭头函数的this</a></li><li><a href="/eight-essay/this解析/apply原理.html" class="sidebar-link">一文搞懂 this、apply、call、bind</a></li><li><a href="/eight-essay/this解析/apply实现-1.html" class="sidebar-link">apply/call/bind 自我实现</a></li><li><a href="/eight-essay/this解析/apply实现.html" class="sidebar-link">防抖、节流、call、bind、apply、new、柯里化实现</a></li><li><a href="/eight-essay/this解析/bind实现.html" class="sidebar-link">js 实现 bind 的这五层，你在第几层？</a></li><li><a href="/eight-essay/this解析/可能是最好的 this 解析了.html" class="active sidebar-link">可能是最好的 this 解析了</a></li><li><a href="/eight-essay/this解析/模拟实现call-1.html" class="sidebar-link">模拟实现call</a></li><li><a href="/eight-essay/this解析/深度广度解析call和apply原理.html" class="sidebar-link">深度广度解析 call 和 apply 原理、使用场景及实现</a></li><li><a href="/eight-essay/this解析/深度解析bind原理.html" class="sidebar-link">深度解析bind原理、使用场景及模拟实现</a></li><li><a href="/eight-essay/this解析/深度解析new原理及模拟实现.html" class="sidebar-link">深度解析 new 原理及模拟实现</a></li><li><a href="/eight-essay/this解析/能否模拟实现JS的bind方法.html" class="sidebar-link">能否模拟实现JS的bind方法（高频考点）</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>手写题</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="可能是最好的-this-解析了"><a href="#可能是最好的-this-解析了" class="header-anchor">#</a> 可能是最好的 this 解析了</h1> <blockquote><p><a href="https://mp.weixin.qq.com/s/ccPDFpmAVU4Lk2qMRodM0Q" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/ccPDFpmAVU4Lk2qMRodM0Q<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="找对象"><a href="#找对象" class="header-anchor">#</a> 找对象</h2> <p>首先， <strong>this 在大多数情况下是一个对象，也有可能是 undefined 或其他值</strong>。</p> <p>什么情况下，<code>this</code> 是 <code>undefined</code> ？函数运行在严格模式下，应用默认绑定规则的时候：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>c
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Uncaught TypeError: Cannot read property 'a' of undefined</span>
+</code></pre></div><p>原理其实很简单，因为规范定义了严格模式下，不能将全局对象 <code>Window</code> 用于默认绑定。而大多数情况下，我们说的 <code>this</code>，其实就是一个对象，所以确定 <code>this</code> 的指向，本质上就是要<strong>找到这个对象</strong>。</p> <p><strong>所以接下来我就来教大家如何 “找对象” 🤣 。</strong></p> <h2 id="绑定规则"><a href="#绑定规则" class="header-anchor">#</a> 绑定规则</h2> <p>找对象最重要的是什么？是不是得先通过各种途径（社交，搭讪，相亲...）去认识对象，途径越多，我们找到对象的几率就越大，对吧，这里也是一样，所以我们需要尽可能的了解 this 的绑定规则。</p> <p><strong>ECMAScript 5规范</strong>[1] 定义的 <code>this</code> 的绑定规则，有 <strong>4</strong> 种。</p> <h3 id="默认绑定"><a href="#默认绑定" class="header-anchor">#</a> 默认绑定</h3> <p>教科书会告诉我们，几乎所有的规则都会有一个默认的情况，<code>this</code> 绑定也不例外，默认绑定的规则为：</p> <p><strong>非严格模式下，this 指向全局对象，严格模式下，this 会绑定到 undefined</strong>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1，非严格模式下，this 指向全局对象 Window，这里相当于 Window.a</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Uncaught TypeError: Cannot read property 'a' of undefined，严格模式下，this 会绑定到 undefined，尝试从 undefined 读取属性会报错</span>
+</code></pre></div><h3 id="隐式绑定"><a href="#隐式绑定" class="header-anchor">#</a> 隐式绑定</h3> <p><strong>如果函数在调用位置有上下文对象，this 就会隐式地绑定到这个对象上</strong>，</p> <p>说起来有点晦涩，直接看例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a  <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> foo<span class="token punctuation">,</span> <span class="token comment">// &lt;-- foo 的调用位置</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2，foo 在调用位置有上下文对象 obj，this 会隐式地绑定到 obj，this.a 相当于 obj.a</span>
+</code></pre></div><p>这个规则可能会让你想起关于 <code>this</code> 经常听到的一句话，<strong>this 依赖于调用函数前的对象</strong>。</p> <p>需要注意的是，隐式绑定在某些情况下可能会导致绑定丢失，具体来说有两种情况，</p> <p>第一种是使用函数别名调用时：</p> <div class="language- extra-class"><pre class="language-text"><code>var a = 1;
+
+function foo() {
+  console.log(this.a);
+};
+
+var obj = {
+  a: 2,
+  foo: foo,
+};
+
+var bar = obj.foo;
+
+bar(); // 1，赋值并不会改变引用本身，使用函数别名调用时，bar 虽然是 obj.foo 的一个引用，但是实际上引用的还是 foo 函数本身，所以这里隐式绑定并没有生效， this 应用的是默认绑定
+</code></pre></div><p>第二种是函数作为参数传递时：</p> <div class="language- extra-class"><pre class="language-text"><code>function foo() {
+  console.log(this.a);
+};
+
+function bar(fn) {
+  fn(); // &lt;-- 调用位置
+};
+
+var a = 1;
+
+var obj = {
+  a: 2,
+  foo: foo,
+};
+
+bar(obj.foo); // 1, 参数传递也是一种隐式赋值，即使传入的是函数，这里相当于 fn = obj.foo，所以 fn 实际上引用的还是 foo 函数本身，this 应用默认绑定
+</code></pre></div><h3 id="显式绑定"><a href="#显式绑定" class="header-anchor">#</a> 显式绑定</h3> <p>我们知道 <code>call</code>，<code>apply</code>，<code>bind</code> 等方法可以改变 <code>this</code> 的指向，通过传入参数就可以指定 <code>this</code> 的绑定值，够不够显式 ？这种明目张胆的绑定 <code>this</code> 的规则就叫显式绑定。</p> <p><code>call</code> 和 <code>apply</code> 的区别只是接受的参数格式不同，<code>call</code> 接受一个参数列表，<code>apply</code> 接受一个参数数组，但两者的第一个参数都是相同的，都是 <strong>绑定的 this 值</strong>：</p> <div class="language- extra-class"><pre class="language-text"><code>function foo() {
+  console.log(this.a);
+};
+
+var a = 1;
+
+var obj = { a: 2 };
+
+foo.call(obj); // 2，调用时显式地将 foo 的 this 绑定为 obj 对象，所以这里的 this.a 相当于 obj.a
+
+foo.apply(obj); // 2，同理
+</code></pre></div><p>前文我们提到隐式绑定可能会导致绑定丢失，显式绑定也不例外，</p> <p>思考一下，如何才能解决绑定丢失的问题？</p> <p>答案其实很简单，只需要<strong>在调用函数的内部使用显式绑定</strong>，强制地将 <code>this</code> 绑定到对象：</p> <div class="language- extra-class"><pre class="language-text"><code>function foo() {
+  console.log(this.a);
+};
+
+var obj = {
+  a: 2,
+  foo: foo,
+};
+
+function bar(fn) {
+  fn.call(obj);
+};
+
+var a = 1;
+
+bar(obj.foo); // 2，
+</code></pre></div><p><strong>这其实就是 bind 的实现原理</strong>，与 <code>call</code>，<code>apply</code> 不同，<code>bind</code> 调用后不会执行，而是会<strong>返回一个硬绑定的函数</strong>，所以通过 <code>bind</code> 可以解决绑定丢失的问题。<code>bind</code> 也是显式绑定，我们来回顾下 <code>bind</code> 的用法：</p> <div class="language- extra-class"><pre class="language-text"><code>function foo() {
+  console.log(this.a);
+};
+
+var obj = { a: 2 };
+
+var a = 1;
+
+var bar = foo.bind(obj);
+
+bar(); // 2，bar 是通过 bind 返回后的一个硬绑定函数，其内部应用了显式绑定
+</code></pre></div><p>此外，需要注意的是，将 <code>null</code>，<code>undefined</code> 作为第一个参数传入 <code>call</code>，<code>apply</code>，<code>bind</code> ，调用时会被忽略，实际应用的是默认绑定规则，即严格模式下，<code>this</code> 为 <code>undefined</code>，非严格模式下为全局对象。</p> <h3 id="new绑定"><a href="#new绑定" class="header-anchor">#</a> new绑定</h3> <p>先来回顾下 new 的实现原理，</p> <div class="language- extra-class"><pre class="language-text"><code>function _new() {
+  let obj = new Object(); // 1. 创建一个空对象
+  let Con = [].shift.call(arguments); // 2. 获得构造函数
+  obj.__proto__ = Con.prototype; // 3. 链接到原型
+  let result = Con.apply(obj, arguments); // 4. 绑定 this，执行构造函数
+  return typeof result === 'object' ? result : obj; // 5. 返回 new 出来的对象
+}
+</code></pre></div><p>了解了原理，我们不难发现，在使用 <code>new</code> 来调用函数时，会创建一个链接到函数原型的对象，并把它绑定到函数调用的 <code>this</code>，所以应用了 <code>new</code> 绑定规则后，不会被任何方式修改 <code>this</code> 指向：</p> <div class="language- extra-class"><pre class="language-text"><code>function foo(a) {
+  this.a = a;
+};
+
+var bar = new foo(2);
+
+bar.a; // 2，new 会返回一个对象，这个对象绑定到构造函数的 this
+</code></pre></div><h3 id="【特殊】箭头函数中的this"><a href="#【特殊】箭头函数中的this" class="header-anchor">#</a> 【特殊】箭头函数中的this</h3> <p>ES6 中新增了一种函数类型，<strong>箭头函数</strong>[2]，箭头函数中 <code>this</code> 不会应用上述规则，而是<strong>根据最外层的词法作用域来确定 this</strong>，简单来说，箭头函数的 <code>this</code> 就是它<strong>外面第一个不是箭头函数的函数的 this</strong>：</p> <p>关于this你可能还会看：<a href="http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&amp;mid=2650095648&amp;idx=1&amp;sn=ef90aa87af4dffda10c2ae36e9206d35&amp;chksm=83dbdd45b4ac545306307d1443604bf0993c2677ca71b89cafc8647303224333406ba70a38fe&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer"><strong>《2w字大章 38道面试题》彻底理清JS中this指向问题</strong><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language- extra-class"><pre class="language-text"><code>function foo() {
+  return () =&gt; {
+    return () =&gt; {
+      console.log(this.a);
+    };
+  };
+};
+
+foo()(); // undefined，箭头函数调用时，this 取决于最外层的第一个不是箭头函数的函数，这里就是 foo 函数，非严格模式下，默认绑定全局对象 Window，this.a 相当于 Window.a，输出 undefined
+</code></pre></div><h2 id="优先级"><a href="#优先级" class="header-anchor">#</a> 优先级</h2> <p><strong>new绑定 &gt; 显式绑定 &gt; 隐式绑定 &gt; 默认绑定</strong></p> <h2 id="判断模式"><a href="#判断模式" class="header-anchor">#</a> 判断模式</h2> <p>根据绑定规则和优先级，我们可以总结出 <code>this</code> 判断的通用模式，</p> <ol><li>函数是否通过 new 调用？</li> <li>是否通过 call，apply，bind 调用？</li> <li>函数的调用位置是否在某个上下文对象中？</li> <li>是否是箭头函数？</li> <li>函数调用是在严格模式还是非严格模式下？</li></ol> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <ul><li><strong>this 的绑定规则有四种：默认绑定，隐式绑定，显式绑定，new绑定</strong></li> <li><strong>无法应用其他 3 种规则时就是默认绑定，严格模式下 this 为 undefined，非严格模式下为全局对象</strong></li> <li><strong>函数在调用位置有上下文对象时，this 会隐式绑定到这个对象</strong></li> <li><strong>可以通过 call，apply，bind 显式地改变 this 的指向</strong></li> <li><strong>通过 new 调用时，this 会绑定到调用函数，new 绑定是优先级最高的绑定</strong></li> <li><strong>箭头函数中的 this 继承至它外层第一个不是箭头函数的函数</strong></li></ul> <h3 id="关于本文"><a href="#关于本文" class="header-anchor">#</a> 关于本文</h3> <p>作者：campcc</p> <p>https://github.com/campcc/blog/issues/19</p> <h3 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h3> <p>[1]ECMAScript 5规范: http://es5.github.io/[2]箭头函数: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/this解析/bind实现.html" class="prev">
+        js 实现 bind 的这五层，你在第几层？
+      </a></span> <span class="next"><a href="/eight-essay/this解析/模拟实现call-1.html">
+        模拟实现call
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/63.0c9d8ccc.js" defer></script>
+  </body>
+</html>

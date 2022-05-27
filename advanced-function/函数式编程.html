@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数式编程 | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/12.9ed8f981.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/77.04408d97.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link router-link-active">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link router-link-active">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced-function/" aria-current="page" class="sidebar-link">高阶函数</a></li><li><a href="/advanced-function/Array 原型方法源码实现大解密.html" class="sidebar-link">Array 原型方法源码实现大解密</a></li><li><a href="/advanced-function/JavaScript 高阶函数浅析.html" class="sidebar-link">JavaScript 高阶函数浅析</a></li><li><a href="/advanced-function/一文讲懂什么是函数柯里化.html" class="sidebar-link">一文讲懂什么是函数柯里化，柯里化的目的及其代码实现</a></li><li><a href="/advanced-function/函数式编程.html" class="active sidebar-link">函数式编程</a></li><li><a href="/advanced-function/函数柯里化实现.html" class="sidebar-link">函数柯里化</a></li><li><a href="/advanced-function/如何使用异步 add 来实现一个 sum 函数.html" class="sidebar-link">头条面试题：如何使用异步 add 来实现一个 sum 函数</a></li><li><a href="/advanced-function/深入高阶函数应用之柯里化.html" class="sidebar-link">深入高阶函数应用之柯里化</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="函数式编程"><a href="#函数式编程" class="header-anchor">#</a> 函数式编程</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/pf2GSrNLnw6dOmJuHfAPrw" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/pf2GSrNLnw6dOmJuHfAPrw<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="what-is-it"><a href="#what-is-it" class="header-anchor">#</a> what is it？</h2> <h3 id="从两种范式的区别讲起"><a href="#从两种范式的区别讲起" class="header-anchor">#</a> 从两种范式的区别讲起</h3> <ul><li><p>命令式编程</p></li> <li><ul><li>命令式编程是面向计算机硬件的抽象，变量对应存储单元，赋值对应寄存器的存取指令，表达式对应内存引用和算术运算，控制语句对应跳转语句。命令式编程就是将程序用一系列的命令组织起来，<strong>将问题的步骤分解成一个个的命令</strong>的一种组织方式。</li></ul></li> <li><p>函数式编程</p></li> <li><ul><li>函数式编程是面向数学的一种抽象，关心的是<strong>数据到数据的映射</strong>过程，即是将计算过程抽象描述成一种表达式求值。</li></ul></li> <li><p>在函数式语言中，<strong>函数作为一等公民</strong>，可以在任何地方定义，可以作为参数和返回值，可以对函数进行组合。</p></li> <li><p>函数式编程中的函数不是指的计算机中的函数这个概念，而是数学界函数的概念，在初高中数学中，我们都学到了什么叫函数，函数是一种从<strong>x</strong> -&gt; <strong>y</strong>的一种映射关系，如果 <strong>f</strong> 这个映射规则定了，那么f(x) 的值<strong>仅与传入的x有关</strong>，函数式编程的思想其实就是如此，其执行结果<strong>仅与输入的参数有关</strong>，<strong>不依赖</strong>其他外部的状态，也不会产生<strong>副作用</strong>，这种函数我们称为<strong>纯函数（pure Function）</strong>。</p></li> <li><p>函数式编程中的变量也和命令式编程中的变量的概念不一致，命令式中的变量大多是指存储单元的状态，而函数式中的变量值的是数学中代数上的变量，即一个值的名称，变量的值是不可变的（immutable），即不可以多次给一个变量赋值。函数式编程从理论上说，是通过 <strong>lambda</strong> 演算来进行的。</p></li></ul> <h3 id="pure-function-纯函数-副作用"><a href="#pure-function-纯函数-副作用" class="header-anchor">#</a> pure function（纯函数） &amp; 副作用</h3> <ul><li><p>纯函数是这样一种函数，只受输入影响，与外部状态无关，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。</p></li> <li><ul><li>此函数在相同的输入值时，需产生相同的输出。函数的输出和输入值以外的其他隐藏信息或<strong>状态</strong>[2]无关，也和由I/O设备产生的外部输出无关。</li> <li><strong>维基</strong>[1]上若一个函数符合以下要求，则它可能被认为是<strong>纯函数</strong>：</li></ul></li> <li><p>该函数不能有语义上可观察的<strong>函数副作用</strong>[3]，定义：<em>副作用_是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的_可观察的交互</em>。副作用包括：诸如“触发事件”，使输出设备输出，或更改输出值以外物件的内容，更详细的栗子：更改文件系统、往数据库插入记录、发送http请求、可变数据、打印、获取输入、dom查询、访问系统状态。</p></li></ul> <p>纯函数的输出可以不用和所有的输入值有关，甚至可以和所有的输入值都无关。但纯函数的输出不能和输入值以外的任何资讯有关。纯函数可以传回多个输出值，但上述的原则需针对所有输出值都要成立。以下一个初中数学的图，可以很好的说明这个道理。<img src="https://mmbiz.qpic.cn/mmbiz_png/ndgH50E7pIoEGx0eTQ1BNqaiaicx3D7oicniazJibyEwM9OgAyszWzMguWicsfEibB89F0Bl8iczPpkzHJMibiabayX49bBA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"><img src="https://mmbiz.qpic.cn/mmbiz_png/ndgH50E7pIoEGx0eTQ1BNqaiaicx3D7oicnJPruiawenbKZphsu3Hb93EwOKPrADEVCVxeYNFq8D0ibxrKRvUTzEw6A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h3 id="再往下-从lambda演算开始"><a href="#再往下-从lambda演算开始" class="header-anchor">#</a> 再往下（从lambda演算开始）:</h3> <p>计算机科学，尤其是编程语言，经常倾向于使用一种特定的演算：<strong>lambda演算</strong>[4] （Lambda Calculus）。这种演算也广泛地被逻辑学家用于学习计算和离散数学的结构的本质。Lambda演算伟大的的原因有很多，其中包括：</p> <ul><li>非常简单。</li> <li><strong>图灵完备</strong>[5]</li> <li>容易读写。</li> <li>语义足够强大，可以从它开始做（任意）推理。</li> <li>它有一个很好的实体模型。</li> <li>容易创建变种，以便我们探索各种构建计算或语义方式的属性。</li></ul> <p>lambda演算最重要的两个规约：Alpha规约和Beta规约，简单来讲，就是</p> <ul><li>参数可以任意命名，参数名改变不影响lambda表达式</li> <li>参数标识符可以用参数值代替</li></ul> <p>初中数学知识，对吧。好的，我们再来引入一点知识：<strong>丘奇数</strong>[6]， 这样我们能表示一定的计算了，再引入逻辑定义，和循环定义，这样是不是就能表达所有计算了。这里就不展开再继续了，有兴趣可以移步阅读 <strong>https://cgnail.github.io/academic/lambda-1/</strong>[7]。函数式编程其实就是基于lambda演算衍生出来的。</p> <h2 id="why-use-it"><a href="#why-use-it" class="header-anchor">#</a> why use it ?</h2> <p>从一个简单的例子讲起：</p> <div class="language- extra-class"><pre class="language-text"><code>const add = (x,y)=&gt;x+y; 
+const multiply = (x,y)=&gt;x*y; add(multiply(b, add(a, c)), multiply(a, b));
+// add(b*(a+c),a*b); // add(add(ab+ac),a*b); // ab+ab+ac multiply(a,add(b,add(b+c)))  
+</code></pre></div><p>从上面代码可以看出来，函数式的优点，可以任意组合，拆分。</p> <h4 id="特点"><a href="#特点" class="header-anchor">#</a> 特点：</h4> <ul><li>输出仅与输入有关。</li> <li>引用透明不依赖外部，举个栗子，就是外面不管地震海啸刮风下雨，你的妈妈在拿到番茄和鸡蛋这两个输入以后，还是会输出番茄炒蛋这个菜，不管外面发生什么，你给你的妈妈输入番茄和鸡蛋，总会得到番茄炒蛋这个菜。换到代码中来就是函数式编程中的函数是没有上下文的，无论上下文怎么变，这个函数的调用结果仅依赖于输入的参数。</li> <li>不产生副作用。一般来讲 <strong>操作数据库</strong> <strong>发起请求</strong> <strong>操作dom</strong> <strong>调用其他副作用函数</strong>，这些活动一般会对外部环境产生影响。</li></ul> <h4 id="优点"><a href="#优点" class="header-anchor">#</a> 优点：</h4> <ul><li><strong>输入输出显示，方便溯源，同时不会有隐式的状态引入，导致该模块在A处工作正常，但是在B处工作不正常</strong></li></ul> <div class="language- extra-class"><pre class="language-text"><code>// not pure
+  const a = {x:5,y:10};
+  const b = ()=&gt;{
+    console.log(a.x)
+  }
+  b();// =&gt; 5
+   // later ...
+  a.x =10;
+  // later ...
+  b(); // =&gt;10
+// some thing are wrong  
+// 诶 输出为什么变了， b里面怎么计算的，b依赖的啥呀
+// 诶 爷找到他怎么计算的了
+// 为啥前后不一致呢
+// 卧槽 这里为啥改了全局变量
+// pure
+const b = (obj)=&gt;{
+  console.log(obj?.a)
+}
+b({a:5});
+// 这个东西出问题了.. 参数被改变了 over over
+</code></pre></div><ul><li>输入输出流显式，只有一个渠道也就是输入参数可以获得数据。</li> <li>可以得到函数映射表、并发安全 避免竞争、无状态，不会读取外部状态。</li> <li>不产生副作用纯函数，可以组装起来变成高级纯函数可读性高，可测试性，可复制和重构</li></ul> <h4 id="展开讲讲"><a href="#展开讲讲" class="header-anchor">#</a> 展开讲讲：</h4> <ol><li>输入输出显示，那么我们可以得到这个函数的映射表，说明我们可以对这个函数计算结果进行缓存，如果有同样输入的调用，那么我们可以直接返回计算后的值。</li></ol> <div class="language- extra-class"><pre class="language-text"><code>const memo = (fn)=&gt;{
+    const cache = new Map();
+    return (...args)=&gt;{
+        const key = JSON.stringify(args);
+        if(cache.has(key)){
+            return cache.get(key);
+        }
+        const res = fn.call(fn,...args);
+        cache.set(key,res);
+        return res;
+    }
+}
+const addOne = memo(x=&gt;x+1);
+addOne(5); // 计算
+addOne(5); // 缓存
+</code></pre></div><ol><li>可以将一个不纯的函数转换成一个纯函数</li></ol> <div class="language- extra-class"><pre class="language-text"><code>const pureHttpGet = memo((url,params)=&gt;{
+  return ()=&gt;{
+    return axios.get(url,params);
+  }
+})
+</code></pre></div><p>这个函数之所以能称为纯函数，他满足纯函数的特性，根据输入，总是返回固定的输出。</p> <ol><li>可移植性 一句名言：“面向对象语言的问题是，它们永远都要随身携带那些隐式的环境。你只需要一个香蕉，但却得到一个拿着香蕉的大猩猩...以及整个丛林”</li> <li>可测试性与引用透明，对于一个纯函数，我们可以很清晰的去断言他的输入输出，同时因为引用透明，可以很简单的去推导出函数的内部的调用过程，从而去简化&amp;重构这个函数。</li> <li>并行：回忆一下操作系统死锁的原因，以及为什么有锁这个机制的存在，就是因为需要使用/更改外部的资源，但是纯函数不需要访问共享内存，所以也不会因为副作用进入竞争态。</li></ol> <h2 id="core"><a href="#core" class="header-anchor">#</a> core:</h2> <ol><li>高阶函数</li></ol> <ul><li>高阶函数是指对一个函数可以传入一个参数是函数，或者返回值是函数。javascript是天生支持高阶函数和闭包两个重要特性的。我们常用的array方法中 map reduce filter .. 就是高阶函数</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.fakemap = function (callback, thisArg) {
+    if (!Array.isArray(this)) {
+      throw new Error(&quot;Type Error&quot;);
+    }
+    if(typeof callback!==&quot;function&quot;){
+        throw new Error(callback.toString()+'is not a function')
+    }
+    let resArr = [];
+    let cb = callback.bind(thisArg);
+    for (let i = 0; i &lt; this.length; i++) {
+      resArr.push(cb(this[i], i, this));
+    }
+    return resArr;
+};
+// 高阶函数当然也可以组合使用 与纯函数性质一致
+[1,2,3,4].filter(item=&gt;item&gt;2).map(item=&gt;item -1) 
+</code></pre></div><ol><li>偏函数应用 partial function</li></ol> <ul><li>偏函数和柯里化是两个很容易混淆的概念，偏函数是包装一个原始函数接受部分参数作为固定值预设，返回一个新的函数。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 创建偏函数，固定一些参数
+const partial = (f, ...args) =&gt;
+  // 返回一个带有剩余参数的函数
+  (...moreArgs) =&gt;
+    // 调用原始函数
+    f(...args, ...moreArgs)
+
+const add3 = (a, b, c) =&gt; a + b + c
+
+// (...args) =&gt; add3(2, 3, ...args)
+// (c) =&gt; 2 + 3 + c
+const fivePlus = partial(add3, 2, 3)
+
+fivePlus(4)  // 9
+</code></pre></div><p>js中最常见的 Function.prototype.bind（会改变this指向）,其实就可以实现</p> <div class="language- extra-class"><pre class="language-text"><code>const foo = (a:number,b:number)=&gt;{
+  return a+b;
+}
+const bar = foo.bind(null,2);
+bar(3);//5
+</code></pre></div><p>简单来说，偏函数就是固定部分参数，返回新函数做计算，如果需要完整实现的话，可以参考一下lodash的partial.js这个文件，大致意思简单的将源码思路写一下</p> <div class="language- extra-class"><pre class="language-text"><code>function partial(fn) {
+  const args = Array.slice.call(arguments,1);
+  return function(){
+    const length = args.length;
+    let position = 0;
+    // 把用占位符的参数替换掉
+    for(let i =0 ;i&lt;length,i++){
+      args[i] = args[i]=== _ ? arguments[position++]:args[i]
+    }
+    // 将剩下的参数怼进去
+    while(position&lt;arguments.length) args.push(arguments[postion++]);
+    return fn.apply(this,args)
+  };
+}
+</code></pre></div><ol><li>柯里化</li></ol> <ul><li>柯里化和偏函数应用有些区别，是将多个参数函数转换成单参数的函数。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const curry = fn =&gt; {
+  if (fn.length &lt;= 1) {
+    return fn;
+  }
+  const iter = args =&gt;
+    args.length === fn.length
+      ? fn(...args)
+      : arg =&gt; iter([...args, arg]);
+  return iter([]);
+};
+</code></pre></div><ol><li>闭包</li></ol> <p>闭包最初是来源于lambda演算中的一个概念，闭包（closure）或者叫完全绑定（complete binding）。在对一个Lambda演算表达式进行求值的时候，不能引用任何未绑定的标识符。如果一个标识符是一个闭合Lambda表达式的参数，我们则称这个标识符是（被）绑定的；如果一个标识符在任何封闭上下文中都没有绑定，那么它被称为自由变量。</p> <ul><li><code>lambda x . plus x y</code>：在这个表达式中，y和plus是自由的，因为他们不是任何闭合的Lambda表达式的参数；而x是绑定的，因为它是函数定义的闭合表达式plus x y的参数。</li> <li><code>lambda x y . y x</code>：在这个表达式中x和y都是被绑定的，因为它们都是函数定义中的参数。</li> <li><code>lambda y . (lambda x . plus x y)</code>：在内层演算lambda x . plus x y中，y和plus是自由的，x是绑定的。在完整表达中，x和y是绑定的：x受内层绑定，而y由剩下的演算绑定。plus仍然是自由的。</li></ul> <p>一个Lambda演算表达式只有在其所有变量都是绑定的时候才完全合法。js中的闭包就不在这啰嗦了，为什么需要闭包，我们可以看一个最简单的柯里化的例子。</p> <div class="language- extra-class"><pre class="language-text"><code>const add = (w,x,y,z)=&gt;w+x+y+z;
+const curryAdd = curry(add);
+// 根据上面 写的curry函数， 我们来分解一下
+
+
+const a = curryAdd(1); // 这个时候返回了一个包含1的函数 &amp; add的函数
+const b = a(2);
+const c = b(3);
+const d = c(4);
+// 如果没有闭包，之前传入的东西参数都无迹可寻了。
+</code></pre></div><p>从webstorm单步调试可以更清楚的知道这个函数的作用域&amp;存在哪些闭包。<img src="https://mmbiz.qpic.cn/mmbiz_png/ndgH50E7pIoEGx0eTQ1BNqaiaicx3D7oicnMzISxkMvGseEgibvhoZ54MZ26cpOia7ibh3nJa1zomJGPYSBx6oJ1icChw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h2 id="how-do-i-use-it"><a href="#how-do-i-use-it" class="header-anchor">#</a> How do I use it ?</h2> <ul><li>去掉无必要的包裹</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// Bad
+const BlogController = {
+  index(posts) { return Views.index(posts); },
+  show(post) { return Views.show(post); },
+  create(attrs) { return Db.create(attrs); },
+  update(post, attrs) { return Db.update(post, attrs); },
+  destroy(post) { return Db.destroy(post); },
+};
+// Good
+const BlogController = {
+  index: Views.index,
+  show: Views.show,
+  create: Db.create,
+  update: Db.update,
+  destroy: Db.destroy,
+};
+</code></pre></div><p><code>BlogController</code>，虽说添加一些没有实际用处的间接层实现起来很容易，但这样做除了徒增代码量，提高维护和检索代码的成本外，没有任何用处。</p> <p>另外，如果一个函数被不必要地包裹起来了，而且发生了改动，那么包裹它的那个函数也要做相应的变更。</p> <div class="language- extra-class"><pre class="language-text"><code>foo(a, b =&gt; bar(b)); 
+</code></pre></div><p>如果 <code>foo</code> 增加回调中处理的函数，那么不只是要改掉foo和bar，所有涉及到的调用也会更改。</p> <div class="language- extra-class"><pre class="language-text"><code>foo(a, (x, y) =&gt; bar(x, y)); 
+</code></pre></div><p>写成一等公民函数的形式，要做的改动将会少得多：</p> <div class="language- extra-class"><pre class="language-text"><code>foo(a, bar);  // 只需要更改foo中执行bar的逻辑和 bar中执行的逻辑 
+</code></pre></div><ul><li>工具函数命名更为通用（拒绝业务化）</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 只针对当前的博客
+const validArticles = articles =&gt;
+ articles.filter(article =&gt; article !== null &amp;&amp; article !== undefined),
+
+// 对未来的项目更友好
+const compact = xs =&gt; xs.filter(x =&gt; x !== null &amp;&amp; x !== undefined);
+</code></pre></div><ul><li>use the poor function</li></ul> <p>使用javascript api过程中，不要使用含有副作用的API，而选择无副作用的api。例如 slice 和 splice，肯定是选择slice，不要修改传入的引用对象等。来看一点case</p> <div class="language- extra-class"><pre class="language-text"><code>// bad errInfo 永久的被改动了，如果有其他地方使用到的话，可能会出现问题
+const valiateRepeatPhone = (phones: string[], errInfo: IErrorInfo[]) =&gt; {
+  for (let i = 0; i &lt; phones.length; i++) {
+    if (errInfo[i] === ERROR_TYPE.PHONE_REPEAT) {
+      errInfo[i] = ERROR_TYPE.NULL;
+    }
+    if (
+      errInfo[i] === ERROR_TYPE.NULL &amp;&amp;
+      phones[i] !== '' &amp;&amp;
+      phones.indexOf(phones[i]) !== i
+    ) {
+      errInfo[i] = ERROR_TYPE.PHONE_REPEAT;
+    }
+  }
+};
+// 稍好一点的
+const valiateRepeatPhone = (phones: string[], errInfo: IErrorInfo[]) =&gt; {
+   return errInfo.map((item,index)=&gt;{
+       if(item === ERRORTYPE.PHONE_REPEAT || item === ERROR_TYPE.NULL){
+           return (phones[i] !== '' &amp;&amp; phones.indexOf(phones[i]) !== i)
+                   ? ERROR_TYPE.PHONE_REPEAT
+                   : ERROR_TYPE.NULL
+       }
+       return item;
+   })
+} 
+</code></pre></div><ul><li>使用声明式而不是命令式，将依赖当作参数传递</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 命令式
+const makes = [];
+for(let i =0;i&lt;car.length;i++){
+  makes.push(cars[i].make);
+}
+const makes = cars.map(item=&gt;item.make)
+</code></pre></div><ul><li>compose(将一些纯函数组合起来，返回新函数), 让代码从右到左运行，而不是由内而外运行。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const compose = (f,g) =&gt; {
+  return x =&gt; {
+    return f(g(x));
+  }
+}
+</code></pre></div><ul><li>Monad ：上面我们介绍了compose，但是compose的调用方式，总看起来还是没有那么舒服，在js中链式调用很流行，要实现链式调用，例如(5).add(1).add(4)，那么我们肯定需要一个容器，将5进行一个包装。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>class Functor {
+    private val:any;
+    private constructor (val: any) {
+       this.val = val;
+    }
+    public static of(val){
+        return new Functor(val);
+    }
+    public map(Fn){
+        return Functor.of(Fn(this.val))
+    }
+    
+}
+Functor.of(5).map(add5).map(double)
+</code></pre></div><p>好的，根据上面，其实我们已经实现了一个函数式编程中比较重要的概念，<strong>函子（functor）。functor 是实现了 map 函数并遵守一些特定规则的容器类型。</strong></p> <p>接下来我们进一步分析，可能会存在一种情况，如果传入是空值，会导致报错。所以需要引入一个函子，Maybe函子,只需要引入一个三则，这样我们就能够过滤空值，防止报错。</p> <div class="language- extra-class"><pre class="language-text"><code>class Maybe {
+    private val:any;
+    private constructor (val: any) {
+       this.val = val;
+    }
+    public static of(val){
+        return new Maybe(val);
+    }
+    public map(Fn){
+        return this.val ? Maybe.of(Fn(this.val)) : Maybe.of(null);
+    }
+    
+}
+Maybe.of(5).map(add5).map(double)
+</code></pre></div><p>好的，我们现在已经得到了一个可以过滤空值的函数，但是我们现在在执行完调用后，我们获得的是一个什么呢，是一个对象对吧，我们还需要把值取出来，所以需要添加一个取值的方法</p> <div class="language- extra-class"><pre class="language-text"><code>class Maybe {
+   private val:any;
+   private constructor (val: any) {
+      this.val = val;
+   }
+   public static of(val){
+       return new Maybe(val);
+   }
+   public map(Fn){
+       return this.val ? Maybe.of(Fn(this.val)) : Maybe.of(null);
+   }
+   public join(){
+       return this.val;
+   }
+}
+Maybe.of(5).map(add5).map(double).join()
+</code></pre></div><p>好了，我们现在可以拿到值了，但是，如果may层次太高，我们是不是需要像洋葱一样去剥开他的心，那更简单的是什么呢，在我们需要的时候去剥开它。</p> <div class="language- extra-class"><pre class="language-text"><code>class Maybe {
+    private val:any;
+    private constructor (val: any) {
+       this.val = val;
+    }
+    public static of(val){
+        return new Maybe(val);
+    }
+    public map(Fn){
+        return this.val ? Maybe.of(Fn(this.val)) : Maybe.of(null);
+    }
+    public join(){
+        return this.val;
+    }
+    public chain(Fn) {
+        return this.map(Fn).join();
+    }
+}
+Maybe.of(5).map(add5).chain(Maybe.of(double))
+</code></pre></div><h4 id="io-monad-一个例子"><a href="#io-monad-一个例子" class="header-anchor">#</a> IO monad，一个例子</h4> <p>如果我们要写一个对dom的读写操作，将一个文本转换为大写，先定义一下以下方法</p> <div class="language- extra-class"><pre class="language-text"><code>const $ = (id: string) =&gt; &lt;HTMLElement&gt;document.querySelector(`#${id}`);
+const read = (id: string) =&gt; $(id).value;
+const write = (id: string) =&gt; (text: string) =&gt; $(id).textContent = text;
+// not pure,因为函数中操作了dom，对外部进行了改变
+function syncInputToOutput(idInput: string, idOutput: string) {
+  const inputValue = read(idInput);
+  const outputValue = inputValue.toUpperCase();
+  write(idOutput, outputValue);
+}
+export default class IO&lt;T&gt; {
+  private effectFn: () =&gt; T;
+
+  constructor(effectFn: () =&gt; T) {
+    this.effectFn = effectFn;
+  }
+
+  bind&lt;U&gt;(transform: (value: T) =&gt; IO&lt;U&gt;) {
+    return new IO&lt;U&gt;(() =&gt; transform(this.effectFn()).run());
+  }
+
+  run(): T {
+    return this.effectFn();
+  }
+}
+
+const read = (id: string) =&gt; new IO&lt;string&gt;(() =&gt; $(id).value);
+const write = (id: string) =&gt; (text: string) =&gt; new IO&lt;string&gt;(() =&gt; $(id).textContent = text);
+
+function syncInputToOutput(idInput: string, idOutput: string) {
+  read(idInput)
+    .bind((value: string) =&gt; new IO&lt;string&gt;(() =&gt; value.toUpperCase()))
+    .bind(write(idOutput)))
+    .run();
+}
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced-function/一文讲懂什么是函数柯里化.html" class="prev">
+        一文讲懂什么是函数柯里化，柯里化的目的及其代码实现
+      </a></span> <span class="next"><a href="/advanced-function/函数柯里化实现.html">
+        函数柯里化
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/12.9ed8f981.js" defer></script>
+  </body>
+</html>

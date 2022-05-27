@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>死磕 36 个 JS 手写题（搞懂后，提升真的大） | duangdong的note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.6df8e219.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/77.04408d97.js" as="script"><link rel="prefetch" href="/assets/js/10.e0bdad61.js"><link rel="prefetch" href="/assets/js/100.82a4c820.js"><link rel="prefetch" href="/assets/js/101.f5d94e3b.js"><link rel="prefetch" href="/assets/js/102.7f36fa51.js"><link rel="prefetch" href="/assets/js/103.085df24a.js"><link rel="prefetch" href="/assets/js/104.76789169.js"><link rel="prefetch" href="/assets/js/105.9efb3db9.js"><link rel="prefetch" href="/assets/js/106.22337f5b.js"><link rel="prefetch" href="/assets/js/107.ac8e17b4.js"><link rel="prefetch" href="/assets/js/108.5fe47bcc.js"><link rel="prefetch" href="/assets/js/109.cf88a409.js"><link rel="prefetch" href="/assets/js/11.e801cea9.js"><link rel="prefetch" href="/assets/js/110.603c3bd4.js"><link rel="prefetch" href="/assets/js/111.26f89c7d.js"><link rel="prefetch" href="/assets/js/112.1ad5bc54.js"><link rel="prefetch" href="/assets/js/113.cde31a40.js"><link rel="prefetch" href="/assets/js/114.a1a2a895.js"><link rel="prefetch" href="/assets/js/115.31c25d8b.js"><link rel="prefetch" href="/assets/js/116.8ed4b493.js"><link rel="prefetch" href="/assets/js/117.c802c1ce.js"><link rel="prefetch" href="/assets/js/118.15aead28.js"><link rel="prefetch" href="/assets/js/119.c26b6aad.js"><link rel="prefetch" href="/assets/js/12.9ed8f981.js"><link rel="prefetch" href="/assets/js/120.c3410f53.js"><link rel="prefetch" href="/assets/js/121.357fc3f4.js"><link rel="prefetch" href="/assets/js/122.6ecee0a8.js"><link rel="prefetch" href="/assets/js/123.6b38e86a.js"><link rel="prefetch" href="/assets/js/124.463231bb.js"><link rel="prefetch" href="/assets/js/125.dc9f9675.js"><link rel="prefetch" href="/assets/js/126.97f340de.js"><link rel="prefetch" href="/assets/js/127.080209f1.js"><link rel="prefetch" href="/assets/js/128.dd7fed27.js"><link rel="prefetch" href="/assets/js/129.e9a49c7b.js"><link rel="prefetch" href="/assets/js/13.fb60e043.js"><link rel="prefetch" href="/assets/js/130.86b31ea7.js"><link rel="prefetch" href="/assets/js/131.be4dca8f.js"><link rel="prefetch" href="/assets/js/132.a4e032bd.js"><link rel="prefetch" href="/assets/js/133.545d53fa.js"><link rel="prefetch" href="/assets/js/134.ef4512f0.js"><link rel="prefetch" href="/assets/js/135.b15ec030.js"><link rel="prefetch" href="/assets/js/136.14e63782.js"><link rel="prefetch" href="/assets/js/137.671e87f8.js"><link rel="prefetch" href="/assets/js/138.b3d28a52.js"><link rel="prefetch" href="/assets/js/139.bc5e381c.js"><link rel="prefetch" href="/assets/js/14.63057fe7.js"><link rel="prefetch" href="/assets/js/140.ce3a69fc.js"><link rel="prefetch" href="/assets/js/141.09737b5b.js"><link rel="prefetch" href="/assets/js/142.49e3bb24.js"><link rel="prefetch" href="/assets/js/143.45031fa6.js"><link rel="prefetch" href="/assets/js/144.458e287e.js"><link rel="prefetch" href="/assets/js/145.9d21ff24.js"><link rel="prefetch" href="/assets/js/146.88d47473.js"><link rel="prefetch" href="/assets/js/147.277b5759.js"><link rel="prefetch" href="/assets/js/148.0dd5c138.js"><link rel="prefetch" href="/assets/js/149.d638ab21.js"><link rel="prefetch" href="/assets/js/15.3ac2cfb4.js"><link rel="prefetch" href="/assets/js/150.834eb5ca.js"><link rel="prefetch" href="/assets/js/151.0b833f48.js"><link rel="prefetch" href="/assets/js/152.d212207c.js"><link rel="prefetch" href="/assets/js/153.e8b1311a.js"><link rel="prefetch" href="/assets/js/154.74eb8531.js"><link rel="prefetch" href="/assets/js/16.f2129a31.js"><link rel="prefetch" href="/assets/js/17.27a38c73.js"><link rel="prefetch" href="/assets/js/18.ec5b4213.js"><link rel="prefetch" href="/assets/js/19.553ed8c2.js"><link rel="prefetch" href="/assets/js/20.c1bf3bbb.js"><link rel="prefetch" href="/assets/js/21.5790bc21.js"><link rel="prefetch" href="/assets/js/22.29894e1b.js"><link rel="prefetch" href="/assets/js/23.bae1a497.js"><link rel="prefetch" href="/assets/js/24.1edc62bc.js"><link rel="prefetch" href="/assets/js/25.69b254ca.js"><link rel="prefetch" href="/assets/js/26.df57f236.js"><link rel="prefetch" href="/assets/js/27.9ae48125.js"><link rel="prefetch" href="/assets/js/28.d42d4bb6.js"><link rel="prefetch" href="/assets/js/29.f3630e2f.js"><link rel="prefetch" href="/assets/js/3.5c47a171.js"><link rel="prefetch" href="/assets/js/30.40cf5507.js"><link rel="prefetch" href="/assets/js/31.99b2787c.js"><link rel="prefetch" href="/assets/js/32.eef578d9.js"><link rel="prefetch" href="/assets/js/33.6755a6d2.js"><link rel="prefetch" href="/assets/js/34.add65d5c.js"><link rel="prefetch" href="/assets/js/35.3e4a0da9.js"><link rel="prefetch" href="/assets/js/36.9d4bd3f9.js"><link rel="prefetch" href="/assets/js/37.98506fd6.js"><link rel="prefetch" href="/assets/js/38.44bce283.js"><link rel="prefetch" href="/assets/js/39.62bf281f.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.3a389edd.js"><link rel="prefetch" href="/assets/js/41.a309beb7.js"><link rel="prefetch" href="/assets/js/42.4e87216c.js"><link rel="prefetch" href="/assets/js/43.c6f6922b.js"><link rel="prefetch" href="/assets/js/44.fda8b3de.js"><link rel="prefetch" href="/assets/js/45.5a1c5b3b.js"><link rel="prefetch" href="/assets/js/46.289cbb81.js"><link rel="prefetch" href="/assets/js/47.81850ce8.js"><link rel="prefetch" href="/assets/js/48.e986629d.js"><link rel="prefetch" href="/assets/js/49.d04a41c3.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/50.727fb121.js"><link rel="prefetch" href="/assets/js/51.a10ac8b0.js"><link rel="prefetch" href="/assets/js/52.4fffa0ef.js"><link rel="prefetch" href="/assets/js/53.03ab34e0.js"><link rel="prefetch" href="/assets/js/54.f05ee208.js"><link rel="prefetch" href="/assets/js/55.f90df177.js"><link rel="prefetch" href="/assets/js/56.86a4d03e.js"><link rel="prefetch" href="/assets/js/57.c8cee71c.js"><link rel="prefetch" href="/assets/js/58.0b503f53.js"><link rel="prefetch" href="/assets/js/59.c4daebc4.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/60.b9584ba1.js"><link rel="prefetch" href="/assets/js/61.fa6e5de3.js"><link rel="prefetch" href="/assets/js/62.4f67908f.js"><link rel="prefetch" href="/assets/js/63.0c9d8ccc.js"><link rel="prefetch" href="/assets/js/64.2754e515.js"><link rel="prefetch" href="/assets/js/65.f2bd6dd5.js"><link rel="prefetch" href="/assets/js/66.299c952c.js"><link rel="prefetch" href="/assets/js/67.2ccaf3ef.js"><link rel="prefetch" href="/assets/js/68.b6e197f0.js"><link rel="prefetch" href="/assets/js/69.b821ea5d.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/70.7beae76c.js"><link rel="prefetch" href="/assets/js/71.d452a791.js"><link rel="prefetch" href="/assets/js/72.f3fd5168.js"><link rel="prefetch" href="/assets/js/73.0804c5f0.js"><link rel="prefetch" href="/assets/js/74.cdcdfbcc.js"><link rel="prefetch" href="/assets/js/75.e8e01c97.js"><link rel="prefetch" href="/assets/js/76.6801837d.js"><link rel="prefetch" href="/assets/js/78.9130c8b3.js"><link rel="prefetch" href="/assets/js/79.dcf60589.js"><link rel="prefetch" href="/assets/js/8.89fa1943.js"><link rel="prefetch" href="/assets/js/80.efe0c1a1.js"><link rel="prefetch" href="/assets/js/81.8220fef3.js"><link rel="prefetch" href="/assets/js/82.ae2099d2.js"><link rel="prefetch" href="/assets/js/83.c563f161.js"><link rel="prefetch" href="/assets/js/84.e365194b.js"><link rel="prefetch" href="/assets/js/85.15de0cdb.js"><link rel="prefetch" href="/assets/js/86.b99959c5.js"><link rel="prefetch" href="/assets/js/87.6fccf3fc.js"><link rel="prefetch" href="/assets/js/88.9bc0613a.js"><link rel="prefetch" href="/assets/js/89.89530022.js"><link rel="prefetch" href="/assets/js/9.7637f327.js"><link rel="prefetch" href="/assets/js/90.53d12303.js"><link rel="prefetch" href="/assets/js/91.c55896d7.js"><link rel="prefetch" href="/assets/js/92.0fe1f724.js"><link rel="prefetch" href="/assets/js/93.d681c01d.js"><link rel="prefetch" href="/assets/js/94.ed89d267.js"><link rel="prefetch" href="/assets/js/95.96e675de.js"><link rel="prefetch" href="/assets/js/96.5ad7361e.js"><link rel="prefetch" href="/assets/js/97.e7f32727.js"><link rel="prefetch" href="/assets/js/98.c3a03e67.js"><link rel="prefetch" href="/assets/js/99.31f54446.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><a href="/principle/" class="nav-link">
+  JS执行
+</a></div><div class="nav-item"><a href="/design-mode/" class="nav-link">
+  JS设计模式
+</a></div><div class="nav-item"><a href="/advanced/" class="nav-link">
+  JS进阶
+</a></div><div class="nav-item"><a href="/advanced-function/" class="nav-link">
+  高阶函数
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TS
+</a></div><div class="nav-item"><a href="/eight-essay/" class="nav-link router-link-active">
+  八股文
+</a></div><div class="nav-item"><a href="/hand-writing/" class="nav-link">
+  手写实现
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  工具方法
+</a></div><div class="nav-item"><a href="https://link.qdzhou.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/eight-essay/" aria-current="page" class="sidebar-link">八股文</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>new的过程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>promise</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>this解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原型</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>手写题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/eight-essay/手写题/如何使用JS实现一个发布订阅器.html" class="sidebar-link">如何使用JS实现一个发布订阅器？</a></li><li><a href="/eight-essay/手写题/手动实现jsonp.html" class="sidebar-link">手动实现jsonp</a></li><li><a href="/eight-essay/手写题/死磕 36 个 JS 手写题.html" class="active sidebar-link">死磕 36 个 JS 手写题（搞懂后，提升真的大）</a></li><li><a href="/eight-essay/手写题/面试手写题.html" class="sidebar-link">一文帮你搞定 90% 的 JS 手写题！面试手写题不慌了</a></li></ul></section></li><li><a href="/eight-essay/掘金八股文.html" class="sidebar-link">八股文总结</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="死磕-36-个-js-手写题-搞懂后-提升真的大"><a href="#死磕-36-个-js-手写题-搞懂后-提升真的大" class="header-anchor">#</a> 死磕 36 个 JS 手写题（搞懂后，提升真的大）</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/sDZudDS2jn8PZrSAtkicTg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/sDZudDS2jn8PZrSAtkicTg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p><strong>为什么要写这类文章</strong></p> <p>作为一个程序员，代码能力毋庸置疑是非常非常重要的，就像现在为什么大厂面试基本都问什么 API 怎么实现可见其重要性。我想说的是居然手写这么重要，那我们就必须掌握它，所以文章标题用了死磕，一点也不过分，也希望不被认为是标题党。</p> <p>作为一个普通前端，我是真的写不出 Promise A+ 规范，但是没关系，我们可以站在巨人的肩膀上，要相信我们现在要走的路，前人都走过，所以可以找找现在社区已经存在的那些优秀的文章，比如工业聚大佬写的 <a href="https://mp.weixin.qq.com/s?__biz=MzA4Njc2MTE3Ng==&amp;mid=2456151398&amp;idx=1&amp;sn=c3351d6c9eb166035f2fa97a1b0b3a0a&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">100 行代码实现 Promises/A+ 规范<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，找到这些文章后不是收藏夹吃灰，得找个时间踏踏实实的学，一行一行的磨，直到搞懂为止。我现在就是这么干的。</p> <p><strong>能收获什么</strong></p> <p>这篇文章总体上分为 2 类手写题，前半部分可以归纳为是常见需求，后半部分则是对现有技术的实现；</p> <ul><li>对常用的需求进行手写实现，比如数据类型判断函数、深拷贝等可以直接用于往后的项目中，提高了项目开发效率；</li> <li>对现有关键字和 API 的实现，可能需要用到别的知识或 API，比如在写 forEach 的时候用到了无符号位右移的操作，平时都不怎么能够接触到这玩意，现在遇到了就可以顺手把它掌握了。所以手写这些实现能够潜移默化的扩展并巩固自己的 JS 基础；</li> <li>通过写各种测试用例，你会知道各种 API 的边界情况，比如 Promise.all， 你得考虑到传入参数的各种情况，从而加深了对它们的理解及使用；</li></ul> <p><strong>阅读的时候需要做什么</strong></p> <p>阅读的时候，你需要把每行代码都看懂，知道它在干什么，为什么要这么写，能写得更好嘛？比如在写图片懒加载的时候，一般我们都是根据当前元素的位置和视口进行判断是否要加载这张图片，普通程序员写到这就差不多完成了。而大佬程序员则是会多考虑一些细节的东西，比如性能如何更优？代码如何更精简？比如 yeyan1996 写的图片懒加载就多考虑了 2 点：比如图片全部加载完成的时候得把事件监听给移除；比如加载完一张图片的时候，得把当前 img 从 imgList 里移除，起到优化内存的作用。</p> <p>除了读通代码之外，还可以打开 Chrome 的 Script snippet 去写测试用例跑跑代码，做到更好的理解以及使用。</p> <p>在看了几篇以及写了很多测试用例的前提下，尝试自己手写实现，看看自己到底掌握了多少。条条大路通罗马，你还能有别的方式实现嘛？或者你能写得比别人更好嘛？</p> <p>好了，还楞着干啥，开始干活。</p> <h2 id="数据类型判断"><a href="#数据类型判断" class="header-anchor">#</a> 数据类型判断</h2> <p>typeof 可以正确识别：Undefined、Boolean、Number、String、Symbol、Function 等类型的数据，但是对于其他的都会认为是 object，比如 Null、Date 等，所以通过 typeof 来判断数据类型会不准确。但是可以使用 Object.prototype.toString 实现。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">typeOf</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    res <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+<span class="token function">typeOf</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>        <span class="token comment">// 'array'</span>
+<span class="token function">typeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>        <span class="token comment">// 'object'</span>
+<span class="token function">typeOf</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">)</span>  <span class="token comment">// 'date'</span>
+</code></pre></div><h2 id="继承"><a href="#继承" class="header-anchor">#</a> 继承</h2> <h3 id="原型链继承"><a href="#原型链继承" class="header-anchor">#</a> 原型链继承</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'black'</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Animal</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getColor</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>colors
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> dog1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+dog1<span class="token punctuation">.</span>colors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'brown'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> dog2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>dog2<span class="token punctuation">.</span>colors<span class="token punctuation">)</span>  <span class="token comment">// ['black', 'white', 'brown']</span>
+</code></pre></div><p>原型链继承存在的问题：</p> <ul><li>问题1：原型中包含的引用类型属性将被所有实例共享；</li> <li>问题2：子类在实例化的时候不能给父类构造函数传参；</li></ul> <h3 id="借用构造函数实现继承"><a href="#借用构造函数实现继承" class="header-anchor">#</a> 借用构造函数实现继承</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">getName</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Animal</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>借用构造函数实现继承解决了原型链继承的 2 个问题：引用类型共享问题以及传参问题。但是由于方法必须定义在构造函数中，所以会导致每次创建子类实例都会创建一遍方法。</p> <h3 id="组合继承"><a href="#组合继承" class="header-anchor">#</a> 组合继承</h3> <p>组合继承结合了原型链和盗用构造函数，将两者的优点集中了起来。基本的思路是使用原型链继承原型上的属性和方法，而通过盗用构造函数继承实例属性。这样既可以把方法定义在原型上以实现重用，又可以让每个实例都有自己的属性。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token keyword">this</span><span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'black'</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Animal</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getName</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Animal</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">}</span>
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Dog
+
+<span class="token keyword">let</span> dog1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">'奶昔'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+dog1<span class="token punctuation">.</span>colors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'brown'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> dog2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">'哈赤'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>dog2<span class="token punctuation">)</span>
+<span class="token comment">// { name: &quot;哈赤&quot;, colors: [&quot;black&quot;, &quot;white&quot;], age: 1 }</span>
+</code></pre></div><h3 id="寄生式组合继承"><a href="#寄生式组合继承" class="header-anchor">#</a> 寄生式组合继承</h3> <p>组合继承已经相对完善了，但还是存在问题，它的问题就是调用了 2 次父类构造函数，第一次是在 new Animal()，第二次是在 Animal.call() 这里。</p> <p>所以解决方案就是不直接调用父类构造函数给子类原型赋值，而是通过创建空函数 F 获取父类原型的副本。</p> <p>寄生式组合继承写法上和组合继承基本类似，区别是如下这里：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">-</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">-</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Dog
+
+<span class="token operator">+</span> <span class="token keyword">function</span> <span class="token constant">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token operator">+</span> <span class="token class-name">F</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token class-name">Animal</span><span class="token punctuation">.</span>prototype
+<span class="token operator">+</span> <span class="token keyword">let</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">+</span> f<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Dog
+<span class="token operator">+</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> f
+</code></pre></div><p>稍微封装下上面添加的代码后：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">object</span><span class="token punctuation">(</span><span class="token parameter">o</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token constant">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token class-name">F</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> o
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">inheritPrototype</span><span class="token punctuation">(</span><span class="token parameter">child<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prototype <span class="token operator">=</span> <span class="token function">object</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+    prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> child
+    child<span class="token punctuation">.</span>prototype <span class="token operator">=</span> prototype
+<span class="token punctuation">}</span>
+<span class="token function">inheritPrototype</span><span class="token punctuation">(</span>Dog<span class="token punctuation">,</span> Animal<span class="token punctuation">)</span>
+</code></pre></div><p>如果你嫌弃上面的代码太多了，还可以基于组合继承的代码改成最简单的寄生式组合继承：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">-</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">-</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Dog
+
+<span class="token operator">+</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span>  Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Animal</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+<span class="token operator">+</span> <span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Dog
+</code></pre></div><h3 id="class-实现继承"><a href="#class-实现继承" class="header-anchor">#</a> class 实现继承</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span> 
+    <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="数组去重"><a href="#数组去重" class="header-anchor">#</a> 数组去重</h2> <p>ES5 实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">unique</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> res <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index<span class="token punctuation">,</span> array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token operator">===</span> index
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+</code></pre></div><p>ES6 实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> <span class="token function-variable function">unique</span> <span class="token operator">=</span> <span class="token parameter">arr</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre></div><h2 id="数组扁平化"><a href="#数组扁平化" class="header-anchor">#</a> 数组扁平化</h2> <p>数组扁平化就是将 [1, [2, [3]]] 这种多层的数组拍平成一层 [1, 2, 3]。使用 Array.prototype.flat 可以直接将多层数组拍平成一层：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment">// [1, 2, 3]</span>
+</code></pre></div><p>现在就是要实现 flat 这种效果。</p> <p>ES5 实现：递归。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">flatten</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token function">flatten</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>ES6 实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">flatten</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">...</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="深浅拷贝"><a href="#深浅拷贝" class="header-anchor">#</a> 深浅拷贝</h2> <p>浅拷贝：只考虑对象类型。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">shallowCopy</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+    
+    <span class="token keyword">let</span> newObj <span class="token operator">=</span> obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            newObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> newObj
+<span class="token punctuation">}</span>
+</code></pre></div><p>简单版深拷贝：只考虑普通对象属性，不考虑内置对象和函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> newObj <span class="token operator">=</span> obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            newObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">?</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">:</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> newObj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>复杂版深克隆：基于简单版的基础上，还考虑了内置对象比如 Date、RegExp 等对象和函数以及解决了循环引用的问题。</p> <div class="language- extra-class"><pre class="language-text"><code>const isObject = (target) =&gt; (typeof target === &quot;object&quot; || typeof target === &quot;function&quot;) &amp;&amp; target !== null;
+
+function deepClone(target, map = new WeakMap()) {
+    if (map.get(target)) {
+        return target;
+    }
+    // 获取当前值的构造函数：获取它的类型
+    let constructor = target.constructor;
+    // 检测当前对象target是否与正则、日期格式对象匹配
+    if (/^(RegExp|Date)$/i.test(constructor.name)) {
+        // 创建一个新的特殊对象(正则类/日期类)的实例
+        return new constructor(target);  
+    }
+    if (isObject(target)) {
+        map.set(target, true);  // 为循环引用的对象做标记
+        const cloneTarget = Array.isArray(target) ? [] : {};
+        for (let prop in target) {
+            if (target.hasOwnProperty(prop)) {
+                cloneTarget[prop] = deepClone(target[prop], map);
+            }
+        }
+        return cloneTarget;
+    } else {
+        return target;
+    }
+}
+</code></pre></div><h2 id="事件总线-发布订阅模式"><a href="#事件总线-发布订阅模式" class="header-anchor">#</a> 事件总线（发布订阅模式）</h2> <div class="language- extra-class"><pre class="language-text"><code>class EventEmitter {
+    constructor() {
+        this.cache = {}
+    }
+    on(name, fn) {
+        if (this.cache[name]) {
+            this.cache[name].push(fn)
+        } else {
+            this.cache[name] = [fn]
+        }
+    }
+    off(name, fn) {
+        let tasks = this.cache[name]
+        if (tasks) {
+            const index = tasks.findIndex(f =&gt; f === fn || f.callback === fn)
+            if (index &gt;= 0) {
+                tasks.splice(index, 1)
+            }
+        }
+    }
+    emit(name, once = false, ...args) {
+        if (this.cache[name]) {
+            // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+            let tasks = this.cache[name].slice()
+            for (let fn of tasks) {
+                fn(...args)
+            }
+            if (once) {
+                delete this.cache[name]
+            }
+        }
+    }
+}
+
+// 测试
+let eventBus = new EventEmitter()
+let fn1 = function(name, age) {
+    console.log(`${name} ${age}`)
+}
+let fn2 = function(name, age) {
+    console.log(`hello, ${name} ${age}`)
+}
+eventBus.on('aaa', fn1)
+eventBus.on('aaa', fn2)
+eventBus.emit('aaa', false, '布兰', 12)
+// '布兰 12'
+// 'hello, 布兰 12'
+</code></pre></div><h2 id="解析-url-参数为对象"><a href="#解析-url-参数为对象" class="header-anchor">#</a> 解析 URL 参数为对象</h2> <div class="language- extra-class"><pre class="language-text"><code>function parseParam(url) {
+    const paramsStr = /.+\?(.+)$/.exec(url)[1]; // 将 ? 后面的字符串取出来
+    const paramsArr = paramsStr.split('&amp;'); // 将字符串以 &amp; 分割后存到数组中
+    let paramsObj = {};
+    // 将 params 存到对象中
+    paramsArr.forEach(param =&gt; {
+        if (/=/.test(param)) { // 处理有 value 的参数
+            let [key, val] = param.split('='); // 分割 key 和 value
+            val = decodeURIComponent(val); // 解码
+            val = /^\d+$/.test(val) ? parseFloat(val) : val; // 判断是否转为数字
+    
+            if (paramsObj.hasOwnProperty(key)) { // 如果对象有 key，则添加一个值
+                paramsObj[key] = [].concat(paramsObj[key], val);
+            } else { // 如果对象没有这个 key，创建 key 并设置值
+                paramsObj[key] = val;
+            }
+        } else { // 处理没有 value 的参数
+            paramsObj[param] = true;
+        }
+    })
+    
+    return paramsObj;
+}
+</code></pre></div><h2 id="字符串模板"><a href="#字符串模板" class="header-anchor">#</a> 字符串模板</h2> <div class="language- extra-class"><pre class="language-text"><code>function render(template, data) {
+    const reg = /\{\{(\w+)\}\}/; // 模板字符串正则
+    if (reg.test(template)) { // 判断模板里是否有模板字符串
+        const name = reg.exec(template)[1]; // 查找当前模板里第一个模板字符串的字段
+        template = template.replace(reg, data[name]); // 将第一个模板字符串渲染
+        return render(template, data); // 递归的渲染并返回渲染后的结构
+    }
+    return template; // 如果模板没有模板字符串直接返回
+}
+</code></pre></div><p>测试：</p> <div class="language- extra-class"><pre class="language-text"><code>let template = '我是{{name}}，年龄{{age}}，性别{{sex}}';
+let person = {
+    name: '布兰',
+    age: 12
+}
+render(template, person); // 我是布兰，年龄12，性别undefined
+</code></pre></div><h2 id="图片懒加载"><a href="#图片懒加载" class="header-anchor">#</a> 图片懒加载</h2> <p>与普通的图片懒加载不同，如下这个多做了 2 个精心处理：</p> <ul><li>图片全部加载完成后移除事件监听；</li> <li>加载完的图片，从 imgList 移除；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>let imgList = [...document.querySelectorAll('img')]
+let length = imgList.length
+
+const imgLazyLoad = function() {
+    let count = 0
+    return (function() {
+        let deleteIndexList = []
+        imgList.forEach((img, index) =&gt; {
+            let rect = img.getBoundingClientRect()
+            if (rect.top &lt; window.innerHeight) {
+                img.src = img.dataset.src
+                deleteIndexList.push(index)
+                count++
+                if (count === length) {
+                    document.removeEventListener('scroll', imgLazyLoad)
+                }
+            }
+        })
+        imgList = imgList.filter((img, index) =&gt; !deleteIndexList.includes(index))
+    })()
+}
+
+// 这里最好加上防抖处理
+document.addEventListener('scroll', imgLazyLoad)
+</code></pre></div><p>参考：<strong>图片懒加载</strong>[1]</p> <h2 id="函数防抖"><a href="#函数防抖" class="header-anchor">#</a> 函数防抖</h2> <p>触发高频事件 N 秒后只会执行一次，如果 N 秒内事件再次触发，则会重新计时。</p> <p>简单版：函数内部支持使用 this 和 event 对象；</p> <div class="language- extra-class"><pre class="language-text"><code>function debounce(func, wait) {
+    var timeout;
+    return function () {
+        var context = this;
+        var args = arguments;
+        clearTimeout(timeout)
+        timeout = setTimeout(function(){
+            func.apply(context, args)
+        }, wait);
+    }
+}
+</code></pre></div><p>使用：</p> <div class="language- extra-class"><pre class="language-text"><code>var node = document.getElementById('layout')
+function getUserAction(e) {
+    console.log(this, e)  // 分别打印：node 这个节点 和 MouseEvent
+    node.innerHTML = count++;
+};
+node.onmousemove = debounce(getUserAction, 1000)
+</code></pre></div><p>最终版：除了支持 this 和 event 外，还支持以下功能：</p> <ul><li>支持立即执行；</li> <li>函数可能有返回值；</li> <li>支持取消功能；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function debounce(func, wait, immediate) {
+    var timeout, result;
+    
+    var debounced = function () {
+        var context = this;
+        var args = arguments;
+        
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+            // 如果已经执行过，不再执行
+            var callNow = !timeout;
+            timeout = setTimeout(function(){
+                timeout = null;
+            }, wait)
+            if (callNow) result = func.apply(context, args)
+        } else {
+            timeout = setTimeout(function(){
+                func.apply(context, args)
+            }, wait);
+        }
+        return result;
+    };
+
+    debounced.cancel = function() {
+        clearTimeout(timeout);
+        timeout = null;
+    };
+
+    return debounced;
+}
+</code></pre></div><p>使用：</p> <div class="language- extra-class"><pre class="language-text"><code>var setUseAction = debounce(getUserAction, 10000, true);
+// 使用防抖
+node.onmousemove = setUseAction
+
+// 取消防抖
+setUseAction.cancel()
+</code></pre></div><p>参考：JavaScript专题之跟着underscore学防抖</p> <h2 id="函数节流"><a href="#函数节流" class="header-anchor">#</a> 函数节流</h2> <p>触发高频事件，且 N 秒内只执行一次。</p> <p>简单版：使用时间戳来实现，立即执行一次，然后每 N 秒执行一次。</p> <div class="language- extra-class"><pre class="language-text"><code>function throttle(func, wait) {
+    var context, args;
+    var previous = 0;
+
+    return function() {
+        var now = +new Date();
+        context = this;
+        args = arguments;
+        if (now - previous &gt; wait) {
+            func.apply(context, args);
+            previous = now;
+        }
+    }
+}
+</code></pre></div><p>最终版：支持取消节流；另外通过传入第三个参数，options.leading 来表示是否可以立即执行一次，opitons.trailing 表示结束调用的时候是否还要执行一次，默认都是 true。注意设置的时候不能同时将 leading 或 trailing 设置为 false。</p> <div class="language- extra-class"><pre class="language-text"><code>function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+        previous = options.leading === false ? 0 : new Date().getTime();
+        timeout = null;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+    };
+
+    var throttled = function() {
+        var now = new Date().getTime();
+        if (!previous &amp;&amp; options.leading === false) previous = now;
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+        if (remaining &lt;= 0 || remaining &gt; wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            func.apply(context, args);
+            if (!timeout) context = args = null;
+        } else if (!timeout &amp;&amp; options.trailing !== false) {
+            timeout = setTimeout(later, remaining);
+        }
+    };
+    
+    throttled.cancel = function() {
+        clearTimeout(timeout);
+        previous = 0;
+        timeout = null;
+    }
+    return throttled;
+}
+</code></pre></div><p>节流的使用就不拿代码举例了，参考防抖的写就行。</p> <p>参考：JavaScript专题之跟着 underscore 学节流</p> <h2 id="函数柯里化"><a href="#函数柯里化" class="header-anchor">#</a> 函数柯里化</h2> <p>什么叫函数柯里化？其实就是将使用多个参数的函数转换成一系列使用一个参数的函数的技术。还不懂？来举个例子。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b <span class="token operator">+</span> c
+<span class="token punctuation">}</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> addCurry <span class="token operator">=</span> <span class="token function">curry</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span>
+<span class="token function">addCurry</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+</code></pre></div><p>现在就是要实现 curry 这个函数，使函数从一次调用传入多个参数变成多次调用每次传一个参数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">curry</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token function-variable function">judge</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>args<span class="token punctuation">.</span>length <span class="token operator">==</span> fn<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>arg</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">judge</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>arg<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> judge
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="偏函数"><a href="#偏函数" class="header-anchor">#</a> 偏函数</h2> <p>什么是偏函数？偏函数就是将一个 n 参的函数转换成固定 x 参的函数，剩余参数（n - x）将在下次调用全部传入。举个例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b <span class="token operator">+</span> c
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> partialAdd <span class="token operator">=</span> <span class="token function">partial</span><span class="token punctuation">(</span>add<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token function">partialAdd</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</code></pre></div><p>发现没有，其实偏函数和函数柯里化有点像，所以根据函数柯里化的实现，能够能很快写出偏函数的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>arg</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>arg<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如上这个功能比较简单，现在我们希望偏函数能和柯里化一样能实现占位功能，比如：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">clg</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> partialClg <span class="token operator">=</span> <span class="token function">partial</span><span class="token punctuation">(</span>clg<span class="token punctuation">,</span> <span class="token string">'_'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token function">partialClg</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment">// 依次打印：1, 2, 3</span>
+</code></pre></div><p><code>_</code> 占的位其实就是 1 的位置。相当于：partial(clg, 1, 2)，然后 partialClg(3)。明白了原理，我们就来写实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>arg</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        args<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> 
+        <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>arg<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="jsonp"><a href="#jsonp" class="header-anchor">#</a> JSONP</h2> <p>JSONP 核心原理：script 标签不受同源策略约束，所以可以用来进行跨域请求，优点是兼容性好，但是只能用于 GET 请求；</p> <div class="language- extra-class"><pre class="language-text"><code>const jsonp = ({ url, params, callbackName }) =&gt; {
+    const generateUrl = () =&gt; {
+        let dataSrc = ''
+        for (let key in params) {
+            if (params.hasOwnProperty(key)) {
+                dataSrc += `${key}=${params[key]}&amp;`
+            }
+        }
+        dataSrc += `callback=${callbackName}`
+        return `${url}?${dataSrc}`
+    }
+    return new Promise((resolve, reject) =&gt; {
+        const scriptEle = document.createElement('script')
+        scriptEle.src = generateUrl()
+        document.body.appendChild(scriptEle)
+        window[callbackName] = data =&gt; {
+            resolve(data)
+            document.removeChild(scriptEle)
+        }
+    })
+}
+</code></pre></div><h2 id="ajax"><a href="#ajax" class="header-anchor">#</a> AJAX</h2> <div class="language- extra-class"><pre class="language-text"><code>const getJSON = function(url) {
+    return new Promise((resolve, reject) =&gt; {
+        const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Mscrosoft.XMLHttp');
+        xhr.open('GET', url, false);
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== 4) return;
+            if (xhr.status === 200 || xhr.status === 304) {
+                resolve(xhr.responseText);
+            } else {
+                reject(new Error(xhr.responseText));
+            }
+        }
+        xhr.send();
+    })
+}
+</code></pre></div><h2 id="实现数组原型方法"><a href="#实现数组原型方法" class="header-anchor">#</a> 实现数组原型方法</h2> <h3 id="foreach"><a href="#foreach" class="header-anchor">#</a> forEach</h3> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.forEach2 = function(callback, thisArg) {
+    if (this == null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callback !== &quot;function&quot;) {
+        throw new TypeError(callback + ' is not a function')
+    }
+    const O = Object(this)  // this 就是当前的数组
+    const len = O.length &gt;&gt;&gt; 0  // 后面有解释
+    let k = 0
+    while (k &lt; len) {
+        if (k in O) {
+            callback.call(thisArg, O[k], k, O);
+        }
+        k++;
+    }
+}
+</code></pre></div><p>参考：<strong>forEach#polyfill</strong>[2]</p> <p>O.length &gt;&gt;&gt; 0 是什么操作？就是无符号右移 0 位，那有什么意义嘛？就是为了保证转换后的值为正整数。其实底层做了 2 层转换，第一是非 number 转成 number 类型，第二是将 number 转成 Uint32 类型。感兴趣可以阅读 <strong>something &gt;&gt;&gt; 0是什么意思?</strong>[3]。</p> <h3 id="map"><a href="#map" class="header-anchor">#</a> map</h3> <p>基于 forEach 的实现能够很容易写出 map 的实现：</p> <div class="language- extra-class"><pre class="language-text"><code>- Array.prototype.forEach2 = function(callback, thisArg) {
++ Array.prototype.map2 = function(callback, thisArg) {
+    if (this == null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callback !== &quot;function&quot;) {
+        throw new TypeError(callback + ' is not a function')
+    }
+    const O = Object(this)
+    const len = O.length &gt;&gt;&gt; 0
+-   let k = 0
++   let k = 0, res = []
+    while (k &lt; len) {
+        if (k in O) {
+-           callback.call(thisArg, O[k], k, O);
++           res[k] = callback.call(thisArg, O[k], k, O);
+        }
+        k++;
+    }
++   return res
+}
+</code></pre></div><h3 id="filter"><a href="#filter" class="header-anchor">#</a> filter</h3> <p>同样，基于 forEach 的实现能够很容易写出 filter 的实现：</p> <div class="language- extra-class"><pre class="language-text"><code>- Array.prototype.forEach2 = function(callback, thisArg) {
++ Array.prototype.filter2 = function(callback, thisArg) {
+    if (this == null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callback !== &quot;function&quot;) {
+        throw new TypeError(callback + ' is not a function')
+    }
+    const O = Object(this)
+    const len = O.length &gt;&gt;&gt; 0
+-   let k = 0
++   let k = 0, res = []
+    while (k &lt; len) {
+        if (k in O) {
+-           callback.call(thisArg, O[k], k, O);
++           if (callback.call(thisArg, O[k], k, O)) {
++               res.push(O[k])                
++           }
+        }
+        k++;
+    }
++   return res
+}
+</code></pre></div><h3 id="some"><a href="#some" class="header-anchor">#</a> some</h3> <p>同样，基于 forEach 的实现能够很容易写出 some 的实现：</p> <div class="language- extra-class"><pre class="language-text"><code>- Array.prototype.forEach2 = function(callback, thisArg) {
++ Array.prototype.some2 = function(callback, thisArg) {
+    if (this == null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callback !== &quot;function&quot;) {
+        throw new TypeError(callback + ' is not a function')
+    }
+    const O = Object(this)
+    const len = O.length &gt;&gt;&gt; 0
+    let k = 0
+    while (k &lt; len) {
+        if (k in O) {
+-           callback.call(thisArg, O[k], k, O);
++           if (callback.call(thisArg, O[k], k, O)) {
++               return true
++           }
+        }
+        k++;
+    }
++   return false
+}
+</code></pre></div><h3 id="reduce"><a href="#reduce" class="header-anchor">#</a> reduce</h3> <div class="language- extra-class"><pre class="language-text"><code>Array.prototype.reduce2 = function(callback, initialValue) {
+    if (this == null) {
+        throw new TypeError('this is null or not defined')
+    }
+    if (typeof callback !== &quot;function&quot;) {
+        throw new TypeError(callback + ' is not a function')
+    }
+    const O = Object(this)
+    const len = O.length &gt;&gt;&gt; 0
+    let k = 0, acc
+    
+    if (arguments.length &gt; 1) {
+        acc = initialValue
+    } else {
+        // 没传入初始值的时候，取数组中第一个非 empty 的值为初始值
+        while (k &lt; len &amp;&amp; !(k in O)) {
+            k++
+        }
+        if (k &gt; len) {
+            throw new TypeError( 'Reduce of empty array with no initial value' );
+        }
+        acc = O[k++]
+    }
+    while (k &lt; len) {
+        if (k in O) {
+            acc = callback(acc, O[k], k, O)
+        }
+        k++
+    }
+    return acc
+}
+</code></pre></div><h2 id="实现函数原型方法"><a href="#实现函数原型方法" class="header-anchor">#</a> 实现函数原型方法</h2> <h3 id="call"><a href="#call" class="header-anchor">#</a> call</h3> <p>使用一个指定的 this 值和一个或多个参数来调用一个函数。</p> <p>实现要点：</p> <ul><li>this 可能传入 null；</li> <li>传入不固定个数的参数；</li> <li>函数可能有返回值；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.call2 = function (context) {
+    var context = context || window;
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i &lt; len; i++) {
+        args.push('arguments[' + i + ']');
+    }
+
+    var result = eval('context.fn(' + args +')');
+
+    delete context.fn
+    return result;
+}
+</code></pre></div><h3 id="apply"><a href="#apply" class="header-anchor">#</a> apply</h3> <p>apply 和 call 一样，唯一的区别就是 call 是传入不固定个数的参数，而 apply 是传入一个数组。</p> <p>实现要点：</p> <ul><li>this 可能传入 null；</li> <li>传入一个数组；</li> <li>函数可能有返回值；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.apply2 = function (context, arr) {
+    var context = context || window;
+    context.fn = this;
+
+    var result;
+    if (!arr) {
+        result = context.fn();
+    } else {
+        var args = [];
+        for (var i = 0, len = arr.length; i &lt; len; i++) {
+            args.push('arr[' + i + ']');
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+
+    delete context.fn
+    return result;
+}
+</code></pre></div><h3 id="bind"><a href="#bind" class="header-anchor">#</a> bind</h3> <p>bind 方法会创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p> <p>实现要点：</p> <ul><li>bind() 除了 this 外，还可传入多个参数；</li> <li>bing 创建的新函数可能传入多个参数；</li> <li>新函数可能被当做构造函数调用；</li> <li>函数可能有返回值；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Function.prototype.bind2 = function (context) {
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    var fNOP = function () {};
+
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+</code></pre></div><h2 id="实现-new-关键字"><a href="#实现-new-关键字" class="header-anchor">#</a> 实现 new 关键字</h2> <p>new 运算符用来创建用户自定义的对象类型的实例或者具有构造函数的内置对象的实例。</p> <p>实现要点：</p> <ul><li>new 会产生一个新对象；</li> <li>新对象需要能够访问到构造函数的属性，所以需要重新指定它的原型；</li> <li>构造函数可能会显示返回；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function objectFactory() {
+    var obj = new Object()
+    Constructor = [].shift.call(arguments);
+    obj.__proto__ = Constructor.prototype;
+    var ret = Constructor.apply(obj, arguments);
+    
+    // ret || obj 这里这么写考虑了构造函数显示返回 null 的情况
+    return typeof ret === 'object' ? ret || obj : obj;
+};
+</code></pre></div><p>使用：</p> <div class="language- extra-class"><pre class="language-text"><code>function person(name, age) {
+    this.name = name
+    this.age = age
+}
+let p = objectFactory(person, '布兰', 12)
+console.log(p)  // { name: '布兰', age: 12 }
+</code></pre></div><h2 id="实现-instanceof-关键字"><a href="#实现-instanceof-关键字" class="header-anchor">#</a> 实现 instanceof 关键字</h2> <p>instanceof 就是判断构造函数的 prototype 属性是否出现在实例的原型链上。</p> <div class="language- extra-class"><pre class="language-text"><code>function instanceOf(left, right) {
+    let proto = left.__proto__
+    while (true) {
+        if (proto === null) return false
+        if (proto === right.prototype) {
+            return true
+        }
+        proto = proto.__proto__
+    }
+}
+</code></pre></div><p>上面的 left.<strong>proto</strong> 这种写法可以换成 Object.getPrototypeOf(left)。</p> <h2 id="实现-object-create"><a href="#实现-object-create" class="header-anchor">#</a> 实现 Object.create</h2> <p>Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。</p> <div class="language- extra-class"><pre class="language-text"><code>Object.create2 = function(proto, propertyObject = undefined) {
+    if (typeof proto !== 'object' &amp;&amp; typeof proto !== 'function') {
+        throw new TypeError('Object prototype may only be an Object or null.')
+    if (propertyObject == null) {
+        new TypeError('Cannot convert undefined or null to object')
+    }
+    function F() {}
+    F.prototype = proto
+    const obj = new F()
+    if (propertyObject != undefined) {
+        Object.defineProperties(obj, propertyObject)
+    }
+    if (proto === null) {
+        // 创建一个没有原型对象的对象，Object.create(null)
+        obj.__proto__ = null
+    }
+    return obj
+}
+</code></pre></div><h2 id="实现-object-assign"><a href="#实现-object-assign" class="header-anchor">#</a> 实现 Object.assign</h2> <div class="language- extra-class"><pre class="language-text"><code>Object.assign2 = function(target, ...source) {
+    if (target == null) {
+        throw new TypeError('Cannot convert undefined or null to object')
+    }
+    let ret = Object(target) 
+    source.forEach(function(obj) {
+        if (obj != null) {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    ret[key] = obj[key]
+                }
+            }
+        }
+    })
+    return ret
+}
+</code></pre></div><h2 id="实现-json-stringify"><a href="#实现-json-stringify" class="header-anchor">#</a> 实现 JSON.stringify</h2> <p>JSON.stringify([, replacer [, space]) 方法是将一个 JavaScript 值(对象或者数组)转换为一个 JSON 字符串。此处模拟实现，不考虑可选的第二个参数 replacer 和第三个参数 space，如果对这两个参数的作用还不了解，建议阅读 <strong>MDN</strong>[4] 文档。</p> <ol><li><p>基本数据类型：</p></li> <li><ul><li>undefined 转换之后仍是 undefined(类型也是 undefined)</li> <li>boolean 值转换之后是字符串 &quot;false&quot;/&quot;true&quot;</li> <li>number 类型(除了 NaN 和 Infinity)转换之后是字符串类型的数值</li> <li>symbol 转换之后是 undefined</li> <li>null 转换之后是字符串 &quot;null&quot;</li> <li>string 转换之后仍是string</li> <li>NaN 和 Infinity 转换之后是字符串 &quot;null&quot;</li></ul></li> <li><p>函数类型：转换之后是 undefined</p></li> <li><p>如果是对象类型(非函数)</p></li> <li><ul><li>如果有 toJSON() 方法，那么序列化 toJSON() 的返回值。</li> <li>如果属性值中出现了 undefined、任意的函数以及 symbol 值，忽略。</li> <li>所有以 symbol 为属性键的属性都会被完全忽略掉。</li> <li>如果是一个数组：如果属性值中出现了 undefined、任意的函数以及 symbol，转换成字符串 &quot;null&quot; ；</li> <li>如果是 RegExp 对象：返回 {} (类型是 string)；</li> <li>如果是 Date 对象，返回 Date 的 toJSON 字符串值；</li> <li>如果是普通对象；</li></ul></li> <li><p>对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误。</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>function jsonStringify(data) {
+    let dataType = typeof data;
+    
+    if (dataType !== 'object') {
+        let result = data;
+        //data 可能是 string/number/null/undefined/boolean
+        if (Number.isNaN(data) || data === Infinity) {
+            //NaN 和 Infinity 序列化返回 &quot;null&quot;
+            result = &quot;null&quot;;
+        } else if (dataType === 'function' || dataType === 'undefined' || dataType === 'symbol') {
+            //function 、undefined 、symbol 序列化返回 undefined
+            return undefined;
+        } else if (dataType === 'string') {
+            result = '&quot;' + data + '&quot;';
+        }
+        //boolean 返回 String()
+        return String(result);
+    } else if (dataType === 'object') {
+        if (data === null) {
+            return &quot;null&quot;
+        } else if (data.toJSON &amp;&amp; typeof data.toJSON === 'function') {
+            return jsonStringify(data.toJSON());
+        } else if (data instanceof Array) {
+            let result = [];
+            //如果是数组
+            //toJSON 方法可以存在于原型链中
+            data.forEach((item, index) =&gt; {
+                if (typeof item === 'undefined' || typeof item === 'function' || typeof item === 'symbol') {
+                    result[index] = &quot;null&quot;;
+                } else {
+                    result[index] = jsonStringify(item);
+                }
+            });
+            result = &quot;[&quot; + result + &quot;]&quot;;
+            return result.replace(/'/g, '&quot;');
+            
+        } else {
+            //普通对象
+            /**
+             * 循环引用抛错(暂未检测，循环引用时，堆栈溢出)
+             * symbol key 忽略
+             * undefined、函数、symbol 为属性值，被忽略
+             */
+            let result = [];
+            Object.keys(data).forEach((item, index) =&gt; {
+                if (typeof item !== 'symbol') {
+                    //key 如果是symbol对象，忽略
+                    if (data[item] !== undefined &amp;&amp; typeof data[item] !== 'function'
+                        &amp;&amp; typeof data[item] !== 'symbol') {
+                        //键值如果是 undefined、函数、symbol 为属性值，忽略
+                        result.push('&quot;' + item + '&quot;' + &quot;:&quot; + jsonStringify(data[item]));
+                    }
+                }
+            });
+            return (&quot;{&quot; + result + &quot;}&quot;).replace(/'/g, '&quot;');
+        }
+    }
+}
+</code></pre></div><p>参考：<strong>实现 JSON.stringify</strong>[5]</p> <h2 id="实现-json-parse"><a href="#实现-json-parse" class="header-anchor">#</a> 实现 JSON.parse</h2> <p>介绍 2 种方法实现：</p> <ul><li>eval 实现；</li> <li>new Function 实现；</li></ul> <h3 id="eval-实现"><a href="#eval-实现" class="header-anchor">#</a> eval 实现</h3> <p>第一种方式最简单，也最直观，就是直接调用 eval，代码如下：</p> <div class="language- extra-class"><pre class="language-text"><code>var json = '{&quot;a&quot;:&quot;1&quot;, &quot;b&quot;:2}';
+var obj = eval(&quot;(&quot; + json + &quot;)&quot;);  // obj 就是 json 反序列化之后得到的对象
+</code></pre></div><p>但是直接调用 eval 会存在安全问题，如果数据中可能不是 json 数据，而是可执行的 JavaScript 代码，那很可能会造成 XSS 攻击。因此，在调用 eval 之前，需要对数据进行校验。</p> <div class="language- extra-class"><pre class="language-text"><code>var rx_one = /^[\],:{}\s]*$/;
+var rx_two = /\\(?:[&quot;\\\/bfnrt]|u[0-9a-fA-F]{4})/g;
+var rx_three = /&quot;[^&quot;\\\n\r]*&quot;|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
+var rx_four = /(?:^|:|,)(?:\s*\[)+/g;
+
+if (
+    rx_one.test(
+        json.replace(rx_two, &quot;@&quot;)
+            .replace(rx_three, &quot;]&quot;)
+            .replace(rx_four, &quot;&quot;)
+    )
+) {
+    var obj = eval(&quot;(&quot; +json + &quot;)&quot;);
+}
+</code></pre></div><p>参考：<strong>JSON.parse 三种实现方式</strong>[6]</p> <h3 id="new-function-实现"><a href="#new-function-实现" class="header-anchor">#</a> new Function 实现</h3> <p>Function 与 eval 有相同的字符串参数特性。</p> <div class="language- extra-class"><pre class="language-text"><code>var json = '{&quot;name&quot;:&quot;小姐姐&quot;, &quot;age&quot;:20}';
+var obj = (new Function('return ' + json))();
+</code></pre></div><h2 id="实现-promise"><a href="#实现-promise" class="header-anchor">#</a> 实现 Promise</h2> <p>实现 Promise 需要完全读懂 <strong>Promise A+ 规范</strong>[7]，不过从总体的实现上看，有如下几个点需要考虑到：</p> <ul><li>then 需要支持链式调用，所以得返回一个新的 Promise；</li> <li>处理异步问题，所以得先用 onResolvedCallbacks 和 onRejectedCallbacks 分别把成功和失败的回调存起来；</li> <li>为了让链式调用正常进行下去，需要判断 onFulfilled 和 onRejected 的类型；</li> <li>onFulfilled 和 onRejected 需要被异步调用，这里用 setTimeout 模拟异步；</li> <li>处理 Promise 的 resolve；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
+class Promise {
+    constructor(executor) {
+        this.status = PENDING;
+        this.value = undefined;
+        this.reason = undefined;
+        this.onResolvedCallbacks = [];
+        this.onRejectedCallbacks = [];
+        
+        let resolve = (value) = &gt; {
+            if (this.status === PENDING) {
+                this.status = FULFILLED;
+                this.value = value;
+                this.onResolvedCallbacks.forEach((fn) = &gt; fn());
+            }
+        };
+        
+        let reject = (reason) = &gt; {
+            if (this.status === PENDING) {
+                this.status = REJECTED;
+                this.reason = reason;
+                this.onRejectedCallbacks.forEach((fn) = &gt; fn());
+            }
+        };
+        
+        try {
+            executor(resolve, reject);
+        } catch (error) {
+            reject(error);
+        }
+    }
+    
+    then(onFulfilled, onRejected) {
+        // 解决 onFufilled，onRejected 没有传值的问题
+        onFulfilled = typeof onFulfilled === &quot;function&quot; ? onFulfilled : (v) = &gt; v;
+        // 因为错误的值要让后面访问到，所以这里也要抛出错误，不然会在之后 then 的 resolve 中捕获
+        onRejected = typeof onRejected === &quot;function&quot; ? onRejected : (err) = &gt; {
+            throw err;
+        };
+        // 每次调用 then 都返回一个新的 promise
+        let promise2 = new Promise((resolve, reject) = &gt; {
+            if (this.status === FULFILLED) {
+                //Promise/A+ 2.2.4 --- setTimeout
+                setTimeout(() = &gt; {
+                    try {
+                        let x = onFulfilled(this.value);
+                        // x可能是一个proimise
+                        resolvePromise(promise2, x, resolve, reject);
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 0);
+            }
+        
+            if (this.status === REJECTED) {
+                //Promise/A+ 2.2.3
+                setTimeout(() = &gt; {
+                    try {
+                        let x = onRejected(this.reason);
+                        resolvePromise(promise2, x, resolve, reject);
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 0);
+            }
+            
+            if (this.status === PENDING) {
+                this.onResolvedCallbacks.push(() = &gt; {
+                    setTimeout(() = &gt; {
+                        try {
+                            let x = onFulfilled(this.value);
+                            resolvePromise(promise2, x, resolve, reject);
+                        } catch (e) {
+                            reject(e);
+                        }
+                    }, 0);
+                });
+            
+                this.onRejectedCallbacks.push(() = &gt; {
+                    setTimeout(() = &gt; {
+                        try {
+                            let x = onRejected(this.reason);
+                            resolvePromise(promise2, x, resolve, reject);
+                        } catch (e) {
+                            reject(e);
+                        }
+                    }, 0);
+                });
+            }
+        });
+        
+        return promise2;
+    }
+}
+const resolvePromise = (promise2, x, resolve, reject) = &gt; {
+    // 自己等待自己完成是错误的实现，用一个类型错误，结束掉 promise  Promise/A+ 2.3.1
+    if (promise2 === x) {
+        return reject(
+            new TypeError(&quot;Chaining cycle detected for promise #&lt;Promise&gt;&quot;));
+    }
+    // Promise/A+ 2.3.3.3.3 只能调用一次
+    let called;
+    // 后续的条件要严格判断 保证代码能和别的库一起使用
+    if ((typeof x === &quot;object&quot; &amp;&amp; x != null) || typeof x === &quot;function&quot;) {
+        try {
+            // 为了判断 resolve 过的就不用再 reject 了（比如 reject 和 resolve 同时调用的时候）  Promise/A+ 2.3.3.1
+            let then = x.then;
+            if (typeof then === &quot;function&quot;) {
+            // 不要写成 x.then，直接 then.call 就可以了 因为 x.then 会再次取值，Object.defineProperty  Promise/A+ 2.3.3.3
+                then.call(
+                    x, (y) = &gt; {
+                        // 根据 promise 的状态决定是成功还是失败
+                        if (called) return;
+                        called = true;
+                        // 递归解析的过程（因为可能 promise 中还有 promise） Promise/A+ 2.3.3.3.1
+                        resolvePromise(promise2, y, resolve, reject);
+                    }, (r) = &gt; {
+                        // 只要失败就失败 Promise/A+ 2.3.3.3.2
+                        if (called) return;
+                        called = true;
+                        reject(r);
+                    });
+            } else {
+                // 如果 x.then 是个普通值就直接返回 resolve 作为结果  Promise/A+ 2.3.3.4
+                resolve(x);
+            }
+        } catch (e) {
+            // Promise/A+ 2.3.3.2
+            if (called) return;
+            called = true;
+            reject(e);
+        }
+    } else {
+        // 如果 x 是个普通值就直接返回 resolve 作为结果  Promise/A+ 2.3.4
+        resolve(x);
+    }
+};
+</code></pre></div><p>Promise 写完之后可以通过 promises-aplus-tests 这个包对我们写的代码进行测试，看是否符合 A+ 规范。不过测试前还得加一段代码：</p> <div class="language- extra-class"><pre class="language-text"><code>// promise.js
+// 这里是上面写的 Promise 全部代码
+Promise.defer = Promise.deferred = function () {
+    let dfd = {}
+    dfd.promise = new Promise((resolve,reject)=&gt;{
+        dfd.resolve = resolve;
+        dfd.reject = reject;
+    });
+    return dfd;
+}
+module.exports = Promise;
+</code></pre></div><p>全局安装：</p> <div class="language- extra-class"><pre class="language-text"><code>npm i promises-aplus-tests -g
+</code></pre></div><p>终端下执行验证命令：</p> <div class="language- extra-class"><pre class="language-text"><code>promises-aplus-tests promise.js
+</code></pre></div><p>上面写的代码可以顺利通过全部 872 个测试用例。</p> <p>参考：</p> <ul><li><strong>BAT前端经典面试问题：史上最最最详细的手写Promise教程</strong>[8]</li> <li><strong>100 行代码实现 Promises/A+ 规范</strong>[9]</li></ul> <h3 id="promise-resolve"><a href="#promise-resolve" class="header-anchor">#</a> Promise.resolve</h3> <p>Promsie.resolve(value) 可以将任何值转成值为 value 状态是 fulfilled 的 Promise，但如果传入的值本身是 Promise 则会原样返回它。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.resolve = function(value) {
+    // 如果是 Promsie，则直接输出它
+    if(value instanceof Promise){
+        return value
+    }
+    return new Promise(resolve =&gt; resolve(value))
+}
+</code></pre></div><p>参考：<strong>深入理解 Promise</strong>[10]</p> <h3 id="promise-reject"><a href="#promise-reject" class="header-anchor">#</a> Promise.reject</h3> <p>和 Promise.resolve() 类似，Promise.reject() 会实例化一个 rejected 状态的 Promise。但与 Promise.resolve() 不同的是，如果给 Promise.reject() 传递一个 Promise 对象，则这个对象会成为新 Promise 的值。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.reject = function(reason) {
+    return new Promise((resolve, reject) =&gt; reject(reason))
+}
+</code></pre></div><h3 id="promise-all"><a href="#promise-all" class="header-anchor">#</a> Promise.all</h3> <p>Promise.all 的规则是这样的：</p> <ul><li>传入的所有 Promsie 都是 fulfilled，则返回由他们的值组成的，状态为 fulfilled 的新 Promise；</li> <li>只要有一个 Promise 是 rejected，则返回 rejected 状态的新 Promsie，且它的值是第一个 rejected 的 Promise 的值；</li> <li>只要有一个 Promise 是 pending，则返回一个 pending 状态的新 Promise；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.all = function(promiseArr) {
+    let index = 0, result = []
+    return new Promise((resolve, reject) =&gt; {
+        promiseArr.forEach((p, i) =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                index++
+                result[i] = val
+                if (index === promiseArr.length) {
+                    resolve(result)
+                }
+            }, err =&gt; {
+                reject(err)
+            })
+        })
+    })
+}
+</code></pre></div><h3 id="promise-race"><a href="#promise-race" class="header-anchor">#</a> Promise.race</h3> <p>Promise.race 会返回一个由所有可迭代实例中第一个 fulfilled 或 rejected 的实例包装后的新实例。</p> <div class="language- extra-class"><pre class="language-text"><code>Promise.race = function(promiseArr) {
+    return new Promise((resolve, reject) =&gt; {
+        promiseArr.forEach(p =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                resolve(val)
+            }, err =&gt; {
+                rejecte(err)
+            })
+        })
+    })
+}
+</code></pre></div><h3 id="promise-allsettled"><a href="#promise-allsettled" class="header-anchor">#</a> Promise.allSettled</h3> <p>Promise.allSettled 的规则是这样：</p> <ul><li>所有 Promise 的状态都变化了，那么新返回一个状态是 fulfilled 的 Promise，且它的值是一个数组，数组的每项由所有 Promise 的值和状态组成的对象；</li> <li>如果有一个是 pending 的 Promise，则返回一个状态是 pending 的新实例；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.allSettled = function(promiseArr) {
+    let result = []
+        
+    return new Promise((resolve, reject) =&gt; {
+        promiseArr.forEach((p, i) =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                result.push({
+                    status: 'fulfilled',
+                    value: val
+                })
+                if (result.length === promiseArr.length) {
+                    resolve(result) 
+                }
+            }, err =&gt; {
+                result.push({
+                    status: 'rejected',
+                    reason: err
+                })
+                if (result.length === promiseArr.length) {
+                    resolve(result) 
+                }
+            })
+        })  
+    })   
+}
+</code></pre></div><h3 id="promise-any"><a href="#promise-any" class="header-anchor">#</a> Promise.any</h3> <p>Promise.any 的规则是这样：</p> <ul><li>空数组或者所有 Promise 都是 rejected，则返回状态是 rejected 的新 Promsie，且值为 AggregateError 的错误；</li> <li>只要有一个是 fulfilled 状态的，则返回第一个是 fulfilled 的新实例；</li> <li>其他情况都会返回一个 pending 的新实例；</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Promise.any = function(promiseArr) {
+    let index = 0
+    return new Promise((resolve, reject) =&gt; {
+        if (promiseArr.length === 0) return 
+        promiseArr.forEach((p, i) =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                resolve(val)
+                
+            }, err =&gt; {
+                index++
+                if (index === promiseArr.length) {
+                  reject(new AggregateError('All promises were rejected'))
+                }
+            })
+        })
+    })
+}
+</code></pre></div><h2 id="后话"><a href="#后话" class="header-anchor">#</a> 后话</h2> <p>能看到这里的对代码都是真爱了，毕竟代码这玩意看起来是真的很枯燥，但是如果看懂了后，就会像打游戏赢了一样开心，而且这玩意会上瘾，当你通关了越多的关卡后，你的能力就会拔高一个层次。用标题的话来说就是：搞懂后，提升真的大。加油吧💪，干饭人</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>噢不，代码人。</p> <h3 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h3> <p>[1]图片懒加载: <em>https://juejin.cn/post/6844903856489365518#heading-19</em>[2]forEach#polyfill: <em>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill</em>[3]something &gt;&gt;&gt; 0是什么意思: <em>https://zhuanlan.zhihu.com/p/100790268</em>[4]stringify: <em>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</em>[5]实现 JSON.stringify: <em>https://github.com/YvetteLau/Step-By-Step/issues/39#issuecomment-508327280</em>[6]JSON.parse 三种实现方式: <em>https://github.com/youngwind/blog/issues/115#issue-300869613</em>[7]Promise A+ 规范: <em>https://promisesaplus.com/</em>[8]BAT前端经典面试问题：史上最最最详细的手写Promise教程: <em>https://juejin.cn/post/6844903625769091079</em>[9]100 行代码实现 Promises/A+ 规范: <em>https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g</em>[10]深入理解 Promise: <em>https://bubuzou.com/2020/10/22/promise/</em></p> <h2 id="看完三件事"><a href="#看完三件事" class="header-anchor">#</a> 看完三件事</h2> <p>如果你觉得本文对你有帮助，我想请你帮个忙：</p> <ol><li><strong>转发本文</strong>，<strong>点赞</strong>或者点个「<strong>在看</strong>」，是对我最大的认可和支持；</li> <li>关注公众号「<strong>技术漫谈</strong>」，订阅更多精彩内容，获取更多学习资料；</li> <li>公众号后台回复「<strong>加群</strong>」，加入算法和技术交流群，与更多读者交流。</li></ol> <p>往期推荐</p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MTU5ODYxOA==&amp;mid=2247488841&amp;idx=1&amp;sn=c7960330bf034b11762da1c19a270990&amp;chksm=cfcbb73cf8bc3e2ae8de15ac1085439b0f72c4904378da0afc4398e29838d6be6a31f7a3a9d0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">一文剖析 CSS 布局的本质是什么？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MTU5ODYxOA==&amp;mid=2247488747&amp;idx=1&amp;sn=aa25ba7d8e1c5c4f0891405821f1270a&amp;chksm=cfcbb69ef8bc3f88f92764f6341ab3d5e87f510d2b11fca6f88b6cc54762ef808ccbf8a96147&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">不同样式 tooltip 对话框小三角的 CSS 实现<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MTU5ODYxOA==&amp;mid=2247488538&amp;idx=1&amp;sn=73c4a580de48319c9d23ca71d3e35155&amp;chksm=cfcbb66ff8bc3f7963ca800dc9b7bf2bea12e2ae6240327b6c9da7e8e26428dcce280602a9bd&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">47 张图带你走进浏览器的前世今生！<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MTU5ODYxOA==&amp;mid=2247488318&amp;idx=1&amp;sn=8e11cb4fac9008e106f11024daf1d0ec&amp;chksm=cfcbb14bf8bc385d1f1533575819462a857795e48e31ce7a29432e4f072e4b0d3bfe549eb858&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">React Hooks 专题：useEffect 使用指南<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MTU5ODYxOA==&amp;mid=2247488304&amp;idx=1&amp;sn=d2a07212ab559ad19afdbe0727e3a4b0&amp;chksm=cfcbb145f8bc3853aeb299c0f5618321aea778ca35f6add89e308aa342fe97bcae3c29add6f9&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">让你 Node.js 水平暴增的 debugger 技巧<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:04:59 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/eight-essay/手写题/手动实现jsonp.html" class="prev">
+        手动实现jsonp
+      </a></span> <span class="next"><a href="/eight-essay/手写题/面试手写题.html">
+        一文帮你搞定 90% 的 JS 手写题！面试手写题不慌了
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6df8e219.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/77.04408d97.js" defer></script>
+  </body>
+</html>
